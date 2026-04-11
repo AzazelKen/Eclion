@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Eclion | Rave Community in VRChat</title>
+  <!-- Font Awesome 6 (iconos) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #040000;
+      font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #f0f0f0;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .hero-banner {
+      width: 100%;
+      overflow: hidden;
+      background-color: #040000;
+      line-height: 0;
+    }
+    .hero-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .lang-bar {
+      background: #111111;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 16px;
+      border-bottom: 2px solid #ed2221;
+    }
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: #ccc;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 6px 14px;
+      border-radius: 40px;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .lang-btn i {
+      margin-right: 6px;
+    }
+    .lang-btn.active {
+      background-color: #ed2221;
+      color: white;
+      box-shadow: 0 0 8px rgba(237,34,33,0.5);
+    }
+    .lang-btn:hover:not(.active) {
+      background-color: #2a2a2a;
+      color: #ed2221;
+    }
+
+    section {
+      padding: 60px 0;
+      border-bottom: 1px solid rgba(237,34,33,0.2);
+    }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+      position: relative;
+      display: inline-block;
+      letter-spacing: -0.5px;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: #ed2221;
+      border-radius: 4px;
+    }
+    .title-center {
+      text-align: center;
+      display: block;
+    }
+    .title-center:after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .presentacion-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .presentacion-img {
+      flex: 1.2;
+      min-width: 240px;
+    }
+    .presentacion-img img {
+      width: 100%;
+      border-radius: 28px;
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.6);
+      border: 2px solid #ed2221;
+    }
+    .presentacion-texto {
+      flex: 1.8;
+    }
+    .descripcion {
+      font-size: 1.15rem;
+      margin-bottom: 30px;
+      font-weight: 400;
+      background: rgba(0,0,0,0.5);
+      padding: 20px;
+      border-radius: 24px;
+      backdrop-filter: blur(2px);
+      border-left: 5px solid #ed2221;
+    }
+    .btn-grupo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #ed2221;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.2s;
+      font-size: 1.1rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(237,34,33,0.3);
+    }
+    .btn-grupo:hover {
+      background: #b91c1b;
+      transform: scale(1.02);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #ed2221;
+      color: #ed2221;
+      box-shadow: none;
+    }
+    .btn-outline:hover {
+      background: #ed2221;
+      color: white;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .social-card {
+      background: #0c0c0c;
+      padding: 28px 32px;
+      border-radius: 36px;
+      text-align: center;
+      width: 240px;
+      transition: all 0.2s;
+      border: 1px solid #2a2a2a;
+    }
+    .social-card i {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      color: #ed2221;
+    }
+    .social-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+    .social-card a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      word-break: break-all;
+      background: #1f1f1f;
+      padding: 8px 12px;
+      border-radius: 40px;
+      display: inline-block;
+      transition: 0.2s;
+    }
+    .social-card a:hover {
+      background: #ed2221;
+      color: #040000;
+    }
+
+    /* Estilos para owners y DJs con imágenes */
+    .owners-grid, .djs-grid, .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .owner-card, .dj-card, .partner-card {
+      background: #0a0a0a;
+      border-radius: 28px;
+      padding: 24px 20px;
+      text-align: center;
+      transition: transform 0.2s, border 0.2s;
+      border: 1px solid #2c2c2c;
+    }
+    .owner-card:hover, .dj-card:hover, .partner-card:hover {
+      transform: translateY(-6px);
+      border-color: #ed2221;
+    }
+    .owner-img, .dj-img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #ed2221;
+      margin-bottom: 16px;
+      background: #1a1a1a;
+    }
+    .owner-card h3, .dj-card h3, .partner-card h3 {
+      font-size: 1.5rem;
+      margin: 12px 0 8px;
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin: 16px 0 8px;
+    }
+    .social-icons a {
+      color: #ccc;
+      font-size: 1.6rem;
+      transition: 0.2s;
+    }
+    .social-icons a:hover {
+      color: #ed2221;
+    }
+    .dj-card a, .partner-card a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ed2221;
+      padding: 8px 20px;
+      border-radius: 40px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 10px;
+    }
+    .dj-card a:hover, .partner-card a:hover {
+      background: #b91c1b;
+    }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .video-item {
+      background: #0c0c0c;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid #2c2c2c;
+      transition: 0.2s;
+    }
+    .video-item iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: none;
+    }
+    .video-item p {
+      padding: 12px;
+      text-align: center;
+      font-weight: 600;
+      background: #111;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.85rem;
+      color: #aaa;
+      background: #020202;
+    }
+
+    @media (max-width: 760px) {
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .presentacion-grid {
+        flex-direction: column;
+      }
+      .lang-bar {
+        justify-content: center;
+      }
+      .social-card {
+        width: 100%;
+        max-width: 280px;
+      }
+      .owners-grid, .djs-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="lang-bar">
+  <button class="lang-btn active" id="btn-es"><i class="fas fa-language"></i> Español</button>
+  <button class="lang-btn" id="btn-en"><i class="fas fa-language"></i> English</button>
+  <button class="lang-btn" id="btn-fr"><i class="fas fa-language"></i> Français</button>
+</div>
+
+<div class="hero-banner">
+  <img src="https://i.imgur.com/UCnSANj.png" alt="Eclion Banner Principal">
+</div>
+
+<main class="container">
+
+  <!-- SECCIÓN OWNERS (nueva) -->
+  <section id="owners">
+    <h2 class="section-title title-center" data-i18n="ownersTitle">👑 Owners</h2>
+    <div class="owners-grid">
+      <!-- Owner: AzazelKen -->
+      <div class="owner-card">
+        <img class="owner-img" src="https://api.vrchat.cloud/api/1/file/file_98da1e47-010c-47ce-82ff-4ed7fb65af15/1/" alt="AzazelKen">
+        <h3>AzazelKen</h3>
+        <div class="social-icons">
+          <a href="https://vrchat.com/home/user/usr_d22c21a8-6bb1-4f24-921c-bb3feedff517" target="_blank" title="VRChat"><i class="fab fa-vr-cardboard"></i></a>
+          <a href="https://discord.com/users/178567424738590720" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+          <a href="https://www.instagram.com/azazelkenecl/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <!-- Owner: ChiquiBoo -->
+      <div class="owner-card">
+        <img class="owner-img" src="https://api.vrchat.cloud/api/1/image/file_88983ad4-8806-418b-8200-0d6cf0ec85e4/1/1024" alt="ChiquiBoo">
+        <h3>ChiquiBoo</h3>
+        <div class="social-icons">
+          <a href="https://vrchat.com/home/user/usr_f56d3f49-0866-4e08-b710-968cfa8c4e4e" target="_blank" title="VRChat"><i class="fab fa-vr-cardboard"></i></a>
+          <a href="https://discord.com/users/694308630773628960" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+          <a href="https://www.instagram.com/chiquibooecl/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN PRESENTACIÓN -->
+  <section id="presentacion">
+    <div class="presentacion-grid">
+      <div class="presentacion-img">
+        <img src="https://i.imgur.com/bCubnQH.png" alt="Eclion comunidad rave">
+      </div>
+      <div class="presentacion-texto">
+        <div class="descripcion" id="descText">
+          Somos una comunidad hispana en VRChat donde nos encanta socializar y crear experiencias únicas. Organizamos eventos como raves, noches de películas, juegos y mucho más, siempre en un ambiente amigable, divertido y respetuoso para todos.
+        </div>
+        <a href="https://vrc.group/ECL.4481" target="_blank" class="btn-grupo" id="btnVRChat">
+          <i class="fab fa-vr-cardboard"></i> <span data-i18n="btnVRChat">Unirse al grupo VRChat</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN REDES SOCIALES (Discord + Instagram) -->
+  <section id="sociales">
+    <h2 class="section-title title-center" data-i18n="socialTitle">🌐 Nuestras Redes</h2>
+    <div class="social-links">
+      <div class="social-card">
+        <i class="fab fa-discord"></i>
+        <h3>Discord</h3>
+        <a href="https://discord.gg/yRVNrNbrRQ" target="_blank">discord.gg/yRVNrNbrRQ</a>
+      </div>
+      <div class="social-card">
+        <i class="fab fa-instagram"></i>
+        <h3>Instagram</h3>
+        <a href="https://www.instagram.com/ecli.on.ofcl/" target="_blank">@ecli.on.ofcl</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN CANAL OFICIAL con video en vivo -->
+  <section id="youtubeOfficial">
+    <h2 class="section-title" data-i18n="ytTitle">📺 Canal Oficial Eclion</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center; background: #0c0c0c; border-radius: 32px; padding: 24px;">
+      <div style="flex:1; min-width: 180px;">
+        <i class="fab fa-youtube" style="font-size: 4rem; color: #ed2221;"></i>
+        <h3 style="margin: 12px 0;">EclionVR</h3>
+        <p data-i18n="ytDesc">Raves, eventos y experiencias únicas en VRChat. ¡Suscríbete!</p>
+        <a href="https://www.youtube.com/@EclionVR" target="_blank" class="btn-grupo btn-outline" style="margin-top: 16px; display: inline-block;">
+          <i class="fab fa-youtube"></i> <span data-i18n="ytBtn">Visitar canal</span>
+        </a>
+      </div>
+      <div style="flex:2; min-width: 280px;">
+        <!-- Video en vivo específico: https://youtube.com/live/zDaBzEpZ6xo -->
+        <iframe width="100%" height="240" src="https://www.youtube.com/embed/zDaBzEpZ6xo" style="border-radius: 20px;" title="Eclion Live Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p style="font-size: 0.8rem; margin-top: 6px;" data-i18n="ytInfo">🔴 Transmisión en vivo: música y comunidad</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN ECLION DJs con imágenes -->
+  <section id="djs">
+    <h2 class="section-title title-center">🎧 ECLION DJs 🎧</h2>
+    <div class="djs-grid">
+      <!-- AzazelKen -->
+      <div class="dj-card">
+        <img class="dj-img" src="https://api.vrchat.cloud/api/1/file/file_98da1e47-010c-47ce-82ff-4ed7fb65af15/1/" alt="AzazelKen">
+        <h3>AzazelKen</h3>
+        <a href="https://www.youtube.com/@AzazelKenDJ" target="_blank">YouTube <i class="fab fa-youtube"></i></a>
+      </div>
+      <!-- Anal_Rampage -->
+      <div class="dj-card">
+        <img class="dj-img" src="https://api.vrchat.cloud/api/1/image/file_963999e1-abe3-4a68-a1b5-1e68ec11be62/2/1024" alt="Anal_Rampage">
+        <h3>Anal_Rampage</h3>
+        <a href="https://www.youtube.com/@Anal_Rampage696" target="_blank">YouTube <i class="fab fa-youtube"></i></a>
+      </div>
+      <!-- Mellana -->
+      <div class="dj-card">
+        <img class="dj-img" src="https://api.vrchat.cloud/api/1/image/file_43052fbc-12df-4c54-85fa-e1370ca5ebbb/1/1024" alt="Mellana">
+        <h3>Mellana</h3>
+        <a href="https://www.youtube.com/@oracion621" target="_blank">YouTube <i class="fab fa-youtube"></i></a>
+      </div>
+      <!-- ElPutoPuto -->
+      <div class="dj-card">
+        <img class="dj-img" src="https://api.vrchat.cloud/api/1/image/file_bfd42eab-4ce7-4c45-a144-a87b35f7058a/2/1024" alt="ElPutoPuto">
+        <h3>ElPutoPuto</h3>
+        <a href="https://www.youtube.com/@si5157" target="_blank">YouTube <i class="fab fa-youtube"></i></a>
+      </div>
+      <!-- SynHaptX Fire -->
+      <div class="dj-card">
+        <img class="dj-img" src="https://api.vrchat.cloud/api/1/image/file_49e37070-b4ef-4749-ac48-0707db2982e2/1/1024" alt="SynHaptX Fire">
+        <h3>SynHaptX Fire</h3>
+        <a href="https://www.youtube.com/@synhaptxfire" target="_blank">YouTube <i class="fab fa-youtube"></i></a>
+      </div>
+      <!-- Chonchito -->
+      <div class="dj-card">
+        <img class="dj-img" src="https://api.vrchat.cloud/api/1/image/file_f608fff7-b009-4918-811e-b3b685018610/1/1024" alt="Chonchito">
+        <h3>Chonchito</h3>
+        <a href="https://www.youtube.com/@chonchito-h6c" target="_blank">YouTube <i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN VIDEOS DESTACADOS (actualizados con nuevos títulos y videos) -->
+  <section id="videosEclion">
+    <h2 class="section-title title-center" data-i18n="videosTitle">🎬 Eventos destacados</h2>
+    <div class="videos-grid">
+      <!-- Primer Evento -->
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/k7mtdZoONbs" title="Primer Evento Eclion" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p data-i18n="video1Label">🎉 Primer Evento</p>
+      </div>
+      <!-- HARD.EXE -->
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/vLCWa-oKrQU" title="HARD.EXE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p data-i18n="video2Label">⚡ HARD.EXE</p>
+      </div>
+      <!-- REVELION -->
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/W0JdMFh-K34" title="REVELION" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p data-i18n="video3Label">🔥 REVELION</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN PARTNERS (Raver!e) -->
+  <section id="partners">
+    <h2 class="section-title title-center" data-i18n="partnersTitle">🤝 Partners</h2>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <img src="https://i.imgur.com/2vRFIzz.png" alt="Raver!e" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 3px solid #ed2221; margin-bottom: 16px;">
+        <h3>Raver!e</h3>
+        <a href="https://vrc.group/RAVERI.8139" target="_blank">
+          <i class="fab fa-vr-cardboard"></i> Grupo VRChat
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p data-i18n="footer">Eclion · Rave Community in VRChat · Todos los derechos reservados · 2025</p>
+  <p style="margin-top: 8px;">🎵 #EclionFamily 🎵</p>
+</footer>
+
+<script>
+  // Traducciones completas incluyendo nuevos textos
+  const translations = {
+    es: {
+      descText: "Somos una comunidad hispana en VRChat donde nos encanta socializar y crear experiencias únicas. Organizamos eventos como raves, noches de películas, juegos y mucho más, siempre en un ambiente amigable, divertido y respetuoso para todos.",
+      btnVRChat: "Unirse al grupo VRChat",
+      socialTitle: "🌐 Nuestras Redes",
+      ytTitle: "📺 Canal Oficial Eclion",
+      ytDesc: "Raves, eventos y experiencias únicas en VRChat. ¡Suscríbete!",
+      ytBtn: "Visitar canal",
+      ytInfo: "🔴 Transmisión en vivo: música y comunidad",
+      videosTitle: "🎬 Eventos destacados",
+      video1Label: "🎉 Primer Evento",
+      video2Label: "⚡ HARD.EXE",
+      video3Label: "🔥 REVELION",
+      footer: "Eclion · Rave Community in VRChat · Todos los derechos reservados · 2025",
+      partnersTitle: "🤝 Partners",
+      ownersTitle: "👑 Owners"
+    },
+    en: {
+      descText: "We are a Hispanic community on VRChat where we love to socialize and create unique experiences. We organize events like raves, movie nights, games, and much more, always in a friendly, fun, and respectful environment for everyone.",
+      btnVRChat: "Join VRChat Group",
+      socialTitle: "🌐 Our Social Networks",
+      ytTitle: "📺 Official Eclion Channel",
+      ytDesc: "Raves, events and unique experiences in VRChat. Subscribe!",
+      ytBtn: "Visit channel",
+      ytInfo: "🔴 Live stream: music & community",
+      videosTitle: "🎬 Featured Events",
+      video1Label: "🎉 First Event",
+      video2Label: "⚡ HARD.EXE",
+      video3Label: "🔥 REVELION",
+      footer: "Eclion · Rave Community in VRChat · All rights reserved · 2025",
+      partnersTitle: "🤝 Partners",
+      ownersTitle: "👑 Owners"
+    },
+    fr: {
+      descText: "Nous sommes une communauté hispanique sur VRChat où nous adorons socialiser et créer des expériences uniques. Nous organisons des événements comme des raves, des soirées cinéma, des jeux et bien plus encore, toujours dans une ambiance amicale, amusante et respectueuse pour tous.",
+      btnVRChat: "Rejoindre le groupe VRChat",
+      socialTitle: "🌐 Nos réseaux sociaux",
+      ytTitle: "📺 Chaîne officielle Eclion",
+      ytDesc: "Raves, événements et expériences uniques dans VRChat. Abonnez-vous !",
+      ytBtn: "Visiter la chaîne",
+      ytInfo: "🔴 En direct : musique et communauté",
+      videosTitle: "🎬 Événements en vedette",
+      video1Label: "🎉 Premier Événement",
+      video2Label: "⚡ HARD.EXE",
+      video3Label: "🔥 REVELION",
+      footer: "Eclion · Communauté Rave dans VRChat · Tous droits réservés · 2025",
+      partnersTitle: "🤝 Partenaires",
+      ownersTitle: "👑 Propriétaires"
+    }
+  };
+
+  let currentLang = 'es';
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    const t = translations[lang];
+    if (!t) return;
+
+    document.getElementById('descText').innerText = t.descText;
+    const btnSpan = document.querySelector('#btnVRChat span');
+    if (btnSpan) btnSpan.innerText = t.btnVRChat;
+    
+    document.querySelector('[data-i18n="socialTitle"]').innerText = t.socialTitle;
+    document.querySelector('[data-i18n="ytTitle"]').innerText = t.ytTitle;
+    document.querySelector('[data-i18n="ytDesc"]').innerText = t.ytDesc;
+    document.querySelector('[data-i18n="ytBtn"]').innerText = t.ytBtn;
+    document.querySelector('[data-i18n="ytInfo"]').innerText = t.ytInfo;
+    document.querySelector('[data-i18n="videosTitle"]').innerText = t.videosTitle;
+    document.querySelector('[data-i18n="video1Label"]').innerText = t.video1Label;
+    document.querySelector('[data-i18n="video2Label"]').innerText = t.video2Label;
+    document.querySelector('[data-i18n="video3Label"]').innerText = t.video3Label;
+    document.querySelector('[data-i18n="footer"]').innerText = t.footer;
+    document.querySelector('[data-i18n="partnersTitle"]').innerText = t.partnersTitle;
+    document.querySelector('[data-i18n="ownersTitle"]').innerText = t.ownersTitle;
+
+    document.getElementById('btn-es').classList.remove('active');
+    document.getElementById('btn-en').classList.remove('active');
+    document.getElementById('btn-fr').classList.remove('active');
+    if (lang === 'es') document.getElementById('btn-es').classList.add('active');
+    if (lang === 'en') document.getElementById('btn-en').classList.add('active');
+    if (lang === 'fr') document.getElementById('btn-fr').classList.add('active');
+  }
+
+  document.getElementById('btn-es').addEventListener('click', () => setLanguage('es'));
+  document.getElementById('btn-en').addEventListener('click', () => setLanguage('en'));
+  document.getElementById('btn-fr').addEventListener('click', () => setLanguage('fr'));
+
+  setLanguage('es');
+</script>
+
+</body>
+</html>
