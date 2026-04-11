@@ -209,26 +209,28 @@
       color: #040000;
     }
 
-    /* Estilos para owners y DJs con imágenes */
-    .owners-grid, .djs-grid, .partners-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 30px;
+    /* Owners grid centrado */
+    .owners-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
       margin-top: 20px;
     }
-    .owner-card, .dj-card, .partner-card {
+    .owner-card {
       background: #0a0a0a;
       border-radius: 28px;
       padding: 24px 20px;
       text-align: center;
       transition: transform 0.2s, border 0.2s;
       border: 1px solid #2c2c2c;
+      width: 280px;
     }
-    .owner-card:hover, .dj-card:hover, .partner-card:hover {
+    .owner-card:hover {
       transform: translateY(-6px);
       border-color: #ed2221;
     }
-    .owner-img, .dj-img {
+    .owner-img {
       width: 120px;
       height: 120px;
       object-fit: cover;
@@ -237,7 +239,7 @@
       margin-bottom: 16px;
       background: #1a1a1a;
     }
-    .owner-card h3, .dj-card h3, .partner-card h3 {
+    .owner-card h3 {
       font-size: 1.5rem;
       margin: 12px 0 8px;
     }
@@ -254,6 +256,39 @@
     }
     .social-icons a:hover {
       color: #ed2221;
+    }
+
+    /* DJs y partners grid */
+    .djs-grid, .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .dj-card, .partner-card {
+      background: #0a0a0a;
+      border-radius: 28px;
+      padding: 24px 20px;
+      text-align: center;
+      transition: transform 0.2s, border 0.2s;
+      border: 1px solid #2c2c2c;
+    }
+    .dj-card:hover, .partner-card:hover {
+      transform: translateY(-6px);
+      border-color: #ed2221;
+    }
+    .dj-img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #ed2221;
+      margin-bottom: 16px;
+      background: #1a1a1a;
+    }
+    .dj-card h3, .partner-card h3 {
+      font-size: 1.5rem;
+      margin: 12px 0 8px;
     }
     .dj-card a, .partner-card a {
       display: inline-flex;
@@ -305,6 +340,58 @@
       background: #020202;
     }
 
+    /* Control de audio personalizado */
+    .audio-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #111111cc;
+      backdrop-filter: blur(8px);
+      border-radius: 60px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 1000;
+      border: 1px solid #ed2221;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    .audio-widget button {
+      background: #ed2221;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s;
+    }
+    .audio-widget button:hover {
+      background: #b91c1b;
+      transform: scale(1.05);
+    }
+    .audio-widget input {
+      width: 100px;
+      cursor: pointer;
+      background: #ed2221;
+      height: 4px;
+      border-radius: 5px;
+      accent-color: #ed2221;
+    }
+    @media (max-width: 600px) {
+      .audio-widget {
+        padding: 6px 12px;
+        gap: 8px;
+      }
+      .audio-widget input {
+        width: 70px;
+      }
+    }
+
     @media (max-width: 760px) {
       .section-title {
         font-size: 1.8rem;
@@ -319,8 +406,9 @@
         width: 100%;
         max-width: 280px;
       }
-      .owners-grid, .djs-grid {
-        grid-template-columns: 1fr;
+      .owners-grid {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
@@ -339,11 +427,10 @@
 
 <main class="container">
 
-  <!-- SECCIÓN OWNERS (nueva) -->
+  <!-- SECCIÓN OWNERS (centrada) -->
   <section id="owners">
     <h2 class="section-title title-center" data-i18n="ownersTitle">👑 Owners</h2>
     <div class="owners-grid">
-      <!-- Owner: AzazelKen -->
       <div class="owner-card">
         <img class="owner-img" src="https://api.vrchat.cloud/api/1/file/file_98da1e47-010c-47ce-82ff-4ed7fb65af15/1/" alt="AzazelKen">
         <h3>AzazelKen</h3>
@@ -353,7 +440,6 @@
           <a href="https://www.instagram.com/azazelkenecl/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
-      <!-- Owner: ChiquiBoo -->
       <div class="owner-card">
         <img class="owner-img" src="https://api.vrchat.cloud/api/1/image/file_88983ad4-8806-418b-8200-0d6cf0ec85e4/1/1024" alt="ChiquiBoo">
         <h3>ChiquiBoo</h3>
@@ -383,7 +469,7 @@
     </div>
   </section>
 
-  <!-- SECCIÓN REDES SOCIALES (Discord + Instagram) -->
+  <!-- SECCIÓN REDES SOCIALES -->
   <section id="sociales">
     <h2 class="section-title title-center" data-i18n="socialTitle">🌐 Nuestras Redes</h2>
     <div class="social-links">
@@ -400,7 +486,7 @@
     </div>
   </section>
 
-  <!-- SECCIÓN CANAL OFICIAL con video en vivo -->
+  <!-- SECCIÓN CANAL OFICIAL -->
   <section id="youtubeOfficial">
     <h2 class="section-title" data-i18n="ytTitle">📺 Canal Oficial Eclion</h2>
     <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center; background: #0c0c0c; border-radius: 32px; padding: 24px;">
@@ -413,48 +499,41 @@
         </a>
       </div>
       <div style="flex:2; min-width: 280px;">
-        <!-- Video en vivo específico: https://youtube.com/live/zDaBzEpZ6xo -->
         <iframe width="100%" height="240" src="https://www.youtube.com/embed/zDaBzEpZ6xo" style="border-radius: 20px;" title="Eclion Live Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <p style="font-size: 0.8rem; margin-top: 6px;" data-i18n="ytInfo">🔴 Transmisión en vivo: música y comunidad</p>
       </div>
     </div>
   </section>
 
-  <!-- SECCIÓN ECLION DJs con imágenes -->
+  <!-- SECCIÓN ECLION DJs -->
   <section id="djs">
     <h2 class="section-title title-center">🎧 ECLION DJs 🎧</h2>
     <div class="djs-grid">
-      <!-- AzazelKen -->
       <div class="dj-card">
         <img class="dj-img" src="https://api.vrchat.cloud/api/1/file/file_98da1e47-010c-47ce-82ff-4ed7fb65af15/1/" alt="AzazelKen">
         <h3>AzazelKen</h3>
         <a href="https://www.youtube.com/@AzazelKenDJ" target="_blank">YouTube <i class="fab fa-youtube"></i></a>
       </div>
-      <!-- Anal_Rampage -->
       <div class="dj-card">
         <img class="dj-img" src="https://api.vrchat.cloud/api/1/image/file_963999e1-abe3-4a68-a1b5-1e68ec11be62/2/1024" alt="Anal_Rampage">
         <h3>Anal_Rampage</h3>
         <a href="https://www.youtube.com/@Anal_Rampage696" target="_blank">YouTube <i class="fab fa-youtube"></i></a>
       </div>
-      <!-- Mellana -->
       <div class="dj-card">
         <img class="dj-img" src="https://api.vrchat.cloud/api/1/image/file_43052fbc-12df-4c54-85fa-e1370ca5ebbb/1/1024" alt="Mellana">
         <h3>Mellana</h3>
         <a href="https://www.youtube.com/@oracion621" target="_blank">YouTube <i class="fab fa-youtube"></i></a>
       </div>
-      <!-- ElPutoPuto -->
       <div class="dj-card">
         <img class="dj-img" src="https://api.vrchat.cloud/api/1/image/file_bfd42eab-4ce7-4c45-a144-a87b35f7058a/2/1024" alt="ElPutoPuto">
         <h3>ElPutoPuto</h3>
         <a href="https://www.youtube.com/@si5157" target="_blank">YouTube <i class="fab fa-youtube"></i></a>
       </div>
-      <!-- SynHaptX Fire -->
       <div class="dj-card">
         <img class="dj-img" src="https://api.vrchat.cloud/api/1/image/file_49e37070-b4ef-4749-ac48-0707db2982e2/1/1024" alt="SynHaptX Fire">
         <h3>SynHaptX Fire</h3>
         <a href="https://www.youtube.com/@synhaptxfire" target="_blank">YouTube <i class="fab fa-youtube"></i></a>
       </div>
-      <!-- Chonchito -->
       <div class="dj-card">
         <img class="dj-img" src="https://api.vrchat.cloud/api/1/image/file_f608fff7-b009-4918-811e-b3b685018610/1/1024" alt="Chonchito">
         <h3>Chonchito</h3>
@@ -463,29 +542,26 @@
     </div>
   </section>
 
-  <!-- SECCIÓN VIDEOS DESTACADOS (actualizados con nuevos títulos y videos) -->
+  <!-- SECCIÓN VIDEOS DESTACADOS -->
   <section id="videosEclion">
     <h2 class="section-title title-center" data-i18n="videosTitle">🎬 Eventos destacados</h2>
     <div class="videos-grid">
-      <!-- Primer Evento -->
       <div class="video-item">
-        <iframe src="https://www.youtube.com/embed/k7mtdZoONbs" title="Primer Evento Eclion" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/k7mtdZoONbs" title="Primer Evento Eclion" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         <p data-i18n="video1Label">🎉 Primer Evento</p>
       </div>
-      <!-- HARD.EXE -->
       <div class="video-item">
-        <iframe src="https://www.youtube.com/embed/vLCWa-oKrQU" title="HARD.EXE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/vLCWa-oKrQU" title="HARD.EXE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         <p data-i18n="video2Label">⚡ HARD.EXE</p>
       </div>
-      <!-- REVELION -->
       <div class="video-item">
-        <iframe src="https://www.youtube.com/embed/W0JdMFh-K34" title="REVELION" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/W0JdMFh-K34" title="REVELION" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         <p data-i18n="video3Label">🔥 REVELION</p>
       </div>
     </div>
   </section>
 
-  <!-- SECCIÓN PARTNERS (Raver!e) -->
+  <!-- SECCIÓN PARTNERS -->
   <section id="partners">
     <h2 class="section-title title-center" data-i18n="partnersTitle">🤝 Partners</h2>
     <div class="partners-grid">
@@ -506,8 +582,20 @@
   <p style="margin-top: 8px;">🎵 #EclionFamily 🎵</p>
 </footer>
 
+<!-- Widget de audio personalizado -->
+<div class="audio-widget" id="audioWidget">
+  <button id="playPauseBtn" aria-label="Reproducir/Pausar"><i class="fas fa-play"></i></button>
+  <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5" aria-label="Volumen">
+</div>
+
+<!-- Elemento de audio oculto -->
+<audio id="bgAudio" loop preload="auto">
+  <source src="fondo.mp3" type="audio/mpeg">
+  Tu navegador no soporta audio HTML5.
+</audio>
+
 <script>
-  // Traducciones completas incluyendo nuevos textos
+  // ====================== TRADUCCIONES ======================
   const translations = {
     es: {
       descText: "Somos una comunidad hispana en VRChat donde nos encanta socializar y crear experiencias únicas. Organizamos eventos como raves, noches de películas, juegos y mucho más, siempre en un ambiente amigable, divertido y respetuoso para todos.",
@@ -596,6 +684,75 @@
   document.getElementById('btn-fr').addEventListener('click', () => setLanguage('fr'));
 
   setLanguage('es');
+
+  // ====================== AUDIO DE FONDO PERSONALIZADO ======================
+  const audio = document.getElementById('bgAudio');
+  const playPauseBtn = document.getElementById('playPauseBtn');
+  const volumeSlider = document.getElementById('volumeSlider');
+  let playIcon = playPauseBtn.querySelector('i');
+
+  // Configurar volumen inicial
+  audio.volume = volumeSlider.value;
+  
+  // Función para actualizar icono
+  function updatePlayIcon() {
+    if (audio.paused) {
+      playIcon.className = 'fas fa-play';
+    } else {
+      playIcon.className = 'fas fa-pause';
+    }
+  }
+
+  // Play/Pause
+  playPauseBtn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play().catch(e => console.log("Error al reproducir:", e));
+    } else {
+      audio.pause();
+    }
+    updatePlayIcon();
+  });
+
+  // Control de volumen
+  volumeSlider.addEventListener('input', (e) => {
+    audio.volume = parseFloat(e.target.value);
+  });
+
+  // Cuando el audio termina (por si acaso el loop falla) - aseguramos loop
+  audio.addEventListener('ended', () => {
+    audio.currentTime = 0;
+    audio.play().catch(e => console.log("Loop error", e));
+  });
+  
+  // Intentar autoplay al cargar la página
+  const attemptAutoPlay = () => {
+    audio.play().then(() => {
+      console.log("Autoplay exitoso");
+      updatePlayIcon();
+      // Eliminamos listeners una vez que se reproduce con éxito
+      document.removeEventListener('click', attemptAutoPlay);
+      document.removeEventListener('touchstart', attemptAutoPlay);
+    }).catch(error => {
+      console.log("Autoplay bloqueado, esperando interacción del usuario");
+      // Mostrar un mensaje opcional o simplemente esperar
+      // Cambiamos icono a play (por defecto está pausado)
+      updatePlayIcon();
+      // Al hacer clic en cualquier parte se intentará de nuevo, pero mejor solo en el botón?
+      // También se puede intentar con el botón de play directamente.
+    });
+  };
+  
+  // Esperar a que el DOM esté listo y el audio cargado
+  window.addEventListener('load', () => {
+    // Pequeño retardo para asegurar que el audio está listo
+    setTimeout(attemptAutoPlay, 100);
+  });
+  
+  // Si el autoplay falla, el usuario puede hacer clic en el botón de play para iniciar.
+  // También se puede agregar un listener global único, pero el botón ya lo permite.
+  // Aseguramos que si el audio se pausa externamente, el icono se actualice
+  audio.addEventListener('play', updatePlayIcon);
+  audio.addEventListener('pause', updatePlayIcon);
 </script>
 
 </body>
