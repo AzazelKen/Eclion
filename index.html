@@ -411,6 +411,95 @@
         align-items: center;
       }
     }
+
+    /* ----- ESTILOS DEL FORMULARIO DE CONTACTO ----- */
+    .contact-form-wrapper {
+      margin-top: 40px;
+      background: #0c0c0c;
+      border-radius: 36px;
+      padding: 32px 28px;
+      border: 1px solid #2c2c2c;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+    .contact-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #ed2221;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .contact-form .form-group {
+      margin-bottom: 20px;
+    }
+    .contact-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #ddd;
+    }
+    .contact-form label i {
+      margin-right: 8px;
+      color: #ed2221;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px 18px;
+      background: #1a1a1a;
+      border: 1px solid #3a3a3a;
+      border-radius: 30px;
+      font-family: inherit;
+      font-size: 1rem;
+      color: white;
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #ed2221;
+      box-shadow: 0 0 0 3px rgba(237,34,33,0.3);
+    }
+    .contact-form textarea {
+      min-height: 120px;
+      resize: vertical;
+      border-radius: 24px;
+    }
+    .contact-form .required-star {
+      color: #ed2221;
+      margin-left: 4px;
+    }
+    .contact-form .form-hint {
+      font-size: 0.85rem;
+      color: #aaa;
+      margin-top: 6px;
+      margin-left: 8px;
+    }
+    .contact-form button[type="submit"] {
+      background: #ed2221;
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 6px 14px rgba(237,34,33,0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: auto;
+    }
+    .contact-form button[type="submit"]:hover {
+      background: #b91c1b;
+      transform: scale(1.02);
+    }
+    .form-status {
+      margin-top: 15px;
+      font-weight: 500;
+    }
   </style>
 </head>
 <body>
@@ -427,7 +516,7 @@
 
 <main class="container">
 
-  <!-- SECCIÓN OWNERS (centrada) -->
+  <!-- SECCIÓN OWNERS -->
   <section id="owners">
     <h2 class="section-title title-center" data-i18n="ownersTitle">👑 Owners</h2>
     <div class="owners-grid">
@@ -469,7 +558,7 @@
     </div>
   </section>
 
-  <!-- SECCIÓN REDES SOCIALES -->
+  <!-- SECCIÓN REDES SOCIALES + FORMULARIO DE CONTACTO -->
   <section id="sociales">
     <h2 class="section-title title-center" data-i18n="socialTitle">🌐 Nuestras Redes</h2>
     <div class="social-links">
@@ -484,9 +573,49 @@
         <a href="https://www.instagram.com/ecli.on.ofcl/" target="_blank">@ecli.on.ofcl</a>
       </div>
     </div>
+
+    <!-- FORMULARIO DE CONTACTO (debajo de las tarjetas sociales) -->
+    <div class="contact-form-wrapper">
+      <div class="contact-title">
+        <i class="fas fa-envelope"></i> 
+        <span data-i18n="contactTitle">También puedes contactarnos directamente por aquí</span>
+      </div>
+      <form class="contact-form" id="contactForm" action="https://formsubmit.co/hispaeclion@gmail.com" method="POST">
+        <!-- Configuración de FormSubmit -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="box">
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde Eclion Web">
+
+        <div class="form-group">
+          <label for="nombre"><i class="fas fa-user"></i> Nombre de usuario <span style="font-weight: normal; color: #aaa;">(opcional)</span></label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej: RaveMaster22">
+        </div>
+
+        <div class="form-group">
+          <label for="email"><i class="fas fa-envelope"></i> Correo electrónico <span class="required-star">*</span></label>
+          <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="discord"><i class="fab fa-discord"></i> Discord <span style="font-weight: normal; color: #aaa;">(opcional)</span></label>
+          <input type="text" id="discord" name="discord" placeholder="1432010052311600230">
+          <div class="form-hint">Ejemplo: 1432010052311600230 (ID de usuario)</div>
+        </div>
+
+        <div class="form-group">
+          <label for="mensaje"><i class="fas fa-comment"></i> Mensaje <span class="required-star">*</span></label>
+          <textarea id="mensaje" name="mensaje" placeholder="Escribe tu consulta, sugerencia o lo que quieras contarnos..." required></textarea>
+        </div>
+
+        <button type="submit" id="submitContactBtn">
+          <i class="fas fa-paper-plane"></i> Enviar mensaje
+        </button>
+        <div id="formStatus" class="form-status"></div>
+      </form>
+    </div>
   </section>
 
-  <!-- SECCIÓN CANAL OFICIAL -->
+  <!-- SECCIÓN CANAL OFICIAL (con video actualizado) -->
   <section id="youtubeOfficial">
     <h2 class="section-title" data-i18n="ytTitle">📺 Canal Oficial Eclion</h2>
     <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center; background: #0c0c0c; border-radius: 32px; padding: 24px;">
@@ -562,7 +691,7 @@
     </div>
   </section>
 
-  <!-- SECCIÓN PARTNERS -->
+  <!-- SECCIÓN PARTNERS (con The Garden añadido) -->
   <section id="partners">
     <h2 class="section-title title-center" data-i18n="partnersTitle">🤝 Partners</h2>
     <div class="partners-grid">
@@ -573,7 +702,6 @@
           <i class="fab fa-vr-cardboard"></i> Grupo VRChat
         </a>
       </div>
-      <!-- NUEVO PARTNER: The Garden -->
       <div class="partner-card">
         <img src="https://api.vrchat.cloud/api/1/file/file_f81006db-111e-40ec-9698-13d9bd364502/1/file" alt="The Garden" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 3px solid #ed2221; margin-bottom: 16px;">
         <h3>The Garden</h3>
@@ -620,7 +748,8 @@
       video3Label: "🔥 REVELION",
       footer: "Eclion · Rave Community in VRChat · Todos los derechos reservados · 2025",
       partnersTitle: "🤝 Partners",
-      ownersTitle: "👑 Owners"
+      ownersTitle: "👑 Owners",
+      contactTitle: "También puedes contactarnos directamente por aquí"
     },
     en: {
       descText: "We are a Hispanic community on VRChat where we love to socialize and create unique experiences. We organize events like raves, movie nights, games, and much more, always in a friendly, fun, and respectful environment for everyone.",
@@ -636,7 +765,8 @@
       video3Label: "🔥 REVELION",
       footer: "Eclion · Rave Community in VRChat · All rights reserved · 2025",
       partnersTitle: "🤝 Partners",
-      ownersTitle: "👑 Owners"
+      ownersTitle: "👑 Owners",
+      contactTitle: "You can also contact us directly here"
     },
     fr: {
       descText: "Nous sommes une communauté hispanique sur VRChat où nous adorons socialiser et créer des expériences uniques. Nous organisons des événements comme des raves, des soirées cinéma, des jeux et bien plus encore, toujours dans une ambiance amicale, amusante et respectueuse pour tous.",
@@ -652,7 +782,8 @@
       video3Label: "🔥 REVELION",
       footer: "Eclion · Communauté Rave dans VRChat · Tous droits réservés · 2025",
       partnersTitle: "🤝 Partenaires",
-      ownersTitle: "👑 Propriétaires"
+      ownersTitle: "👑 Propriétaires",
+      contactTitle: "Vous pouvez aussi nous contacter directement ici"
     }
   };
 
@@ -679,6 +810,8 @@
     document.querySelector('[data-i18n="footer"]').innerText = t.footer;
     document.querySelector('[data-i18n="partnersTitle"]').innerText = t.partnersTitle;
     document.querySelector('[data-i18n="ownersTitle"]').innerText = t.ownersTitle;
+    const contactTitleEl = document.querySelector('[data-i18n="contactTitle"]');
+    if (contactTitleEl) contactTitleEl.innerText = t.contactTitle;
 
     document.getElementById('btn-es').classList.remove('active');
     document.getElementById('btn-en').classList.remove('active');
@@ -700,10 +833,8 @@
   const volumeSlider = document.getElementById('volumeSlider');
   let playIcon = playPauseBtn.querySelector('i');
 
-  // Configurar volumen inicial
   audio.volume = volumeSlider.value;
   
-  // Función para actualizar icono
   function updatePlayIcon() {
     if (audio.paused) {
       playIcon.className = 'fas fa-play';
@@ -712,7 +843,6 @@
     }
   }
 
-  // Play/Pause
   playPauseBtn.addEventListener('click', () => {
     if (audio.paused) {
       audio.play().catch(e => console.log("Error al reproducir:", e));
@@ -722,46 +852,68 @@
     updatePlayIcon();
   });
 
-  // Control de volumen
   volumeSlider.addEventListener('input', (e) => {
     audio.volume = parseFloat(e.target.value);
   });
 
-  // Cuando el audio termina (por si acaso el loop falla) - aseguramos loop
   audio.addEventListener('ended', () => {
     audio.currentTime = 0;
     audio.play().catch(e => console.log("Loop error", e));
   });
   
-  // Intentar autoplay al cargar la página
   const attemptAutoPlay = () => {
     audio.play().then(() => {
       console.log("Autoplay exitoso");
       updatePlayIcon();
-      // Eliminamos listeners una vez que se reproduce con éxito
       document.removeEventListener('click', attemptAutoPlay);
       document.removeEventListener('touchstart', attemptAutoPlay);
     }).catch(error => {
       console.log("Autoplay bloqueado, esperando interacción del usuario");
-      // Mostrar un mensaje opcional o simplemente esperar
-      // Cambiamos icono a play (por defecto está pausado)
       updatePlayIcon();
-      // Al hacer clic en cualquier parte se intentará de nuevo, pero mejor solo en el botón?
-      // También se puede intentar con el botón de play directamente.
     });
   };
   
-  // Esperar a que el DOM esté listo y el audio cargado
   window.addEventListener('load', () => {
-    // Pequeño retardo para asegurar que el audio está listo
     setTimeout(attemptAutoPlay, 100);
   });
   
-  // Si el autoplay falla, el usuario puede hacer clic en el botón de play para iniciar.
-  // También se puede agregar un listener global único, pero el botón ya lo permite.
-  // Aseguramos que si el audio se pausa externamente, el icono se actualice
   audio.addEventListener('play', updatePlayIcon);
   audio.addEventListener('pause', updatePlayIcon);
+
+  // ====================== VALIDACIÓN DEL FORMULARIO DE CONTACTO ======================
+  const contactForm = document.getElementById('contactForm');
+  const formStatus = document.getElementById('formStatus');
+  
+  contactForm.addEventListener('submit', function(e) {
+    const emailInput = document.getElementById('email');
+    const mensajeInput = document.getElementById('mensaje');
+    let isValid = true;
+    let errorMsg = '';
+
+    if (!emailInput.value.trim()) {
+      isValid = false;
+      errorMsg = 'El correo electrónico es obligatorio.';
+      emailInput.focus();
+    } else if (!/^\S+@\S+\.\S+$/.test(emailInput.value)) {
+      isValid = false;
+      errorMsg = 'Ingresa un correo electrónico válido.';
+      emailInput.focus();
+    } else if (!mensajeInput.value.trim()) {
+      isValid = false;
+      errorMsg = 'El mensaje no puede estar vacío.';
+      mensajeInput.focus();
+    }
+
+    if (!isValid) {
+      e.preventDefault();
+      formStatus.textContent = errorMsg;
+      formStatus.style.color = '#ed2221';
+    } else {
+      formStatus.textContent = 'Enviando mensaje...';
+      formStatus.style.color = '#ccc';
+      // El envío continúa a FormSubmit
+    }
+  });
 </script>
 
 </body>
