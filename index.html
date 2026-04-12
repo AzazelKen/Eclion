@@ -246,6 +246,7 @@
     .social-icons {
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 18px;
       margin: 16px 0 8px;
     }
@@ -253,9 +254,24 @@
       color: #ccc;
       font-size: 1.6rem;
       transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
     .social-icons a:hover {
       color: #ed2221;
+    }
+    /* Estilo para el ícono de VRChat personalizado */
+    .vr-icon {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+      filter: brightness(0) saturate(100%) invert(85%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1) contrast(1);
+      transition: filter 0.2s;
+    }
+    .social-icons a:hover .vr-icon,
+    .partner-card a:hover .vr-icon {
+      filter: brightness(0) saturate(100%) invert(17%) sepia(98%) saturate(7488%) hue-rotate(359deg) brightness(94%) contrast(95%);
     }
 
     /* DJs y partners grid */
@@ -524,7 +540,9 @@
         <img class="owner-img" src="https://api.vrchat.cloud/api/1/file/file_98da1e47-010c-47ce-82ff-4ed7fb65af15/1/" alt="AzazelKen">
         <h3>AzazelKen</h3>
         <div class="social-icons">
-          <a href="https://vrchat.com/home/user/usr_d22c21a8-6bb1-4f24-921c-bb3feedff517" target="_blank" title="VRChat"><i class="fab fa-vr-cardboard"></i></a>
+          <a href="https://vrchat.com/home/user/usr_d22c21a8-6bb1-4f24-921c-bb3feedff517" target="_blank" title="VRChat">
+            <img src="https://i.imgur.com/S7I1t44.png" alt="VRChat" class="vr-icon">
+          </a>
           <a href="https://discord.com/users/178567424738590720" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
           <a href="https://www.instagram.com/azazelkenecl/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
@@ -533,7 +551,9 @@
         <img class="owner-img" src="https://api.vrchat.cloud/api/1/image/file_88983ad4-8806-418b-8200-0d6cf0ec85e4/1/1024" alt="ChiquiBoo">
         <h3>ChiquiBoo</h3>
         <div class="social-icons">
-          <a href="https://vrchat.com/home/user/usr_f56d3f49-0866-4e08-b710-968cfa8c4e4e" target="_blank" title="VRChat"><i class="fab fa-vr-cardboard"></i></a>
+          <a href="https://vrchat.com/home/user/usr_f56d3f49-0866-4e08-b710-968cfa8c4e4e" target="_blank" title="VRChat">
+            <img src="https://i.imgur.com/S7I1t44.png" alt="VRChat" class="vr-icon">
+          </a>
           <a href="https://discord.com/users/694308630773628960" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
           <a href="https://www.instagram.com/chiquibooecl/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
@@ -558,7 +578,7 @@
     </div>
   </section>
 
-  <!-- REDES SOCIALES + FORMULARIO DE CONTACTO -->
+  <!-- REDES SOCIALES + FORMULARIO -->
   <section id="sociales">
     <h2 class="section-title title-center" data-i18n="socialTitle">🌐 Nuestras Redes</h2>
     <div class="social-links">
@@ -574,7 +594,6 @@
       </div>
     </div>
 
-    <!-- FORMULARIO DE CONTACTO -->
     <div class="contact-form-wrapper">
       <div class="contact-title">
         <i class="fas fa-envelope"></i> 
@@ -614,7 +633,7 @@
     </div>
   </section>
 
-  <!-- CANAL OFICIAL (video actualizado) -->
+  <!-- CANAL OFICIAL -->
   <section id="youtubeOfficial">
     <h2 class="section-title" data-i18n="ytTitle">📺 Canal Oficial Eclion</h2>
     <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center; background: #0c0c0c; border-radius: 32px; padding: 24px;">
@@ -689,7 +708,7 @@
     </div>
   </section>
 
-  <!-- PARTNERS -->
+  <!-- PARTNERS (con nuevo ícono VRChat) -->
   <section id="partners">
     <h2 class="section-title title-center" data-i18n="partnersTitle">🤝 Partners</h2>
     <div class="partners-grid">
@@ -697,14 +716,16 @@
         <img src="https://i.imgur.com/2vRFIzz.png" alt="Raver!e" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 3px solid #ed2221; margin-bottom: 16px;">
         <h3>Raver!e</h3>
         <a href="https://vrc.group/RAVERI.8139" target="_blank">
-          <i class="fab fa-vr-cardboard"></i> Grupo VRChat
+          <img src="https://i.imgur.com/S7I1t44.png" alt="VRChat" class="vr-icon" style="margin-right: 6px;">
+          Grupo VRChat
         </a>
       </div>
       <div class="partner-card">
         <img src="https://api.vrchat.cloud/api/1/file/file_f81006db-111e-40ec-9698-13d9bd364502/1/file" alt="The Garden" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 3px solid #ed2221; margin-bottom: 16px;">
         <h3>The Garden</h3>
         <a href="https://vrchat.com/home/group/grp_936f956d-40c1-48ba-9c83-cb045765eac4" target="_blank">
-          <i class="fab fa-vr-cardboard"></i> Grupo VRChat
+          <img src="https://i.imgur.com/S7I1t44.png" alt="VRChat" class="vr-icon" style="margin-right: 6px;">
+          Grupo VRChat
         </a>
       </div>
     </div>
@@ -824,24 +845,20 @@
     const t = translations[lang];
     if (!t) return;
 
-    // Textos generales con data-i18n
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (t[key]) el.textContent = t[key];
     });
 
-    // Placeholders con data-i18n-placeholder
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
       const key = el.getAttribute('data-i18n-placeholder');
       if (t[key]) el.placeholder = t[key];
     });
 
-    // Elementos específicos sin atributo
     document.getElementById('descText').innerText = t.descText;
     const btnSpan = document.querySelector('#btnVRChat span');
     if (btnSpan) btnSpan.innerText = t.btnVRChat;
 
-    // Botones de idioma activos
     document.getElementById('btn-es').classList.remove('active');
     document.getElementById('btn-en').classList.remove('active');
     document.getElementById('btn-fr').classList.remove('active');
@@ -903,7 +920,7 @@
   audio.addEventListener('play', updatePlayIcon);
   audio.addEventListener('pause', updatePlayIcon);
 
-  // ====================== VALIDACIÓN DEL FORMULARIO ======================
+  // ====================== VALIDACIÓN FORMULARIO ======================
   const contactForm = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
   
