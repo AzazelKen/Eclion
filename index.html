@@ -69,7 +69,6 @@
       object-fit: contain;
     }
 
-    /* Efecto glitch (distorsión de canales y clip) */
     @keyframes glitchAnim {
       0% { clip-path: inset(0 0 0 0); transform: translate(0, 0); filter: hue-rotate(0deg); }
       10% { clip-path: inset(10% 0 80% 0); transform: translate(-5px, -3px); filter: hue-rotate(90deg); }
@@ -84,7 +83,6 @@
       100% { clip-path: inset(0 0 0 0); transform: translate(0, 0); filter: hue-rotate(360deg); }
     }
 
-    /* Vibración / shake */
     @keyframes shake {
       0% { transform: translate(1px, 1px) rotate(0deg); }
       10% { transform: translate(-1px, -2px) rotate(-1deg); }
@@ -99,7 +97,6 @@
       100% { transform: translate(1px, -2px) rotate(-1deg); }
     }
 
-    /* Contenedor principal */
     .main-content {
       transition: filter 0.3s;
     }
@@ -190,6 +187,188 @@
       filter: brightness(0) saturate(100%) invert(17%) sepia(98%) saturate(7488%) hue-rotate(359deg) brightness(94%) contrast(95%);
     }
 
+    /* ---------- CARRUSEL DJs ---------- */
+    .djs-carousel-section {
+      background: transparent;
+    }
+    .carousel-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0 20px;
+    }
+    .carousel-btn {
+      background: #ed2221;
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px rgba(237,34,33,0.5);
+    }
+    .carousel-btn:hover {
+      background: #b91c1b;
+      transform: scale(1.05);
+    }
+    .carousel-track-wrapper {
+      flex: 1;
+      overflow: hidden;
+      border-radius: 60px;
+      background: rgba(0,0,0,0.3);
+      padding: 8px 0;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s ease;
+      gap: 20px;
+      justify-content: flex-start;
+    }
+    .dj-thumb {
+      flex: 0 0 calc(33.333% - 14px); /* 3 items, gap 20px => (100% - 40px)/3 */
+      min-width: 120px;
+      background: #0a0a0a;
+      border-radius: 48px;
+      padding: 12px 8px;
+      text-align: center;
+      cursor: pointer;
+      border: 2px solid #2c2c2c;
+      transition: all 0.2s;
+    }
+    .dj-thumb.active {
+      border-color: #ed2221;
+      background: #1c0a0a;
+      box-shadow: 0 0 12px rgba(237,34,33,0.4);
+    }
+    .dj-thumb img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ed2221;
+      margin-bottom: 8px;
+    }
+    .dj-thumb span {
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: block;
+    }
+    @media (max-width: 700px) {
+      .dj-thumb { flex: 0 0 calc(50% - 10px); }
+      .carousel-track { gap: 10px; }
+      .carousel-btn { width: 40px; height: 40px; font-size: 1.4rem; }
+    }
+    @media (max-width: 480px) {
+      .dj-thumb { flex: 0 0 100%; }
+    }
+
+    /* Panel detalle DJ */
+    .dj-detail-panel {
+      margin-top: 40px;
+      background: #0c0c0c;
+      border-radius: 40px;
+      padding: 28px;
+      border: 1px solid #ed2221;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .dj-detail-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: flex-start;
+    }
+    .dj-detail-left {
+      flex: 1;
+      min-width: 200px;
+      text-align: center;
+    }
+    .dj-detail-left img {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 30px;
+      border: 4px solid #ed2221;
+      box-shadow: 0 0 20px rgba(237,34,33,0.4);
+    }
+    .dj-detail-left h2 {
+      margin-top: 20px;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    .dj-detail-right {
+      flex: 2;
+    }
+    .dj-genres {
+      background: #1a1a1a;
+      padding: 16px 20px;
+      border-radius: 28px;
+      margin-bottom: 20px;
+    }
+    .dj-genres h3 {
+      color: #ed2221;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .genre-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .genre-tag {
+      background: #2a2a2a;
+      padding: 5px 14px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .dj-sets {
+      margin: 20px 0;
+    }
+    .dj-sets a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ed2221;
+      color: white;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+    .dj-sets a:hover {
+      background: #b91c1b;
+      transform: scale(1.02);
+    }
+    .dj-description {
+      margin-top: 20px;
+      background: #0a0a0a;
+      padding: 16px;
+      border-radius: 24px;
+      border-left: 4px solid #ed2221;
+    }
+    @media (max-width: 768px) {
+      .dj-detail-grid { flex-direction: column; }
+      .dj-detail-left img { max-width: 200px; }
+    }
+
     .djs-grid, .partners-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; margin-top: 20px; }
     .dj-card, .partner-card {
       background: #0a0a0a; border-radius: 28px; padding: 24px 20px; text-align: center;
@@ -252,15 +431,12 @@
 </head>
 <body>
 
-<!-- OVERLAY GLITCH DE ENTRADA (IMAGEN ACTUALIZADA) -->
 <div id="glitchOverlay">
   <div class="glitch-container" id="glitchContainer">
-    <!-- NUEVA IMAGEN: https://i.imgur.com/FXBHJYh.png -->
     <img src="https://i.imgur.com/FXBHJYh.png" alt="Glitch Intro" class="glitch-img" id="glitchImage">
   </div>
 </div>
 
-<!-- CONTENIDO PRINCIPAL -->
 <div class="main-content">
   <div class="lang-bar">
     <button class="lang-btn active" id="btn-es"><i class="fas fa-language"></i> Español</button>
@@ -273,233 +449,185 @@
   </div>
 
   <main class="container">
-    <!-- OWNERS -->
     <section id="owners">
       <h2 class="section-title title-center" data-i18n="ownersTitle">👑 Owners</h2>
       <div class="owners-grid">
-        <div class="owner-card">
-          <img class="owner-img" src="https://api.vrchat.cloud/api/1/file/file_98da1e47-010c-47ce-82ff-4ed7fb65af15/1/" alt="AzazelKen">
-          <h3>AzazelKen</h3>
-          <div class="social-icons">
-            <a href="https://vrchat.com/home/user/usr_d22c21a8-6bb1-4f24-921c-bb3feedff517" target="_blank" title="VRChat">
-              <img src="https://i.imgur.com/S7I1t44.png" alt="VRChat" class="vr-icon">
-            </a>
-            <a href="https://discord.com/users/178567424738590720" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
-            <a href="https://www.instagram.com/azazelkenecl/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-          </div>
-        </div>
-        <div class="owner-card">
-          <img class="owner-img" src="https://api.vrchat.cloud/api/1/image/file_88983ad4-8806-418b-8200-0d6cf0ec85e4/1/1024" alt="ChiquiBoo">
-          <h3>ChiquiBoo</h3>
-          <div class="social-icons">
-            <a href="https://vrchat.com/home/user/usr_f56d3f49-0866-4e08-b710-968cfa8c4e4e" target="_blank" title="VRChat">
-              <img src="https://i.imgur.com/S7I1t44.png" alt="VRChat" class="vr-icon">
-            </a>
-            <a href="https://discord.com/users/694308630773628960" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
-            <a href="https://www.instagram.com/chiquibooecl/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-          </div>
-        </div>
+        <div class="owner-card"><img class="owner-img" src="https://api.vrchat.cloud/api/1/file/file_98da1e47-010c-47ce-82ff-4ed7fb65af15/1/" alt="AzazelKen"><h3>AzazelKen</h3><div class="social-icons"><a href="https://vrchat.com/home/user/usr_d22c21a8-6bb1-4f24-921c-bb3feedff517" target="_blank"><img src="https://i.imgur.com/S7I1t44.png" class="vr-icon"></a><a href="https://discord.com/users/178567424738590720" target="_blank"><i class="fab fa-discord"></i></a><a href="https://www.instagram.com/azazelkenecl/" target="_blank"><i class="fab fa-instagram"></i></a></div></div>
+        <div class="owner-card"><img class="owner-img" src="https://api.vrchat.cloud/api/1/image/file_88983ad4-8806-418b-8200-0d6cf0ec85e4/1/1024" alt="ChiquiBoo"><h3>ChiquiBoo</h3><div class="social-icons"><a href="https://vrchat.com/home/user/usr_f56d3f49-0866-4e08-b710-968cfa8c4e4e" target="_blank"><img src="https://i.imgur.com/S7I1t44.png" class="vr-icon"></a><a href="https://discord.com/users/694308630773628960" target="_blank"><i class="fab fa-discord"></i></a><a href="https://www.instagram.com/chiquibooecl/" target="_blank"><i class="fab fa-instagram"></i></a></div></div>
       </div>
     </section>
 
-    <!-- PRESENTACIÓN -->
     <section id="presentacion">
       <div class="presentacion-grid">
-        <div class="presentacion-img">
-          <img src="https://i.imgur.com/bCubnQH.png" alt="Eclion comunidad rave">
-        </div>
-        <div class="presentacion-texto">
-          <div class="descripcion" id="descText">
-            Somos una comunidad hispana en VRChat donde nos encanta socializar y crear experiencias únicas. Organizamos eventos como raves, noches de películas, juegos y mucho más, siempre en un ambiente amigable, divertido y respetuoso para todos.
-          </div>
-          <a href="https://vrc.group/ECL.4481" target="_blank" class="btn-grupo" id="btnVRChat">
-            <i class="fab fa-vr-cardboard"></i> <span data-i18n="btnVRChat">Unirse al grupo VRChat</span>
-          </a>
-        </div>
+        <div class="presentacion-img"><img src="https://i.imgur.com/bCubnQH.png" alt="Eclion comunidad rave"></div>
+        <div class="presentacion-texto"><div class="descripcion" id="descText">Somos una comunidad hispana en VRChat donde nos encanta socializar y crear experiencias únicas. Organizamos eventos como raves, noches de películas, juegos y mucho más, siempre en un ambiente amigable, divertido y respetuoso para todos.</div><a href="https://vrc.group/ECL.4481" target="_blank" class="btn-grupo" id="btnVRChat"><i class="fab fa-vr-cardboard"></i> <span data-i18n="btnVRChat">Unirse al grupo VRChat</span></a></div>
       </div>
     </section>
 
-    <!-- REDES SOCIALES + FORMULARIO -->
+    <!-- NUEVA SECCIÓN DJs CON CARRUSEL Y PANEL DINÁMICO -->
+    <section id="djs" class="djs-carousel-section">
+      <h2 class="section-title title-center" data-i18n="djsTitle">🎧 ECLION DJs 🎧</h2>
+      <div class="carousel-container">
+        <button class="carousel-btn" id="carouselPrev"><i class="fas fa-chevron-left"></i></button>
+        <div class="carousel-track-wrapper">
+          <div class="carousel-track" id="carouselTrack"></div>
+        </div>
+        <button class="carousel-btn" id="carouselNext"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div id="djDetailPanel" class="dj-detail-panel" style="display: none;"></div>
+    </section>
+
     <section id="sociales">
       <h2 class="section-title title-center" data-i18n="socialTitle">🌐 Nuestras Redes</h2>
-      <div class="social-links">
-        <div class="social-card">
-          <i class="fab fa-discord"></i>
-          <h3>Discord</h3>
-          <a href="https://discord.gg/yRVNrNbrRQ" target="_blank">discord.gg/yRVNrNbrRQ</a>
-        </div>
-        <div class="social-card">
-          <i class="fab fa-instagram"></i>
-          <h3>Instagram</h3>
-          <a href="https://www.instagram.com/ecli.on.ofcl/" target="_blank">@ecli.on.ofcl</a>
-        </div>
-      </div>
-
-      <div class="contact-form-wrapper">
-        <div class="contact-title"><i class="fas fa-envelope"></i> <span data-i18n="contactTitle">También puedes contactarnos directamente por aquí</span></div>
-        <form class="contact-form" id="contactForm" action="https://formsubmit.co/hispaeclion@gmail.com" method="POST">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="box">
-          <input type="hidden" name="_subject" value="Nuevo mensaje desde Eclion Web">
-          <div class="form-group">
-            <label for="nombre"><i class="fas fa-user"></i> <span data-i18n="formNombreLabel">Nombre de usuario</span> <span style="font-weight: normal; color: #aaa;" data-i18n="formOpcional">(opcional)</span></label>
-            <input type="text" id="nombre" name="nombre" data-i18n-placeholder="formNombrePlaceholder" placeholder="Ej: RaveMaster22">
-          </div>
-          <div class="form-group">
-            <label for="email"><i class="fas fa-envelope"></i> <span data-i18n="formEmailLabel">Correo electrónico</span> <span class="required-star">*</span></label>
-            <input type="email" id="email" name="email" data-i18n-placeholder="formEmailPlaceholder" placeholder="tu@email.com" required>
-          </div>
-          <div class="form-group">
-            <label for="discord"><i class="fab fa-discord"></i> <span data-i18n="formDiscordLabel">Discord</span> <span style="font-weight: normal; color: #aaa;" data-i18n="formOpcional">(opcional)</span></label>
-            <input type="text" id="discord" name="discord" data-i18n-placeholder="formDiscordPlaceholder" placeholder="1432010052311600230">
-            <div class="form-hint" data-i18n="formDiscordHint">Ejemplo: 1432010052311600230 (ID de usuario)</div>
-          </div>
-          <div class="form-group">
-            <label for="mensaje"><i class="fas fa-comment"></i> <span data-i18n="formMensajeLabel">Mensaje</span> <span class="required-star">*</span></label>
-            <textarea id="mensaje" name="mensaje" data-i18n-placeholder="formMensajePlaceholder" placeholder="Escribe tu consulta, sugerencia o lo que quieras contarnos..." required></textarea>
-          </div>
-          <button type="submit"><i class="fas fa-paper-plane"></i> <span data-i18n="formSubmitBtn">Enviar mensaje</span></button>
-          <div id="formStatus" class="form-status"></div>
-        </form>
-      </div>
+      <div class="social-links"><div class="social-card"><i class="fab fa-discord"></i><h3>Discord</h3><a href="https://discord.gg/yRVNrNbrRQ" target="_blank">discord.gg/yRVNrNbrRQ</a></div><div class="social-card"><i class="fab fa-instagram"></i><h3>Instagram</h3><a href="https://www.instagram.com/ecli.on.ofcl/" target="_blank">@ecli.on.ofcl</a></div></div>
+      <div class="contact-form-wrapper"><div class="contact-title"><i class="fas fa-envelope"></i> <span data-i18n="contactTitle">También puedes contactarnos directamente por aquí</span></div>
+      <form class="contact-form" id="contactForm" action="https://formsubmit.co/hispaeclion@gmail.com" method="POST"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="box"><input type="hidden" name="_subject" value="Nuevo mensaje desde Eclion Web"><div class="form-group"><label for="nombre"><i class="fas fa-user"></i> <span data-i18n="formNombreLabel">Nombre de usuario</span> <span style="font-weight: normal; color: #aaa;" data-i18n="formOpcional">(opcional)</span></label><input type="text" id="nombre" name="nombre" data-i18n-placeholder="formNombrePlaceholder" placeholder="Ej: RaveMaster22"></div><div class="form-group"><label for="email"><i class="fas fa-envelope"></i> <span data-i18n="formEmailLabel">Correo electrónico</span> <span class="required-star">*</span></label><input type="email" id="email" name="email" data-i18n-placeholder="formEmailPlaceholder" placeholder="tu@email.com" required></div><div class="form-group"><label for="discord"><i class="fab fa-discord"></i> <span data-i18n="formDiscordLabel">Discord</span> <span style="font-weight: normal; color: #aaa;" data-i18n="formOpcional">(opcional)</span></label><input type="text" id="discord" name="discord" data-i18n-placeholder="formDiscordPlaceholder" placeholder="1432010052311600230"><div class="form-hint" data-i18n="formDiscordHint">Ejemplo: 1432010052311600230 (ID de usuario)</div></div><div class="form-group"><label for="mensaje"><i class="fas fa-comment"></i> <span data-i18n="formMensajeLabel">Mensaje</span> <span class="required-star">*</span></label><textarea id="mensaje" name="mensaje" data-i18n-placeholder="formMensajePlaceholder" placeholder="Escribe tu consulta, sugerencia o lo que quieras contarnos..." required></textarea></div><button type="submit"><i class="fas fa-paper-plane"></i> <span data-i18n="formSubmitBtn">Enviar mensaje</span></button><div id="formStatus" class="form-status"></div></form></div>
     </section>
 
-    <!-- CANAL OFICIAL -->
-    <section id="youtubeOfficial">
-      <h2 class="section-title" data-i18n="ytTitle">📺 Canal Oficial Eclion</h2>
-      <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center; background: #0c0c0c; border-radius: 32px; padding: 24px;">
-        <div style="flex:1; min-width: 180px;">
-          <i class="fab fa-youtube" style="font-size: 4rem; color: #ed2221;"></i>
-          <h3 style="margin: 12px 0;">EclionVR</h3>
-          <p data-i18n="ytDesc">Raves, eventos y experiencias únicas en VRChat. ¡Suscríbete!</p>
-          <a href="https://www.youtube.com/@EclionVR" target="_blank" class="btn-grupo btn-outline" style="margin-top: 16px; display: inline-block;"><i class="fab fa-youtube"></i> <span data-i18n="ytBtn">Visitar canal</span></a>
-        </div>
-        <div style="flex:2; min-width: 280px;">
-          <iframe width="100%" height="240" src="https://www.youtube.com/embed/ZosDjpk-Ekw" style="border-radius: 20px;" title="Eclion Live Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <p style="font-size: 0.8rem; margin-top: 6px;" data-i18n="ytInfo">🔴 Transmisión en vivo: música y comunidad</p>
-        </div>
-      </div>
-    </section>
+    <section id="youtubeOfficial"><h2 class="section-title" data-i18n="ytTitle">📺 Canal Oficial Eclion</h2><div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center; background: #0c0c0c; border-radius: 32px; padding: 24px;"><div style="flex:1; min-width: 180px;"><i class="fab fa-youtube" style="font-size: 4rem; color: #ed2221;"></i><h3 style="margin: 12px 0;">EclionVR</h3><p data-i18n="ytDesc">Raves, eventos y experiencias únicas en VRChat. ¡Suscríbete!</p><a href="https://www.youtube.com/@EclionVR" target="_blank" class="btn-grupo btn-outline" style="margin-top: 16px; display: inline-block;"><i class="fab fa-youtube"></i> <span data-i18n="ytBtn">Visitar canal</span></a></div><div style="flex:2; min-width: 280px;"><iframe width="100%" height="240" src="https://www.youtube.com/embed/ZosDjpk-Ekw" style="border-radius: 20px;" title="Eclion Live Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p style="font-size: 0.8rem; margin-top: 6px;" data-i18n="ytInfo">🔴 Transmisión en vivo: música y comunidad</p></div></div></section>
 
-    <!-- DJs -->
-    <section id="djs">
-      <h2 class="section-title title-center">🎧 ECLION DJs 🎧</h2>
-      <div class="djs-grid">
-        <div class="dj-card"><img class="dj-img" src="https://api.vrchat.cloud/api/1/file/file_98da1e47-010c-47ce-82ff-4ed7fb65af15/1/" alt="AzazelKen"><h3>AzazelKen</h3><a href="https://www.youtube.com/@AzazelKenDJ" target="_blank">YouTube <i class="fab fa-youtube"></i></a></div>
-        <div class="dj-card"><img class="dj-img" src="https://api.vrchat.cloud/api/1/image/file_963999e1-abe3-4a68-a1b5-1e68ec11be62/2/1024" alt="Anal_Rampage"><h3>Anal_Rampage</h3><a href="https://www.youtube.com/@Anal_Rampage696" target="_blank">YouTube <i class="fab fa-youtube"></i></a></div>
-        <div class="dj-card"><img class="dj-img" src="https://api.vrchat.cloud/api/1/image/file_43052fbc-12df-4c54-85fa-e1370ca5ebbb/1/1024" alt="Mellana"><h3>Mellana</h3><a href="https://www.youtube.com/@oracion621" target="_blank">YouTube <i class="fab fa-youtube"></i></a></div>
-        <div class="dj-card"><img class="dj-img" src="https://api.vrchat.cloud/api/1/image/file_bfd42eab-4ce7-4c45-a144-a87b35f7058a/2/1024" alt="ElPutoPuto"><h3>ElPutoPuto</h3><a href="https://www.youtube.com/@si5157" target="_blank">YouTube <i class="fab fa-youtube"></i></a></div>
-        <div class="dj-card"><img class="dj-img" src="https://api.vrchat.cloud/api/1/image/file_49e37070-b4ef-4749-ac48-0707db2982e2/1/1024" alt="SynHaptX Fire"><h3>SynHaptX Fire</h3><a href="https://www.youtube.com/@synhaptxfire" target="_blank">YouTube <i class="fab fa-youtube"></i></a></div>
-        <div class="dj-card"><img class="dj-img" src="https://api.vrchat.cloud/api/1/image/file_f608fff7-b009-4918-811e-b3b685018610/1/1024" alt="Chonchito"><h3>Chonchito</h3><a href="https://www.youtube.com/@chonchito-h6c" target="_blank">YouTube <i class="fab fa-youtube"></i></a></div>
-      </div>
-    </section>
+    <section id="videosEclion"><h2 class="section-title title-center" data-i18n="videosTitle">🎬 Eventos destacados</h2><div class="videos-grid"><div class="video-item"><iframe src="https://www.youtube.com/embed/k7mtdZoONbs" title="Primer Evento Eclion" allowfullscreen loading="lazy"></iframe><p data-i18n="video1Label">🎉 Primer Evento</p></div><div class="video-item"><iframe src="https://www.youtube.com/embed/vLCWa-oKrQU" title="HARD.EXE" allowfullscreen loading="lazy"></iframe><p data-i18n="video2Label">⚡ HARD.EXE</p></div><div class="video-item"><iframe src="https://www.youtube.com/embed/W0JdMFh-K34" title="REVELION" allowfullscreen loading="lazy"></iframe><p data-i18n="video3Label">🔥 REVELION</p></div></div></section>
 
-    <!-- VIDEOS DESTACADOS -->
-    <section id="videosEclion">
-      <h2 class="section-title title-center" data-i18n="videosTitle">🎬 Eventos destacados</h2>
-      <div class="videos-grid">
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/k7mtdZoONbs" title="Primer Evento Eclion" allowfullscreen loading="lazy"></iframe><p data-i18n="video1Label">🎉 Primer Evento</p></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/vLCWa-oKrQU" title="HARD.EXE" allowfullscreen loading="lazy"></iframe><p data-i18n="video2Label">⚡ HARD.EXE</p></div>
-        <div class="video-item"><iframe src="https://www.youtube.com/embed/W0JdMFh-K34" title="REVELION" allowfullscreen loading="lazy"></iframe><p data-i18n="video3Label">🔥 REVELION</p></div>
-      </div>
-    </section>
-
-    <!-- PARTNERS -->
-    <section id="partners">
-      <h2 class="section-title title-center" data-i18n="partnersTitle">🤝 Partners</h2>
-      <div class="partners-grid">
-        <div class="partner-card">
-          <img src="https://i.imgur.com/2vRFIzz.png" alt="Raver!e" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 3px solid #ed2221; margin-bottom: 16px;">
-          <h3>Raver!e</h3>
-          <a href="https://vrc.group/RAVERI.8139" target="_blank"><img src="https://i.imgur.com/S7I1t44.png" alt="VRChat" style="width: 20px; height: 20px; margin-right: 6px; filter: brightness(0) invert(1);"> Grupo VRChat</a>
-        </div>
-        <div class="partner-card">
-          <img src="https://api.vrchat.cloud/api/1/file/file_f81006db-111e-40ec-9698-13d9bd364502/1/file" alt="The Garden" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 3px solid #ed2221; margin-bottom: 16px;">
-          <h3>The Garden</h3>
-          <a href="https://vrchat.com/home/group/grp_936f956d-40c1-48ba-9c83-cb045765eac4" target="_blank"><img src="https://i.imgur.com/S7I1t44.png" alt="VRChat" style="width: 20px; height: 20px; margin-right: 6px; filter: brightness(0) invert(1);"> Grupo VRChat</a>
-        </div>
-      </div>
-    </section>
+    <section id="partners"><h2 class="section-title title-center" data-i18n="partnersTitle">🤝 Partners</h2><div class="partners-grid"><div class="partner-card"><img src="https://i.imgur.com/2vRFIzz.png" alt="Raver!e" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 3px solid #ed2221; margin-bottom: 16px;"><h3>Raver!e</h3><a href="https://vrc.group/RAVERI.8139" target="_blank"><img src="https://i.imgur.com/S7I1t44.png" alt="VRChat" style="width: 20px; margin-right:6px; filter:brightness(0) invert(1);"> Grupo VRChat</a></div><div class="partner-card"><img src="https://api.vrchat.cloud/api/1/file/file_f81006db-111e-40ec-9698-13d9bd364502/1/file" alt="The Garden" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 3px solid #ed2221; margin-bottom: 16px;"><h3>The Garden</h3><a href="https://vrchat.com/home/group/grp_936f956d-40c1-48ba-9c83-cb045765eac4" target="_blank"><img src="https://i.imgur.com/S7I1t44.png" alt="VRChat" style="width: 20px; margin-right:6px; filter:brightness(0) invert(1);"> Grupo VRChat</a></div></div></section>
   </main>
-
-  <footer>
-    <p data-i18n="footer">Eclion · Rave Community in VRChat · Todos los derechos reservados · 2025</p>
-    <p style="margin-top: 8px;">🎵 #EclionFamily 🎵</p>
-  </footer>
+  <footer><p data-i18n="footer">Eclion · Rave Community in VRChat · Todos los derechos reservados · 2025</p><p style="margin-top: 8px;">🎵 #EclionFamily 🎵</p></footer>
 </div>
 
-<!-- Widget de audio -->
-<div class="audio-widget" id="audioWidget">
-  <button id="playPauseBtn" aria-label="Reproducir/Pausar"><i class="fas fa-play"></i></button>
-  <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5" aria-label="Volumen">
-</div>
-
-<audio id="bgAudio" loop preload="auto">
-  <source src="fondo.mp3" type="audio/mpeg">
-  Tu navegador no soporta audio HTML5.
-</audio>
+<div class="audio-widget" id="audioWidget"><button id="playPauseBtn"><i class="fas fa-play"></i></button><input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5"></div>
+<audio id="bgAudio" loop preload="auto"><source src="fondo.mp3" type="audio/mpeg"></audio>
 
 <script>
-  // ====================== TRADUCCIONES ======================
-  const translations = {
-    es: {
-      descText: "Somos una comunidad hispana en VRChat donde nos encanta socializar y crear experiencias únicas. Organizamos eventos como raves, noches de películas, juegos y mucho más, siempre en un ambiente amigable, divertido y respetuoso para todos.",
-      btnVRChat: "Unirse al grupo VRChat", socialTitle: "🌐 Nuestras Redes", ytTitle: "📺 Canal Oficial Eclion",
-      ytDesc: "Raves, eventos y experiencias únicas en VRChat. ¡Suscríbete!", ytBtn: "Visitar canal", ytInfo: "🔴 Transmisión en vivo: música y comunidad",
-      videosTitle: "🎬 Eventos destacados", video1Label: "🎉 Primer Evento", video2Label: "⚡ HARD.EXE", video3Label: "🔥 REVELION",
-      footer: "Eclion · Rave Community in VRChat · Todos los derechos reservados · 2025", partnersTitle: "🤝 Partners", ownersTitle: "👑 Owners",
-      contactTitle: "También puedes contactarnos directamente por aquí", formNombreLabel: "Nombre de usuario", formOpcional: "(opcional)",
-      formNombrePlaceholder: "Ej: RaveMaster22", formEmailLabel: "Correo electrónico", formEmailPlaceholder: "tu@email.com",
-      formDiscordLabel: "Discord", formDiscordPlaceholder: "1432010052311600230", formDiscordHint: "Ejemplo: 1432010052311600230 (ID de usuario)",
-      formMensajeLabel: "Mensaje", formMensajePlaceholder: "Escribe tu consulta, sugerencia o lo que quieras contarnos...", formSubmitBtn: "Enviar mensaje"
-    },
-    en: {
-      descText: "We are a Hispanic community on VRChat where we love to socialize and create unique experiences. We organize events like raves, movie nights, games, and much more, always in a friendly, fun, and respectful environment for everyone.",
-      btnVRChat: "Join VRChat Group", socialTitle: "🌐 Our Social Networks", ytTitle: "📺 Official Eclion Channel",
-      ytDesc: "Raves, events and unique experiences in VRChat. Subscribe!", ytBtn: "Visit channel", ytInfo: "🔴 Live stream: music & community",
-      videosTitle: "🎬 Featured Events", video1Label: "🎉 First Event", video2Label: "⚡ HARD.EXE", video3Label: "🔥 REVELION",
-      footer: "Eclion · Rave Community in VRChat · All rights reserved · 2025", partnersTitle: "🤝 Partners", ownersTitle: "👑 Owners",
-      contactTitle: "You can also contact us directly here", formNombreLabel: "Username", formOpcional: "(optional)",
-      formNombrePlaceholder: "Ex: RaveMaster22", formEmailLabel: "Email", formEmailPlaceholder: "you@email.com",
-      formDiscordLabel: "Discord", formDiscordPlaceholder: "1432010052311600230", formDiscordHint: "Example: 1432010052311600230 (User ID)",
-      formMensajeLabel: "Message", formMensajePlaceholder: "Write your query, suggestion or whatever you want to tell us...", formSubmitBtn: "Send message"
-    },
-    fr: {
-      descText: "Nous sommes une communauté hispanique sur VRChat où nous adorons socialiser et créer des expériences uniques. Nous organisons des événements comme des raves, des soirées cinéma, des jeux et bien plus encore, toujours dans une ambiance amicale, amusante et respectueuse pour tous.",
-      btnVRChat: "Rejoindre le groupe VRChat", socialTitle: "🌐 Nos réseaux sociaux", ytTitle: "📺 Chaîne officielle Eclion",
-      ytDesc: "Raves, événements et expériences uniques dans VRChat. Abonnez-vous !", ytBtn: "Visiter la chaîne", ytInfo: "🔴 En direct : musique et communauté",
-      videosTitle: "🎬 Événements en vedette", video1Label: "🎉 Premier Événement", video2Label: "⚡ HARD.EXE", video3Label: "🔥 REVELION",
-      footer: "Eclion · Communauté Rave dans VRChat · Tous droits réservés · 2025", partnersTitle: "🤝 Partenaires", ownersTitle: "👑 Propriétaires",
-      contactTitle: "Vous pouvez aussi nous contacter directement ici", formNombreLabel: "Nom d'utilisateur", formOpcional: "(optionnel)",
-      formNombrePlaceholder: "Ex: RaveMaster22", formEmailLabel: "E-mail", formEmailPlaceholder: "vous@email.com",
-      formDiscordLabel: "Discord", formDiscordPlaceholder: "1432010052311600230", formDiscordHint: "Exemple : 1432010052311600230 (ID utilisateur)",
-      formMensajeLabel: "Message", formMensajePlaceholder: "Écrivez votre question, suggestion ou ce que vous voulez nous dire...", formSubmitBtn: "Envoyer le message"
-    }
-  };
+  // ========== DATOS DE LOS DJs ==========
+  const djsData = [
+    { id: "AzazelKen", name: "AzazelKen", img: "https://api.vrchat.cloud/api/1/file/file_98da1e47-010c-47ce-82ff-4ed7fb65af15/1/", youtube: "https://www.youtube.com/@AzazelKenDJ", genres: { es: "hard techno, hard style, uptempo, frenchcore, terrorcore, microwave, tekno, breakcore, dnb, dubstep, deathstep, metalstep, riddim, tearout", en: "hard techno, hard style, uptempo, frenchcore, terrorcore, microwave, tekno, breakcore, dnb, dubstep, deathstep, metalstep, riddim, tearout", fr: "hard techno, hard style, uptempo, frenchcore, terrorcore, microwave, tekno, breakcore, dnb, dubstep, deathstep, metalstep, riddim, tearout" }, description: { es: "Fundador y DJ principal, conocido por su energía brutal y sets imposibles.", en: "Founder and main DJ, known for brutal energy and impossible sets.", fr: "Fondateur et DJ principal, connu pour son énergie brute et ses sets impossibles." } },
+    { id: "Anal_Rampage", name: "Anal_Rampage", img: "https://api.vrchat.cloud/api/1/image/file_963999e1-abe3-4a68-a1b5-1e68ec11be62/2/1024", youtube: "https://www.youtube.com/@Anal_Rampage696", genres: { es: "Hard techno, riddim, tearout, metalstep, deathstep", en: "Hard techno, riddim, tearout, metalstep, deathstep", fr: "Hard techno, riddim, tearout, metalstep, deathstep" }, description: { es: "Ritmos agresivos y bajos demoledores, especialista en metalstep.", en: "Aggressive rhythms and crushing basses, metalstep specialist.", fr: "Rythmes agressifs et basses dévastatrices, spécialiste metalstep." } },
+    { id: "Mellana", name: "Mellana", img: "https://api.vrchat.cloud/api/1/image/file_43052fbc-12df-4c54-85fa-e1370ca5ebbb/1/1024", youtube: "https://www.youtube.com/@oracion621", genres: { es: "Hard Dance, Rawstyle, Hard Techno, Microwave", en: "Hard Dance, Rawstyle, Hard Techno, Microwave", fr: "Hard Dance, Rawstyle, Hard Techno, Microwave" }, description: { es: "Melodía y potencia, fusión única de estilos duros.", en: "Melody and power, unique fusion of hard styles.", fr: "Mélodie et puissance, fusion unique de styles durs." } },
+    { id: "ElPutoPuto", name: "ElPutoPuto", img: "https://api.vrchat.cloud/api/1/image/file_bfd42eab-4ce7-4c45-a144-a87b35f7058a/2/1024", youtube: "https://www.youtube.com/@si5157", genres: { es: "Techno, Tekno, Acid Core, Tribe Core", en: "Techno, Tekno, Acid Core, Tribe Core", fr: "Techno, Tekno, Acid Core, Tribe Core" }, description: { es: "Viajes psicodélicos y tribal, ácido hasta el amanecer.", en: "Psychedelic and tribal journeys, acid till dawn.", fr: "Voyages psychédéliques et tribaux, acide jusqu'à l'aube." } },
+    { id: "SynHaptX Fire", name: "SynHaptX Fire", img: "https://api.vrchat.cloud/api/1/image/file_49e37070-b4ef-4749-ac48-0707db2982e2/1/1024", youtube: "https://www.youtube.com/@synhaptxfire", genres: { es: "Dubstep, MetalStep, Tearout", en: "Dubstep, MetalStep, Tearout", fr: "Dubstep, MetalStep, Tearout" }, description: { es: "Bajos pesados y rupturas agresivas, puro filo.", en: "Heavy basses and aggressive drops, pure edge.", fr: "Basses lourdes et drops agressifs, pur tranchant." } },
+    { id: "Chonchito", name: "Chonchito", img: "https://api.vrchat.cloud/api/1/image/file_f608fff7-b009-4918-811e-b3b685018610/1/1024", youtube: "https://www.youtube.com/@chonchito-h6c", genres: { es: "Tearout", en: "Tearout", fr: "Tearout" }, description: { es: "La esencia del tearout, golpes directos al pecho.", en: "The essence of tearout, direct hits to the chest.", fr: "L'essence du tearout, coups directs à la poitrine." } }
+  ];
 
   let currentLang = 'es';
+  let currentDjIndex = 0;
+  let carouselIndex = 0; // índice del primer elemento visible (0 a 3)
+  const itemsPerView = 3;
+
+  function buildCarousel() {
+    const track = document.getElementById('carouselTrack');
+    track.innerHTML = '';
+    djsData.forEach((dj, idx) => {
+      const thumb = document.createElement('div');
+      thumb.className = 'dj-thumb';
+      if (idx === currentDjIndex) thumb.classList.add('active');
+      thumb.innerHTML = `<img src="${dj.img}" alt="${dj.name}"><span>${dj.name}</span>`;
+      thumb.addEventListener('click', () => selectDJ(idx));
+      track.appendChild(thumb);
+    });
+    updateCarouselTransform();
+  }
+
+  function updateCarouselTransform() {
+    const track = document.getElementById('carouselTrack');
+    const thumbs = document.querySelectorAll('.dj-thumb');
+    if (!thumbs.length) return;
+    const thumbWidth = thumbs[0].offsetWidth + 20; // width + gap
+    const offset = carouselIndex * thumbWidth;
+    track.style.transform = `translateX(-${offset}px)`;
+  }
+
+  function carouselPrev() {
+    if (carouselIndex > 0) carouselIndex--;
+    else carouselIndex = Math.max(0, djsData.length - itemsPerView);
+    updateCarouselTransform();
+  }
+  function carouselNext() {
+    const maxIndex = Math.max(0, djsData.length - itemsPerView);
+    if (carouselIndex < maxIndex) carouselIndex++;
+    else carouselIndex = 0;
+    updateCarouselTransform();
+  }
+
+  function selectDJ(index) {
+    currentDjIndex = index;
+    document.querySelectorAll('.dj-thumb').forEach((el, i) => {
+      if (i === index) el.classList.add('active');
+      else el.classList.remove('active');
+    });
+    renderDetailPanel();
+  }
+
+  function renderDetailPanel() {
+    const dj = djsData[currentDjIndex];
+    const panel = document.getElementById('djDetailPanel');
+    const genreText = dj.genres[currentLang] || dj.genres.es;
+    const descText = dj.description[currentLang] || dj.description.es;
+    const setLink = dj.youtube;
+    panel.style.display = 'block';
+    panel.innerHTML = `
+      <div class="dj-detail-grid">
+        <div class="dj-detail-left">
+          <img src="${dj.img}" alt="${dj.name}">
+          <h2>${dj.name}</h2>
+        </div>
+        <div class="dj-detail-right">
+          <div class="dj-genres">
+            <h3><i class="fas fa-music"></i> <span data-i18n="genreLabel">Géneros</span></h3>
+            <div class="genre-list">${genreText.split(',').map(g => `<span class="genre-tag">${g.trim()}</span>`).join('')}</div>
+          </div>
+          <div class="dj-sets">
+            <h3><i class="fas fa-headphones"></i> <span data-i18n="setsLabel">Sets / Enlaces</span></h3>
+            <a href="${setLink}" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+          </div>
+          <div class="dj-description">
+            <h3><i class="fas fa-user-astronaut"></i> <span data-i18n="descriptionLabel">Descripción</span></h3>
+            <p>${descText}</p>
+          </div>
+        </div>
+      </div>
+    `;
+    // Actualizar textos del panel según idioma actual
+    updatePanelTexts();
+  }
+
+  function updatePanelTexts() {
+    const panel = document.getElementById('djDetailPanel');
+    if (!panel || panel.style.display === 'none') return;
+    const genreSpan = panel.querySelector('.dj-genres h3 span');
+    const setsSpan = panel.querySelector('.dj-sets h3 span');
+    const descSpan = panel.querySelector('.dj-description h3 span');
+    if (genreSpan) genreSpan.innerText = (currentLang === 'es' ? 'Géneros' : currentLang === 'en' ? 'Genres' : 'Genres');
+    if (setsSpan) setsSpan.innerText = (currentLang === 'es' ? 'Sets / Enlaces' : currentLang === 'en' ? 'Sets / Links' : 'Sets / Liens');
+    if (descSpan) descSpan.innerText = (currentLang === 'es' ? 'Descripción' : currentLang === 'en' ? 'Description' : 'Description');
+    // Actualizar los géneros y descripción con el idioma actual
+    const dj = djsData[currentDjIndex];
+    if (dj) {
+      const genreText = dj.genres[currentLang] || dj.genres.es;
+      const genreContainer = panel.querySelector('.genre-list');
+      if (genreContainer) genreContainer.innerHTML = genreText.split(',').map(g => `<span class="genre-tag">${g.trim()}</span>`).join('');
+      const descPara = panel.querySelector('.dj-description p');
+      if (descPara) descPara.innerText = dj.description[currentLang] || dj.description.es;
+    }
+  }
+
+  // Traducciones generales (se añade djsTitle, genreLabel, setsLabel, descriptionLabel)
+  const translations = {
+    es: { descText: "Somos una comunidad hispana en VRChat donde nos encanta socializar y crear experiencias únicas. Organizamos eventos como raves, noches de películas, juegos y mucho más, siempre en un ambiente amigable, divertido y respetuoso para todos.", btnVRChat: "Unirse al grupo VRChat", socialTitle: "🌐 Nuestras Redes", ytTitle: "📺 Canal Oficial Eclion", ytDesc: "Raves, eventos y experiencias únicas en VRChat. ¡Suscríbete!", ytBtn: "Visitar canal", ytInfo: "🔴 Transmisión en vivo: música y comunidad", videosTitle: "🎬 Eventos destacados", video1Label: "🎉 Primer Evento", video2Label: "⚡ HARD.EXE", video3Label: "🔥 REVELION", footer: "Eclion · Rave Community in VRChat · Todos los derechos reservados · 2025", partnersTitle: "🤝 Partners", ownersTitle: "👑 Owners", contactTitle: "También puedes contactarnos directamente por aquí", formNombreLabel: "Nombre de usuario", formOpcional: "(opcional)", formNombrePlaceholder: "Ej: RaveMaster22", formEmailLabel: "Correo electrónico", formEmailPlaceholder: "tu@email.com", formDiscordLabel: "Discord", formDiscordPlaceholder: "1432010052311600230", formDiscordHint: "Ejemplo: 1432010052311600230 (ID de usuario)", formMensajeLabel: "Mensaje", formMensajePlaceholder: "Escribe tu consulta, sugerencia o lo que quieras contarnos...", formSubmitBtn: "Enviar mensaje", djsTitle: "🎧 ECLION DJs 🎧", genreLabel: "Géneros", setsLabel: "Sets / Enlaces", descriptionLabel: "Descripción" },
+    en: { descText: "We are a Hispanic community on VRChat where we love to socialize and create unique experiences. We organize events like raves, movie nights, games, and much more, always in a friendly, fun, and respectful environment for everyone.", btnVRChat: "Join VRChat Group", socialTitle: "🌐 Our Social Networks", ytTitle: "📺 Official Eclion Channel", ytDesc: "Raves, events and unique experiences in VRChat. Subscribe!", ytBtn: "Visit channel", ytInfo: "🔴 Live stream: music & community", videosTitle: "🎬 Featured Events", video1Label: "🎉 First Event", video2Label: "⚡ HARD.EXE", video3Label: "🔥 REVELION", footer: "Eclion · Rave Community in VRChat · All rights reserved · 2025", partnersTitle: "🤝 Partners", ownersTitle: "👑 Owners", contactTitle: "You can also contact us directly here", formNombreLabel: "Username", formOpcional: "(optional)", formNombrePlaceholder: "Ex: RaveMaster22", formEmailLabel: "Email", formEmailPlaceholder: "you@email.com", formDiscordLabel: "Discord", formDiscordPlaceholder: "1432010052311600230", formDiscordHint: "Example: 1432010052311600230 (User ID)", formMensajeLabel: "Message", formMensajePlaceholder: "Write your query, suggestion or whatever you want to tell us...", formSubmitBtn: "Send message", djsTitle: "🎧 ECLION DJs 🎧", genreLabel: "Genres", setsLabel: "Sets / Links", descriptionLabel: "Description" },
+    fr: { descText: "Nous sommes une communauté hispanique sur VRChat où nous adorons socialiser et créer des expériences uniques. Nous organisons des événements comme des raves, des soirées cinéma, des jeux et bien plus encore, toujours dans une ambiance amicale, amusante et respectueuse pour tous.", btnVRChat: "Rejoindre le groupe VRChat", socialTitle: "🌐 Nos réseaux sociaux", ytTitle: "📺 Chaîne officielle Eclion", ytDesc: "Raves, événements et expériences uniques dans VRChat. Abonnez-vous !", ytBtn: "Visiter la chaîne", ytInfo: "🔴 En direct : musique et communauté", videosTitle: "🎬 Événements en vedette", video1Label: "🎉 Premier Événement", video2Label: "⚡ HARD.EXE", video3Label: "🔥 REVELION", footer: "Eclion · Communauté Rave dans VRChat · Tous droits réservés · 2025", partnersTitle: "🤝 Partenaires", ownersTitle: "👑 Propriétaires", contactTitle: "Vous pouvez aussi nous contacter directement ici", formNombreLabel: "Nom d'utilisateur", formOpcional: "(optionnel)", formNombrePlaceholder: "Ex: RaveMaster22", formEmailLabel: "E-mail", formEmailPlaceholder: "vous@email.com", formDiscordLabel: "Discord", formDiscordPlaceholder: "1432010052311600230", formDiscordHint: "Exemple : 1432010052311600230 (ID utilisateur)", formMensajeLabel: "Message", formMensajePlaceholder: "Écrivez votre question, suggestion ou ce que vous voulez nous dire...", formSubmitBtn: "Envoyer le message", djsTitle: "🎧 ECLION DJs 🎧", genreLabel: "Genres", setsLabel: "Sets / Liens", descriptionLabel: "Description" }
+  };
 
   function setLanguage(lang) {
     currentLang = lang;
     const t = translations[lang];
-    if (!t) return;
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (t[key]) el.textContent = t[key];
-    });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-      const key = el.getAttribute('data-i18n-placeholder');
-      if (t[key]) el.placeholder = t[key];
-    });
+    document.querySelectorAll('[data-i18n]').forEach(el => { const key = el.getAttribute('data-i18n'); if(t[key]) el.textContent = t[key]; });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { const key = el.getAttribute('data-i18n-placeholder'); if(t[key]) el.placeholder = t[key]; });
     document.getElementById('descText').innerText = t.descText;
-    const btnSpan = document.querySelector('#btnVRChat span');
-    if (btnSpan) btnSpan.innerText = t.btnVRChat;
-    document.getElementById('btn-es').classList.remove('active');
-    document.getElementById('btn-en').classList.remove('active');
-    document.getElementById('btn-fr').classList.remove('active');
+    const btnSpan = document.querySelector('#btnVRChat span'); if(btnSpan) btnSpan.innerText = t.btnVRChat;
+    document.getElementById('btn-es').classList.remove('active'); document.getElementById('btn-en').classList.remove('active'); document.getElementById('btn-fr').classList.remove('active');
     if (lang === 'es') document.getElementById('btn-es').classList.add('active');
     if (lang === 'en') document.getElementById('btn-en').classList.add('active');
     if (lang === 'fr') document.getElementById('btn-fr').classList.add('active');
+    updatePanelTexts();
   }
 
   document.getElementById('btn-es').addEventListener('click', () => setLanguage('es'));
@@ -507,91 +635,25 @@
   document.getElementById('btn-fr').addEventListener('click', () => setLanguage('fr'));
   setLanguage('es');
 
-  // ====================== AUDIO DE FONDO ======================
-  const audio = document.getElementById('bgAudio');
-  const playPauseBtn = document.getElementById('playPauseBtn');
-  const volumeSlider = document.getElementById('volumeSlider');
-  let playIcon = playPauseBtn.querySelector('i');
-  audio.volume = volumeSlider.value;
+  // Inicializar carrusel y seleccionar primer DJ
+  buildCarousel();
+  selectDJ(0);
+  document.getElementById('carouselPrev').addEventListener('click', carouselPrev);
+  document.getElementById('carouselNext').addEventListener('click', carouselNext);
+  window.addEventListener('resize', () => updateCarouselTransform());
+
+  // Audio y demás
+  const audio = document.getElementById('bgAudio'); const playPauseBtn = document.getElementById('playPauseBtn'); const volumeSlider = document.getElementById('volumeSlider'); let playIcon = playPauseBtn.querySelector('i'); audio.volume = volumeSlider.value;
   function updatePlayIcon() { playIcon.className = audio.paused ? 'fas fa-play' : 'fas fa-pause'; }
-  playPauseBtn.addEventListener('click', () => {
-    if (audio.paused) audio.play().catch(e=>{});
-    else audio.pause();
-    updatePlayIcon();
-  });
-  volumeSlider.addEventListener('input', (e) => audio.volume = parseFloat(e.target.value));
-  audio.addEventListener('ended', () => { audio.currentTime = 0; audio.play().catch(e=>{}); });
+  playPauseBtn.addEventListener('click', () => { if(audio.paused) audio.play().catch(e=>{}); else audio.pause(); updatePlayIcon(); });
+  volumeSlider.addEventListener('input', (e) => audio.volume = parseFloat(e.target.value)); audio.addEventListener('ended', () => { audio.currentTime = 0; audio.play().catch(e=>{}); });
   window.addEventListener('load', () => { setTimeout(() => { audio.play().then(updatePlayIcon).catch(updatePlayIcon); }, 100); });
-  audio.addEventListener('play', updatePlayIcon);
-  audio.addEventListener('pause', updatePlayIcon);
+  audio.addEventListener('play', updatePlayIcon); audio.addEventListener('pause', updatePlayIcon);
 
-  // ====================== VALIDACIÓN FORMULARIO ======================
-  const contactForm = document.getElementById('contactForm');
-  const formStatus = document.getElementById('formStatus');
-  contactForm.addEventListener('submit', function(e) {
-    const email = document.getElementById('email');
-    const msg = document.getElementById('mensaje');
-    let error = '';
-    if (!email.value.trim()) error = (currentLang==='es')?'El correo es obligatorio.':(currentLang==='en'?'Email required.':'E-mail obligatoire.');
-    else if (!/^\S+@\S+\.\S+$/.test(email.value)) error = (currentLang==='es')?'Correo inválido.':(currentLang==='en'?'Invalid email.':'E-mail invalide.');
-    else if (!msg.value.trim()) error = (currentLang==='es')?'Mensaje vacío.':(currentLang==='en'?'Message empty.':'Message vide.');
-    if (error) { e.preventDefault(); formStatus.textContent = error; formStatus.style.color = '#ed2221'; }
-    else { formStatus.textContent = (currentLang==='es')?'Enviando...':(currentLang==='en'?'Sending...':'Envoi...'); formStatus.style.color = '#ccc'; }
-  });
+  const contactForm = document.getElementById('contactForm'); const formStatus = document.getElementById('formStatus');
+  contactForm.addEventListener('submit', function(e) { const email = document.getElementById('email'); const msg = document.getElementById('mensaje'); let error = ''; if (!email.value.trim()) error = (currentLang==='es')?'El correo es obligatorio.':(currentLang==='en'?'Email required.':'E-mail obligatoire.'); else if (!/^\S+@\S+\.\S+$/.test(email.value)) error = (currentLang==='es')?'Correo inválido.':(currentLang==='en'?'Invalid email.':'E-mail invalide.'); else if (!msg.value.trim()) error = (currentLang==='es')?'Mensaje vacío.':(currentLang==='en'?'Message empty.':'Message vide.'); if (error) { e.preventDefault(); formStatus.textContent = error; formStatus.style.color = '#ed2221'; } else { formStatus.textContent = (currentLang==='es')?'Enviando...':(currentLang==='en'?'Sending...':'Envoi...'); formStatus.style.color = '#ccc'; } });
 
-  // ====================== OVERLAY GLITCH ======================
-  (function() {
-    const overlay = document.getElementById('glitchOverlay');
-    const container = document.getElementById('glitchContainer');
-
-    function playGlitchSound() {
-      try {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const oscillator = audioCtx.createOscillator();
-        const gainNode = audioCtx.createGain();
-        oscillator.type = 'square';
-        oscillator.frequency.setValueAtTime(80, audioCtx.currentTime);
-        oscillator.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.1);
-        gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
-        oscillator.connect(gainNode);
-        gainNode.connect(audioCtx.destination);
-        oscillator.start();
-        oscillator.stop(audioCtx.currentTime + 0.2);
-        audioCtx.resume();
-      } catch(e) {}
-    }
-
-    function playClickOutSound() {
-      try {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const oscillator = audioCtx.createOscillator();
-        const gainNode = audioCtx.createGain();
-        oscillator.type = 'triangle';
-        oscillator.frequency.setValueAtTime(600, audioCtx.currentTime);
-        oscillator.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.15);
-        gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
-        oscillator.connect(gainNode);
-        gainNode.connect(audioCtx.destination);
-        oscillator.start();
-        oscillator.stop(audioCtx.currentTime + 0.2);
-        audioCtx.resume();
-      } catch(e) {}
-    }
-
-    window.addEventListener('load', () => { setTimeout(() => { playGlitchSound(); }, 200); });
-
-    overlay.addEventListener('click', (e) => {
-      if (e.target === overlay || e.target.closest('.glitch-container')) {
-        playClickOutSound();
-        overlay.classList.add('hidden');
-        container.style.transform = 'scale(0.8)';
-        container.style.opacity = '0';
-        container.style.transition = 'transform 0.4s, opacity 0.4s';
-      }
-    });
-  })();
+  (function() { const overlay = document.getElementById('glitchOverlay'); const container = document.getElementById('glitchContainer'); function playGlitchSound() { try { const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); const oscillator = audioCtx.createOscillator(); const gainNode = audioCtx.createGain(); oscillator.type = 'square'; oscillator.frequency.setValueAtTime(80, audioCtx.currentTime); oscillator.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.1); gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2); oscillator.connect(gainNode); gainNode.connect(audioCtx.destination); oscillator.start(); oscillator.stop(audioCtx.currentTime + 0.2); audioCtx.resume(); } catch(e) {} } function playClickOutSound() { try { const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); const oscillator = audioCtx.createOscillator(); const gainNode = audioCtx.createGain(); oscillator.type = 'triangle'; oscillator.frequency.setValueAtTime(600, audioCtx.currentTime); oscillator.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.15); gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2); oscillator.connect(gainNode); gainNode.connect(audioCtx.destination); oscillator.start(); oscillator.stop(audioCtx.currentTime + 0.2); audioCtx.resume(); } catch(e) {} } window.addEventListener('load', () => { setTimeout(() => { playGlitchSound(); }, 200); }); overlay.addEventListener('click', (e) => { if (e.target === overlay || e.target.closest('.glitch-container')) { playClickOutSound(); overlay.classList.add('hidden'); container.style.transform = 'scale(0.8)'; container.style.opacity = '0'; container.style.transition = 'transform 0.4s, opacity 0.4s'; } }); })();
 </script>
 </body>
 </html>
