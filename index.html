@@ -259,12 +259,14 @@
       font-size: 0.9rem;
       display: block;
     }
+    /* Responsive: en móvil mostrar 1 elemento */
     @media (max-width: 700px) {
-      .dj-thumb { flex: 0 0 calc(50% - 10px); }
+      .dj-thumb { flex: 0 0 100%; }  /* Antes era 50% - ahora 1 solo */
       .carousel-track { gap: 10px; }
       .carousel-btn { width: 40px; height: 40px; font-size: 1.4rem; }
     }
     @media (max-width: 480px) {
+      /* Ya está cubierto por el de 700px, pero mantenemos consistencia */
       .dj-thumb { flex: 0 0 100%; }
     }
 
@@ -340,6 +342,9 @@
     }
     .dj-sets {
       margin: 20px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
     }
     .dj-sets a {
       display: inline-flex;
@@ -356,6 +361,10 @@
     .dj-sets a:hover {
       background: #b91c1b;
       transform: scale(1.02);
+    }
+    .dj-sets a img {
+      width: 22px;
+      filter: brightness(0) invert(1);
     }
     .dj-description {
       margin-top: 20px;
@@ -464,7 +473,7 @@
       </div>
     </section>
 
-    <!-- NUEVA SECCIÓN DJs CON CARRUSEL Y PANEL DINÁMICO -->
+    <!-- SECCIÓN DJs CON CARRUSEL Y PANEL DINÁMICO -->
     <section id="djs" class="djs-carousel-section">
       <h2 class="section-title title-center" data-i18n="djsTitle">🎧 ECLION DJs 🎧</h2>
       <div class="carousel-container">
@@ -497,14 +506,99 @@
 <audio id="bgAudio" loop preload="auto"><source src="fondo.mp3" type="audio/mpeg"></audio>
 
 <script>
-  // ========== DATOS DE LOS DJs ==========
+  // ========== DATOS DE LOS DJs (MODIFICADOS) ==========
   const djsData = [
-    { id: "AzazelKen", name: "AzazelKen", img: "https://api.vrchat.cloud/api/1/file/file_98da1e47-010c-47ce-82ff-4ed7fb65af15/1/", youtube: "https://www.youtube.com/@AzazelKenDJ", genres: { es: "hard techno, hard style, uptempo, frenchcore, terrorcore, microwave, tekno, breakcore, dnb, dubstep, deathstep, metalstep, riddim, tearout", en: "hard techno, hard style, uptempo, frenchcore, terrorcore, microwave, tekno, breakcore, dnb, dubstep, deathstep, metalstep, riddim, tearout", fr: "hard techno, hard style, uptempo, frenchcore, terrorcore, microwave, tekno, breakcore, dnb, dubstep, deathstep, metalstep, riddim, tearout" }, description: { es: "Fundador y DJ principal, conocido por su energía brutal y sets imposibles.", en: "Founder and main DJ, known for brutal energy and impossible sets.", fr: "Fondateur et DJ principal, connu pour son énergie brute et ses sets impossibles." } },
-    { id: "Anal_Rampage", name: "Anal_Rampage", img: "https://api.vrchat.cloud/api/1/image/file_963999e1-abe3-4a68-a1b5-1e68ec11be62/2/1024", youtube: "https://www.youtube.com/@Anal_Rampage696", genres: { es: "Hard techno, riddim, tearout, metalstep, deathstep", en: "Hard techno, riddim, tearout, metalstep, deathstep", fr: "Hard techno, riddim, tearout, metalstep, deathstep" }, description: { es: "Ritmos agresivos y bajos demoledores, especialista en metalstep.", en: "Aggressive rhythms and crushing basses, metalstep specialist.", fr: "Rythmes agressifs et basses dévastatrices, spécialiste metalstep." } },
-    { id: "Mellana", name: "Mellana", img: "https://api.vrchat.cloud/api/1/image/file_43052fbc-12df-4c54-85fa-e1370ca5ebbb/1/1024", youtube: "https://www.youtube.com/@oracion621", genres: { es: "Hard Dance, Rawstyle, Hard Techno, Microwave", en: "Hard Dance, Rawstyle, Hard Techno, Microwave", fr: "Hard Dance, Rawstyle, Hard Techno, Microwave" }, description: { es: "Melodía y potencia, fusión única de estilos duros.", en: "Melody and power, unique fusion of hard styles.", fr: "Mélodie et puissance, fusion unique de styles durs." } },
-    { id: "ElPutoPuto", name: "ElPutoPuto", img: "https://api.vrchat.cloud/api/1/image/file_bfd42eab-4ce7-4c45-a144-a87b35f7058a/2/1024", youtube: "https://www.youtube.com/@si5157", genres: { es: "Techno, Tekno, Acid Core, Tribe Core", en: "Techno, Tekno, Acid Core, Tribe Core", fr: "Techno, Tekno, Acid Core, Tribe Core" }, description: { es: "Viajes psicodélicos y tribal, ácido hasta el amanecer.", en: "Psychedelic and tribal journeys, acid till dawn.", fr: "Voyages psychédéliques et tribaux, acide jusqu'à l'aube." } },
-    { id: "SynHaptX Fire", name: "SynHaptX Fire", img: "https://api.vrchat.cloud/api/1/image/file_49e37070-b4ef-4749-ac48-0707db2982e2/1/1024", youtube: "https://www.youtube.com/@synhaptxfire", genres: { es: "Dubstep, MetalStep, Tearout", en: "Dubstep, MetalStep, Tearout", fr: "Dubstep, MetalStep, Tearout" }, description: { es: "Bajos pesados y rupturas agresivas, puro filo.", en: "Heavy basses and aggressive drops, pure edge.", fr: "Basses lourdes et drops agressifs, pur tranchant." } },
-    { id: "Chonchito", name: "Chonchito", img: "https://api.vrchat.cloud/api/1/image/file_f608fff7-b009-4918-811e-b3b685018610/1/1024", youtube: "https://www.youtube.com/@chonchito-h6c", genres: { es: "Tearout", en: "Tearout", fr: "Tearout" }, description: { es: "La esencia del tearout, golpes directos al pecho.", en: "The essence of tearout, direct hits to the chest.", fr: "L'essence du tearout, coups directs à la poitrine." } }
+    { 
+      id: "AzazelKen", name: "AzazelKen", 
+      img: "https://api.vrchat.cloud/api/1/file/file_98da1e47-010c-47ce-82ff-4ed7fb65af15/1/", 
+      youtube: "https://www.youtube.com/@AzazelKenDJ", 
+      genres: { 
+        es: "hard techno, hard style, uptempo, frenchcore, terrorcore, microwave, tekno, breakcore, dnb, dubstep, deathstep, metalstep, riddim, tearout, gabber", 
+        en: "hard techno, hard style, uptempo, frenchcore, terrorcore, microwave, tekno, breakcore, dnb, dubstep, deathstep, metalstep, riddim, tearout, gabber", 
+        fr: "hard techno, hard style, uptempo, frenchcore, terrorcore, microwave, tekno, breakcore, dnb, dubstep, deathstep, metalstep, riddim, tearout, gabber" 
+      }, 
+      description: { 
+        es: "Fundador y DJ principal, conocido por su energía brutal y sets imposibles.", 
+        en: "Founder and main DJ, known for brutal energy and impossible sets.", 
+        fr: "Fondateur et DJ principal, connu pour son énergie brute et ses sets impossibles." 
+      } 
+    },
+    { 
+      id: "Anal_Rampage", name: "Anal_Rampage", 
+      img: "https://api.vrchat.cloud/api/1/image/file_963999e1-abe3-4a68-a1b5-1e68ec11be62/2/1024", 
+      youtube: "https://www.youtube.com/@Anal_Rampage696", 
+      genres: { 
+        es: "Hard techno, riddim, tearout, metalstep, deathstep", 
+        en: "Hard techno, riddim, tearout, metalstep, deathstep", 
+        fr: "Hard techno, riddim, tearout, metalstep, deathstep" 
+      }, 
+      description: { 
+        es: "Ritmos agresivos y bajos demoledores, especialista en metalstep.", 
+        en: "Aggressive rhythms and crushing basses, metalstep specialist.", 
+        fr: "Rythmes agressifs et basses dévastatrices, spécialiste metalstep." 
+      } 
+    },
+    { 
+      id: "Mellana", name: "Mellana", 
+      img: "https://api.vrchat.cloud/api/1/image/file_43052fbc-12df-4c54-85fa-e1370ca5ebbb/1/1024", 
+      youtube: "https://www.youtube.com/@oracion621", 
+      genres: { 
+        es: "Hard Dance, Rawstyle, Hard Techno, Microwave", 
+        en: "Hard Dance, Rawstyle, Hard Techno, Microwave", 
+        fr: "Hard Dance, Rawstyle, Hard Techno, Microwave" 
+      }, 
+      description: { 
+        es: "Melodía y potencia, fusión única de estilos duros.", 
+        en: "Melody and power, unique fusion of hard styles.", 
+        fr: "Mélodie et puissance, fusion unique de styles durs." 
+      } 
+    },
+    { 
+      id: "ElPutoPuto", name: "ElPutoPuto", 
+      img: "https://api.vrchat.cloud/api/1/image/file_bfd42eab-4ce7-4c45-a144-a87b35f7058a/2/1024", 
+      youtube: "https://www.youtube.com/@si5157", 
+      genres: { 
+        es: "Techno, Tekno, Acid Core, Mental Core, Hardcore, DnB", 
+        en: "Techno, Tekno, Acid Core, Mental Core, Hardcore, DnB", 
+        fr: "Techno, Tekno, Acid Core, Mental Core, Hardcore, DnB" 
+      }, 
+      description: { 
+        es: "Amante de la cultura free party y underground. Sonidos oscuros, potentes y con melodías psicodélicas que te inducen al trance", 
+        en: "Lover of free party and underground culture. Dark, powerful sounds with psychedelic melodies that induce trance", 
+        fr: "Amoureux de la culture free party et underground. Des sons sombres, puissants avec des mélodies psychédéliques qui induisent la transe" 
+      } 
+    },
+    { 
+      id: "SynHaptX Fire", name: "SynHaptX Fire", 
+      img: "https://api.vrchat.cloud/api/1/image/file_49e37070-b4ef-4749-ac48-0707db2982e2/1/1024", 
+      youtube: "https://www.youtube.com/@synhaptxfire", 
+      vrGroupLink: "https://vrchat.com/home/group/grp_8b16de98-1064-4b1e-9565-59b64e2c07ed", // nuevo enlace
+      genres: { 
+        es: "Dubstep, MetalStep, Tearout", 
+        en: "Dubstep, MetalStep, Tearout", 
+        fr: "Dubstep, MetalStep, Tearout" 
+      }, 
+      description: { 
+        es: "Bajos pesados y rupturas agresivas, puro filo.", 
+        en: "Heavy basses and aggressive drops, pure edge.", 
+        fr: "Basses lourdes et drops agressifs, pur tranchant." 
+      } 
+    },
+    { 
+      id: "Chonchito", name: "Chonchito", 
+      img: "https://api.vrchat.cloud/api/1/image/file_f608fff7-b009-4918-811e-b3b685018610/1/1024", 
+      youtube: "https://www.youtube.com/@chonchito-h6c", 
+      genres: { 
+        es: "Tearout", 
+        en: "Tearout", 
+        fr: "Tearout" 
+      }, 
+      description: { 
+        es: "La esencia del tearout, golpes directos al pecho.", 
+        en: "The essence of tearout, direct hits to the chest.", 
+        fr: "L'essence du tearout, coups directs à la poitrine." 
+      } 
+    }
   ];
 
   let currentLang = 'es';
@@ -563,6 +657,12 @@
     const descText = dj.description[currentLang] || dj.description.es;
     const setLink = dj.youtube;
     panel.style.display = 'block';
+    // Construcción del HTML del panel, incluyendo botón de VRC Group si existe vrGroupLink
+    let extraButton = '';
+    if (dj.vrGroupLink) {
+      const btnText = (currentLang === 'es' ? 'Grupo VRC' : (currentLang === 'en' ? 'VRC Group' : 'Groupe VRC'));
+      extraButton = `<a href="${dj.vrGroupLink}" target="_blank"><img src="https://i.imgur.com/S7I1t44.png" alt="VRChat"> ${btnText}</a>`;
+    }
     panel.innerHTML = `
       <div class="dj-detail-grid">
         <div class="dj-detail-left">
@@ -577,6 +677,7 @@
           <div class="dj-sets">
             <h3><i class="fas fa-headphones"></i> <span data-i18n="setsLabel">Sets / Enlaces</span></h3>
             <a href="${setLink}" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+            ${extraButton}
           </div>
           <div class="dj-description">
             <h3><i class="fas fa-user-astronaut"></i> <span data-i18n="descriptionLabel">Descripción</span></h3>
@@ -606,14 +707,25 @@
       if (genreContainer) genreContainer.innerHTML = genreText.split(',').map(g => `<span class="genre-tag">${g.trim()}</span>`).join('');
       const descPara = panel.querySelector('.dj-description p');
       if (descPara) descPara.innerText = dj.description[currentLang] || dj.description.es;
+      // Actualizar texto del botón de VRC Group si existe
+      const vrBtn = panel.querySelector('.dj-sets a:last-child'); // puede ser el extraButton
+      // Mejor: buscar por el icono img
+      const vrLink = panel.querySelector('.dj-sets a img');
+      if (vrLink && dj.vrGroupLink) {
+        const parent = vrLink.closest('a');
+        if (parent) {
+          const btnText = (currentLang === 'es' ? 'Grupo VRC' : (currentLang === 'en' ? 'VRC Group' : 'Groupe VRC'));
+          parent.innerHTML = `<img src="https://i.imgur.com/S7I1t44.png" alt="VRChat"> ${btnText}`;
+        }
+      }
     }
   }
 
-  // Traducciones generales (se añade djsTitle, genreLabel, setsLabel, descriptionLabel)
+  // Traducciones generales (se añade vrGroupBtn)
   const translations = {
-    es: { descText: "Somos una comunidad hispana en VRChat donde nos encanta socializar y crear experiencias únicas. Organizamos eventos como raves, noches de películas, juegos y mucho más, siempre en un ambiente amigable, divertido y respetuoso para todos.", btnVRChat: "Unirse al grupo VRChat", socialTitle: "🌐 Nuestras Redes", ytTitle: "📺 Canal Oficial Eclion", ytDesc: "Raves, eventos y experiencias únicas en VRChat. ¡Suscríbete!", ytBtn: "Visitar canal", ytInfo: "🔴 Transmisión en vivo: música y comunidad", videosTitle: "🎬 Eventos destacados", video1Label: "🎉 Primer Evento", video2Label: "⚡ HARD.EXE", video3Label: "🔥 REVELION", footer: "Eclion · Rave Community in VRChat · Todos los derechos reservados · 2025", partnersTitle: "🤝 Partners", ownersTitle: "👑 Owners", contactTitle: "También puedes contactarnos directamente por aquí", formNombreLabel: "Nombre de usuario", formOpcional: "(opcional)", formNombrePlaceholder: "Ej: RaveMaster22", formEmailLabel: "Correo electrónico", formEmailPlaceholder: "tu@email.com", formDiscordLabel: "Discord", formDiscordPlaceholder: "1432010052311600230", formDiscordHint: "Ejemplo: 1432010052311600230 (ID de usuario)", formMensajeLabel: "Mensaje", formMensajePlaceholder: "Escribe tu consulta, sugerencia o lo que quieras contarnos...", formSubmitBtn: "Enviar mensaje", djsTitle: "🎧 ECLION DJs 🎧", genreLabel: "Géneros", setsLabel: "Sets / Enlaces", descriptionLabel: "Descripción" },
-    en: { descText: "We are a Hispanic community on VRChat where we love to socialize and create unique experiences. We organize events like raves, movie nights, games, and much more, always in a friendly, fun, and respectful environment for everyone.", btnVRChat: "Join VRChat Group", socialTitle: "🌐 Our Social Networks", ytTitle: "📺 Official Eclion Channel", ytDesc: "Raves, events and unique experiences in VRChat. Subscribe!", ytBtn: "Visit channel", ytInfo: "🔴 Live stream: music & community", videosTitle: "🎬 Featured Events", video1Label: "🎉 First Event", video2Label: "⚡ HARD.EXE", video3Label: "🔥 REVELION", footer: "Eclion · Rave Community in VRChat · All rights reserved · 2025", partnersTitle: "🤝 Partners", ownersTitle: "👑 Owners", contactTitle: "You can also contact us directly here", formNombreLabel: "Username", formOpcional: "(optional)", formNombrePlaceholder: "Ex: RaveMaster22", formEmailLabel: "Email", formEmailPlaceholder: "you@email.com", formDiscordLabel: "Discord", formDiscordPlaceholder: "1432010052311600230", formDiscordHint: "Example: 1432010052311600230 (User ID)", formMensajeLabel: "Message", formMensajePlaceholder: "Write your query, suggestion or whatever you want to tell us...", formSubmitBtn: "Send message", djsTitle: "🎧 ECLION DJs 🎧", genreLabel: "Genres", setsLabel: "Sets / Links", descriptionLabel: "Description" },
-    fr: { descText: "Nous sommes une communauté hispanique sur VRChat où nous adorons socialiser et créer des expériences uniques. Nous organisons des événements comme des raves, des soirées cinéma, des jeux et bien plus encore, toujours dans une ambiance amicale, amusante et respectueuse pour tous.", btnVRChat: "Rejoindre le groupe VRChat", socialTitle: "🌐 Nos réseaux sociaux", ytTitle: "📺 Chaîne officielle Eclion", ytDesc: "Raves, événements et expériences uniques dans VRChat. Abonnez-vous !", ytBtn: "Visiter la chaîne", ytInfo: "🔴 En direct : musique et communauté", videosTitle: "🎬 Événements en vedette", video1Label: "🎉 Premier Événement", video2Label: "⚡ HARD.EXE", video3Label: "🔥 REVELION", footer: "Eclion · Communauté Rave dans VRChat · Tous droits réservés · 2025", partnersTitle: "🤝 Partenaires", ownersTitle: "👑 Propriétaires", contactTitle: "Vous pouvez aussi nous contacter directement ici", formNombreLabel: "Nom d'utilisateur", formOpcional: "(optionnel)", formNombrePlaceholder: "Ex: RaveMaster22", formEmailLabel: "E-mail", formEmailPlaceholder: "vous@email.com", formDiscordLabel: "Discord", formDiscordPlaceholder: "1432010052311600230", formDiscordHint: "Exemple : 1432010052311600230 (ID utilisateur)", formMensajeLabel: "Message", formMensajePlaceholder: "Écrivez votre question, suggestion ou ce que vous voulez nous dire...", formSubmitBtn: "Envoyer le message", djsTitle: "🎧 ECLION DJs 🎧", genreLabel: "Genres", setsLabel: "Sets / Liens", descriptionLabel: "Description" }
+    es: { descText: "Somos una comunidad hispana en VRChat donde nos encanta socializar y crear experiencias únicas. Organizamos eventos como raves, noches de películas, juegos y mucho más, siempre en un ambiente amigable, divertido y respetuoso para todos.", btnVRChat: "Unirse al grupo VRChat", socialTitle: "🌐 Nuestras Redes", ytTitle: "📺 Canal Oficial Eclion", ytDesc: "Raves, eventos y experiencias únicas en VRChat. ¡Suscríbete!", ytBtn: "Visitar canal", ytInfo: "🔴 Transmisión en vivo: música y comunidad", videosTitle: "🎬 Eventos destacados", video1Label: "🎉 Primer Evento", video2Label: "⚡ HARD.EXE", video3Label: "🔥 REVELION", footer: "Eclion · Rave Community in VRChat · Todos los derechos reservados · 2025", partnersTitle: "🤝 Partners", ownersTitle: "👑 Owners", contactTitle: "También puedes contactarnos directamente por aquí", formNombreLabel: "Nombre de usuario", formOpcional: "(opcional)", formNombrePlaceholder: "Ej: RaveMaster22", formEmailLabel: "Correo electrónico", formEmailPlaceholder: "tu@email.com", formDiscordLabel: "Discord", formDiscordPlaceholder: "1432010052311600230", formDiscordHint: "Ejemplo: 1432010052311600230 (ID de usuario)", formMensajeLabel: "Mensaje", formMensajePlaceholder: "Escribe tu consulta, sugerencia o lo que quieras contarnos...", formSubmitBtn: "Enviar mensaje", djsTitle: "🎧 ECLION DJs 🎧", genreLabel: "Géneros", setsLabel: "Sets / Enlaces", descriptionLabel: "Descripción", vrGroupBtn: "Grupo VRC" },
+    en: { descText: "We are a Hispanic community on VRChat where we love to socialize and create unique experiences. We organize events like raves, movie nights, games, and much more, always in a friendly, fun, and respectful environment for everyone.", btnVRChat: "Join VRChat Group", socialTitle: "🌐 Our Social Networks", ytTitle: "📺 Official Eclion Channel", ytDesc: "Raves, events and unique experiences in VRChat. Subscribe!", ytBtn: "Visit channel", ytInfo: "🔴 Live stream: music & community", videosTitle: "🎬 Featured Events", video1Label: "🎉 First Event", video2Label: "⚡ HARD.EXE", video3Label: "🔥 REVELION", footer: "Eclion · Rave Community in VRChat · All rights reserved · 2025", partnersTitle: "🤝 Partners", ownersTitle: "👑 Owners", contactTitle: "You can also contact us directly here", formNombreLabel: "Username", formOpcional: "(optional)", formNombrePlaceholder: "Ex: RaveMaster22", formEmailLabel: "Email", formEmailPlaceholder: "you@email.com", formDiscordLabel: "Discord", formDiscordPlaceholder: "1432010052311600230", formDiscordHint: "Example: 1432010052311600230 (User ID)", formMensajeLabel: "Message", formMensajePlaceholder: "Write your query, suggestion or whatever you want to tell us...", formSubmitBtn: "Send message", djsTitle: "🎧 ECLION DJs 🎧", genreLabel: "Genres", setsLabel: "Sets / Links", descriptionLabel: "Description", vrGroupBtn: "VRC Group" },
+    fr: { descText: "Nous sommes une communauté hispanique sur VRChat où nous adorons socialiser et créer des expériences uniques. Nous organisons des événements comme des raves, des soirées cinéma, des jeux et bien plus encore, toujours dans une ambiance amicale, amusante et respectueuse pour tous.", btnVRChat: "Rejoindre le groupe VRChat", socialTitle: "🌐 Nos réseaux sociaux", ytTitle: "📺 Chaîne officielle Eclion", ytDesc: "Raves, événements et expériences uniques dans VRChat. Abonnez-vous !", ytBtn: "Visiter la chaîne", ytInfo: "🔴 En direct : musique et communauté", videosTitle: "🎬 Événements en vedette", video1Label: "🎉 Premier Événement", video2Label: "⚡ HARD.EXE", video3Label: "🔥 REVELION", footer: "Eclion · Communauté Rave dans VRChat · Tous droits réservés · 2025", partnersTitle: "🤝 Partenaires", ownersTitle: "👑 Propriétaires", contactTitle: "Vous pouvez aussi nous contacter directement ici", formNombreLabel: "Nom d'utilisateur", formOpcional: "(optionnel)", formNombrePlaceholder: "Ex: RaveMaster22", formEmailLabel: "E-mail", formEmailPlaceholder: "vous@email.com", formDiscordLabel: "Discord", formDiscordPlaceholder: "1432010052311600230", formDiscordHint: "Exemple : 1432010052311600230 (ID utilisateur)", formMensajeLabel: "Message", formMensajePlaceholder: "Écrivez votre question, suggestion ou ce que vous voulez nous dire...", formSubmitBtn: "Envoyer le message", djsTitle: "🎧 ECLION DJs 🎧", genreLabel: "Genres", setsLabel: "Sets / Liens", descriptionLabel: "Description", vrGroupBtn: "Groupe VRC" }
   };
 
   function setLanguage(lang) {
