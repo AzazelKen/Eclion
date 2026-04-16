@@ -187,7 +187,7 @@
       filter: brightness(0) saturate(100%) invert(17%) sepia(98%) saturate(7488%) hue-rotate(359deg) brightness(94%) contrast(95%);
     }
 
-    /* ---------- CARRUSEL DJs ---------- */
+    /* ---------- CARRUSEL DJs (responsive: 1 en móvil, 3 en desktop) ---------- */
     .djs-carousel-section {
       background: transparent;
     }
@@ -212,6 +212,7 @@
       align-items: center;
       justify-content: center;
       box-shadow: 0 0 10px rgba(237,34,33,0.5);
+      flex-shrink: 0;
     }
     .carousel-btn:hover {
       background: #b91c1b;
@@ -231,7 +232,7 @@
       justify-content: flex-start;
     }
     .dj-thumb {
-      flex: 0 0 calc(33.333% - 14px); /* 3 items, gap 20px => (100% - 40px)/3 */
+      flex: 0 0 calc(33.333% - 14px); /* Por defecto 3 columnas (gap 20px) */
       min-width: 120px;
       background: #0a0a0a;
       border-radius: 48px;
@@ -259,15 +260,19 @@
       font-size: 0.9rem;
       display: block;
     }
-    /* Responsive: en móvil mostrar 1 elemento */
+    /* Móvil: 1 elemento por vez */
     @media (max-width: 700px) {
-      .dj-thumb { flex: 0 0 100%; }  /* Antes era 50% - ahora 1 solo */
-      .carousel-track { gap: 10px; }
-      .carousel-btn { width: 40px; height: 40px; font-size: 1.4rem; }
-    }
-    @media (max-width: 480px) {
-      /* Ya está cubierto por el de 700px, pero mantenemos consistencia */
-      .dj-thumb { flex: 0 0 100%; }
+      .dj-thumb {
+        flex: 0 0 100%;
+      }
+      .carousel-track {
+        gap: 10px;
+      }
+      .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.4rem;
+      }
     }
 
     /* Panel detalle DJ */
@@ -473,7 +478,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN DJs CON CARRUSEL Y PANEL DINÁMICO -->
+    <!-- SECCIÓN DJs CON CARRUSEL RESPONSIVE (1 en móvil, 3 en desktop) -->
     <section id="djs" class="djs-carousel-section">
       <h2 class="section-title title-center" data-i18n="djsTitle">🎧 ECLION DJs 🎧</h2>
       <div class="carousel-container">
@@ -493,7 +498,7 @@
       <form class="contact-form" id="contactForm" action="https://formsubmit.co/hispaeclion@gmail.com" method="POST"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="box"><input type="hidden" name="_subject" value="Nuevo mensaje desde Eclion Web"><div class="form-group"><label for="nombre"><i class="fas fa-user"></i> <span data-i18n="formNombreLabel">Nombre de usuario</span> <span style="font-weight: normal; color: #aaa;" data-i18n="formOpcional">(opcional)</span></label><input type="text" id="nombre" name="nombre" data-i18n-placeholder="formNombrePlaceholder" placeholder="Ej: RaveMaster22"></div><div class="form-group"><label for="email"><i class="fas fa-envelope"></i> <span data-i18n="formEmailLabel">Correo electrónico</span> <span class="required-star">*</span></label><input type="email" id="email" name="email" data-i18n-placeholder="formEmailPlaceholder" placeholder="tu@email.com" required></div><div class="form-group"><label for="discord"><i class="fab fa-discord"></i> <span data-i18n="formDiscordLabel">Discord</span> <span style="font-weight: normal; color: #aaa;" data-i18n="formOpcional">(opcional)</span></label><input type="text" id="discord" name="discord" data-i18n-placeholder="formDiscordPlaceholder" placeholder="1432010052311600230"><div class="form-hint" data-i18n="formDiscordHint">Ejemplo: 1432010052311600230 (ID de usuario)</div></div><div class="form-group"><label for="mensaje"><i class="fas fa-comment"></i> <span data-i18n="formMensajeLabel">Mensaje</span> <span class="required-star">*</span></label><textarea id="mensaje" name="mensaje" data-i18n-placeholder="formMensajePlaceholder" placeholder="Escribe tu consulta, sugerencia o lo que quieras contarnos..." required></textarea></div><button type="submit"><i class="fas fa-paper-plane"></i> <span data-i18n="formSubmitBtn">Enviar mensaje</span></button><div id="formStatus" class="form-status"></div></form></div>
     </section>
 
-    <section id="youtubeOfficial"><h2 class="section-title" data-i18n="ytTitle">📺 Canal Oficial Eclion</h2><div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center; background: #0c0c0c; border-radius: 32px; padding: 24px;"><div style="flex:1; min-width: 180px;"><i class="fab fa-youtube" style="font-size: 4rem; color: #ed2221;"></i><h3 style="margin: 12px 0;">EclionVR</h3><p data-i18n="ytDesc">Raves, eventos y experiencias únicas en VRChat. ¡Suscríbete!</p><a href="https://www.youtube.com/@EclionVR" target="_blank" class="btn-grupo btn-outline" style="margin-top: 16px; display: inline-block;"><i class="fab fa-youtube"></i> <span data-i18n="ytBtn">Visitar canal</span></a></div><div style="flex:2; min-width: 280px;"><iframe width="100%" height="240" src="https://www.youtube.com/embed/ZosDjpk-Ekw" style="border-radius: 20px;" title="Eclion Live Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p style="font-size: 0.8rem; margin-top: 6px;" data-i18n="ytInfo">🔴 Transmisión en vivo: música y comunidad</p></div></div></section>
+    <section id="youtubeOfficial"><h2 class="section-title" data-i18n="ytTitle">📺 Canal Oficial Eclion</h2><div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center; background: #0c0c0c; border-radius: 32px; padding: 24px;"><div style="flex:1; min-width: 180px;"><i class="fab fa-youtube" style="font-size: 4rem; color: #ed2221;"></i><h3 style="margin: 12px 0;">EclionVR</h3><p data-i18n="ytDesc">Raves, eventos y experiencias únicas en VRChat. ¡Suscríbete!</p><a href="https://www.youtube.com/@EclionVR" target="_blank" class="btn-grupo btn-outline" style="margin-top: 16px; display: inline-block;"><i class="fab fa-youtube"></i> <span data-i18n="ytBtn">Visitar canal</span></a></div><div style="flex:2; min-width: 280px;"><iframe width="100%" height="240" src="https://www.youtube.com/embed/9doofg-srhg" style="border-radius: 20px;" title="Eclion Live Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p style="font-size: 0.8rem; margin-top: 6px;" data-i18n="ytInfo">🔴 Transmisión en vivo: música y comunidad</p></div></div></section>
 
     <section id="videosEclion"><h2 class="section-title title-center" data-i18n="videosTitle">🎬 Eventos destacados</h2><div class="videos-grid"><div class="video-item"><iframe src="https://www.youtube.com/embed/k7mtdZoONbs" title="Primer Evento Eclion" allowfullscreen loading="lazy"></iframe><p data-i18n="video1Label">🎉 Primer Evento</p></div><div class="video-item"><iframe src="https://www.youtube.com/embed/vLCWa-oKrQU" title="HARD.EXE" allowfullscreen loading="lazy"></iframe><p data-i18n="video2Label">⚡ HARD.EXE</p></div><div class="video-item"><iframe src="https://www.youtube.com/embed/W0JdMFh-K34" title="REVELION" allowfullscreen loading="lazy"></iframe><p data-i18n="video3Label">🔥 REVELION</p></div></div></section>
 
@@ -506,7 +511,7 @@
 <audio id="bgAudio" loop preload="auto"><source src="fondo.mp3" type="audio/mpeg"></audio>
 
 <script>
-  // ========== DATOS DE LOS DJs (MODIFICADOS) ==========
+  // ========== DATOS DE LOS DJs (DESCRIPCIÓN DE ANAL_RAMPAGE ACTUALIZADA) ==========
   const djsData = [
     { 
       id: "AzazelKen", name: "AzazelKen", 
@@ -533,9 +538,9 @@
         fr: "Hard techno, riddim, tearout, metalstep, deathstep" 
       }, 
       description: { 
-        es: "Ritmos agresivos y bajos demoledores, especialista en metalstep.", 
-        en: "Aggressive rhythms and crushing basses, metalstep specialist.", 
-        fr: "Rythmes agressifs et basses dévastatrices, spécialiste metalstep." 
+        es: "Especialista en hardtechno con una energía arrolladora mientras pincha y baila. Sus sets te harán mover sin parar.", 
+        en: "Hardtechno specialist with overwhelming energy while DJing and dancing. His sets will make you move non-stop.", 
+        fr: "Spécialiste de la hardtechno avec une énergie débordante tout en mixant et en dansant. Ses sets vous feront bouger sans arrêt." 
       } 
     },
     { 
@@ -572,7 +577,7 @@
       id: "SynHaptX Fire", name: "SynHaptX Fire", 
       img: "https://api.vrchat.cloud/api/1/image/file_49e37070-b4ef-4749-ac48-0707db2982e2/1/1024", 
       youtube: "https://www.youtube.com/@synhaptxfire", 
-      vrGroupLink: "https://vrchat.com/home/group/grp_8b16de98-1064-4b1e-9565-59b64e2c07ed", // nuevo enlace
+      vrGroupLink: "https://vrchat.com/home/group/grp_8b16de98-1064-4b1e-9565-59b64e2c07ed",
       genres: { 
         es: "Dubstep, MetalStep, Tearout", 
         en: "Dubstep, MetalStep, Tearout", 
@@ -601,10 +606,25 @@
     }
   ];
 
+  // ========== CARRUSEL RESPONSIVE ==========
   let currentLang = 'es';
   let currentDjIndex = 0;
-  let carouselIndex = 0; // índice del primer elemento visible (0 a 3)
-  const itemsPerView = 3;
+  let carouselIndex = 0;
+  let itemsPerView = 3;
+
+  function getItemsPerView() {
+    return window.innerWidth <= 700 ? 1 : 3;
+  }
+
+  function updateItemsPerView() {
+    const newItems = getItemsPerView();
+    if (newItems === itemsPerView) return;
+    itemsPerView = newItems;
+    const maxIndex = Math.max(0, djsData.length - itemsPerView);
+    if (carouselIndex > maxIndex) carouselIndex = maxIndex;
+    if (carouselIndex < 0) carouselIndex = 0;
+    updateCarouselTransform();
+  }
 
   function buildCarousel() {
     const track = document.getElementById('carouselTrack');
@@ -617,6 +637,7 @@
       thumb.addEventListener('click', () => selectDJ(idx));
       track.appendChild(thumb);
     });
+    itemsPerView = getItemsPerView();
     updateCarouselTransform();
   }
 
@@ -624,21 +645,43 @@
     const track = document.getElementById('carouselTrack');
     const thumbs = document.querySelectorAll('.dj-thumb');
     if (!thumbs.length) return;
-    const thumbWidth = thumbs[0].offsetWidth + 20; // width + gap
+    const thumbWidth = thumbs[0].offsetWidth + 20; // width + gap (20px)
     const offset = carouselIndex * thumbWidth;
     track.style.transform = `translateX(-${offset}px)`;
   }
 
   function carouselPrev() {
-    if (carouselIndex > 0) carouselIndex--;
-    else carouselIndex = Math.max(0, djsData.length - itemsPerView);
+    if (carouselIndex > 0) {
+      carouselIndex--;
+    } else {
+      const maxIndex = Math.max(0, djsData.length - itemsPerView);
+      carouselIndex = maxIndex;
+    }
     updateCarouselTransform();
   }
+
   function carouselNext() {
     const maxIndex = Math.max(0, djsData.length - itemsPerView);
-    if (carouselIndex < maxIndex) carouselIndex++;
-    else carouselIndex = 0;
+    if (carouselIndex < maxIndex) {
+      carouselIndex++;
+    } else {
+      carouselIndex = 0;
+    }
     updateCarouselTransform();
+  }
+
+  function scrollToDJ(index) {
+    const totalDJs = djsData.length;
+    let newIndex = carouselIndex;
+    if (index < carouselIndex) {
+      newIndex = index;
+    } else if (index >= carouselIndex + itemsPerView) {
+      newIndex = index - itemsPerView + 1;
+    }
+    if (newIndex !== carouselIndex) {
+      carouselIndex = Math.min(Math.max(0, newIndex), Math.max(0, totalDJs - itemsPerView));
+      updateCarouselTransform();
+    }
   }
 
   function selectDJ(index) {
@@ -647,6 +690,7 @@
       if (i === index) el.classList.add('active');
       else el.classList.remove('active');
     });
+    scrollToDJ(index);
     renderDetailPanel();
   }
 
@@ -657,7 +701,6 @@
     const descText = dj.description[currentLang] || dj.description.es;
     const setLink = dj.youtube;
     panel.style.display = 'block';
-    // Construcción del HTML del panel, incluyendo botón de VRC Group si existe vrGroupLink
     let extraButton = '';
     if (dj.vrGroupLink) {
       const btnText = (currentLang === 'es' ? 'Grupo VRC' : (currentLang === 'en' ? 'VRC Group' : 'Groupe VRC'));
@@ -686,7 +729,6 @@
         </div>
       </div>
     `;
-    // Actualizar textos del panel según idioma actual
     updatePanelTexts();
   }
 
@@ -699,7 +741,6 @@
     if (genreSpan) genreSpan.innerText = (currentLang === 'es' ? 'Géneros' : currentLang === 'en' ? 'Genres' : 'Genres');
     if (setsSpan) setsSpan.innerText = (currentLang === 'es' ? 'Sets / Enlaces' : currentLang === 'en' ? 'Sets / Links' : 'Sets / Liens');
     if (descSpan) descSpan.innerText = (currentLang === 'es' ? 'Descripción' : currentLang === 'en' ? 'Description' : 'Description');
-    // Actualizar los géneros y descripción con el idioma actual
     const dj = djsData[currentDjIndex];
     if (dj) {
       const genreText = dj.genres[currentLang] || dj.genres.es;
@@ -707,21 +748,15 @@
       if (genreContainer) genreContainer.innerHTML = genreText.split(',').map(g => `<span class="genre-tag">${g.trim()}</span>`).join('');
       const descPara = panel.querySelector('.dj-description p');
       if (descPara) descPara.innerText = dj.description[currentLang] || dj.description.es;
-      // Actualizar texto del botón de VRC Group si existe
-      const vrBtn = panel.querySelector('.dj-sets a:last-child'); // puede ser el extraButton
-      // Mejor: buscar por el icono img
-      const vrLink = panel.querySelector('.dj-sets a img');
-      if (vrLink && dj.vrGroupLink) {
-        const parent = vrLink.closest('a');
-        if (parent) {
-          const btnText = (currentLang === 'es' ? 'Grupo VRC' : (currentLang === 'en' ? 'VRC Group' : 'Groupe VRC'));
-          parent.innerHTML = `<img src="https://i.imgur.com/S7I1t44.png" alt="VRChat"> ${btnText}`;
-        }
+      const vrBtn = panel.querySelector('.dj-sets a:last-child');
+      if (vrBtn && dj.vrGroupLink && vrBtn.querySelector('img')) {
+        const btnText = (currentLang === 'es' ? 'Grupo VRC' : (currentLang === 'en' ? 'VRC Group' : 'Groupe VRC'));
+        vrBtn.innerHTML = `<img src="https://i.imgur.com/S7I1t44.png" alt="VRChat"> ${btnText}`;
       }
     }
   }
 
-  // Traducciones generales (se añade vrGroupBtn)
+  // Traducciones generales
   const translations = {
     es: { descText: "Somos una comunidad hispana en VRChat donde nos encanta socializar y crear experiencias únicas. Organizamos eventos como raves, noches de películas, juegos y mucho más, siempre en un ambiente amigable, divertido y respetuoso para todos.", btnVRChat: "Unirse al grupo VRChat", socialTitle: "🌐 Nuestras Redes", ytTitle: "📺 Canal Oficial Eclion", ytDesc: "Raves, eventos y experiencias únicas en VRChat. ¡Suscríbete!", ytBtn: "Visitar canal", ytInfo: "🔴 Transmisión en vivo: música y comunidad", videosTitle: "🎬 Eventos destacados", video1Label: "🎉 Primer Evento", video2Label: "⚡ HARD.EXE", video3Label: "🔥 REVELION", footer: "Eclion · Rave Community in VRChat · Todos los derechos reservados · 2025", partnersTitle: "🤝 Partners", ownersTitle: "👑 Owners", contactTitle: "También puedes contactarnos directamente por aquí", formNombreLabel: "Nombre de usuario", formOpcional: "(opcional)", formNombrePlaceholder: "Ej: RaveMaster22", formEmailLabel: "Correo electrónico", formEmailPlaceholder: "tu@email.com", formDiscordLabel: "Discord", formDiscordPlaceholder: "1432010052311600230", formDiscordHint: "Ejemplo: 1432010052311600230 (ID de usuario)", formMensajeLabel: "Mensaje", formMensajePlaceholder: "Escribe tu consulta, sugerencia o lo que quieras contarnos...", formSubmitBtn: "Enviar mensaje", djsTitle: "🎧 ECLION DJs 🎧", genreLabel: "Géneros", setsLabel: "Sets / Enlaces", descriptionLabel: "Descripción", vrGroupBtn: "Grupo VRC" },
     en: { descText: "We are a Hispanic community on VRChat where we love to socialize and create unique experiences. We organize events like raves, movie nights, games, and much more, always in a friendly, fun, and respectful environment for everyone.", btnVRChat: "Join VRChat Group", socialTitle: "🌐 Our Social Networks", ytTitle: "📺 Official Eclion Channel", ytDesc: "Raves, events and unique experiences in VRChat. Subscribe!", ytBtn: "Visit channel", ytInfo: "🔴 Live stream: music & community", videosTitle: "🎬 Featured Events", video1Label: "🎉 First Event", video2Label: "⚡ HARD.EXE", video3Label: "🔥 REVELION", footer: "Eclion · Rave Community in VRChat · All rights reserved · 2025", partnersTitle: "🤝 Partners", ownersTitle: "👑 Owners", contactTitle: "You can also contact us directly here", formNombreLabel: "Username", formOpcional: "(optional)", formNombrePlaceholder: "Ex: RaveMaster22", formEmailLabel: "Email", formEmailPlaceholder: "you@email.com", formDiscordLabel: "Discord", formDiscordPlaceholder: "1432010052311600230", formDiscordHint: "Example: 1432010052311600230 (User ID)", formMensajeLabel: "Message", formMensajePlaceholder: "Write your query, suggestion or whatever you want to tell us...", formSubmitBtn: "Send message", djsTitle: "🎧 ECLION DJs 🎧", genreLabel: "Genres", setsLabel: "Sets / Links", descriptionLabel: "Description", vrGroupBtn: "VRC Group" },
@@ -747,25 +782,97 @@
   document.getElementById('btn-fr').addEventListener('click', () => setLanguage('fr'));
   setLanguage('es');
 
-  // Inicializar carrusel y seleccionar primer DJ
+  // Inicializar carrusel
   buildCarousel();
   selectDJ(0);
   document.getElementById('carouselPrev').addEventListener('click', carouselPrev);
   document.getElementById('carouselNext').addEventListener('click', carouselNext);
-  window.addEventListener('resize', () => updateCarouselTransform());
+  let resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      updateItemsPerView();
+      updateCarouselTransform();
+    }, 150);
+  });
 
-  // Audio y demás
-  const audio = document.getElementById('bgAudio'); const playPauseBtn = document.getElementById('playPauseBtn'); const volumeSlider = document.getElementById('volumeSlider'); let playIcon = playPauseBtn.querySelector('i'); audio.volume = volumeSlider.value;
+  // ========== AUDIO: se inicia al hacer clic en el overlay ==========
+  const audio = document.getElementById('bgAudio');
+  const playPauseBtn = document.getElementById('playPauseBtn');
+  const volumeSlider = document.getElementById('volumeSlider');
+  let playIcon = playPauseBtn.querySelector('i');
+  audio.volume = volumeSlider.value;
+
   function updatePlayIcon() { playIcon.className = audio.paused ? 'fas fa-play' : 'fas fa-pause'; }
   playPauseBtn.addEventListener('click', () => { if(audio.paused) audio.play().catch(e=>{}); else audio.pause(); updatePlayIcon(); });
-  volumeSlider.addEventListener('input', (e) => audio.volume = parseFloat(e.target.value)); audio.addEventListener('ended', () => { audio.currentTime = 0; audio.play().catch(e=>{}); });
-  window.addEventListener('load', () => { setTimeout(() => { audio.play().then(updatePlayIcon).catch(updatePlayIcon); }, 100); });
-  audio.addEventListener('play', updatePlayIcon); audio.addEventListener('pause', updatePlayIcon);
+  volumeSlider.addEventListener('input', (e) => audio.volume = parseFloat(e.target.value));
+  audio.addEventListener('ended', () => { audio.currentTime = 0; audio.play().catch(e=>{}); });
+  audio.addEventListener('play', updatePlayIcon);
+  audio.addEventListener('pause', updatePlayIcon);
 
-  const contactForm = document.getElementById('contactForm'); const formStatus = document.getElementById('formStatus');
-  contactForm.addEventListener('submit', function(e) { const email = document.getElementById('email'); const msg = document.getElementById('mensaje'); let error = ''; if (!email.value.trim()) error = (currentLang==='es')?'El correo es obligatorio.':(currentLang==='en'?'Email required.':'E-mail obligatoire.'); else if (!/^\S+@\S+\.\S+$/.test(email.value)) error = (currentLang==='es')?'Correo inválido.':(currentLang==='en'?'Invalid email.':'E-mail invalide.'); else if (!msg.value.trim()) error = (currentLang==='es')?'Mensaje vacío.':(currentLang==='en'?'Message empty.':'Message vide.'); if (error) { e.preventDefault(); formStatus.textContent = error; formStatus.style.color = '#ed2221'; } else { formStatus.textContent = (currentLang==='es')?'Enviando...':(currentLang==='en'?'Sending...':'Envoi...'); formStatus.style.color = '#ccc'; } });
+  // Reproducir audio después del primer clic en el overlay (glitch)
+  const overlay = document.getElementById('glitchOverlay');
+  const glitchContainer = document.getElementById('glitchContainer');
+  let audioStarted = false;
+  function startAudio() {
+    if (!audioStarted) {
+      audio.play().then(() => {
+        audioStarted = true;
+        updatePlayIcon();
+      }).catch(e => console.log("Audio autoplay blocked, user must click play widget"));
+    }
+  }
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay || e.target.closest('.glitch-container')) {
+      startAudio();
+      overlay.classList.add('hidden');
+      if (glitchContainer) {
+        glitchContainer.style.transform = 'scale(0.8)';
+        glitchContainer.style.opacity = '0';
+        glitchContainer.style.transition = 'transform 0.4s, opacity 0.4s';
+      }
+    }
+  });
 
-  (function() { const overlay = document.getElementById('glitchOverlay'); const container = document.getElementById('glitchContainer'); function playGlitchSound() { try { const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); const oscillator = audioCtx.createOscillator(); const gainNode = audioCtx.createGain(); oscillator.type = 'square'; oscillator.frequency.setValueAtTime(80, audioCtx.currentTime); oscillator.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.1); gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2); oscillator.connect(gainNode); gainNode.connect(audioCtx.destination); oscillator.start(); oscillator.stop(audioCtx.currentTime + 0.2); audioCtx.resume(); } catch(e) {} } function playClickOutSound() { try { const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); const oscillator = audioCtx.createOscillator(); const gainNode = audioCtx.createGain(); oscillator.type = 'triangle'; oscillator.frequency.setValueAtTime(600, audioCtx.currentTime); oscillator.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.15); gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2); oscillator.connect(gainNode); gainNode.connect(audioCtx.destination); oscillator.start(); oscillator.stop(audioCtx.currentTime + 0.2); audioCtx.resume(); } catch(e) {} } window.addEventListener('load', () => { setTimeout(() => { playGlitchSound(); }, 200); }); overlay.addEventListener('click', (e) => { if (e.target === overlay || e.target.closest('.glitch-container')) { playClickOutSound(); overlay.classList.add('hidden'); container.style.transform = 'scale(0.8)'; container.style.opacity = '0'; container.style.transition = 'transform 0.4s, opacity 0.4s'; } }); })();
+  // Sonidos del glitch (opcional)
+  function playGlitchSound() {
+    try {
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const oscillator = audioCtx.createOscillator();
+      const gainNode = audioCtx.createGain();
+      oscillator.type = 'square';
+      oscillator.frequency.setValueAtTime(80, audioCtx.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.1);
+      gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
+      oscillator.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+      oscillator.start();
+      oscillator.stop(audioCtx.currentTime + 0.2);
+      audioCtx.resume();
+    } catch(e) {}
+  }
+  setTimeout(() => { playGlitchSound(); }, 200);
+
+  // Formulario de contacto
+  const contactForm = document.getElementById('contactForm');
+  const formStatus = document.getElementById('formStatus');
+  contactForm.addEventListener('submit', function(e) {
+    const email = document.getElementById('email');
+    const msg = document.getElementById('mensaje');
+    let error = '';
+    if (!email.value.trim()) error = (currentLang==='es')?'El correo es obligatorio.':(currentLang==='en'?'Email required.':'E-mail obligatoire.');
+    else if (!/^\S+@\S+\.\S+$/.test(email.value)) error = (currentLang==='es')?'Correo inválido.':(currentLang==='en'?'Invalid email.':'E-mail invalide.');
+    else if (!msg.value.trim()) error = (currentLang==='es')?'Mensaje vacío.':(currentLang==='en'?'Message empty.':'Message vide.');
+    if (error) {
+      e.preventDefault();
+      formStatus.textContent = error;
+      formStatus.style.color = '#ed2221';
+    } else {
+      formStatus.textContent = (currentLang==='es')?'Enviando...':(currentLang==='en'?'Sending...':'Envoi...');
+      formStatus.style.color = '#ccc';
+    }
+  });
 </script>
 </body>
 </html>
