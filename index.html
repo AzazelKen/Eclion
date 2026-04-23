@@ -232,7 +232,7 @@
       justify-content: flex-start;
     }
     .dj-thumb {
-      flex: 0 0 calc(33.333% - 14px); /* Por defecto 3 columnas (gap 20px) */
+      flex: 0 0 calc(33.333% - 14px);
       min-width: 120px;
       background: #0a0a0a;
       border-radius: 48px;
@@ -260,22 +260,12 @@
       font-size: 0.9rem;
       display: block;
     }
-    /* Móvil: 1 elemento por vez */
     @media (max-width: 700px) {
-      .dj-thumb {
-        flex: 0 0 100%;
-      }
-      .carousel-track {
-        gap: 10px;
-      }
-      .carousel-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.4rem;
-      }
+      .dj-thumb { flex: 0 0 100%; }
+      .carousel-track { gap: 10px; }
+      .carousel-btn { width: 40px; height: 40px; font-size: 1.4rem; }
     }
 
-    /* Panel detalle DJ */
     .dj-detail-panel {
       margin-top: 40px;
       background: #0c0c0c;
@@ -289,10 +279,7 @@
       animation: fadeInUp 0.5s forwards;
     }
     @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      to { opacity: 1; transform: translateY(0); }
     }
     .dj-detail-grid {
       display: flex;
@@ -478,7 +465,6 @@
       </div>
     </section>
 
-    <!-- SECCIÓN DJs CON CARRUSEL RESPONSIVE (1 en móvil, 3 en desktop) -->
     <section id="djs" class="djs-carousel-section">
       <h2 class="section-title title-center" data-i18n="djsTitle">🎧 ECLION DJs 🎧</h2>
       <div class="carousel-container">
@@ -511,7 +497,7 @@
 <audio id="bgAudio" loop preload="auto"><source src="fondo.mp3" type="audio/mpeg"></audio>
 
 <script>
-  // ========== DATOS DE LOS DJs (CON NUEVO DJ PIKYES) ==========
+  // ========== DATOS DE LOS DJs (CON PIKYES CON DESCRIPCIONES TRADUCIDAS) ==========
   const djsData = [
     { 
       id: "AzazelKen", name: "AzazelKen", 
@@ -604,7 +590,7 @@
         fr: "L'essence du tearout, coups directs à la poitrine." 
       } 
     },
-    // NUEVO DJ: ¦~ＰＩＫＹＥＳ~¦
+    // NUEVO DJ: ¦~ＰＩＫＹＥＳ~¦ con descripciones traducidas
     {
       id: "Pikyes",
       name: "¦~ＰＩＫＹＥＳ~¦",
@@ -616,9 +602,9 @@
         fr: "Oldschool Rave, Early 90’s Rave, Modern Hardcore, Gabber, Terrorcore, Breakbeat, Drum & Bass, Crossbreed"
       },
       description: {
-        es: "My name is Pikyes, and my avatar is Pikis Otter. Music has been part of me since I was a kid. At just 4 years old, I was already composing 10-minute tracks on the PS1 game Music. I started DJing almost 6 years ago, first through DJ battles, birthdays and private parties. I’ve also done music production and was a radio host for an esports team. Current setup: Numark Mixtrack Platinum FX with Audio-Technika ATH-R50x. Passionate about the virtual world, I’ve developed solid technical knowledge in virtual audio-visuals. My long-term goal is to become a resident DJ on real or virtual stages. I’m multi-genre with a strong love for rave culture. I mix for the whole crowd. I’m really happy and proud to have officially joined Eclion! Can’t wait to mix with you all and make the instances shake together ❤️",
-        en: "My name is Pikyes, and my avatar is Pikis Otter. Music has been part of me since I was a kid. At just 4 years old, I was already composing 10-minute tracks on the PS1 game Music. I started DJing almost 6 years ago, first through DJ battles, birthdays and private parties. I’ve also done music production and was a radio host for an esports team. Current setup: Numark Mixtrack Platinum FX with Audio-Technika ATH-R50x. Passionate about the virtual world, I’ve developed solid technical knowledge in virtual audio-visuals. My long-term goal is to become a resident DJ on real or virtual stages. I’m multi-genre with a strong love for rave culture. I mix for the whole crowd. I’m really happy and proud to have officially joined Eclion! Can’t wait to mix with you all and make the instances shake together ❤️",
-        fr: "My name is Pikyes, and my avatar is Pikis Otter. Music has been part of me since I was a kid. At just 4 years old, I was already composing 10-minute tracks on the PS1 game Music. I started DJing almost 6 years ago, first through DJ battles, birthdays and private parties. I’ve also done music production and was a radio host for an esports team. Current setup: Numark Mixtrack Platinum FX with Audio-Technika ATH-R50x. Passionate about the virtual world, I’ve developed solid technical knowledge in virtual audio-visuals. My long-term goal is to become a resident DJ on real or virtual stages. I’m multi-genre with a strong love for rave culture. I mix for the whole crowd. I’m really happy and proud to have officially joined Eclion! Can’t wait to mix with you all and make the instances shake together ❤️"
+        es: "Me llamo Pikyes y mi avatar es Pikis Otter (avatar privado). La música ha sido parte de mí desde que era niño. Con solo 4 años ya componía pistas de 10 minutos en el juego Music de PS1. Tenía alma de productor antes incluso de saber lo que era.\nEmpecé a pinchar hace casi 6 años, primero en batallas de DJ, cumpleaños y fiestas privadas. Desde entonces, nunca he parado del todo. También he producido música, he ido y venido entre la creación y la mezcla, e incluso fui locutor de radio para un equipo de esports.\nConfiguración actual: actualmente mezclo con una Numark Mixtrack Platinum FX y auriculares abiertos Audio-Technica ATH-R50x para preescuchar en casa.\nApasionado del mundo virtual, he desarrollado un sólido conocimiento técnico en audiovisuales virtuales. Mi objetivo a largo plazo es crecer y algún día convertirme en DJ residente, ya sea en escenarios reales o en los mayores escenarios virtuales.\nEn cuanto al estilo, soy multigénero con un gran amor por la cultura rave: lo que más me gusta es compartir esta pasión con los demás. No pincho solo para mí mismo, pincho para todo el público.\nEstoy muy feliz y orgulloso de haberme unido oficialmente a Eclion. ¡Estoy deseando pinchar con todos vosotros y hacer temblar las instancias juntos ❤️",
+        en: "My name is Pikyes, and my avatar is Pikis Otter (private avatar). Music has been part of me since I was a kid. At just 4 years old, I was already composing 10-minute tracks on the PS1 game Music. I had the soul of a producer before I even knew what it was!\nI started DJing almost 6 years ago, first through DJ battles, birthdays and private parties. Since then, I’ve never really stopped. I’ve also done music production, gone back and forth between creating and mixing, and I was even a radio host for an esports team.\nCurrent setup: I currently mix on a Numark Mixtrack Platinum FX with Audio-Technika ATH-R50x open-back headphones for home previewing.\nPassionate about the virtual world, I’ve developed solid technical knowledge in virtual audio-visuals. My long-term goal is to grow and one day become a resident DJ, whether on real stages or on the biggest virtual scenes.\nStyle-wise, I’m multi-genre with a strong love for rave culture: What I love most is sharing this passion with others. I don’t mix just for myself — I mix for the whole crowd.\nI’m really happy and proud to have officially joined Eclion! Can’t wait to mix with you all and make the instances shake together ❤️",
+        fr: "Je m'appelle Pikyes et mon avatar est Pikis Otter (avatar privé). La musique a toujours fait partie de moi depuis mon enfance. À seulement 4 ans, je composais déjà des morceaux de 10 minutes sur le jeu Music de la PS1. J'avais l'âme d'un producteur avant même de savoir ce que c'était.\nJ'ai commencé à DJ il y a presque 6 ans, d'abord lors de battles de DJ, d'anniversaires et de fêtes privées. Depuis, je n'ai jamais vraiment arrêté. J'ai aussi fait de la production musicale, j'ai alterné entre création et mix, et j'ai même été animateur radio pour une équipe d'esports.\nConfiguration actuelle : je mixe actuellement sur une Numark Mixtrack Platinum FX avec un casque ouvert Audio-Technica ATH-R50x pour la pré-écoute à la maison.\nPassionné par le monde virtuel, j'ai développé de solides connaissances techniques en audiovisuel virtuel. Mon objectif à long terme est de grandir et de devenir un jour DJ résident, que ce soit sur des scènes réelles ou sur les plus grandes scènes virtuelles.\nCôté style, je suis multigenre avec un grand amour pour la culture rave : ce que j'aime par-dessus tout, c'est partager cette passion avec les autres. Je ne mixe pas seulement pour moi — je mixe pour tout le public.\nJe suis vraiment heureux et fier d'avoir officiellement rejoint Eclion ! J'ai hâte de mixer avec vous tous et de faire trembler les instances ensemble ❤️"
       }
     }
   ];
@@ -662,7 +648,7 @@
     const track = document.getElementById('carouselTrack');
     const thumbs = document.querySelectorAll('.dj-thumb');
     if (!thumbs.length) return;
-    const thumbWidth = thumbs[0].offsetWidth + 20; // width + gap (20px)
+    const thumbWidth = thumbs[0].offsetWidth + 20;
     const offset = carouselIndex * thumbWidth;
     track.style.transform = `translateX(-${offset}px)`;
   }
@@ -741,7 +727,7 @@
           </div>
           <div class="dj-description">
             <h3><i class="fas fa-user-astronaut"></i> <span data-i18n="descriptionLabel">Descripción</span></h3>
-            <p>${descText}</p>
+            <p style="white-space: pre-line;">${descText}</p>
           </div>
         </div>
       </div>
@@ -799,7 +785,6 @@
   document.getElementById('btn-fr').addEventListener('click', () => setLanguage('fr'));
   setLanguage('es');
 
-  // Inicializar carrusel
   buildCarousel();
   selectDJ(0);
   document.getElementById('carouselPrev').addEventListener('click', carouselPrev);
@@ -813,7 +798,7 @@
     }, 150);
   });
 
-  // ========== AUDIO: se inicia al hacer clic en el overlay ==========
+  // ========== AUDIO ==========
   const audio = document.getElementById('bgAudio');
   const playPauseBtn = document.getElementById('playPauseBtn');
   const volumeSlider = document.getElementById('volumeSlider');
@@ -827,7 +812,6 @@
   audio.addEventListener('play', updatePlayIcon);
   audio.addEventListener('pause', updatePlayIcon);
 
-  // Reproducir audio después del primer clic en el overlay (glitch)
   const overlay = document.getElementById('glitchOverlay');
   const glitchContainer = document.getElementById('glitchContainer');
   let audioStarted = false;
@@ -851,7 +835,6 @@
     }
   });
 
-  // Sonidos del glitch (opcional)
   function playGlitchSound() {
     try {
       const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -871,7 +854,6 @@
   }
   setTimeout(() => { playGlitchSound(); }, 200);
 
-  // Formulario de contacto
   const contactForm = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
   contactForm.addEventListener('submit', function(e) {
