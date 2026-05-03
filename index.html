@@ -181,12 +181,6 @@
             border-bottom: 2px solid var(--primary);
         }
 
-        /* Contact dropdown */
-        .contact-dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
         .contact-btn {
             background: none;
             border: 1px solid var(--primary);
@@ -204,26 +198,53 @@
             color: white;
         }
 
-        .dropdown-content {
+        /* ── MODAL ── */
+        .modal-overlay {
             display: none;
-            position: absolute;
-            right: 0;
-            top: 100%;
-            margin-top: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
             background: #111;
             border: 1px solid var(--primary);
             border-radius: 16px;
-            padding: 20px;
-            width: 350px;
-            max-width: 90vw;
-            z-index: 1100;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-            max-height: 80vh;
+            padding: 25px;
+            width: 100%;
+            max-width: 450px;
+            max-height: 90vh;
             overflow-y: auto;
+            position: relative;
+            box-shadow: 0 0 30px rgba(237, 34, 33, 0.3);
         }
 
-        .contact-dropdown.active .dropdown-content {
-            display: block;
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
         }
 
         /* ── HERO ── */
@@ -499,20 +520,20 @@
             white-space: pre-line;
         }
 
-        /* ── FORMULARIO DENTRO DEL DROPDOWN ── */
-        .dropdown-form .form-group {
+        /* ── FORMULARIO EN MODAL ── */
+        .modal-form .form-group {
             margin-bottom: 15px;
         }
 
-        .dropdown-form label {
+        .modal-form label {
             display: block;
             margin-bottom: 5px;
             font-weight: 500;
             font-size: 0.9rem;
         }
 
-        .dropdown-form input,
-        .dropdown-form textarea {
+        .modal-form input,
+        .modal-form textarea {
             width: 100%;
             padding: 10px 14px;
             background: #1a1a1a;
@@ -523,13 +544,13 @@
             font-size: 0.9rem;
         }
 
-        .dropdown-form textarea {
+        .modal-form textarea {
             min-height: 100px;
             resize: vertical;
         }
 
-        .dropdown-form input:focus,
-        .dropdown-form textarea:focus {
+        .modal-form input:focus,
+        .modal-form textarea:focus {
             border-color: var(--primary);
             outline: none;
         }
@@ -632,10 +653,6 @@
             .nav-left {
                 gap: 10px;
             }
-            .dropdown-content {
-                width: 280px;
-                right: -10px;
-            }
         }
     </style>
 </head>
@@ -662,12 +679,7 @@
                 </div>
             </div>
             <div class="header-right">
-                <div class="contact-dropdown" id="contactDropdown">
-                    <button class="contact-btn" id="contactBtn" data-i18n="contactBtnLabel">Contáctanos</button>
-                    <div class="dropdown-content dropdown-form" id="contactFormContainer">
-                        <!-- El formulario se inyecta aquí vía JS -->
-                    </div>
-                </div>
+                <button class="contact-btn" id="contactBtn" data-i18n="contactBtnLabel">Contáctanos</button>
                 <div class="langs">
                     <button id="btn-es" class="active">ES</button>
                     <button id="btn-en">EN</button>
@@ -776,6 +788,14 @@
         <p data-i18n="footer">Eclion · Rave Community in VRChat · Todos los derechos reservados · 2025</p>
         <p style="margin-top:8px;">🎵 #EclionFamily 🎵</p>
     </footer>
+
+    <!-- MODAL DE CONTACTO -->
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content modal-form">
+            <button class="modal-close" id="modalCloseBtn">&times;</button>
+            <div id="modalFormContainer"></div>
+        </div>
+    </div>
 
     <!-- AUDIO WIDGET -->
     <div class="audio-widget" id="audioWidget">
@@ -912,6 +932,21 @@
                     en: "Effective one of the unbecoming unnameable, her process is divine in her logic. May the Bruit be her guidance as her might will be mine. She rolls back the light of life. And another one descends. Praise be ꓘ ꓘ ꓘ ꓘ ꓘ ꓘ ꓘ",
                     fr: "Efficace comme l'innommable inatteignable, son processus est divin dans sa logique. Que le Bruit soit son guide, car sa puissance sera la mienne. Elle repousse la lumière de la vie. Et un autre descend. Loué soit ꓘ ꓘ ꓘ ꓘ ꓘ ꓘ ꓘ"
                 }
+            }, {
+                id: "VictoriaNice",
+                name: "VictoriaŅice",
+                img: "https://api.vrchat.cloud/api/1/image/file_ee99725e-12fa-4e34-9e66-86f0fec0201f/1/256",
+                youtube: "https://www.youtube.com/@victorianicee",
+                genres: {
+                    es: "Deep house, House Club, Tech House, Forest psy, Techno, Minimal Techno, breakbeat, Hardcore techno, Raw style, Hardstyle, Dubstep, Drum and bass, Japanese hardcore",
+                    en: "Deep house, House Club, Tech House, Forest psy, Techno, Minimal Techno, breakbeat, Hardcore techno, Raw style, Hardstyle, Dubstep, Drum and bass, Japanese hardcore",
+                    fr: "Deep house, House Club, Tech House, Forest psy, Techno, Minimal Techno, breakbeat, Hardcore techno, Raw style, Hardstyle, Dubstep, Drum and bass, Japanese hardcore"
+                },
+                description: {
+                    es: "VictoriaŅice es una viajera sonora que transita desde la elegancia hipnótica del deep house y el tech house hasta la furia controlada del hardstyle y el drum and bass. Su estilo se pasea por bosques de forest psy, se endurece con techno minimal y estalla en breaks inesperados. Una mezcla de dulzura y potencia que no deja indiferente a nadie.",
+                    en: "VictoriaŅice is a sonic traveler who moves from the hypnotic elegance of deep house and tech house to the controlled fury of hardstyle and drum and bass. Her style wanders through forests of forest psy, hardens with minimal techno and explodes in unexpected breaks. A blend of sweetness and power that leaves no one indifferent.",
+                    fr: "VictoriaŅice est une voyageuse sonore qui passe de l'élégance hypnotique de la deep house et de la tech house à la fureur contrôlée de la hardstyle et de la drum and bass. Son style se promène dans des forêts de forest psy, se durcit avec de la techno minimale et explose en breaks inattendus. Un mélange de douceur et de puissance qui ne laisse personne indifférent."
+                }
             }];
 
             // ─── ESTADO ──────────────────────────────────
@@ -1027,9 +1062,10 @@
             const playPauseBtn = document.getElementById('playPauseBtn');
             const volumeSlider = document.getElementById('volumeSlider');
             const bgAudio = document.getElementById('bgAudio');
-            const contactDropdown = document.getElementById('contactDropdown');
             const contactBtn = document.getElementById('contactBtn');
-            const contactFormContainer = document.getElementById('contactFormContainer');
+            const contactModal = document.getElementById('contactModal');
+            const modalCloseBtn = document.getElementById('modalCloseBtn');
+            const modalFormContainer = document.getElementById('modalFormContainer');
 
             // ─── FUNCIONES ──────────────────────────────
             function setLanguage(lang) {
@@ -1051,8 +1087,8 @@
 
             function updateContactForm() {
                 const t = translations[currentLang];
-                contactFormContainer.innerHTML = `
-                    <form class="contact-form dropdown-form" id="contactForm" action="https://formsubmit.co/hispaeclion@gmail.com" method="POST">
+                modalFormContainer.innerHTML = `
+                    <form class="contact-form" id="contactForm" action="https://formsubmit.co/hispaeclion@gmail.com" method="POST">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="box">
                         <input type="hidden" name="_subject" value="Nuevo mensaje desde Eclion Web">
@@ -1149,6 +1185,21 @@
                 });
             }
 
+            // ─── MODAL ────────────────────────────────────
+            function openModal() {
+                contactModal.classList.add('active');
+            }
+
+            function closeModal() {
+                contactModal.classList.remove('active');
+            }
+
+            contactBtn.addEventListener('click', openModal);
+            modalCloseBtn.addEventListener('click', closeModal);
+            contactModal.addEventListener('click', function(e) {
+                if (e.target === contactModal) closeModal();
+            });
+
             // ─── INICIALIZACIÓN ─────────────────────────
             setLanguage('es');
             renderDJList();
@@ -1157,18 +1208,6 @@
             document.getElementById('btn-es').addEventListener('click', () => setLanguage('es'));
             document.getElementById('btn-en').addEventListener('click', () => setLanguage('en'));
             document.getElementById('btn-fr').addEventListener('click', () => setLanguage('fr'));
-
-            // ─── DROPDOWN CONTACTO ──────────────────────
-            contactBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                contactDropdown.classList.toggle('active');
-            });
-            document.addEventListener('click', () => {
-                contactDropdown.classList.remove('active');
-            });
-            contactFormContainer.addEventListener('click', (e) => {
-                e.stopPropagation();
-            });
 
             // ─── AUDIO ──────────────────────────────────
             bgAudio.volume = 0.5;
