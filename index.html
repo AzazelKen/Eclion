@@ -72,6 +72,18 @@
             box-shadow: 0 0 40px rgba(0,0,0,0.8);
         }
 
+        /* Vibración sutil */
+        @keyframes subtleVibrate {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(0.3px, 0.3px) rotate(0.15deg); }
+            50% { transform: translate(-0.3px, -0.3px) rotate(-0.15deg); }
+            75% { transform: translate(-0.3px, 0.3px) rotate(-0.1deg); }
+            100% { transform: translate(0.3px, -0.3px) rotate(0.1deg); }
+        }
+        .vibrate {
+            animation: subtleVibrate 0.18s infinite linear;
+        }
+
         /* Logo dentro del recuadro, esquina superior izquierda */
         .corner-logo {
             position: absolute;
@@ -89,7 +101,7 @@
             justify-content: center;
             gap: 20px;
             margin-bottom: 30px;
-            margin-top: 10px; /* para que no se solape con el logo */
+            margin-top: 10px;
         }
 
         .social-links a {
@@ -713,7 +725,7 @@
 
     <!-- INTRO OVERLAY -->
     <div id="introOverlay">
-        <div class="intro-box">
+        <div class="intro-box vibrate">
             <!-- Logo en la esquina superior izquierda del recuadro -->
             <img src="https://i.imgur.com/FXBHJYh.png" alt="Eclion Logo" class="corner-logo">
             <div class="social-links">
@@ -1312,9 +1324,41 @@
             bgAudio.addEventListener('play', updatePlayIcon);
             bgAudio.addEventListener('pause', updatePlayIcon);
 
+            // ─── AUDIO EFECTO CAJA HUECA ──────────────────
+            let audioInitialized = false;
+            let audioContext, sourceNode, filterNode, gainNode;
+
+            function initMuffledAudio() {
+                if (audioInitialized) return;
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                sourceNode = audioContext.createMediaElementSource(bgAudio);
+                filterNode = audioContext.createBiquadFilter();
+                filterNode.type = 'lowpass';
+                filterNode.frequency.value = 400;
+                filterNode.Q.value = 2;
+                gainNode = audioContext.createGain();
+                gainNode.gain.value = 0.3;
+                sourceNode.connect(filterNode);
+                filterNode.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                bgAudio.play().then(() => {
+                    updatePlayIcon();
+                }).catch(() => {});
+                audioInitialized = true;
+            }
+
+            function transitionToNormalAudio() {
+                if (!audioInitialized) {
+                    initMuffledAudio();
+                }
+                const now = audioContext.currentTime;
+                filterNode.frequency.linearRampToValueAtTime(20000, now + 0.5);
+                gainNode.gain.linearRampToValueAtTime(1.0, now + 0.5);
+            }
+
             // ─── INTRO OVERLAY ──────────────────────────
             let progress = 0;
-            const loadingDuration = 2500; // 2.5 segundos
+            const loadingDuration = 2500;
             const intervalTime = 30;
             const step = 100 / (loadingDuration / intervalTime);
 
@@ -1324,7 +1368,6 @@
                     progress = 100;
                     progressBar.style.width = '100%';
                     clearInterval(progressInterval);
-                    // Activar el botón Join
                     joinBtn.disabled = false;
                     joinBtn.classList.add('active');
                 } else {
@@ -1332,13 +1375,17 @@
                 }
             }, intervalTime);
 
+            // Iniciar audio en mute (caja hueca) con el primer clic en cualquier parte del overlay
+            introOverlay.addEventListener('click', function initAudioOnFirstInteraction(e) {
+                if (!audioInitialized) {
+                    initMuffledAudio();
+                }
+            }, { once: true });
+
             joinBtn.addEventListener('click', () => {
                 if (joinBtn.disabled) return;
+                transitionToNormalAudio();
                 introOverlay.classList.add('hidden');
-                // Reproducir música de fondo
-                if (bgAudio.paused) {
-                    bgAudio.play().then(updatePlayIcon).catch(() => {});
-                }
             });
         })();
     </script>
