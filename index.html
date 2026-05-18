@@ -787,14 +787,91 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
     });
 });
 
-// AUDIO & INTRO OVERLAY
-const introOverlay = document.getElementById('introOverlay');
-const progressBar = document.getElementById('progressBar');
-const joinBtn = document.getElementById('joinBtn');
+// ===================== AUDIO: EFECTO HUECO AL INICIO =====================
 const bgAudio = document.getElementById('bgAudio');
-const playPauseBtn = document.getElementById('playPauseBtn');
-const volumeSlider = document.getElementById('volumeSlider');
+let audioInitialized = false;
+let audioCtx, sourceNode, filterNode, gainNode;
 
+// Función para inicializar el audio con efecto "hueco" (lowpass + volumen bajo)
+function initMuffledAudio() {
+    if (audioInitialized) return;
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    sourceNode = audioCtx.createMediaElementSource(bgAudio);
+    filterNode = audioCtx.createBiquadFilter();
+    filterNode.type = 'lowpass';
+    filterNode.frequency.value = 400;   // sonido apagado
+    filterNode.Q.value = 2;
+    gainNode = audioCtx.createGain();
+    gainNode.gain.value = 0.3;          // volumen reducido
+    sourceNode.connect(filterNode);
+    filterNode.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+    // Intentar reproducir (el navegador puede bloquear, pero el usuario ya hizo clic)
+    bgAudio.play().catch(e => console.log("Autoplay bloqueado, esperando interacción"));
+    audioInitialized = true;
+}
+
+// Función para hacer transición a sonido normal (al hacer Join)
+function transitionToNormalAudio() {
+    if (!audioInitialized) return;
+    const now = audioCtx.currentTime;
+    filterNode.frequency.linearRampToValueAtTime(20000, now + 0.5);  // sin filtro
+    gainNode.gain.linearRampToValueAtTime(1.0, now + 0.5);          // volumen normal
+}
+
+// Forzar inicialización del audio en cuanto el usuario haga clic en el overlay o en Join
+const introOverlay = document.getElementById('introOverlay');
+const joinBtn = document.getElementById('joinBtn');
+let audioTriggered = false;
+
+function ensureAudioInitialized() {
+    if (!audioTriggered) {
+        initMuffledAudio();
+        audioTriggered = true;
+    }
+}
+
+// Cualquier clic dentro del overlay inicializa el audio (si no se ha hecho)
+introOverlay.addEventListener('click', ensureAudioInitialized, { once: true });
+
+// Cuando se haga clic en Join, además de ocultar el overlay, hacemos la transición a sonido normal
+joinBtn.addEventListener('click', () => {
+    if (joinBtn.disabled) return;
+    ensureAudioInitialized();        // por si acaso no se había inicializado
+    transitionToNormalAudio();
+    introOverlay.classList.add('hidden');
+});
+
+// También inicializamos si el usuario usa el widget de audio manualmente
+const playPauseBtn = document.getElementById('playPauseBtn');
+playPauseBtn.addEventListener('click', () => {
+    if (!audioTriggered) {
+        ensureAudioInitialized();
+    } else if (bgAudio.paused) {
+        bgAudio.play().catch(() => {});
+    } else {
+        bgAudio.pause();
+    }
+    updatePlayIcon();
+});
+
+// Control de volumen del widget
+const volumeSlider = document.getElementById('volumeSlider');
+volumeSlider.addEventListener('input', (e) => {
+    bgAudio.volume = parseFloat(e.target.value);
+});
+
+function updatePlayIcon() {
+    if (playPauseBtn) {
+        const icon = playPauseBtn.querySelector('i');
+        icon.className = bgAudio.paused ? 'fas fa-play' : 'fas fa-pause';
+    }
+}
+bgAudio.addEventListener('play', updatePlayIcon);
+bgAudio.addEventListener('pause', updatePlayIcon);
+
+// Barra de progreso del overlay
+const progressBar = document.getElementById('progressBar');
 let progress = 0;
 const loadingDuration = 2500;
 const intervalTime = 30;
@@ -812,46 +889,7 @@ const progressInterval = setInterval(() => {
     }
 }, intervalTime);
 
-let audioInitialized = false;
-let audioContext, sourceNode, filterNode, gainNode;
-function initMuffledAudio() {
-    if (audioInitialized) return;
-    audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    sourceNode = audioContext.createMediaElementSource(bgAudio);
-    filterNode = audioContext.createBiquadFilter();
-    filterNode.type = 'lowpass';
-    filterNode.frequency.value = 400;
-    filterNode.Q.value = 2;
-    gainNode = audioContext.createGain();
-    gainNode.gain.value = 0.3;
-    sourceNode.connect(filterNode);
-    filterNode.connect(gainNode);
-    gainNode.connect(audioContext.destination);
-    bgAudio.play().catch(() => {});
-    audioInitialized = true;
-}
-function transitionToNormalAudio() {
-    if (!audioInitialized) return;
-    const now = audioContext.currentTime;
-    filterNode.frequency.linearRampToValueAtTime(20000, now + 0.5);
-    gainNode.gain.linearRampToValueAtTime(1.0, now + 0.5);
-}
-introOverlay.addEventListener('click', function initFirstClick() {
-    if (!audioInitialized) initMuffledAudio();
-}, { once: true });
-joinBtn.addEventListener('click', () => {
-    if (joinBtn.disabled) return;
-    transitionToNormalAudio();
-    introOverlay.classList.add('hidden');
-});
-
-bgAudio.volume = 0.5;
-function updatePlayIcon() { playPauseBtn.querySelector('i').className = bgAudio.paused ? 'fas fa-play' : 'fas fa-pause'; }
-playPauseBtn.addEventListener('click', () => { if (bgAudio.paused) bgAudio.play().catch(()=>{}); else bgAudio.pause(); updatePlayIcon(); });
-volumeSlider.addEventListener('input', (e) => { bgAudio.volume = parseFloat(e.target.value); });
-bgAudio.addEventListener('play', updatePlayIcon);
-bgAudio.addEventListener('pause', updatePlayIcon);
-
+// Smooth scroll para enlaces internos
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const targetId = this.getAttribute('href');
@@ -864,6 +902,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Render inicial
 renderOwners();
 renderDjList();
 renderDjDetail();
