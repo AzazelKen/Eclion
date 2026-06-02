@@ -2,807 +2,323 @@
 <html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Eclion — Rave Community in VRChat</title>
     <meta name="description" content="Comunidad hispana de raves en VRChat. Eventos, DJs, transmisiones en vivo y experiencias únicas.">
-    
-    <!-- Open Graph Metadata -->
     <meta property="og:title" content="Eclion — Rave Community in VRChat">
     <meta property="og:description" content="Raves, eventos y experiencias únicas en VRChat.">
     <meta property="og:image" content="https://i.imgur.com/WjH0v3a.png">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     
-    <!-- Tailwind + Google Fonts + FontAwesome -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        :root {
-            --radius: 1rem;
-            --background-start: #0a0101;
-            --background-end: #000000;
-            --foreground: #f5f5f5;
-            --surface: rgba(12, 4, 4, 0.75);
-            --surface-elevated: rgba(22, 6, 6, 0.85);
-            --primary: #e60000;
-            --primary-glow: rgba(230, 0, 0, 0.5);
-            --primary-dark: #6e0000;
-            --border: rgba(255, 255, 255, 0.06);
-            --border-hover: rgba(230, 0, 0, 0.3);
-            --font-display: 'Space Grotesk', system-ui, sans-serif;
-            --font-sans: 'Inter', system-ui, sans-serif;
-        }
-
-        body {
-            background-color: #000;
-            color: var(--foreground);
-            font-family: var(--font-sans);
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, .font-display {
-            font-family: var(--font-display);
-            letter-spacing: -0.03em;
-        }
-
-        /* Ambient Cyber-Grid and Background elements */
-        .cyber-grid {
-            background-size: 40px 40px;
-            background-image: 
-                linear-gradient(to right, rgba(230, 0, 0, 0.04) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(230, 0, 0, 0.04) 1px, transparent 1px);
-            mask-image: radial-gradient(circle at 50% 50%, black 60%, transparent 100%);
-        }
-
-        /* Glassmorphic Effects */
-        .glass-panel {
-            background: var(--surface);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--border);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .glass-panel:hover {
-            border-color: var(--border-hover);
-            box-shadow: 0 10px 30px -10px var(--primary-glow);
-        }
-
-        .text-gradient-red {
-            background: linear-gradient(135deg, #ffffff 30%, #ff4d4d 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Animations */
-        @keyframes marquee {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
-        }
-
-        .animate-marquee {
-            animation: marquee 30s linear infinite;
-        }
-
-        .animate-spin-slow {
-            animation: spin 12s linear infinite;
-        }
-
-        /* Custom scrollbar matching dark cyber aesthetic */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #050101;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #2a0808;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary);
-        }
-
-        /* Pulse glow for buttons */
-        .btn-glow {
-            box-shadow: 0 0 15px rgba(230, 0, 0, 0.2);
-        }
-        .btn-glow:hover {
-            box-shadow: 0 0 25px rgba(230, 0, 0, 0.6);
-            transform: translateY(-2px);
-        }
-
-        /* Interactive active/inactive roster selectors */
-        .roster-active {
-            background: linear-gradient(135deg, rgba(230, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.5) 100%);
-            border-color: var(--primary);
-            box-shadow: inset 0 0 12px rgba(230, 0, 0, 0.1);
-        }
-
-        /* Interactive Particle Background */
-        #bgCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -20;
-            pointer-events: none;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #e60000; --primary-glow: rgba(230,0,0,0.5); --border: rgba(255,255,255,0.06); --surface: rgba(12,4,4,0.75); --font-display: 'Space Grotesk', sans-serif; }
+        body { background: #000; color: #f5f5f5; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        h1,h2,h3,.font-display { font-family: var(--font-display); letter-spacing: -0.03em; }
+        .cyber-grid { background-image: linear-gradient(to right, rgba(230,0,0,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(230,0,0,0.03) 1px, transparent 1px); background-size: 40px 40px; }
+        .glass-panel { background: var(--surface); backdrop-filter: blur(16px); border: 1px solid var(--border); transition: all 0.3s ease; }
+        .glass-panel:hover { border-color: rgba(230,0,0,0.3); box-shadow: 0 12px 32px -12px var(--primary-glow); }
+        .text-gradient-red { background: linear-gradient(135deg, #fff 30%, #ff4d4d 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .roster-active { background: linear-gradient(135deg, rgba(230,0,0,0.18), rgba(0,0,0,0.6)); border-left: 2px solid var(--primary); }
+        .btn-glow { box-shadow: 0 0 12px rgba(230,0,0,0.3); transition: all 0.2s ease; }
+        .btn-glow:hover { box-shadow: 0 0 24px rgba(230,0,0,0.7); transform: translateY(-2px); }
+        @keyframes marquee { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-50%,0,0); } }
+        @keyframes spin-slow { to { transform: rotate(360deg); } }
+        .animate-marquee { animation: marquee 30s linear infinite; }
+        .animate-spin-slow { animation: spin-slow 12s linear infinite; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0202; }
+        ::-webkit-scrollbar-thumb { background: #3a0a0a; border-radius: 8px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+        .instagram-wall-container { border-radius: 1.5rem; overflow: hidden; }
+        #introOverlay { transition: opacity 0.8s ease, visibility 0.8s ease; }
     </style>
 </head>
-<body class="selection:bg-red-800 selection:text-white">
+<body class="selection:bg-red-800/80">
 
-    <!-- BACKGROUND CANVAS -->
-    <canvas id="bgCanvas"></canvas>
-    
-    <!-- BACKGROUND GRID AND VIGNETTE -->
-    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <!-- CANVAS BG -->
+    <canvas id="bgCanvas" class="fixed inset-0 -z-20 pointer-events-none"></canvas>
+    <div class="pointer-events-none fixed inset-0 -z-10">
         <div class="absolute inset-0 cyber-grid"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
-        <!-- Cybernetic pulsating ambient red lights -->
-        <div class="absolute -top-40 left-1/4 h-[500px] w-[500px] rounded-full bg-red-900/15 blur-[120px] animate-pulse"></div>
-        <div class="absolute bottom-10 right-1/4 h-[600px] w-[600px] rounded-full bg-red-950/10 blur-[150px]"></div>
+        <div class="absolute -top-40 left-1/4 h-[500px] w-[500px] rounded-full bg-red-900/20 blur-[120px] animate-pulse"></div>
+        <div class="absolute bottom-10 right-1/4 h-[600px] w-[600px] rounded-full bg-red-950/15 blur-[150px]"></div>
     </div>
 
-    <!-- INTRO/ENTER OVERLAY (HIGH CONCEPT HOLOGRAPHIC PORTAL) -->
-    <div id="introOverlay" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-xl transition-all duration-1000">
-        <div class="relative w-[90%] max-w-lg p-8 rounded-3xl border border-red-900/40 bg-[#0d0202] text-center shadow-[0_0_100px_rgba(230,0,0,0.15)] overflow-hidden">
-            <!-- Holographic decorative corners -->
-            <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-red-600 rounded-tl-xl opacity-60"></div>
-            <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-red-600 rounded-tr-xl opacity-60"></div>
-            <div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-red-600 rounded-bl-xl opacity-60"></div>
-            <div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-red-600 rounded-br-xl opacity-60"></div>
-
-            <div class="mb-6 relative inline-block group">
-                <div class="absolute inset-0 bg-red-600 rounded-full blur-xl opacity-45 scale-90 group-hover:scale-110 transition duration-700"></div>
-                <img src="https://i.imgur.com/FXBHJYh.png" alt="Eclion Logo" class="relative w-28 h-28 mx-auto rounded-full border border-red-600/30 p-1 bg-black/80">
+    <!-- INTRO OVERLAY (CORREGIDA) -->
+    <div id="introOverlay" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-xl">
+        <div class="relative w-[90%] max-w-lg p-8 rounded-3xl border border-red-900/40 bg-[#0d0202] text-center shadow-[0_0_100px_rgba(230,0,0,0.2)] overflow-hidden">
+            <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-red-600 rounded-tl-xl opacity-70"></div>
+            <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-red-600 rounded-tr-xl opacity-70"></div>
+            <div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-red-600 rounded-bl-xl opacity-70"></div>
+            <div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-red-600 rounded-br-xl opacity-70"></div>
+            <div class="mb-6 relative group">
+                <div class="absolute inset-0 bg-red-600 rounded-full blur-xl opacity-40 scale-90 group-hover:scale-110 transition"></div>
+                <img src="https://i.imgur.com/FXBHJYh.png" alt="Eclion" class="relative w-28 h-28 mx-auto rounded-full border border-red-600/30 p-1 bg-black/80">
             </div>
-
-            <h2 class="font-display text-3xl font-bold tracking-tight text-gradient-red uppercase">Eclion Portal</h2>
-            <p class="text-xs text-red-500/60 font-mono mt-1 tracking-widest uppercase">Cybernetic Audio Link Status: Muffled</p>
-            
-            <p class="mt-4 text-sm text-gray-400 leading-relaxed max-w-sm mx-auto">
-                Prepárate para la experiencia. El sonido de la rave retumba fuera del almacén. Presiona "JOIN" para abrir las puertas.
-            </p>
-
-            <!-- Holographic Progress Bar -->
+            <h2 class="font-display text-3xl font-black tracking-tight text-gradient-red uppercase">Eclion Portal</h2>
+            <p class="text-xs text-red-500/60 font-mono mt-1 tracking-widest">Cybernetic Audio Link · Initializing</p>
+            <p class="mt-4 text-sm text-gray-400 leading-relaxed max-w-sm mx-auto">El sonido retumba fuera del almacén. Presiona "JOIN" para abrir las puertas.</p>
             <div class="mt-8 mb-6">
-                <div class="flex justify-between text-[10px] font-mono text-red-500/80 mb-1.5 uppercase">
+                <div class="flex justify-between text-[10px] font-mono text-red-500/80 mb-1">
                     <span>Sincronizando beats...</span>
                     <span id="loadPercent">0%</span>
                 </div>
                 <div class="h-1.5 w-full bg-red-950/50 rounded-full overflow-hidden border border-red-900/20">
-                    <div id="introProgressBar" class="h-full bg-gradient-to-r from-red-800 to-red-500 w-0 rounded-full shadow-[0_0_8px_#ff0000]"></div>
+                    <div id="introProgressBar" class="h-full bg-gradient-to-r from-red-800 to-red-500 w-0 rounded-full shadow-[0_0_6px_#ff3333]"></div>
                 </div>
             </div>
-
-            <!-- Social Links in Intro -->
             <div class="flex justify-center gap-5 text-gray-500 text-lg mb-8">
-                <a href="https://discord.gg/yRVNrNbrRQ" target="_blank" class="hover:text-red-500 transition-colors"><i class="fab fa-discord"></i></a>
-                <a href="https://www.instagram.com/ecli.on.ofcl/" target="_blank" class="hover:text-red-500 transition-colors"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.twitch.tv/eclionvr/videos" target="_blank" class="hover:text-red-500 transition-colors"><i class="fab fa-twitch"></i></a>
-                <a href="https://www.youtube.com/@EclionVR" target="_blank" class="hover:text-red-500 transition-colors"><i class="fab fa-youtube"></i></a>
-                <a href="https://vrchat.com/home/group/grp_190a9e43-dbf5-49c8-85e7-e9c4599dff37" target="_blank" class="hover:text-red-500 transition-colors"><i class="fas fa-vr-cardboard"></i></a>
+                <a href="https://discord.gg/yRVNrNbrRQ" target="_blank" class="hover:text-red-500 transition"><i class="fab fa-discord"></i></a>
+                <a href="https://www.instagram.com/ecli.on.ofcl/" target="_blank" class="hover:text-red-500 transition"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.twitch.tv/eclionvr/videos" target="_blank" class="hover:text-red-500 transition"><i class="fab fa-twitch"></i></a>
+                <a href="https://www.youtube.com/@EclionVR" target="_blank" class="hover:text-red-500 transition"><i class="fab fa-youtube"></i></a>
+                <a href="https://vrchat.com/home/group/grp_190a9e43-dbf5-49c8-85e7-e9c4599dff37" target="_blank" class="hover:text-red-500 transition"><i class="fas fa-vr-cardboard"></i></a>
             </div>
-
-            <!-- Enable Button -->
-            <button id="joinBtn" disabled class="w-full bg-red-950/40 text-red-700 border border-red-900/20 py-4 px-8 rounded-full font-display font-bold uppercase tracking-wider transition-all duration-300 cursor-not-allowed">
-                Cargando Rave...
-            </button>
+            <button id="joinBtn" disabled class="w-full bg-red-950/40 text-red-700 border border-red-900/20 py-4 rounded-full font-display font-bold uppercase tracking-wider transition-all cursor-not-allowed">Cargando Rave...</button>
         </div>
     </div>
 
-    <!-- PRO-BANNER HEADER -->
+    <!-- BANNER Y HEADER -->
     <div class="relative w-full overflow-hidden border-b border-red-900/20 bg-black">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90"></div>
-        <img src="https://i.imgur.com/WjH0v3a.png" alt="Eclion Banner" class="w-full h-auto object-cover max-h-[220px] md:max-h-[350px] opacity-80 select-none">
+        <img src="https://i.imgur.com/WjH0v3a.png" alt="Eclion Banner" class="w-full h-auto max-h-[220px] md:max-h-[350px] object-cover opacity-80">
     </div>
-
-    <!-- MAIN NAVBAR -->
     <header class="sticky top-0 z-50 border-b border-white/5 bg-black/75 backdrop-blur-md">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3 font-display text-2xl font-black tracking-tight text-white group">
-                <span class="relative flex h-10 w-10 items-center justify-center rounded-xl bg-red-600 text-white shadow-lg transition-transform group-hover:scale-105">
-                    <i class="fas fa-headphones-alt"></i>
-                    <span class="absolute inset-0 bg-red-600 rounded-xl blur-md opacity-40 group-hover:opacity-80 transition duration-300"></span>
-                </span>
-                <span>ECLION</span>
-            </a>
-
-            <!-- NAV LINKS -->
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
-                <a href="#about" class="text-gray-400 hover:text-white transition-colors" data-i18n="navAbout">Comunidad</a>
-                <a href="#djs" class="text-gray-400 hover:text-white transition-colors" data-i18n="navDjs">DJs</a>
-                <a href="#channel" class="text-gray-400 hover:text-white transition-colors" data-i18n="navChannel">Transmisiones</a>
-                <a href="#events" class="text-gray-400 hover:text-white transition-colors" data-i18n="navEvents">Eventos</a>
-                <a href="#partners" class="text-gray-400 hover:text-white transition-colors" data-i18n="navPartners">Partners</a>
+            <a href="#" class="flex items-center gap-3 font-display text-2xl font-black"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-red-600 text-white"><i class="fas fa-headphones-alt"></i></span><span>ECLION</span></a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#about" data-i18n="navAbout">Comunidad</a>
+                <a href="#djs" data-i18n="navDjs">DJs</a>
+                <a href="#instagram" data-i18n="instagramNav">Instagram</a>
+                <a href="#channel" data-i18n="navChannel">Transmisiones</a>
+                <a href="#events" data-i18n="navEvents">Eventos</a>
+                <a href="#partners" data-i18n="navPartners">Partners</a>
             </nav>
-
-            <!-- CTA & LANG CONTROLS -->
             <div class="flex items-center gap-4">
-                <!-- LANG BUTTONS -->
-                <div class="flex items-center rounded-full border border-white/5 bg-white/5 p-1 text-[11px] font-mono font-bold">
-                    <button data-lang="es" class="lang-btn px-2.5 py-1 rounded-full transition-all bg-red-600 text-white">ES</button>
-                    <button data-lang="en" class="lang-btn px-2.5 py-1 rounded-full text-gray-400 hover:text-white transition-all">EN</button>
-                    <button data-lang="fr" class="lang-btn px-2.5 py-1 rounded-full text-gray-400 hover:text-white transition-all">FR</button>
+                <div class="flex rounded-full border border-white/5 bg-white/5 p-1 text-[11px] font-mono">
+                    <button data-lang="es" class="lang-btn px-2.5 py-1 rounded-full bg-red-600 text-white">ES</button>
+                    <button data-lang="en" class="lang-btn px-2.5 py-1 text-gray-400">EN</button>
+                    <button data-lang="fr" class="lang-btn px-2.5 py-1 text-gray-400">FR</button>
                 </div>
-                <!-- CONTACT BUTTON -->
-                <button id="contactBtn" class="bg-white text-black font-semibold text-xs md:text-sm px-5 py-2.5 rounded-full hover:bg-red-600 hover:text-white hover:scale-105 transition-all duration-300 shadow-md" data-i18n="contact">
-                    Contáctanos
-                </button>
+                <button id="contactBtn" class="bg-white text-black text-xs md:text-sm px-5 py-2.5 rounded-full hover:bg-red-600 hover:text-white transition">Contáctanos</button>
             </div>
         </div>
     </header>
 
     <!-- HERO SECTION -->
-    <section class="relative px-4 sm:px-6 lg:px-8 pt-12 pb-24 md:pt-24 md:pb-32 overflow-hidden">
+    <section class="relative px-4 pt-12 pb-24 md:pt-24 md:pb-32">
         <div class="mx-auto max-w-7xl">
             <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 items-center">
-                
-                <!-- HERO LEFT -->
                 <div class="space-y-8">
-                    <div class="inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/5 px-4 py-1.5 text-xs font-mono font-semibold tracking-wider text-red-400 uppercase">
+                    <div class="inline-flex gap-2 rounded-full border border-red-500/20 bg-red-500/5 px-4 py-1.5 text-xs font-mono text-red-400">
                         <span class="h-2 w-2 rounded-full bg-red-500 animate-ping"></span>
                         <span data-i18n="heroTag">Rave Community · VRChat</span>
                     </div>
-
-                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[0.95]">
-                        <span class="text-white block">Eclion Rave</span>
-                        <span class="text-gradient-red block" data-i18n="heroTitle">Donde la noche nunca termina.</span>
-                    </h1>
-
-                    <p class="text-base sm:text-lg text-gray-300 leading-relaxed max-w-2xl" data-i18n="heroDesc">
-                        Somos una comunidad dedicada a crear experiencias de música electrónica inmersivas dentro de VRChat. Organizamos raves todos los sábados y, durante la semana, también pueden surgir eventos adicionales. Nos especializamos en música electrónica de intensidad media a alta, sin limitarnos a un solo género. Además de nuestras raves habituales, realizamos eventos temáticos como noches Cyberpunk y otras experiencias únicas. Entre nuestros eventos más destacados se encuentran Hard.exe, dedicado a los sonidos más potentes de la música electrónica, y HARDBASS_404, enfocado en Dubstep, Riddim, Tearout y otros subgéneros pesados. Únete y vive algunas de las experiencias rave más intensas de VRChat.
-                    </p>
-
-                    <div class="flex flex-wrap gap-4 pt-4">
-                        <a href="https://vrc.group/ECL.4481" target="_blank" class="group relative inline-flex items-center gap-2.5 rounded-full bg-red-600 px-8 py-4 text-sm font-bold text-white btn-glow transition-all">
-                            <span data-i18n="heroCta">Unirse al grupo VRChat</span>
-                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                        </a>
-                        <a href="#events" class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/15 px-8 py-4 text-sm font-bold text-white transition-all">
-                            <i class="fas fa-play text-xs text-red-500"></i>
-                            <span data-i18n="heroSecondary">Ver eventos</span>
-                        </a>
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold"><span class="text-white block">Eclion Rave</span><span class="text-gradient-red block" data-i18n="heroTitle">Donde la noche nunca termina.</span></h1>
+                    <p class="text-gray-300 max-w-2xl" data-i18n="heroDesc">Somos una comunidad dedicada a crear experiencias de música electrónica inmersivas dentro de VRChat. Organizamos raves todos los sábados y eventos temáticos como noches Cyberpunk. Hard.exe y HARDBASS_404 son nuestros eventos estrella. Únete y vive las raves más intensas de VRChat.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://vrc.group/ECL.4481" class="bg-red-600 px-8 py-4 rounded-full text-white btn-glow">Unirse al grupo VRChat</a>
+                        <a href="#events" class="border border-white/10 bg-white/5 px-8 py-4 rounded-full">Ver eventos</a>
                     </div>
-
-                    <!-- HERO STATS -->
                     <div class="grid grid-cols-3 gap-8 pt-10 border-t border-white/5 max-w-lg">
-                        <div>
-                            <div class="font-display text-4xl font-bold text-white">10+</div>
-                            <div class="text-[11px] text-gray-500 font-mono uppercase tracking-widest mt-1.5" data-i18n="statDjs">DJs residentes</div>
-                        </div>
-                        <div>
-                            <div class="font-display text-4xl font-bold text-white">29+</div>
-                            <div class="text-[11px] text-gray-500 font-mono uppercase tracking-widest mt-1.5" data-i18n="statEvents">Eventos celebrados</div>
-                        </div>
-                        <div>
-                            <div class="font-display text-4xl font-bold text-white">900+</div>
-                            <div class="text-[11px] text-gray-500 font-mono uppercase tracking-widest mt-1.5" data-i18n="statCommunity">Miembros activos</div>
-                        </div>
+                        <div><div class="text-4xl font-bold text-white">11+</div><div class="text-[11px] text-gray-500" data-i18n="statDjs">DJs residentes</div></div>
+                        <div><div class="text-4xl font-bold text-white">29+</div><div class="text-[11px] text-gray-500" data-i18n="statEvents">Eventos celebrados</div></div>
+                        <div><div class="text-4xl font-bold text-white">900+</div><div class="text-[11px] text-gray-500" data-i18n="statCommunity">Miembros activos</div></div>
                     </div>
                 </div>
-
-                <!-- HERO RIGHT (DOCK WITH VINYL AND MAIN POSTER) -->
-                <div class="relative flex justify-center items-center">
+                <div class="relative flex justify-center">
                     <div class="absolute inset-0 bg-red-600/10 rounded-3xl blur-[80px] -z-10"></div>
-                    <div class="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 glass-panel p-3">
-                        <div class="relative w-full h-full rounded-2xl overflow-hidden bg-black/50">
-                            <img src="https://i.imgur.com/PYyTf6M.png" alt="Eclion Comunidad" class="h-full w-full object-cover opacity-90 transition-transform duration-700 hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                            
-                            <!-- Overlay Music Controller/Visualizer Node -->
-                            <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-xl border border-white/5 bg-black/80 backdrop-blur px-4 py-3">
-                                <div class="flex items-center gap-3">
-                                    <div class="relative h-10 w-10 flex items-center justify-center rounded-lg bg-red-600/10 text-red-500">
-                                        <i class="fas fa-compact-disc text-xl animate-spin-slow"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-[10px] uppercase font-mono tracking-wider text-red-500 font-semibold">Generador de Techno</p>
-                                        <h4 class="text-xs font-bold text-white">PROCESADOR LIVE SINTÉ</h4>
-                                    </div>
-                                </div>
-                                <div class="h-3.5 w-12 flex items-end gap-0.5" id="audioBarAnim">
-                                    <span class="h-1 w-1 bg-red-500 rounded-full animate-bounce"></span>
-                                    <span class="h-3 w-1 bg-red-500 rounded-full animate-bounce" style="animation-delay: 0.1s"></span>
-                                    <span class="h-2 w-1 bg-red-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
-                                    <span class="h-4 w-1 bg-red-500 rounded-full animate-bounce" style="animation-delay: 0.3s"></span>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="relative w-full max-w-md aspect-[4/5] glass-panel p-3">
+                        <img src="https://i.imgur.com/PYyTf6M.png" class="rounded-2xl w-full h-full object-cover">
                     </div>
                 </div>
-
             </div>
         </div>
-
-        <!-- PREMIUM MUSIC GENRE MARQUEE -->
-        <div class="mt-28 -mx-4 sm:-mx-8 border-y border-white/5 bg-black/60 backdrop-blur-sm py-6 overflow-hidden">
-            <div class="flex whitespace-nowrap overflow-hidden">
-                <div class="flex items-center gap-16 px-8 animate-marquee font-display text-3xl font-extrabold uppercase tracking-wide text-white/40">
-                    <span>HARD TECHNO</span><span class="text-red-600">✦</span>
-                    <span>FRENCHCORE</span><span class="text-red-600">✦</span>
-                    <span>DUBSTEP</span><span class="text-red-600">✦</span>
-                    <span>GABBER</span><span class="text-red-600">✦</span>
-                    <span>BREAKCORE</span><span class="text-red-600">✦</span>
-                    <span>DRUM & BASS</span><span class="text-red-600">✦</span>
-                    <span>RAWSTYLE</span><span class="text-red-600">✦</span>
-                    <span>HARDCORE</span><span class="text-red-600">✦</span>
-                    <span>HARD TECHNO</span><span class="text-red-600">✦</span>
-                    <span>FRENCHCORE</span><span class="text-red-600">✦</span>
-                    <span>DUBSTEP</span><span class="text-red-600">✦</span>
-                    <span>GABBER</span><span class="text-red-600">✦</span>
-                    <span>BREAKCORE</span><span class="text-red-600">✦</span>
-                    <span>DRUM & BASS</span><span class="text-red-600">✦</span>
-                    <span>RAWSTYLE</span><span class="text-red-600">✦</span>
-                    <span>HARDCORE</span><span class="text-red-600">✦</span>
-                </div>
-            </div>
+        <div class="mt-28 -mx-4 border-y border-white/5 bg-black/60 py-6 overflow-hidden">
+            <div class="flex whitespace-nowrap animate-marquee"><div class="flex gap-16 px-8 font-display text-3xl font-bold text-white/40"><span>HARD TECHNO</span><span class="text-red-600">✦</span><span>FRENCHCORE</span><span class="text-red-600">✦</span><span>DUBSTEP</span><span class="text-red-600">✦</span><span>GABBER</span><span class="text-red-600">✦</span><span>BREAKCORE</span><span class="text-red-600">✦</span><span>DRUM & BASS</span></div></div>
         </div>
     </section>
 
-    <!-- ABOUT & OWNERS SECTION -->
-    <section id="about" class="py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-[#050000]/50">
-        <div class="mx-auto max-w-7xl">
-            <div class="text-center max-w-xl mx-auto mb-16">
-                <div class="inline-flex items-center gap-1.5 rounded-full border border-red-500/20 bg-red-500/5 px-3.5 py-1 text-xs font-mono uppercase tracking-widest text-red-400">
-                    <i class="fas fa-users-cog text-xs"></i>
-                    <span data-i18n="ownersKicker">Quienes están detrás</span>
-                </div>
-                <h2 class="mt-4 font-display text-4xl sm:text-5xl font-bold" data-i18n="ownersTitle">Nuestros Fundadores</h2>
-            </div>
-
-            <!-- CARDS CONTAINER -->
-            <div class="grid sm:grid-cols-2 gap-8 max-w-4xl mx-auto" id="ownersContainer">
-                <!-- Dynamically populated via JS -->
-            </div>
+    <!-- OWNERS (FUNDADORES) -->
+    <section id="about" class="py-24 px-4 border-t border-white/5 bg-[#050000]/40">
+        <div class="mx-auto max-w-7xl text-center">
+            <div class="inline-flex rounded-full border border-red-500/20 bg-red-500/5 px-3.5 py-1 text-xs font-mono text-red-400"><i class="fas fa-users-cog"></i><span data-i18n="ownersKicker">Quienes están detrás</span></div>
+            <h2 class="mt-4 text-4xl sm:text-5xl font-bold" data-i18n="ownersTitle">Nuestros Fundadores</h2>
+            <div class="grid sm:grid-cols-2 gap-8 max-w-4xl mx-auto mt-12" id="ownersContainer"></div>
         </div>
     </section>
 
-    <!-- RESIDENT DJS SECTION -->
-    <section id="djs" class="py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    <!-- DJS ROSTER -->
+    <section id="djs" class="py-24 px-4 border-t border-white/5">
         <div class="mx-auto max-w-7xl">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
-                <div>
-                    <div class="inline-flex items-center gap-1.5 rounded-full border border-red-500/20 bg-red-500/5 px-3.5 py-1 text-xs font-mono uppercase tracking-widest text-red-400">
-                        <i class="fas fa-music text-xs"></i>
-                        <span data-i18n="djsKicker">Roster oficial</span>
-                    </div>
-                    <h2 class="mt-4 font-display text-4xl sm:text-5xl font-bold" data-i18n="djsTitle">Eclion DJs</h2>
-                </div>
+            <div class="flex justify-between mb-16">
+                <div><div class="inline-flex rounded-full border border-red-500/20 bg-red-500/5 px-3.5 py-1 text-xs font-mono text-red-400"><i class="fas fa-music"></i><span data-i18n="djsKicker">Roster oficial</span></div><h2 class="mt-4 text-4xl sm:text-5xl font-bold" data-i18n="djsTitle">Eclion DJs</h2></div>
                 <p class="text-gray-400 text-sm max-w-sm" data-i18n="djsSectionSub">Explora nuestro roster premium de DJs especializados en ritmos de alta intensidad.</p>
             </div>
-
-            <!-- ROSTER CONTROL LAYOUT -->
             <div class="grid lg:grid-cols-[300px_1fr] gap-8">
-                <!-- ROSTER LEFT COLUMN (SELECTOR) -->
-                <div class="rounded-2xl border border-white/5 bg-black/40 p-3 max-h-[550px] overflow-y-auto space-y-2" id="djList">
-                    <!-- Dynamically populated via JS -->
-                </div>
-
-                <!-- ROSTER RIGHT COLUMN (DASHBOARD DETAIL) -->
-                <div class="relative rounded-3xl border border-white/5 bg-[#0a0202]/90 overflow-hidden shadow-2xl min-h-[500px] flex flex-col justify-between" id="djDetail">
-                    <!-- Dynamically populated via JS -->
-                </div>
+                <div class="rounded-2xl border border-white/5 bg-black/40 p-3 max-h-[550px] overflow-y-auto space-y-2" id="djList"></div>
+                <div class="rounded-3xl border border-white/5 bg-[#0a0202]/90 overflow-hidden shadow-2xl min-h-[500px]" id="djDetail"></div>
             </div>
         </div>
     </section>
 
-    <!-- YOUTUBE CHANNEL (LIVE SIMULATION) -->
-    <section id="channel" class="py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-[#030000]/60">
-        <div class="mx-auto max-w-7xl">
-            <div class="rounded-3xl border border-white/5 bg-black/80 overflow-hidden shadow-[0_0_50px_rgba(230,0,0,0.05)]">
-                <div class="grid lg:grid-cols-[1fr_1.4fr]">
-                    
-                    <!-- LEFT CONTAINER -->
-                    <div class="p-8 sm:p-12 flex flex-col justify-between space-y-8">
-                        <div>
-                            <div class="inline-flex items-center gap-2 rounded-full border border-red-600/30 bg-red-950/20 px-3 py-1 text-xs font-mono uppercase tracking-wider text-red-500">
-                                <span class="h-2 w-2 rounded-full bg-red-600 animate-pulse"></span>
-                                <span data-i18n="ytKicker">En vivo</span>
-                            </div>
-                            <h3 class="mt-4 font-display text-4xl font-extrabold text-white">EclionVR</h3>
-                            <p class="mt-4 text-gray-300 leading-relaxed text-sm sm:text-base" data-i18n="ytDesc">
-                                Raves, eventos y experiencias únicas en VRChat. Suscríbete a nuestro canal principal para ver las retransmisiones directas de nuestros espectáculos.
-                            </p>
-                        </div>
-                        
-                        <a href="https://www.youtube.com/@EclionVR" target="_blank" class="inline-flex w-fit items-center gap-3 rounded-full bg-red-600 hover:bg-red-500 text-white font-bold text-sm px-6 py-3.5 hover:scale-105 transition-all shadow-md">
-                            <i class="fab fa-youtube text-lg"></i>
-                            <span data-i18n="ytBtn">Visitar canal</span>
-                        </a>
-                    </div>
-
-                    <!-- RIGHT IFRAME WRAPPER -->
-                    <div class="relative aspect-video lg:aspect-auto min-h-[320px] bg-black">
-                        <iframe class="absolute inset-0 h-full w-full border-0" 
-                                src="https://www.youtube.com/embed/JPU_VEqPC1o" 
-                                title="Eclion Live Feed" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen></iframe>
-                    </div>
-
-                </div>
+    <!-- INSTAGRAM SECTION (título traducible) -->
+    <section id="instagram" class="py-24 px-4 border-t border-white/5 bg-black/40">
+        <div class="mx-auto max-w-7xl text-center">
+            <div class="inline-flex rounded-full border border-red-500/20 bg-red-500/5 px-3.5 py-1 text-xs font-mono text-red-400"><i class="fab fa-instagram"></i><span data-i18n="instagramLabel">Instagram</span></div>
+            <h2 class="mt-4 text-4xl sm:text-5xl font-bold text-gradient-red" data-i18n="instagramTitle">@ecli.on.ofcl</h2>
+            <div class="instagram-wall-container glass-panel p-2 rounded-2xl mt-8">
+                <rssapp-wall id="bU27jeAaPnVIYOFH"></rssapp-wall>
+                <script src="https://widget.rss.app/v1/wall.js" type="text/javascript" async></script>
             </div>
         </div>
     </section>
 
-    <!-- EVENTS SECTION -->
-    <section id="events" class="py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5">
-        <div class="mx-auto max-w-7xl">
-            <div class="text-center max-w-xl mx-auto mb-16">
-                <div class="inline-flex items-center gap-1.5 rounded-full border border-red-500/20 bg-red-500/5 px-3.5 py-1 text-xs font-mono uppercase tracking-widest text-red-400">
-                    <i class="fas fa-calendar-alt text-xs"></i>
-                    <span data-i18n="eventsKicker">Highlights</span>
+    <!-- YOUTUBE CHANNEL -->
+    <section id="channel" class="py-24 px-4 border-t border-white/5 bg-[#030000]/50">
+        <div class="mx-auto max-w-7xl rounded-3xl border border-white/5 bg-black/80 overflow-hidden">
+            <div class="grid lg:grid-cols-[1fr_1.4fr]">
+                <div class="p-8 sm:p-12">
+                    <div class="inline-flex gap-2 rounded-full border border-red-600/30 bg-red-950/20 px-3 py-1 text-xs text-red-500"><span class="h-2 w-2 rounded-full bg-red-600 animate-pulse"></span><span data-i18n="ytKicker">En vivo</span></div>
+                    <h3 class="mt-4 text-4xl font-extrabold">EclionVR</h3>
+                    <p class="mt-4 text-gray-300 text-sm" data-i18n="ytDesc">Raves, eventos y experiencias únicas en VRChat.</p>
+                    <a href="https://www.youtube.com/@EclionVR" class="inline-flex mt-6 bg-red-600 px-6 py-3.5 rounded-full text-white">Visitar canal</a>
                 </div>
-                <h2 class="mt-4 font-display text-4xl sm:text-5xl font-bold" data-i18n="eventsTitle">Eventos Destacados</h2>
-            </div>
-
-            <!-- EVENTS GRID CONTAINER -->
-            <div class="grid md:grid-cols-3 gap-8" id="eventsContainer">
-                <!-- Dynamically populated via JS -->
+                <div class="aspect-video min-h-[320px] bg-black"><iframe class="w-full h-full" src="https://www.youtube.com/embed/JPU_VEqPC1o" allowfullscreen></iframe></div>
             </div>
         </div>
     </section>
 
-    <!-- PARTNERS SECTION -->
-    <section id="partners" class="py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-[#050000]/30">
-        <div class="mx-auto max-w-7xl">
-            <div class="text-center max-w-xl mx-auto mb-16">
-                <div class="inline-flex items-center gap-1.5 rounded-full border border-red-500/20 bg-red-500/5 px-3.5 py-1 text-xs font-mono uppercase tracking-widest text-red-400">
-                    <i class="fas fa-handshake text-xs"></i>
-                    <span data-i18n="partnersKicker">Comunidades aliadas</span>
-                </div>
-                <h2 class="mt-4 font-display text-4xl sm:text-5xl font-bold" data-i18n="partnersTitle">Partners Oficiales</h2>
-            </div>
-
-            <!-- PARTNERS GRID -->
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto" id="partnersContainer">
-                <!-- Dynamically populated via JS -->
-            </div>
+    <!-- EVENTS -->
+    <section id="events" class="py-24 px-4 border-t border-white/5">
+        <div class="text-center mb-16">
+            <div class="inline-flex rounded-full border border-red-500/20 bg-red-500/5 px-3.5 py-1 text-xs font-mono text-red-400"><i class="fas fa-calendar-alt"></i><span data-i18n="eventsKicker">Highlights</span></div>
+            <h2 class="mt-4 text-4xl sm:text-5xl font-bold" data-i18n="eventsTitle">Eventos Destacados</h2>
+            <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mt-12" id="eventsContainer"></div>
         </div>
     </section>
 
-    <!-- HIGH-IMPACT COMMUNITY CTA -->
-    <section class="py-24 px-4 sm:px-6 lg:px-8">
-        <div class="mx-auto max-w-5xl relative overflow-hidden rounded-3xl border border-white/10 bg-[#070101] p-10 md:p-20 text-center">
-            <div class="absolute -top-32 left-1/2 -translate-x-1/2 h-64 w-[500px] rounded-full blur-[120px] bg-red-600/20"></div>
-            
-            <div class="relative space-y-6">
-                <h2 class="font-display text-5xl sm:text-7xl font-extrabold tracking-tight"><span class="text-gradient-red">#EclionFamily</span></h2>
-                <p class="mt-4 text-gray-300 max-w-xl mx-auto text-sm sm:text-base leading-relaxed" data-i18n="ctaText">
-                    Únete a la comunidad de raveros más vibrante de VRChat. Vive la emoción, la música y las conexiones sensoriales desde cualquier rincón del mundo.
-                </p>
-                <div class="mt-10 flex flex-wrap justify-center gap-4">
-                    <a href="https://discord.gg/yRVNrNbrRQ" target="_blank" class="inline-flex items-center gap-2.5 rounded-full bg-red-600 hover:bg-red-500 text-white font-bold text-sm px-8 py-4 hover:scale-105 transition-all shadow-[0_0_20px_rgba(230,0,0,0.4)]">
-                        <i class="fab fa-discord text-base"></i>
-                        <span>Discord Community</span>
-                    </a>
-                    <a href="https://vrc.group/ECL.4481" target="_blank" class="inline-flex items-center gap-2.5 rounded-full bg-white hover:bg-gray-100 text-black font-bold text-sm px-8 py-4 hover:scale-105 transition-all">
-                        <i class="fas fa-vr-cardboard text-base"></i>
-                        <span>VRChat Group</span>
-                    </a>
-                </div>
-            </div>
+    <!-- PARTNERS -->
+    <section id="partners" class="py-24 px-4 border-t border-white/5 bg-[#050000]/30">
+        <div class="text-center mb-16">
+            <div class="inline-flex rounded-full border border-red-500/20 bg-red-500/5 px-3.5 py-1 text-xs font-mono text-red-400"><i class="fas fa-handshake"></i><span data-i18n="partnersKicker">Comunidades aliadas</span></div>
+            <h2 class="mt-4 text-4xl sm:text-5xl font-bold" data-i18n="partnersTitle">Partners Oficiales</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mt-12" id="partnersContainer"></div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="border-t border-white/5 bg-black py-16 px-4 sm:px-6 lg:px-8 text-gray-500 text-sm">
-        <div class="mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-8">
-            <div class="flex items-center gap-3 font-display text-lg font-bold text-white">
-                <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-red-600 text-white shadow">
-                    <i class="fas fa-headphones-alt text-sm"></i>
-                </span>
-                <span>ECLION</span>
-            </div>
-            <p class="text-center md:text-left text-xs md:text-sm" data-i18n="footer">
-                Eclion · Rave Community in VRChat · Todos los derechos reservados · 2026
-            </p>
-            <div class="flex items-center gap-4 text-base">
-                <a href="https://discord.gg/yRVNrNbrRQ" target="_blank" class="text-gray-500 hover:text-red-500 transition-colors"><i class="fab fa-discord"></i></a>
-                <a href="https://www.instagram.com/ecli.on.ofcl/" target="_blank" class="text-gray-500 hover:text-red-500 transition-colors"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.twitch.tv/eclionvr/videos" target="_blank" class="text-gray-500 hover:text-red-500 transition-colors"><i class="fab fa-twitch"></i></a>
-                <a href="https://www.youtube.com/@EclionVR" target="_blank" class="text-gray-500 hover:text-red-500 transition-colors"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-    </footer>
+    <footer class="border-t border-white/5 bg-black py-16 px-4 text-gray-500 text-center"><p data-i18n="footer">Eclion · Rave Community in VRChat · Todos los derechos reservados · 2026</p></footer>
 
-    <!-- GLASS CONTACT MODAL -->
-    <div id="contactModal" class="fixed inset-0 z-[999] hidden items-center justify-center bg-black/80 backdrop-blur-md p-4 transition-all duration-300">
-        <div class="relative w-full max-w-lg bg-[#0e0303] border border-red-900/40 rounded-3xl p-8 shadow-[0_0_60px_rgba(230,0,0,0.15)] max-h-[90vh] overflow-y-auto">
-            <!-- Close btn -->
-            <button id="modalCloseBtn" class="absolute top-5 right-5 text-gray-400 hover:text-red-500 text-2xl transition-colors">&times;</button>
-            <div id="modalFormContainer">
-                <!-- Populated via JS -->
-            </div>
-        </div>
+    <!-- MODAL CONTACTO -->
+    <div id="contactModal" class="fixed inset-0 z-[999] hidden items-center justify-center bg-black/80 backdrop-blur-md p-4">
+        <div class="relative max-w-lg bg-[#0e0303] border border-red-900/40 rounded-3xl p-8"><button id="modalCloseBtn" class="absolute top-5 right-5 text-gray-400 text-2xl">&times;</button><div id="modalFormContainer"></div></div>
     </div>
 
-    <!-- LIVE AUDIO HUD WITH OSCILLOSCOPE AND FREQUENCY CONTROLS -->
-    <div id="audioHud" class="fixed bottom-6 right-6 z-[99] max-w-sm w-[90%] sm:w-auto glass-panel rounded-2xl p-4 flex flex-col gap-3 shadow-2xl transition-all duration-300">
-        
-        <!-- Header -->
-        <div class="flex items-center justify-between gap-6">
-            <div class="flex items-center gap-3">
-                <button id="playPauseBtn" class="h-10 w-10 flex items-center justify-center rounded-full bg-red-600 hover:bg-red-500 text-white shadow-md hover:scale-105 transition-all">
-                    <i class="fas fa-play"></i>
-                </button>
-                <div>
-                    <h5 class="text-xs font-bold text-white tracking-wide uppercase font-mono">Audio Synth Live</h5>
-                    <p class="text-[9px] text-gray-400 font-mono uppercase" id="muffleStatusText">Status: Muffled</p>
-                </div>
-            </div>
-            <div class="flex items-center gap-2">
-                <i class="fas fa-volume-up text-xs text-red-500"></i>
-                <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="0.5" class="w-20 accent-red-600 cursor-pointer bg-white/10 h-1 rounded-full outline-none">
-            </div>
+    <!-- AUDIO HUD -->
+    <div id="audioHud" class="fixed bottom-6 right-6 z-[99] glass-panel rounded-2xl p-4 flex flex-col gap-3 w-[280px]">
+        <div class="flex justify-between items-center">
+            <div><button id="playPauseBtn" class="h-10 w-10 rounded-full bg-red-600 text-white hover:scale-105 transition"><i class="fas fa-play"></i></button><p id="muffleStatusText" class="text-[9px] text-gray-400 mt-1">Status: Muffled</p></div>
+            <div class="flex items-center gap-2"><i class="fas fa-volume-up text-red-500 text-xs"></i><input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.6" class="w-24 accent-red-600"></div>
         </div>
-
-        <!-- Real-Time Waveform Oscilloscope Canvas -->
-        <div class="h-12 w-full bg-black/40 rounded-lg overflow-hidden border border-white/5 relative">
-            <canvas id="oscCanvas" class="h-full w-full"></canvas>
-            <span class="absolute top-1 left-1.5 text-[8px] font-mono text-red-500/80 uppercase">Oscilloscope</span>
-        </div>
+        <div class="h-12 w-full bg-black/40 rounded-lg overflow-hidden border border-white/5 relative"><canvas id="oscCanvas" class="w-full h-full"></canvas><span class="absolute top-1 left-1.5 text-[8px] font-mono text-red-500/80">OSCILLOSCOPE</span></div>
     </div>
-
 
     <script>
-        // ----------------------------------------------------------------------
-        // DATA ARRAYS
-        // ----------------------------------------------------------------------
-        const djsData = [
-            { 
-                id: "AzazelKen", 
-                name: "AzazelKen", 
-                img: "https://api.vrchat.cloud/api/1/file/file_98da1e47-010c-47ce-82ff-4ed7fb65af15/1/", 
-                youtube: "https://www.youtube.com/@AzazelKenDJ", 
-                genres: { 
-                    es: "hard techno, hard style, uptempo, frenchcore, terrorcore, breakcore, dnb, dubstep, riddim, gabber", 
-                    en: "hard techno, hard style, uptempo, frenchcore, terrorcore, breakcore, dnb, dubstep, riddim, gabber", 
-                    fr: "hard techno, hard style, uptempo, frenchcore, terrorcore, breakcore, dnb, dubstep, riddim, gabber" 
-                }, 
-                description: { 
-                    es: "DJ y dueño, mente y cara detrás de Eclion. No solo mezclo música: construyo experiencias completas. Diseño flyers, desarrollo webs, creo logos para DJs y produzco contenido visual. Cada detalle forma parte de mi identidad artística.", 
-                    en: "DJ and owner, the mind and face behind Eclion. I don't just mix music: I build complete experiences. I design flyers, develop websites, create logos for DJs, and produce visual content. Every detail is part of my artistic identity.", 
-                    fr: "DJ et propriétaire, l'esprit et le visage derrière Eclion. Je ne me contente pas de mixer : je construis des expériences complètes. Je conçois des flyers, développe des sites web, crée des logos et produis du contenu visuel." 
-                } 
-            },
-            { 
-                id: "Anal_Rampage", 
-                name: "Anal_Rampage", 
-                img: "https://api.vrchat.cloud/api/1/image/file_963999e1-abe3-4a68-a1b5-1e68ec11be62/2/1024", 
-                youtube: "https://www.youtube.com/@Anal_Rampage696", 
-                genres: { 
-                    es: "Hard techno, riddim, tearout, metalstep, deathstep", 
-                    en: "Hard techno, riddim, tearout, metalstep, deathstep", 
-                    fr: "Hard techno, riddim, tearout, metalstep, deathstep" 
-                }, 
-                description: { 
-                    es: "Especialista en hardtechno con una energía arrolladora mientras pincha y baila.", 
-                    en: "Hardtechno specialist with overwhelming energy while DJing and dancing.", 
-                    fr: "Spécialiste de la hardtechno avec une énergie débordante tout en mixant et en dansant." 
-                } 
-            },
-            { 
-                id: "Mellana", 
-                name: "Mellana", 
-                img: "https://api.vrchat.cloud/api/1/image/file_43052fbc-12df-4c54-85fa-e1370ca5ebbb/1/1024", 
-                youtube: "https://www.youtube.com/@oracion621", 
-                genres: { 
-                    es: "Hard Dance, Rawstyle, Hard Techno, Microwave", 
-                    en: "Hard Dance, Rawstyle, Hard Techno, Microwave", 
-                    fr: "Hard Dance, Rawstyle, Hard Techno, Microwave" 
-                }, 
-                description: { 
-                    es: "Melodía y potencia, fusión única de estilos duros.", 
-                    en: "Melody and power, unique fusion of hard styles.", 
-                    fr: "Mélodie et puissance, fusion unique de styles durs." 
-                } 
-            },
-            { 
-                id: "ElPutoPuto", 
-                name: "ElPutoPuto", 
-                img: "https://api.vrchat.cloud/api/1/image/file_bfd42eab-4ce7-4c45-a144-a87b35f7058a/2/1024", 
-                youtube: "https://www.youtube.com/@si5157", 
-                genres: { 
-                    es: "Techno, Tekno, Acid Core, Mental Core, Hardcore, DnB", 
-                    en: "Techno, Tekno, Acid Core, Mental Core, Hardcore, DnB", 
-                    fr: "Techno, Tekno, Acid Core, Mental Core, Hardcore, DnB" 
-                }, 
-                description: { 
-                    es: "Amante de la cultura free party y underground.", 
-                    en: "Lover of free party and underground culture.", 
-                    fr: "Amoureux de la culture free party et underground." 
-                } 
-            },
-            { 
-                id: "SynHaptX", 
-                name: "SynHaptX Fire", 
-                img: "https://api.vrchat.cloud/api/1/image/file_49e37070-b4ef-4749-ac48-0707db2982e2/1/1024", 
-                youtube: "https://www.youtube.com/@synhaptxfire", 
-                vrGroupLink: "https://vrchat.com/home/group/grp_8b16de98-1064-4b1e-9565-59b64e2c07ed", 
-                genres: { 
-                    es: "Dubstep, MetalStep, Tearout", 
-                    en: "Dubstep, MetalStep, Tearout", 
-                    fr: "Dubstep, MetalStep, Tearout" 
-                }, 
-                description: { 
-                    es: "Bajos pesados y rupturas agresivas, puro filo.", 
-                    en: "Heavy basses and aggressive drops, pure edge.", 
-                    fr: "Basses lourdes et drops agressifs, pur tranchant." 
-                } 
-            },
-            { 
-                id: "Chonchito", 
-                name: "Chonchito", 
-                img: "https://api.vrchat.cloud/api/1/image/file_f608fff7-b009-4918-811e-b3b685018610/1/1024", 
-                youtube: "https://www.youtube.com/@chonchito-h6c", 
-                genres: { 
-                    es: "Tearout", 
-                    en: "Tearout", 
-                    fr: "Tearout" 
-                }, 
-                description: { 
-                    es: "La esencia del tearout, golpes directos al pecho.", 
-                    en: "The essence of tearout, direct hits to the chest.", 
-                    fr: "L'essence du tearout, coups directs à la poitrine." 
-                } 
-            },
-            { 
-                id: "Pikyes", 
-                name: "PIKYES", 
-                img: "https://api.vrchat.cloud/api/1/file/file_601dcfc1-bbc1-417a-b2f7-80b47a127c05/1", 
-                youtube: "https://www.youtube.com/@Pikyes", 
-                genres: { 
-                    es: "Oldschool Rave, Modern Hardcore, Gabber, Terrorcore, Breakbeat, Drum & Bass, Crossbreed", 
-                    en: "Oldschool Rave, Modern Hardcore, Gabber, Terrorcore, Breakbeat, Drum & Bass, Crossbreed", 
-                    fr: "Oldschool Rave, Modern Hardcore, Gabber, Terrorcore, Breakbeat, Drum & Bass, Crossbreed" 
-                }, 
-                description: { 
-                    es: "Multigénero con un gran amor por la cultura rave. No pincho solo para mí, pincho para todo el público. Orgulloso de haberme unido oficialmente a Eclion.", 
-                    en: "Multi-genre with a strong love for rave culture. I don't mix just for myself — I mix for the whole crowd. Proud to have officially joined Eclion.", 
-                    fr: "Multigenre avec un grand amour pour la culture rave. Je ne mixe pas seulement pour moi — je mixe pour tout le public. Fier d'avoir rejoint Eclion." 
-                } 
-            },
-            { 
-                id: "Rylinso", 
-                name: "Rylinso", 
-                img: "https://api.vrchat.cloud/api/1/image/file_03fdcd95-4f2b-4838-bbd2-28d1372c2df1/1/256", 
-                youtube: "https://www.youtube.com/@Rylinso", 
-                soundcloud: "https://www.soundcloud.com/rylinso", 
-                twitch: "https://www.twitch.com/rylinso", 
-                genres: { 
-                    es: "Bruit, Breakcore, Hardcore, Frenchcore, Hardtechno", 
-                    en: "Bruit, Breakcore, Hardcore, Frenchcore, Hardtechno", 
-                    fr: "Bruit, Breakcore, Hardcore, Frenchcore, Hardtechno" 
-                }, 
-                description: { 
-                    es: "Que el Bruit sea su guía, así como su poder será el mío. Ella hace retroceder la luz de la vida.", 
-                    en: "May the Bruit be her guidance as her might will be mine. She rolls back the light of life.", 
-                    fr: "Que le Bruit soit son guide, car sa puissance sera la mienne. Elle repousse la lumière de la vie." 
-                } 
-            },
-            { 
-                id: "VictoriaNice", 
-                name: "VictoriaŅice", 
-                img: "https://api.vrchat.cloud/api/1/image/file_ee99725e-12fa-4e34-9e66-86f0fec0201f/1/256", 
-                youtube: "https://www.youtube.com/@victorianicee", 
-                genres: { 
-                    es: "Deep house, Tech House, Forest psy, Techno, Hardcore, Hardstyle, Dubstep, DnB", 
-                    en: "Deep house, Tech House, Forest psy, Techno, Hardcore, Hardstyle, Dubstep, DnB", 
-                    fr: "Deep house, Tech House, Forest psy, Techno, Hardcore, Hardstyle, Dubstep, DnB" 
-                }, 
-                description: { 
-                    es: "Supa hypa ultra deluxe perfecto beautiful galaxy baby infinity mugen muteki DJ Victoria.", 
-                    en: "Supa hypa ultra deluxe perfecto beautiful galaxy baby infinity mugen muteki DJ Victoria.", 
-                    fr: "Supa hypa ultra deluxe perfecto beautiful galaxy baby infinity mugen muteki DJ Victoria." 
-                } 
-            },
-            { 
-                id: "LunaK", 
-                name: "DJ Luna K", 
-                img: "https://i.imgur.com/JNOfdmG.png", 
-                soundcloud: "https://soundcloud.com/dj-luna-k", 
-                twitch: "https://twitch.tv/dj_luna_k", 
-                genres: { 
-                    es: "Funky House, Bass House, Big Room, Trance, Techno, Hardstyle, Drum & Bass, Breakbeats", 
-                    en: "Funky House, Bass House, Big Room, Trance, Techno, Hardstyle, Drum & Bass, Breakbeats", 
-                    fr: "Funky House, Bass House, Big Room, Trance, Techno, Hardstyle, Drum & Bass, Breakbeats" 
-                }, 
-                description: { 
-                    es: "Streamer vtuber y DJ. Pincha en Twitch y VRChat con foco en Funky House, Trance y Techno. Lleva pinchando online casi seis años.", 
-                    en: "Vtuber streamer and DJ. They DJ on Twitch and VRC, gravitating to Funky House, Trance, and Techno. Almost six years DJing online.", 
-                    fr: "Streameuse vtuber et DJ. Elle mixe sur Twitch et VRChat, orientée Funky House, Trance et Techno. Près de six ans de mix en ligne." 
-                } 
-            }
+        // ======================== DATOS COMPLETOS ========================
+        const djsData = [ 
+            { id: "AzazelKen", name: "AzazelKen", img: "https://api.vrchat.cloud/api/1/file/file_98da1e47-010c-47ce-82ff-4ed7fb65af15/1/", youtube: "https://www.youtube.com/@AzazelKenDJ", genres: { es: "hard techno, hard style, uptempo, frenchcore", en: "hard techno, hard style, uptempo, frenchcore", fr: "hard techno, hard style, uptempo, frenchcore" }, description: { es: "DJ y dueño, mente y cara detrás de Eclion. Diseño flyers, webs y contenido visual.", en: "DJ and owner, the mind behind Eclion. I design flyers, websites and visual content.", fr: "DJ et propriétaire, l'esprit derrière Eclion. Je conçois flyers, sites web et contenu visuel." } },
+            { id: "Anal_Rampage", name: "Anal_Rampage", img: "https://api.vrchat.cloud/api/1/image/file_963999e1-abe3-4a68-a1b5-1e68ec11be62/2/1024", youtube: "https://www.youtube.com/@Anal_Rampage696", genres: { es: "Hard techno, riddim, tearout", en: "Hard techno, riddim, tearout", fr: "Hard techno, riddim, tearout" }, description: { es: "Especialista en hardtechno con energía arrolladora.", en: "Hardtechno specialist with overwhelming energy.", fr: "Spécialiste de la hardtechno avec une énergie débordante." } },
+            { id: "Mellana", name: "Mellana", img: "https://api.vrchat.cloud/api/1/image/file_43052fbc-12df-4c54-85fa-e1370ca5ebbb/1/1024", youtube: "https://www.youtube.com/@oracion621", genres: { es: "Hard Dance, Rawstyle, Hard Techno", en: "Hard Dance, Rawstyle, Hard Techno", fr: "Hard Dance, Rawstyle, Hard Techno" }, description: { es: "Melodía y potencia, fusión única de estilos duros.", en: "Melody and power, unique fusion of hard styles.", fr: "Mélodie et puissance, fusion unique de styles durs." } },
+            { id: "ElPutoPuto", name: "ElPutoPuto", img: "https://api.vrchat.cloud/api/1/image/file_bfd42eab-4ce7-4c45-a144-a87b35f7058a/2/1024", youtube: "https://www.youtube.com/@si5157", genres: { es: "Techno, Tekno, Acid Core, Mental Core", en: "Techno, Tekno, Acid Core, Mental Core", fr: "Techno, Tekno, Acid Core, Mental Core" }, description: { es: "Amante de la cultura free party y underground.", en: "Lover of free party and underground culture.", fr: "Amoureux de la culture free party et underground." } },
+            { id: "SynHaptX", name: "SynHaptX Fire", img: "https://api.vrchat.cloud/api/1/image/file_49e37070-b4ef-4749-ac48-0707db2982e2/1/1024", youtube: "https://www.youtube.com/@synhaptxfire", genres: { es: "Dubstep, MetalStep, Tearout", en: "Dubstep, MetalStep, Tearout", fr: "Dubstep, MetalStep, Tearout" }, description: { es: "Bajos pesados y rupturas agresivas, puro filo.", en: "Heavy basses and aggressive drops, pure edge.", fr: "Basses lourdes et drops agressifs, pur tranchant." } },
+            { id: "Chonchito", name: "Chonchito", img: "https://api.vrchat.cloud/api/1/image/file_f608fff7-b009-4918-811e-b3b685018610/1/1024", youtube: "https://www.youtube.com/@chonchito-h6c", genres: { es: "Tearout", en: "Tearout", fr: "Tearout" }, description: { es: "La esencia del tearout, golpes directos al pecho.", en: "The essence of tearout, direct hits to the chest.", fr: "L'essence du tearout, coups directs à la poitrine." } },
+            { id: "Pikyes", name: "PIKYES", img: "https://api.vrchat.cloud/api/1/file/file_601dcfc1-bbc1-417a-b2f7-80b47a127c05/1", youtube: "https://www.youtube.com/@Pikyes", genres: { es: "Oldschool Rave, Hardcore, Gabber, Breakbeat", en: "Oldschool Rave, Hardcore, Gabber, Breakbeat", fr: "Oldschool Rave, Hardcore, Gabber, Breakbeat" }, description: { es: "Multigénero con gran amor por la cultura rave. Orgulloso de ser parte de Eclion.", en: "Multi-genre with a strong love for rave culture. Proud to be part of Eclion.", fr: "Multigenre avec un grand amour pour la culture rave. Fier de faire partie d'Eclion." } },
+            { id: "Rylinso", name: "Rylinso", img: "https://api.vrchat.cloud/api/1/image/file_03fdcd95-4f2b-4838-bbd2-28d1372c2df1/1/256", youtube: "https://www.youtube.com/@Rylinso", soundcloud: "https://soundcloud.com/rylinso", twitch: "https://twitch.tv/rylinso", genres: { es: "Bruit, Breakcore, Hardcore, Frenchcore", en: "Bruit, Breakcore, Hardcore, Frenchcore", fr: "Bruit, Breakcore, Hardcore, Frenchcore" }, description: { es: "Que el Bruit sea su guía, así como su poder será el mío.", en: "May the Bruit be her guidance as her might will be mine.", fr: "Que le Bruit soit son guide, car sa puissance sera la mienne." } },
+            { id: "VictoriaNice", name: "VictoriaŅice", img: "https://api.vrchat.cloud/api/1/image/file_ee99725e-12fa-4e34-9e66-86f0fec0201f/1/256", youtube: "https://www.youtube.com/@victorianicee", genres: { es: "Deep house, Tech House, Techno, Hardstyle", en: "Deep house, Tech House, Techno, Hardstyle", fr: "Deep house, Tech House, Techno, Hardstyle" }, description: { es: "Supa hypa ultra deluxe perfecto beautiful galaxy baby infinity.", en: "Supa hypa ultra deluxe perfecto beautiful galaxy baby infinity.", fr: "Supa hypa ultra deluxe perfecto beautiful galaxy baby infinity." } },
+            { id: "LunaK", name: "DJ Luna K", img: "https://i.imgur.com/JNOfdmG.png", soundcloud: "https://soundcloud.com/dj-luna-k", twitch: "https://twitch.tv/dj_luna_k", genres: { es: "Funky House, Trance, Techno, Drum & Bass", en: "Funky House, Trance, Techno, Drum & Bass", fr: "Funky House, Trance, Techno, Drum & Bass" }, description: { es: "Streamer vtuber y DJ. Pincha en Twitch y VRChat con más de 6 años de experiencia.", en: "Vtuber streamer and DJ. DJing on Twitch and VRChat for over 6 years.", fr: "Streameuse vtuber et DJ. Elle mixe sur Twitch et VRChat depuis plus de 6 ans." } },
+            { id: "pat_fenis", name: "pat fenis_", img: "https://api.vrchat.cloud/api/1/file/file_8c9f791b-9874-4cb2-87a8-120805661f32/1/", gunsLink: "https://guns.lol/pat_fenis", genres: { es: "techno, hard techno, tearout, reggaeton", en: "techno, hard techno, tearout, reggaeton", fr: "techno, hard techno, tearout, reggaeton" }, description: { 
+                es: "this is what it's always been about. totalmente dedicado a mi chica maravillosa, pat fussy ≺3 las chicas guapas escuchan techno", 
+                en: "this is what it's always been about. fully devoted to my wonderful girl, pat fussy ≺3 hot girls listen to techno", 
+                fr: "this is what it's always been about. entièrement dévoué à ma merveilleuse fille, pat fussy ≺3 les jolies filles écoutent de la techno" 
+            } }
         ];
 
+        // OWNERS: ChiquiBoo como "Fundadora" (no co-fundadora)
         const owners = [
-            { 
-                name: "AzazelKen", 
-                img: "https://api.vrchat.cloud/api/1/file/file_98da1e47-010c-47ce-82ff-4ed7fb65af15/1/", 
-                role: { es: "Fundador & Director", en: "Founder & Director", fr: "Fondateur & Directeur" }, 
-                socials: { vrchat: "https://vrchat.com/home/user/usr_d22c21a8-6bb1-4f24-921c-bb3feedff517", discord: "https://discord.com/users/178567424738590720", instagram: "https://www.instagram.com/azazelkenecl/" } 
-            },
-            { 
-                name: "ChiquiBoo", 
-                img: "https://api.vrchat.cloud/api/1/image/file_88983ad4-8806-418b-8200-0d6cf0ec85e4/1/1024", 
-                role: { es: "Co-fundadora", en: "Co-founder", fr: "Co-fondatrice" }, 
-                socials: { vrchat: "https://vrchat.com/home/user/usr_f56d3f49-0866-4e08-b710-968cfa8c4e4e", discord: "https://discord.com/users/694308630773628960", instagram: "https://www.instagram.com/chiquibooecl/" } 
-            }
+            { name: "AzazelKen", img: "https://api.vrchat.cloud/api/1/file/file_98da1e47-010c-47ce-82ff-4ed7fb65af15/1/", role: { es: "Fundador & Director", en: "Founder & Director", fr: "Fondateur & Directeur" }, socials: { vrchat: "#", discord: "#", instagram: "#" } },
+            { name: "ChiquiBoo", img: "https://api.vrchat.cloud/api/1/image/file_88983ad4-8806-418b-8200-0d6cf0ec85e4/1/1024", role: { es: "Fundadora", en: "Founder", fr: "Fondatrice" }, socials: { vrchat: "#", discord: "#", instagram: "#" } }
         ];
 
-        const events = [
-            { id: "k7mtdZoONbs", title: "Primer Evento" },
-            { id: "vLCWa-oKrQU", title: "HARD.EXE" },
-            { id: "W0JdMFh-K34", title: "REVELION" }
-        ];
+        const events = [{ id: "k7mtdZoONbs", title: "Primer Evento" },{ id: "vLCWa-oKrQU", title: "HARD.EXE" },{ id: "W0JdMFh-K34", title: "REVELION" }];
 
+        // TRADUCCIONES COMPLETAS
         const translations = {
             es: {
-                navAbout: "Comunidad", navDjs: "DJs", navChannel: "Transmisiones", navEvents: "Eventos", navPartners: "Partners", contact: "Contáctanos",
+                navAbout: "Comunidad", navDjs: "DJs", instagramNav: "Instagram", navChannel: "Transmisiones", navEvents: "Eventos", navPartners: "Partners", contact: "Contáctanos",
                 heroTag: "Rave Community · VRChat", heroTitle: "Donde la noche nunca termina.",
-                heroDesc: "Somos una comunidad dedicada a crear experiencias de música electrónica inmersivas dentro de VRChat. Organizamos raves todos los sábados y, durante la semana, también pueden surgir eventos adicionales. Nos especializamos en música electrónica de intensidad media a alta, sin limitarnos a un solo género. Además de nuestras raves habituales, realizamos eventos temáticos como noches Cyberpunk y otras experiencias únicas. Entre nuestros eventos más destacados se encuentran Hard.exe, dedicado a los sonidos más potentes de la música electrónica, y HARDBASS_404, enfocado en Dubstep, Riddim, Tearout y otros subgéneros pesados. Únete y vive algunas de las experiencias rave más intensas de VRChat.",
-                heroCta: "Unirse al grupo VRChat", heroSecondary: "Ver eventos", statDjs: "DJs residentes", statEvents: "Eventos celebrados", statCommunity: "Miembros activos",
-                ownersTitle: "Nuestros Fundadores", ownersKicker: "Quienes están detrás", djsTitle: "Eclion DJs", djsKicker: "Roster oficial", djsSectionSub: "Explora nuestro roster premium de DJs especializados en ritmos de alta intensidad.", genres: "Géneros", about: "Sobre", ytKicker: "En vivo", ytDesc: "Raves, eventos y experiencias únicas en VRChat. Suscríbete a nuestro canal principal para ver las retransmisiones directas de nuestros espectáculos.", ytBtn: "Visitar canal", eventsTitle: "Eventos Destacados", eventsKicker: "Highlights", partnersTitle: "Partners Oficiales", partnersKicker: "Comunidades aliadas", vrGroup: "Grupo VRChat", footer: "Eclion · Rave Community in VRChat · Todos los derechos reservados · 2026", ctaText: "Únete a la comunidad de raveros más vibrante de VRChat. Vive la emoción, la música y las conexiones sensoriales desde cualquier rincón del mundo.",
-                formNombreLabel: "Nombre de usuario", formOpcional: "(opcional)", formNombrePlaceholder: "Ej: RaveMaster22", formEmailLabel: "Correo electrónico", formEmailPlaceholder: "tu@email.com", formDiscordLabel: "Discord", formDiscordPlaceholder: "ID de usuario o tag", formDiscordHint: "Ejemplo: 1432010052311600230 (ID de usuario)", formMensajeLabel: "Mensaje", formMensajePlaceholder: "Escribe tu consulta...", formSubmitBtn: "Enviar mensaje"
+                heroDesc: "Somos una comunidad dedicada a crear experiencias de música electrónica inmersivas dentro de VRChat. Organizamos raves todos los sábados y eventos temáticos como noches Cyberpunk. Hard.exe y HARDBASS_404 son nuestros eventos estrella. Únete y vive las raves más intensas de VRChat.",
+                statDjs: "DJs residentes", statEvents: "Eventos celebrados", statCommunity: "Miembros activos",
+                ownersTitle: "Nuestros Fundadores", ownersKicker: "Quienes están detrás",
+                djsTitle: "Eclion DJs", djsKicker: "Roster oficial", djsSectionSub: "Explora nuestro roster premium de DJs especializados en ritmos de alta intensidad.",
+                genres: "Géneros", about: "Sobre",
+                ytKicker: "En vivo", ytDesc: "Raves, eventos y experiencias únicas en VRChat. Suscríbete a nuestro canal.", ytBtn: "Visitar canal",
+                eventsTitle: "Eventos Destacados", eventsKicker: "Highlights",
+                partnersTitle: "Partners Oficiales", partnersKicker: "Comunidades aliadas", vrGroup: "Grupo VRChat",
+                footer: "Eclion · Rave Community in VRChat · Todos los derechos reservados · 2026",
+                instagramLabel: "Instagram", instagramTitle: "@ecli.on.ofcl",
+                formNombreLabel: "Nombre", formOpcional: "(opcional)", formNombrePlaceholder: "Ej: RaveMaster22", formEmailLabel: "Correo", formEmailPlaceholder: "tu@email.com", formDiscordLabel: "Discord", formDiscordPlaceholder: "ID", formDiscordHint: "Ejemplo: 123456789", formMensajeLabel: "Mensaje", formMensajePlaceholder: "Escribe...", formSubmitBtn: "Enviar"
             },
             en: {
-                navAbout: "Community", navDjs: "DJs", navChannel: "Live Streams", navEvents: "Events", navPartners: "Partners", contact: "Contact Us",
+                navAbout: "Community", navDjs: "DJs", instagramNav: "Instagram", navChannel: "Live Streams", navEvents: "Events", navPartners: "Partners", contact: "Contact Us",
                 heroTag: "Rave Community · VRChat", heroTitle: "Where the night never ends.",
-                heroDesc: "We are a community dedicated to creating immersive electronic music experiences inside VRChat. We host raves every Saturday, and additional events may pop up during the week. We specialize in medium to high intensity electronic music, without being limited to a single genre. In addition to our regular raves, we hold themed events like Cyberpunk nights and other unique experiences. Among our most notable events are Hard.exe, focused on the most powerful sounds of electronic music, and HARDBASS_404, centered on Dubstep, Riddim, Tearout and other heavy subgenres. Join us and live some of the most intense rave experiences in VRChat.",
-                heroCta: "Join VRChat Group", heroSecondary: "See events", statDjs: "Resident DJs", statEvents: "Events hosted", statCommunity: "Active members",
-                ownersTitle: "Our Founders", ownersKicker: "Behind the scenes", djsTitle: "Eclion DJs", djsKicker: "Official roster", djsSectionSub: "Explore our premium roster of resident DJs specializing in high intensity subgenres.", genres: "Genres", about: "About", ytKicker: "Live", ytDesc: "Raves, events and unique experiences in VRChat. Subscribe and never miss out on live feeds.", ytBtn: "Visit channel", eventsTitle: "Featured Events", eventsKicker: "Highlights", partnersTitle: "Official Partners", partnersKicker: "Allied communities", vrGroup: "VRChat Group", footer: "Eclion · Rave Community in VRChat · All rights reserved · 2026", ctaText: "Join the most vibrant rave community in VRChat. Experience sound, connection, and visual sensory trips from anywhere around the globe.",
-                formNombreLabel: "Username", formOpcional: "(optional)", formNombrePlaceholder: "Ex: RaveMaster22", formEmailLabel: "Email Address", formEmailPlaceholder: "you@email.com", formDiscordLabel: "Discord", formDiscordPlaceholder: "User ID or username tag", formDiscordHint: "Example: 1432010052311600230 (User ID)", formMensajeLabel: "Message", formMensajePlaceholder: "Write your inquiry...", formSubmitBtn: "Send message"
+                heroDesc: "We are a community dedicated to creating immersive electronic music experiences inside VRChat. We host raves every Saturday and themed events like Cyberpunk nights. Hard.exe and HARDBASS_404 are our flagship events. Join us and live the most intense rave experiences in VRChat.",
+                statDjs: "Resident DJs", statEvents: "Events hosted", statCommunity: "Active members",
+                ownersTitle: "Our Founders", ownersKicker: "Behind the scenes",
+                djsTitle: "Eclion DJs", djsKicker: "Official roster", djsSectionSub: "Explore our premium roster of resident DJs specializing in high intensity subgenres.",
+                genres: "Genres", about: "About",
+                ytKicker: "Live", ytDesc: "Raves, events and unique experiences in VRChat. Subscribe to our channel.", ytBtn: "Visit channel",
+                eventsTitle: "Featured Events", eventsKicker: "Highlights",
+                partnersTitle: "Official Partners", partnersKicker: "Allied communities", vrGroup: "VRChat Group",
+                footer: "Eclion · Rave Community in VRChat · All rights reserved · 2026",
+                instagramLabel: "Instagram", instagramTitle: "@ecli.on.ofcl",
+                formNombreLabel: "Username", formOpcional: "(optional)", formNombrePlaceholder: "Ex: RaveMaster22", formEmailLabel: "Email", formEmailPlaceholder: "you@email.com", formDiscordLabel: "Discord", formDiscordPlaceholder: "ID", formDiscordHint: "Example: 123456789", formMensajeLabel: "Message", formMensajePlaceholder: "Write...", formSubmitBtn: "Send"
             },
             fr: {
-                navAbout: "Communauté", navDjs: "DJs", navChannel: "En direct", navEvents: "Événements", navPartners: "Partenaires", contact: "Contactez-nous",
+                navAbout: "Communauté", navDjs: "DJs", instagramNav: "Instagram", navChannel: "En direct", navEvents: "Événements", navPartners: "Partenaires", contact: "Contactez-nous",
                 heroTag: "Rave Community · VRChat", heroTitle: "Là où la nuit ne finit jamais.",
-                heroDesc: "Nous sommes une communauté dédiée à la création d'expériences de musique électronique immersives dans VRChat. Nous organisons des raves tous les samedis et d'autres événements peuvent avoir lieu en semaine. Nous nous spécialisons dans les rythmes intenses. En plus de nos raves habituelles, nous proposons des soirées Cyberpunk et des expériences thématiques uniques. Hard.exe et HARDBASS_404 font partie de nos fleurons musicaux les plus appréciés. Rejoignez-nous et vivez les nuits électroniques les plus survoltées de VRChat.",
-                heroCta: "Rejoindre le groupe VRChat", heroSecondary: "Voir les événements", statDjs: "DJs résidents", statEvents: "Événements organisés", statCommunity: "Membres actifs",
-                ownersTitle: "Nos Fondateurs", ownersKicker: "Dans les coulisses", djsTitle: "Eclion DJs", djsKicker: "Roster officiel", djsSectionSub: "Découvrez notre roster exclusif de DJs de premier plan.", genres: "Genres", about: "À propos", ytKicker: "En direct", ytDesc: "Raves, shows exclusifs et expériences uniques dans VRChat. Abonnez-vous à notre chaîne principale.", ytBtn: "Visiter la chaîne", eventsTitle: "Événements en vedette", eventsKicker: "Highlights", partnersTitle: "Partenaires Officiels", partnersKicker: "Communautés alliées", vrGroup: "Groupe VRChat", footer: "Eclion · Rave Community dans VRChat · Tous droits réservés · 2026", ctaText: "Rejoignez la communauté rave la plus intense de VRChat. Vibrez sur des basses massives où que vous soyez.",
-                formNombreLabel: "Nom d'utilisateur", formOpcional: "(optionnel)", formNombrePlaceholder: "Ex: RaveMaster22", formEmailLabel: "E-mail", formEmailPlaceholder: "vous@email.com", formDiscordLabel: "Discord", formDiscordPlaceholder: "ID ou tag d'utilisateur", formDiscordHint: "Exemple: 1432010052311600230 (ID)", formMensajeLabel: "Message", formMensajePlaceholder: "Écrivez votre question...", formSubmitBtn: "Envoyer le message"
+                heroDesc: "Nous sommes une communauté dédiée à la création d'expériences de musique électronique immersives dans VRChat. Nous organisons des raves tous les samedis et des soirées à thème comme Cyberpunk. Hard.exe et HARDBASS_404 sont nos événements phares. Rejoignez-nous et vivez les raves les plus intenses de VRChat.",
+                statDjs: "DJs résidents", statEvents: "Événements organisés", statCommunity: "Membres actifs",
+                ownersTitle: "Nos Fondateurs", ownersKicker: "Dans les coulisses",
+                djsTitle: "Eclion DJs", djsKicker: "Roster officiel", djsSectionSub: "Découvrez notre roster exclusif de DJs de premier plan.",
+                genres: "Genres", about: "À propos",
+                ytKicker: "En direct", ytDesc: "Raves, shows exclusifs et expériences uniques dans VRChat. Abonnez-vous à notre chaîne.", ytBtn: "Visiter la chaîne",
+                eventsTitle: "Événements en vedette", eventsKicker: "Highlights",
+                partnersTitle: "Partenaires Officiels", partnersKicker: "Communautés alliées", vrGroup: "Groupe VRChat",
+                footer: "Eclion · Rave Community dans VRChat · Tous droits réservés · 2026",
+                instagramLabel: "Instagram", instagramTitle: "@ecli.on.ofcl",
+                formNombreLabel: "Nom d'utilisateur", formOpcional: "(optionnel)", formNombrePlaceholder: "Ex: RaveMaster22", formEmailLabel: "E-mail", formEmailPlaceholder: "vous@email.com", formDiscordLabel: "Discord", formDiscordPlaceholder: "ID", formDiscordHint: "Exemple: 123456789", formMensajeLabel: "Message", formMensajePlaceholder: "Écrivez...", formSubmitBtn: "Envoyer"
             }
         };
 
         let currentLang = 'es';
         let selectedDjId = djsData[0].id;
 
-        // ----------------------------------------------------------------------
-        // DOM RENDERING
-        // ----------------------------------------------------------------------
+        // ========== RENDERIZADO DE COMPONENTES ==========
         function renderOwners() {
             const container = document.getElementById('ownersContainer');
             if (!container) return;
             container.innerHTML = owners.map(o => `
-                <div class="glass-panel rounded-2xl p-6 relative group overflow-hidden">
-                    <div class="absolute inset-0 bg-red-600/[0.02] group-hover:bg-red-600/[0.05] transition-colors duration-500"></div>
-                    <div class="relative flex flex-col sm:flex-row items-center gap-6">
-                        <div class="relative flex-shrink-0">
-                            <div class="absolute inset-0 rounded-full bg-red-600/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                            <img src="${o.img}" alt="${o.name}" class="relative h-24 w-24 rounded-full object-cover border-2 border-white/10 group-hover:border-red-500 transition-colors duration-500 shadow-xl">
-                        </div>
-                        <div class="flex-1 text-center sm:text-left">
-                            <h3 class="font-display text-2xl font-bold text-white mb-1">${o.name}</h3>
-                            <p class="text-sm font-mono text-red-500 uppercase tracking-widest">${o.role[currentLang]}</p>
-                            
-                            <!-- SOCIAL LINKS -->
-                            <div class="mt-4 flex justify-center sm:justify-start gap-4">
-                                <a href="${o.socials.vrchat}" target="_blank" class="h-8 w-8 rounded-lg bg-white/5 hover:bg-red-600 hover:text-white flex items-center justify-center text-gray-400 transition-all duration-300">
-                                    <i class="fas fa-vr-cardboard text-xs"></i>
-                                </a>
-                                <a href="${o.socials.discord}" target="_blank" class="h-8 w-8 rounded-lg bg-white/5 hover:bg-red-600 hover:text-white flex items-center justify-center text-gray-400 transition-all duration-300">
-                                    <i class="fab fa-discord text-xs"></i>
-                                </a>
-                                <a href="${o.socials.instagram}" target="_blank" class="h-8 w-8 rounded-lg bg-white/5 hover:bg-red-600 hover:text-white flex items-center justify-center text-gray-400 transition-all duration-300">
-                                    <i class="fab fa-instagram text-xs"></i>
-                                </a>
-                            </div>
+                <div class="glass-panel rounded-2xl p-6">
+                    <div class="flex items-center gap-6">
+                        <img src="${o.img}" class="h-24 w-24 rounded-full object-cover border-2 border-white/10">
+                        <div>
+                            <h3 class="text-2xl font-bold">${o.name}</h3>
+                            <p class="text-red-500 text-sm">${o.role[currentLang]}</p>
                         </div>
                     </div>
                 </div>
@@ -813,21 +329,13 @@
             const container = document.getElementById('djList');
             if (!container) return;
             container.innerHTML = djsData.map(d => `
-                <button data-id="${d.id}" class="dj-btn flex w-full items-center gap-4 rounded-xl p-3 text-left transition-all duration-300 border ${selectedDjId === d.id ? 'roster-active' : 'border-transparent hover:bg-white/[0.02]' }">
-                    <img src="${d.img}" alt="${d.name}" class="h-12 w-12 rounded-lg object-cover border border-white/10">
-                    <div class="truncate">
-                        <span class="block text-sm font-bold ${selectedDjId === d.id ? 'text-white' : 'text-gray-300 group-hover:text-white'}">${d.name}</span>
-                        <span class="text-[10px] font-mono text-gray-500 uppercase">Resident DJ</span>
-                    </div>
+                <button data-id="${d.id}" class="dj-btn flex gap-4 p-3 rounded-xl w-full text-left transition border ${selectedDjId === d.id ? 'roster-active' : 'border-transparent hover:bg-white/5'}">
+                    <img src="${d.img}" class="h-12 w-12 rounded-lg object-cover">
+                    <div><div class="font-bold">${d.name}</div><div class="text-[10px] text-gray-500">Resident DJ</div></div>
                 </button>
             `).join('');
-
             document.querySelectorAll('.dj-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    selectedDjId = btn.dataset.id;
-                    renderDjList();
-                    renderDjDetail();
-                });
+                btn.addEventListener('click', () => { selectedDjId = btn.dataset.id; renderDjList(); renderDjDetail(); });
             });
         }
 
@@ -835,101 +343,30 @@
             const dj = djsData.find(d => d.id === selectedDjId) || djsData[0];
             const container = document.getElementById('djDetail');
             if (!container) return;
-
-            const genresHtml = dj.genres[currentLang].split(',').map(g => `
-                <span class="rounded-full bg-red-950/20 border border-red-500/10 px-3.5 py-1 text-xs font-mono text-red-400">${g.trim()}</span>
-            `).join('');
-
-            let linksHtml = '';
-            if (dj.youtube) linksHtml += `
-                <a href="${dj.youtube}" target="_blank" class="inline-flex items-center gap-2 rounded-full border border-white/5 bg-white/5 hover:bg-red-600 hover:text-white px-4 py-2 text-xs font-bold text-gray-300 transition-all"><i class="fab fa-youtube"></i> YouTube</a>
-            `;
-            if (dj.soundcloud) linksHtml += `
-                <a href="${dj.soundcloud}" target="_blank" class="inline-flex items-center gap-2 rounded-full border border-white/5 bg-white/5 hover:bg-red-600 hover:text-white px-4 py-2 text-xs font-bold text-gray-300 transition-all"><i class="fab fa-soundcloud"></i> SoundCloud</a>
-            `;
-            if (dj.twitch) linksHtml += `
-                <a href="${dj.twitch}" target="_blank" class="inline-flex items-center gap-2 rounded-full border border-white/5 bg-white/5 hover:bg-red-600 hover:text-white px-4 py-2 text-xs font-bold text-gray-300 transition-all"><i class="fab fa-twitch"></i> Twitch</a>
-            `;
-            if (dj.vrGroupLink) linksHtml += `
-                <a href="${dj.vrGroupLink}" target="_blank" class="inline-flex items-center gap-2 rounded-full border border-white/5 bg-white/5 hover:bg-red-600 hover:text-white px-4 py-2 text-xs font-bold text-gray-300 transition-all"><i class="fas fa-vr-cardboard"></i> ${translations[currentLang].vrGroup}</a>
-            `;
-
+            const genresHtml = dj.genres[currentLang].split(',').map(g => `<span class="bg-red-950/20 border border-red-500/10 px-3 py-1 text-xs rounded-full">${g.trim()}</span>`).join('');
+            let links = '';
+            if (dj.youtube) links += `<a href="${dj.youtube}" target="_blank" class="bg-white/5 hover:bg-red-600 px-4 py-2 rounded-full text-xs transition">YouTube</a>`;
+            if (dj.soundcloud) links += `<a href="${dj.soundcloud}" target="_blank" class="bg-white/5 hover:bg-red-600 px-4 py-2 rounded-full text-xs transition">SoundCloud</a>`;
+            if (dj.twitch) links += `<a href="${dj.twitch}" target="_blank" class="bg-white/5 hover:bg-red-600 px-4 py-2 rounded-full text-xs transition">Twitch</a>`;
+            if (dj.gunsLink) links += `<a href="${dj.gunsLink}" target="_blank" class="bg-white/5 hover:bg-red-600 px-4 py-2 rounded-full text-xs transition">guns.lol</a>`;
             container.innerHTML = `
-                <!-- Background blur aura -->
-                <div class="relative h-60 md:h-72 overflow-hidden flex items-end">
-                    <img src="${dj.img}" alt="${dj.name}" class="absolute inset-0 h-full w-full object-cover blur-3xl scale-125 opacity-30">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#0a0202] via-[#0a0202]/50 to-transparent"></div>
-                    
-                    <!-- Main Profile Header on bottom -->
-                    <div class="relative z-10 p-6 sm:p-8 flex items-end gap-6 w-full">
-                        <img src="${dj.img}" alt="${dj.name}" class="h-28 w-28 sm:h-32 sm:w-32 rounded-2xl object-cover border-4 border-[#0a0202] shadow-2xl">
-                        <div class="mb-2">
-                            <span class="text-[10px] font-mono uppercase tracking-widest text-red-500 font-bold bg-red-950/40 border border-red-500/20 px-2.5 py-1 rounded-md">Resident DJ</span>
-                            <h3 class="font-display text-3xl sm:text-4xl font-extrabold text-white mt-2.5">${dj.name}</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bio & specs body -->
-                <div class="p-6 sm:p-8 space-y-6 flex-1 bg-[#0a0202]/95 border-t border-white/5">
-                    <div>
-                        <p class="text-[10px] uppercase tracking-widest text-gray-500 font-mono mb-2.5">${translations[currentLang].genres}</p>
-                        <div class="flex flex-wrap gap-2">${genresHtml}</div>
-                    </div>
-
-                    <div>
-                        <p class="text-[10px] uppercase tracking-widest text-gray-500 font-mono mb-2.5">${translations[currentLang].about}</p>
-                        <p class="text-sm sm:text-base text-gray-300 leading-relaxed whitespace-pre-line">${dj.description[currentLang]}</p>
-                    </div>
-
-                    <!-- Connect Link Row -->
-                    <div class="flex flex-wrap gap-2.5 pt-4 border-t border-white/5">
-                        ${linksHtml}
-                    </div>
-                </div>
+                <div class="relative h-60"><img src="${dj.img}" class="absolute inset-0 w-full h-full object-cover blur-3xl opacity-30"><div class="absolute bottom-0 p-6 flex gap-6"><img src="${dj.img}" class="h-28 w-28 rounded-2xl object-cover border-4 border-black"><div><h3 class="text-3xl font-bold">${dj.name}</h3></div></div></div>
+                <div class="p-6 space-y-4"><div class="flex flex-wrap gap-2">${genresHtml}</div><p class="text-gray-300">${dj.description[currentLang]}</p><div class="flex gap-2">${links}</div></div>
             `;
         }
 
         function renderEvents() {
             const container = document.getElementById('eventsContainer');
             if (!container) return;
-            container.innerHTML = events.map(ev => `
-                <div class="group rounded-2xl border border-white/5 bg-black/40 overflow-hidden shadow-lg transition-all duration-300 hover:border-red-500/20">
-                    <div class="aspect-video w-full bg-black relative">
-                        <iframe class="absolute inset-0 h-full w-full border-0" 
-                                src="https://www.youtube.com/embed/${ev.id}" 
-                                title="${ev.title}" 
-                                loading="lazy" 
-                                allowfullscreen></iframe>
-                    </div>
-                    <div class="p-6 flex items-center justify-between border-t border-white/5 bg-black/60">
-                        <h4 class="font-display font-bold text-white text-lg tracking-tight">${ev.title}</h4>
-                        <span class="text-[10px] font-mono text-red-500 bg-red-950/40 border border-red-500/10 px-2.5 py-0.5 rounded uppercase">Showreel</span>
-                    </div>
-                </div>
-            `).join('');
+            container.innerHTML = events.map(ev => `<div class="glass-panel rounded-2xl overflow-hidden"><iframe class="w-full aspect-video" src="https://www.youtube.com/embed/${ev.id}" allowfullscreen></iframe><div class="p-4 font-bold">${ev.title}</div></div>`).join('');
         }
 
         function renderPartners() {
             const container = document.getElementById('partnersContainer');
             if (!container) return;
-            container.innerHTML = `
-                <div class="glass-panel rounded-2xl p-6 flex items-center gap-4 group">
-                    <img src="https://i.imgur.com/2vRFIzz.png" alt="Raver!e" class="h-16 w-16 rounded-xl object-cover border border-white/10 group-hover:border-red-500 transition-colors duration-300">
-                    <div>
-                        <h4 class="font-display font-bold text-white text-lg">Raver!e</h4>
-                        <a href="https://vrc.group/RAVERI.8139" target="_blank" class="text-xs font-semibold text-red-500 hover:text-red-400 inline-flex items-center gap-1.5 mt-1.5">
-                            <span>${translations[currentLang].vrGroup}</span>
-                            <i class="fas fa-external-link-alt text-[10px]"></i>
-                        </a>
-                    </div>
-                </div>
-            `;
+            container.innerHTML = `<div class="glass-panel p-6 flex gap-4"><img src="https://i.imgur.com/2vRFIzz.png" class="h-16 w-16 rounded-xl"><div><h4 class="font-bold">Raver!e</h4><a href="https://vrc.group/RAVERI.8139" target="_blank" class="text-red-500 text-xs">${translations[currentLang].vrGroup}</a></div></div>`;
         }
 
-        // ----------------------------------------------------------------------
-        // TRANSLATION MANAGER
-        // ----------------------------------------------------------------------
         function updateLanguage() {
             const t = translations[currentLang];
             document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -941,465 +378,242 @@
             renderDjDetail();
             renderEvents();
             renderPartners();
-
-            // Toggle active status in button list
+            // Resaltar botón de idioma activo
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                const isSelected = btn.getAttribute('data-lang') === currentLang;
-                if (isSelected) {
-                    btn.className = "lang-btn px-2.5 py-1 rounded-full transition-all bg-red-600 text-white shadow-md";
-                } else {
-                    btn.className = "lang-btn px-2.5 py-1 rounded-full text-gray-400 hover:text-white transition-all bg-transparent";
-                }
+                const isActive = btn.getAttribute('data-lang') === currentLang;
+                btn.className = `lang-btn px-2.5 py-1 rounded-full transition-all ${isActive ? 'bg-red-600 text-white shadow-md' : 'text-gray-400 hover:text-white'}`;
             });
         }
 
-        // ----------------------------------------------------------------------
-        // CONTACT MODAL LOGIC
-        // ----------------------------------------------------------------------
         function updateContactForm() {
-            const container = document.getElementById('modalFormContainer');
             const t = translations[currentLang];
-            container.innerHTML = `
-                <h3 class="font-display text-3xl font-extrabold text-white mb-6 uppercase text-gradient-red">${t.contact}</h3>
-                <form class="space-y-5" id="contactForm" action="https://formsubmit.co/hispaeclion@gmail.com" method="POST">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="box">
-                    <input type="hidden" name="_subject" value="Nuevo mensaje desde Eclion Web Premium">
-                    
-                    <div>
-                        <label class="block text-xs font-mono uppercase text-gray-400 mb-2">${t.formNombreLabel} <span class="text-gray-600">${t.formOpcional}</span></label>
-                        <input type="text" name="nombre" placeholder="${t.formNombrePlaceholder}" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-red-600 transition-colors">
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-mono uppercase text-gray-400 mb-2">${t.formEmailLabel} <span class="text-red-500">*</span></label>
-                        <input type="email" name="email" required placeholder="${t.formEmailPlaceholder}" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-red-600 transition-colors">
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-mono uppercase text-gray-400 mb-2">${t.formDiscordLabel} <span class="text-gray-600">${t.formOpcional}</span></label>
-                        <input type="text" name="discord" placeholder="${t.formDiscordPlaceholder}" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-red-600 transition-colors">
-                        <div class="text-[10px] text-gray-500 font-mono mt-1.5">${t.formDiscordHint}</div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-mono uppercase text-gray-400 mb-2">${t.formMensajeLabel} <span class="text-red-500">*</span></label>
-                        <textarea name="mensaje" required placeholder="${t.formMensajePlaceholder}" rows="4" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-red-600 transition-colors"></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full bg-red-600 hover:bg-red-500 text-white font-bold py-4 rounded-xl transition-all hover:scale-105 shadow-lg">${t.formSubmitBtn}</button>
-                    <div id="formStatus" class="text-xs text-center font-mono mt-3"></div>
+            document.getElementById('modalFormContainer').innerHTML = `
+                <h3 class="text-2xl font-bold">${t.contact}</h3>
+                <form action="https://formsubmit.co/hispaeclion@gmail.com" method="POST">
+                    <input type="text" name="nombre" placeholder="${t.formNombrePlaceholder}" class="w-full bg-black/40 border p-3 rounded-xl my-2">
+                    <input type="email" name="email" required placeholder="${t.formEmailPlaceholder}" class="w-full bg-black/40 border p-3 rounded-xl my-2">
+                    <textarea name="mensaje" placeholder="${t.formMensajePlaceholder}" class="w-full bg-black/40 border p-3 rounded-xl my-2"></textarea>
+                    <button type="submit" class="bg-red-600 w-full py-3 rounded-xl">${t.formSubmitBtn}</button>
                 </form>
             `;
-
-            const form = document.getElementById('contactForm');
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    const status = document.getElementById('formStatus');
-                    status.textContent = currentLang === 'es' ? 'Enviando...' : (currentLang === 'en' ? 'Sending...' : 'Envoi...');
-                    status.className = "text-xs text-center font-mono mt-3 text-red-500 animate-pulse";
-                });
-            }
         }
 
-        const contactModal = document.getElementById('contactModal');
-        const contactBtn = document.getElementById('contactBtn');
-        const modalCloseBtn = document.getElementById('modalCloseBtn');
-
-        if (contactBtn) contactBtn.addEventListener('click', () => { 
-            updateContactForm(); 
-            contactModal.classList.remove('hidden'); 
-            contactModal.classList.add('flex');
-        });
-        if (modalCloseBtn) modalCloseBtn.addEventListener('click', () => {
-            contactModal.classList.add('hidden');
-            contactModal.classList.remove('flex');
-        });
-        if (contactModal) contactModal.addEventListener('click', (e) => {
-            if (e.target === contactModal) {
-                contactModal.classList.add('hidden');
-                contactModal.classList.remove('flex');
-            }
-        });
-
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                currentLang = btn.getAttribute('data-lang');
-                updateLanguage();
-                updateContactForm();
-            });
-        });
-
-        // ----------------------------------------------------------------------
-        // NATIVE PROCEDURAL TECHNO SYNTHESIZER ENGINE (WEB AUDIO API)
-        // ----------------------------------------------------------------------
-        let audioCtx = null;
-        let isSynthPlaying = false;
-        let masterGain = null;
-        let muffleFilter = null;
-        let biquadFilter = null;
-        let analyser = null;
-        let synthInterval = null;
-
-        let bpm = 138;
-        let stepDuration = 60 / bpm / 4; // 16th notes
-        let currentStep = 0;
-
-        // Simple rolling bassline notes
+        // ========== AUDIO SYNTH (Hard Industrial Techno) ==========
+        let audioCtx = null, masterGain = null, filterLP = null, filterBP = null, analyser = null;
+        let isPlaying = false, sequencerInterval = null;
+        let currentStep = 0, nextNoteTime = 0;
+        const BPM = 145;
+        const stepDuration = 60 / BPM / 4;
         const bassNotes = [55, 55, 65.4, 55, 55, 55, 73.4, 55, 55, 55, 65.4, 55, 55, 82.4, 55, 55];
 
-        function initSynth() {
+        function initAudio() {
             if (audioCtx) return;
             audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-            // Setup Nodes
             masterGain = audioCtx.createGain();
-            masterGain.gain.setValueAtTime(0.5, audioCtx.currentTime);
-
-            // Muffle state filter (representing walls of the rave club)
-            muffleFilter = audioCtx.createBiquadFilter();
-            muffleFilter.type = 'lowpass';
-            muffleFilter.frequency.setValueAtTime(250, audioCtx.currentTime); // Low cut for muffled feel
-            muffleFilter.Q.setValueAtTime(4, audioCtx.currentTime);
-
-            // Additional highpass/lowpass for high performance sound
-            biquadFilter = audioCtx.createBiquadFilter();
-            biquadFilter.type = 'peaking';
-            biquadFilter.frequency.setValueAtTime(1000, audioCtx.currentTime);
-            biquadFilter.Q.setValueAtTime(1, audioCtx.currentTime);
-            biquadFilter.gain.setValueAtTime(3, audioCtx.currentTime);
-
-            // Analyser for visualizer
+            masterGain.gain.value = parseFloat(document.getElementById('volumeSlider').value);
+            filterLP = audioCtx.createBiquadFilter();
+            filterLP.type = 'lowpass';
+            filterLP.frequency.value = 800;
+            filterLP.Q.value = 5;
+            filterBP = audioCtx.createBiquadFilter();
+            filterBP.type = 'bandpass';
+            filterBP.frequency.value = 2000;
+            filterBP.Q.value = 2;
             analyser = audioCtx.createAnalyser();
             analyser.fftSize = 128;
-
-            // Connect Chain
-            muffleFilter.connect(biquadFilter);
-            biquadFilter.connect(masterGain);
+            filterLP.connect(filterBP);
+            filterBP.connect(masterGain);
             masterGain.connect(analyser);
             analyser.connect(audioCtx.destination);
         }
 
-        // Procedural drum synths
+        function updateVolumeAndFilter() {
+            if (!masterGain) return;
+            const val = parseFloat(document.getElementById('volumeSlider').value);
+            masterGain.gain.setValueAtTime(val, audioCtx.currentTime);
+            const cutoff = 200 + (val * 17800);
+            filterLP.frequency.exponentialRampToValueAtTime(Math.max(cutoff, 200), audioCtx.currentTime + 0.05);
+            const statusEl = document.getElementById('muffleStatusText');
+            if (val < 0.3) statusEl.textContent = 'Status: Muffled warehouse';
+            else if (val < 0.7) statusEl.textContent = 'Status: Bass rising';
+            else statusEl.textContent = 'Status: Full industrial power';
+        }
+
         function triggerKick(time) {
             const osc = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            osc.connect(gainNode);
-            gainNode.connect(muffleFilter);
-
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(filterLP);
             osc.frequency.setValueAtTime(150, time);
             osc.frequency.exponentialRampToValueAtTime(45, time + 0.12);
-
-            gainNode.gain.setValueAtTime(1.5, time);
-            gainNode.gain.linearRampToValueAtTime(0.01, time + 0.16);
-
+            gain.gain.setValueAtTime(1.2, time);
+            gain.gain.exponentialRampToValueAtTime(0.01, time + 0.2);
             osc.start(time);
-            osc.stop(time + 0.2);
+            osc.stop(time + 0.25);
         }
 
         function triggerHat(time) {
-            // White noise generation
-            const bufferSize = audioCtx.sampleRate * 0.05; // 50ms buffer
+            const bufferSize = audioCtx.sampleRate * 0.05;
             const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
             const data = buffer.getChannelData(0);
-            for (let i = 0; i < bufferSize; i++) {
-                data[i] = Math.random() * 2 - 1;
-            }
-
-            const noiseNode = audioCtx.createBufferSource();
-            noiseNode.buffer = buffer;
-
-            // Bandpass filter to make it crisp
-            const noiseFilter = audioCtx.createBiquadFilter();
-            noiseFilter.type = 'bandpass';
-            noiseFilter.frequency.value = 8000;
-
-            const noiseGain = audioCtx.createGain();
-            noiseGain.gain.setValueAtTime(0.12, time);
-            noiseGain.gain.exponentialRampToValueAtTime(0.001, time + 0.04);
-
-            noiseNode.connect(noiseFilter);
-            noiseFilter.connect(noiseGain);
-            noiseGain.connect(muffleFilter);
-
-            noiseNode.start(time);
+            for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+            const noise = audioCtx.createBufferSource();
+            noise.buffer = buffer;
+            const hatFilter = audioCtx.createBiquadFilter();
+            hatFilter.type = 'highpass';
+            hatFilter.frequency.value = 5000;
+            const gainHat = audioCtx.createGain();
+            gainHat.gain.setValueAtTime(0.15, time);
+            gainHat.gain.exponentialRampToValueAtTime(0.001, time + 0.08);
+            noise.connect(hatFilter);
+            hatFilter.connect(gainHat);
+            gainHat.connect(filterLP);
+            noise.start(time);
         }
 
         function triggerBass(time, freq) {
-            const osc = audioCtx.createOscillator();
-            const subOsc = audioCtx.createOscillator();
-            const bassGain = audioCtx.createGain();
-
-            osc.type = 'sawtooth';
-            subOsc.type = 'triangle';
-
-            osc.frequency.setValueAtTime(freq, time);
-            subOsc.frequency.setValueAtTime(freq / 2, time); // Sub-bass octave
-
-            bassGain.gain.setValueAtTime(0.25, time);
-            bassGain.gain.exponentialRampToValueAtTime(0.01, time + 0.12);
-
-            osc.connect(bassGain);
-            subOsc.connect(bassGain);
-            bassGain.connect(muffleFilter);
-
-            osc.start(time);
-            subOsc.start(time);
-            osc.stop(time + 0.15);
-            subOsc.stop(time + 0.15);
+            const osc1 = audioCtx.createOscillator();
+            const osc2 = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc1.type = 'sawtooth';
+            osc2.type = 'triangle';
+            osc1.frequency.value = freq;
+            osc2.frequency.value = freq * 0.5;
+            gain.gain.setValueAtTime(0.35, time);
+            gain.gain.exponentialRampToValueAtTime(0.01, time + 0.15);
+            osc1.connect(gain);
+            osc2.connect(gain);
+            gain.connect(filterLP);
+            osc1.start(time);
+            osc2.start(time);
+            osc1.stop(time + 0.2);
+            osc2.stop(time + 0.2);
         }
 
-        // Sequencer loop
-        let nextNoteTime = 0.0;
-        const scheduleAheadTime = 0.1;
-
         function scheduler() {
-            while (nextNoteTime < audioCtx.currentTime + scheduleAheadTime) {
-                scheduleStep(currentStep, nextNoteTime);
+            while (nextNoteTime < audioCtx.currentTime + 0.1) {
+                const step = currentStep;
+                if (step % 4 === 0) triggerKick(nextNoteTime);
+                if (step % 4 === 2) triggerHat(nextNoteTime);
+                if (step % 2 !== 0) triggerBass(nextNoteTime, bassNotes[step]);
                 nextNoteTime += stepDuration;
                 currentStep = (currentStep + 1) % 16;
             }
         }
 
-        function scheduleStep(step, time) {
-            // 4/4 Heavy Techno Kick
-            if (step % 4 === 0) {
-                triggerKick(time);
-            }
-            // Off-beat Hats
-            if (step % 4 === 2) {
-                triggerHat(time);
-            }
-            // Acid bass sequence
-            if (step % 2 !== 0) {
-                triggerBass(time, bassNotes[step]);
-            }
-        }
-
-        function startSynthLoop() {
-            initSynth();
-            if (audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-            if (isSynthPlaying) return;
-
+        function startSynth() {
+            if (!audioCtx) initAudio();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            if (isPlaying) return;
             nextNoteTime = audioCtx.currentTime;
-            synthInterval = setInterval(scheduler, 25);
-            isSynthPlaying = true;
+            currentStep = 0;
+            sequencerInterval = setInterval(scheduler, 25);
+            isPlaying = true;
             document.getElementById('playPauseBtn').innerHTML = '<i class="fas fa-pause"></i>';
-            document.getElementById('audioBarAnim').style.opacity = '1';
+            updateVolumeAndFilter();
         }
 
-        function stopSynthLoop() {
-            if (synthInterval) {
-                clearInterval(synthInterval);
-                synthInterval = null;
-            }
-            isSynthPlaying = false;
+        function stopSynth() {
+            if (sequencerInterval) clearInterval(sequencerInterval);
+            sequencerInterval = null;
+            isPlaying = false;
             document.getElementById('playPauseBtn').innerHTML = '<i class="fas fa-play"></i>';
-            document.getElementById('audioBarAnim').style.opacity = '0';
         }
 
-        // Muffle transitions
-        function sweepFilterOpen() {
-            if (!muffleFilter) return;
-            const now = audioCtx.currentTime;
-            muffleFilter.frequency.exponentialRampToValueAtTime(20000, now + 1.2);
-            muffleFilter.Q.linearRampToValueAtTime(1, now + 1.2);
-            document.getElementById('muffleStatusText').textContent = 'Status: Inside the warehouse';
-        }
+        document.getElementById('playPauseBtn').onclick = () => isPlaying ? stopSynth() : startSynth();
+        document.getElementById('volumeSlider').oninput = () => { if (masterGain) updateVolumeAndFilter(); };
 
-        function triggerDropOnJoin() {
-            startSynthLoop();
-            setTimeout(() => {
-                sweepFilterOpen();
-            }, 300);
-        }
-
-        // ----------------------------------------------------------------------
-        // DYNAMIC PRE-LOAD PROGRESS LOGIC
-        // ----------------------------------------------------------------------
-        const progressBar = document.getElementById('introProgressBar');
-        const loadPercent = document.getElementById('loadPercent');
-        const joinBtn = document.getElementById('joinBtn');
-
-        let progress = 0;
-        const totalDuration = 2200; // ms
-        const steps = 50;
-        const increment = 100 / steps;
-        const speed = totalDuration / steps;
-
-        const progressTimer = setInterval(() => {
-            progress += increment;
-            if (progress >= 100) {
-                progress = 100;
-                clearInterval(progressTimer);
-                joinBtn.disabled = false;
-                joinBtn.classList.remove('bg-red-950/40', 'text-red-700', 'cursor-not-allowed', 'border-red-900/20');
-                joinBtn.classList.add('bg-red-600', 'text-white', 'hover:bg-red-500', 'cursor-pointer', 'btn-glow', 'border-red-500');
-                joinBtn.textContent = 'Enter Rave';
-            }
-            progressBar.style.width = progress + '%';
-            loadPercent.textContent = Math.round(progress) + '%';
-        }, speed);
-
-        // Enter portal click events
-        joinBtn.addEventListener('click', () => {
-            triggerDropOnJoin();
-            document.getElementById('introOverlay').classList.add('opacity-0', 'pointer-events-none');
-            setTimeout(() => {
-                document.getElementById('introOverlay').style.display = 'none';
-            }, 1000);
+        // ========== INTRO OVERLAY (carga y entrada) ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            const progressBar = document.getElementById('introProgressBar');
+            const percentSpan = document.getElementById('loadPercent');
+            const joinBtn = document.getElementById('joinBtn');
+            const overlay = document.getElementById('introOverlay');
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 2;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    joinBtn.disabled = false;
+                    joinBtn.classList.remove('bg-red-950/40', 'text-red-700', 'cursor-not-allowed');
+                    joinBtn.classList.add('bg-red-600', 'text-white', 'hover:bg-red-500', 'cursor-pointer', 'btn-glow');
+                    joinBtn.textContent = 'Enter Rave';
+                }
+                progressBar.style.width = progress + '%';
+                percentSpan.textContent = Math.round(progress) + '%';
+            }, 30);
+            joinBtn.addEventListener('click', () => {
+                startSynth();
+                overlay.style.opacity = '0';
+                overlay.style.visibility = 'hidden';
+                setTimeout(() => overlay.style.display = 'none', 800);
+            });
         });
 
-        // ----------------------------------------------------------------------
-        // VOLUME & PLAY/PAUSE CONTROLS
-        // ----------------------------------------------------------------------
-        document.getElementById('playPauseBtn').addEventListener('click', () => {
-            if (isSynthPlaying) {
-                stopSynthLoop();
-            } else {
-                startSynthLoop();
-            }
-        });
-
-        document.getElementById('volumeSlider').addEventListener('input', (e) => {
-            const val = parseFloat(e.target.value);
-            if (masterGain) {
-                masterGain.gain.setValueAtTime(val, audioCtx.currentTime);
-            }
-        });
-
-        // ----------------------------------------------------------------------
-        // REALTIME WAVEFORM CANVAS
-        // ----------------------------------------------------------------------
+        // ========== OSCILOSCOPIO ==========
         const oscCanvas = document.getElementById('oscCanvas');
-        const oscCtx = oscCanvas.getContext('2d');
-
-        function resizeOscCanvas() {
-            oscCanvas.width = oscCanvas.clientWidth * window.devicePixelRatio;
-            oscCanvas.height = oscCanvas.clientHeight * window.devicePixelRatio;
-        }
-        window.addEventListener('resize', resizeOscCanvas);
-        resizeOscCanvas();
-
-        function drawOscilloscope() {
-            requestAnimationFrame(drawOscilloscope);
+        const oscCtxCanvas = oscCanvas.getContext('2d');
+        function resizeOsc() { oscCanvas.width = oscCanvas.clientWidth; oscCanvas.height = oscCanvas.clientHeight; }
+        window.addEventListener('resize', resizeOsc);
+        resizeOsc();
+        function drawOsc() {
+            requestAnimationFrame(drawOsc);
             if (!analyser) {
-                // Draw idling straight line
-                oscCtx.clearRect(0, 0, oscCanvas.width, oscCanvas.height);
-                oscCtx.strokeStyle = 'rgba(230, 0, 0, 0.2)';
-                oscCtx.lineWidth = 2;
-                oscCtx.beginPath();
-                oscCtx.moveTo(0, oscCanvas.height / 2);
-                oscCtx.lineTo(oscCanvas.width, oscCanvas.height / 2);
-                oscCtx.stroke();
+                oscCtxCanvas.clearRect(0, 0, oscCanvas.width, oscCanvas.height);
+                oscCtxCanvas.beginPath();
+                oscCtxCanvas.strokeStyle = '#ff333355';
+                oscCtxCanvas.moveTo(0, oscCanvas.height/2);
+                oscCtxCanvas.lineTo(oscCanvas.width, oscCanvas.height/2);
+                oscCtxCanvas.stroke();
                 return;
             }
-
             const bufferLength = analyser.frequencyBinCount;
             const dataArray = new Uint8Array(bufferLength);
             analyser.getByteTimeDomainData(dataArray);
-
-            oscCtx.clearRect(0, 0, oscCanvas.width, oscCanvas.height);
-            oscCtx.strokeStyle = '#ff3333';
-            oscCtx.shadowColor = '#ff0000';
-            oscCtx.shadowBlur = 4;
-            oscCtx.lineWidth = 3;
-            oscCtx.beginPath();
-
+            oscCtxCanvas.clearRect(0, 0, oscCanvas.width, oscCanvas.height);
+            oscCtxCanvas.beginPath();
+            oscCtxCanvas.strokeStyle = '#ff3333';
+            oscCtxCanvas.lineWidth = 2;
             const sliceWidth = oscCanvas.width / bufferLength;
             let x = 0;
-
             for (let i = 0; i < bufferLength; i++) {
                 const v = dataArray[i] / 128.0;
-                const y = (v * oscCanvas.height) / 2;
-
-                if (i === 0) {
-                    oscCtx.moveTo(x, y);
-                } else {
-                    oscCtx.lineTo(x, y);
-                }
+                const y = v * oscCanvas.height;
+                if (i === 0) oscCtxCanvas.moveTo(x, y);
+                else oscCtxCanvas.lineTo(x, y);
                 x += sliceWidth;
             }
-
-            oscCtx.lineTo(oscCanvas.width, oscCanvas.height / 2);
-            oscCtx.stroke();
-            oscCtx.shadowBlur = 0; // reset
+            oscCtxCanvas.stroke();
         }
-        drawOscilloscope();
+        drawOsc();
 
-        // ----------------------------------------------------------------------
-        // PARTICLES GRAPHICS CANVAS
-        // ----------------------------------------------------------------------
-        const bgCanvas = document.getElementById('bgCanvas');
-        const bgCtx = bgCanvas.getContext('2d');
-
-        let particles = [];
-        function resizeBgCanvas() {
-            bgCanvas.width = window.innerWidth;
-            bgCanvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeBgCanvas);
-        resizeBgCanvas();
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * bgCanvas.width;
-                this.y = Math.random() * bgCanvas.height;
-                this.size = Math.random() * 1.5 + 0.5;
-                this.speedX = Math.random() * 0.4 - 0.2;
-                this.speedY = Math.random() * -0.5 - 0.1; // rise up
-                this.alpha = Math.random() * 0.6 + 0.1;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.y < 0) {
-                    this.y = bgCanvas.height;
-                    this.x = Math.random() * bgCanvas.width;
-                }
-            }
-            draw() {
-                bgCtx.save();
-                bgCtx.globalAlpha = this.alpha;
-                bgCtx.fillStyle = '#ff1a1a';
-                bgCtx.shadowColor = '#ff0000';
-                bgCtx.shadowBlur = 8;
-                bgCtx.beginPath();
-                bgCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                bgCtx.fill();
-                bgCtx.restore();
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            for (let i = 0; i < 70; i++) {
-                particles.push(new Particle());
-            }
-        }
-        initParticles();
-
+        // ========== PARTÍCULAS ==========
+        const bgCanvas = document.getElementById('bgCanvas'), bgCtxBg = bgCanvas.getContext('2d');
+        function resizeBg() { bgCanvas.width = window.innerWidth; bgCanvas.height = window.innerHeight; }
+        window.addEventListener('resize', resizeBg);
+        resizeBg();
+        let particles = Array(80).fill().map(() => ({ x: Math.random() * bgCanvas.width, y: Math.random() * bgCanvas.height, size: Math.random() * 2 + 0.5, vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.2 + 0.1 }));
         function animateBg() {
-            bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+            bgCtxBg.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
             particles.forEach(p => {
-                p.update();
-                p.draw();
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0) p.x = bgCanvas.width; if (p.x > bgCanvas.width) p.x = 0;
+                if (p.y < 0) p.y = bgCanvas.height; if (p.y > bgCanvas.height) p.y = 0;
+                bgCtxBg.fillStyle = `rgba(230, 0, 0, ${Math.random() * 0.2 + 0.1})`;
+                bgCtxBg.beginPath(); bgCtxBg.arc(p.x, p.y, p.size, 0, Math.PI*2); bgCtxBg.fill();
             });
             requestAnimationFrame(animateBg);
         }
         animateBg();
 
-        // Initial component renders
-        renderOwners();
-        renderDjList();
-        renderDjDetail();
-        renderEvents();
-        renderPartners();
-        updateLanguage();
-        updateContactForm();
+        // ========== EVENTOS DE INTERFAZ ==========
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => { currentLang = btn.dataset.lang; updateLanguage(); updateContactForm(); }));
+        document.getElementById('contactBtn').onclick = () => { updateContactForm(); document.getElementById('contactModal').classList.remove('hidden'); };
+        document.getElementById('modalCloseBtn').onclick = () => document.getElementById('contactModal').classList.add('hidden');
 
+        // Render inicial
+        renderOwners(); renderDjList(); renderDjDetail(); renderEvents(); renderPartners(); updateLanguage(); updateContactForm();
     </script>
 </body>
 </html>
