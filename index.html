@@ -50,7 +50,7 @@
         <div class="absolute bottom-10 right-1/4 h-[600px] w-[600px] rounded-full bg-red-950/15 blur-[150px]"></div>
     </div>
 
-    <!-- INTRO OVERLAY (CORREGIDA) -->
+    <!-- INTRO OVERLAY -->
     <div id="introOverlay" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-xl">
         <div class="relative w-[90%] max-w-lg p-8 rounded-3xl border border-red-900/40 bg-[#0d0202] text-center shadow-[0_0_100px_rgba(230,0,0,0.2)] overflow-hidden">
             <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-red-600 rounded-tl-xl opacity-70"></div>
@@ -94,7 +94,6 @@
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
                 <a href="#about" data-i18n="navAbout">Comunidad</a>
                 <a href="#djs" data-i18n="navDjs">DJs</a>
-                <a href="#instagram" data-i18n="instagramNav">Instagram</a>
                 <a href="#channel" data-i18n="navChannel">Transmisiones</a>
                 <a href="#events" data-i18n="navEvents">Eventos</a>
                 <a href="#partners" data-i18n="navPartners">Partners</a>
@@ -127,8 +126,8 @@
                     </div>
                     <div class="grid grid-cols-3 gap-8 pt-10 border-t border-white/5 max-w-lg">
                         <div><div class="text-4xl font-bold text-white">11+</div><div class="text-[11px] text-gray-500" data-i18n="statDjs">DJs residentes</div></div>
-                        <div><div class="text-4xl font-bold text-white">29+</div><div class="text-[11px] text-gray-500" data-i18n="statEvents">Eventos celebrados</div></div>
-                        <div><div class="text-4xl font-bold text-white">900+</div><div class="text-[11px] text-gray-500" data-i18n="statCommunity">Miembros activos</div></div>
+                        <div><div class="text-4xl font-bold text-white">32+</div><div class="text-[11px] text-gray-500" data-i18n="statEvents">Eventos celebrados</div></div>
+                        <div><div class="text-4xl font-bold text-white">1200+</div><div class="text-[11px] text-gray-500" data-i18n="statCommunity">Miembros activos</div></div>
                     </div>
                 </div>
                 <div class="relative flex justify-center">
@@ -167,19 +166,7 @@
         </div>
     </section>
 
-    <!-- INSTAGRAM SECTION (título traducible) -->
-    <section id="instagram" class="py-24 px-4 border-t border-white/5 bg-black/40">
-        <div class="mx-auto max-w-7xl text-center">
-            <div class="inline-flex rounded-full border border-red-500/20 bg-red-500/5 px-3.5 py-1 text-xs font-mono text-red-400"><i class="fab fa-instagram"></i><span data-i18n="instagramLabel">Instagram</span></div>
-            <h2 class="mt-4 text-4xl sm:text-5xl font-bold text-gradient-red" data-i18n="instagramTitle">@ecli.on.ofcl</h2>
-            <div class="instagram-wall-container glass-panel p-2 rounded-2xl mt-8">
-                <rssapp-wall id="bU27jeAaPnVIYOFH"></rssapp-wall>
-                <script src="https://widget.rss.app/v1/wall.js" type="text/javascript" async></script>
-            </div>
-        </div>
-    </section>
-
-    <!-- YOUTUBE CHANNEL -->
+    <!-- YOUTUBE CHANNEL (video reemplazado) -->
     <section id="channel" class="py-24 px-4 border-t border-white/5 bg-[#030000]/50">
         <div class="mx-auto max-w-7xl rounded-3xl border border-white/5 bg-black/80 overflow-hidden">
             <div class="grid lg:grid-cols-[1fr_1.4fr]">
@@ -189,7 +176,9 @@
                     <p class="mt-4 text-gray-300 text-sm" data-i18n="ytDesc">Raves, eventos y experiencias únicas en VRChat.</p>
                     <a href="https://www.youtube.com/@EclionVR" class="inline-flex mt-6 bg-red-600 px-6 py-3.5 rounded-full text-white">Visitar canal</a>
                 </div>
-                <div class="aspect-video min-h-[320px] bg-black"><iframe class="w-full h-full" src="https://www.youtube.com/embed/JPU_VEqPC1o" allowfullscreen></iframe></div>
+                <div class="aspect-video min-h-[320px] bg-black">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/hoV0U4k9FqM?start=8053" allowfullscreen></iframe>
+                </div>
             </div>
         </div>
     </section>
@@ -248,7 +237,7 @@
             } }
         ];
 
-        // OWNERS: ChiquiBoo como "Fundadora" (no co-fundadora)
+        // OWNERS: ChiquiBoo como "Fundadora"
         const owners = [
             { name: "AzazelKen", img: "https://api.vrchat.cloud/api/1/file/file_98da1e47-010c-47ce-82ff-4ed7fb65af15/1/", role: { es: "Fundador & Director", en: "Founder & Director", fr: "Fondateur & Directeur" }, socials: { vrchat: "#", discord: "#", instagram: "#" } },
             { name: "ChiquiBoo", img: "https://api.vrchat.cloud/api/1/image/file_88983ad4-8806-418b-8200-0d6cf0ec85e4/1/1024", role: { es: "Fundadora", en: "Founder", fr: "Fondatrice" }, socials: { vrchat: "#", discord: "#", instagram: "#" } }
@@ -256,10 +245,10 @@
 
         const events = [{ id: "k7mtdZoONbs", title: "Primer Evento" },{ id: "vLCWa-oKrQU", title: "HARD.EXE" },{ id: "W0JdMFh-K34", title: "REVELION" }];
 
-        // TRADUCCIONES COMPLETAS
+        // TRADUCCIONES COMPLETAS (sin Instagram)
         const translations = {
             es: {
-                navAbout: "Comunidad", navDjs: "DJs", instagramNav: "Instagram", navChannel: "Transmisiones", navEvents: "Eventos", navPartners: "Partners", contact: "Contáctanos",
+                navAbout: "Comunidad", navDjs: "DJs", navChannel: "Transmisiones", navEvents: "Eventos", navPartners: "Partners", contact: "Contáctanos",
                 heroTag: "Rave Community · VRChat", heroTitle: "Donde la noche nunca termina.",
                 heroDesc: "Somos una comunidad dedicada a crear experiencias de música electrónica inmersivas dentro de VRChat. Organizamos raves todos los sábados y eventos temáticos como noches Cyberpunk. Hard.exe y HARDBASS_404 son nuestros eventos estrella. Únete y vive las raves más intensas de VRChat.",
                 statDjs: "DJs residentes", statEvents: "Eventos celebrados", statCommunity: "Miembros activos",
@@ -270,11 +259,10 @@
                 eventsTitle: "Eventos Destacados", eventsKicker: "Highlights",
                 partnersTitle: "Partners Oficiales", partnersKicker: "Comunidades aliadas", vrGroup: "Grupo VRChat",
                 footer: "Eclion · Rave Community in VRChat · Todos los derechos reservados · 2026",
-                instagramLabel: "Instagram", instagramTitle: "@ecli.on.ofcl",
                 formNombreLabel: "Nombre", formOpcional: "(opcional)", formNombrePlaceholder: "Ej: RaveMaster22", formEmailLabel: "Correo", formEmailPlaceholder: "tu@email.com", formDiscordLabel: "Discord", formDiscordPlaceholder: "ID", formDiscordHint: "Ejemplo: 123456789", formMensajeLabel: "Mensaje", formMensajePlaceholder: "Escribe...", formSubmitBtn: "Enviar"
             },
             en: {
-                navAbout: "Community", navDjs: "DJs", instagramNav: "Instagram", navChannel: "Live Streams", navEvents: "Events", navPartners: "Partners", contact: "Contact Us",
+                navAbout: "Community", navDjs: "DJs", navChannel: "Live Streams", navEvents: "Events", navPartners: "Partners", contact: "Contact Us",
                 heroTag: "Rave Community · VRChat", heroTitle: "Where the night never ends.",
                 heroDesc: "We are a community dedicated to creating immersive electronic music experiences inside VRChat. We host raves every Saturday and themed events like Cyberpunk nights. Hard.exe and HARDBASS_404 are our flagship events. Join us and live the most intense rave experiences in VRChat.",
                 statDjs: "Resident DJs", statEvents: "Events hosted", statCommunity: "Active members",
@@ -285,11 +273,10 @@
                 eventsTitle: "Featured Events", eventsKicker: "Highlights",
                 partnersTitle: "Official Partners", partnersKicker: "Allied communities", vrGroup: "VRChat Group",
                 footer: "Eclion · Rave Community in VRChat · All rights reserved · 2026",
-                instagramLabel: "Instagram", instagramTitle: "@ecli.on.ofcl",
                 formNombreLabel: "Username", formOpcional: "(optional)", formNombrePlaceholder: "Ex: RaveMaster22", formEmailLabel: "Email", formEmailPlaceholder: "you@email.com", formDiscordLabel: "Discord", formDiscordPlaceholder: "ID", formDiscordHint: "Example: 123456789", formMensajeLabel: "Message", formMensajePlaceholder: "Write...", formSubmitBtn: "Send"
             },
             fr: {
-                navAbout: "Communauté", navDjs: "DJs", instagramNav: "Instagram", navChannel: "En direct", navEvents: "Événements", navPartners: "Partenaires", contact: "Contactez-nous",
+                navAbout: "Communauté", navDjs: "DJs", navChannel: "En direct", navEvents: "Événements", navPartners: "Partenaires", contact: "Contactez-nous",
                 heroTag: "Rave Community · VRChat", heroTitle: "Là où la nuit ne finit jamais.",
                 heroDesc: "Nous sommes une communauté dédiée à la création d'expériences de musique électronique immersives dans VRChat. Nous organisons des raves tous les samedis et des soirées à thème comme Cyberpunk. Hard.exe et HARDBASS_404 sont nos événements phares. Rejoignez-nous et vivez les raves les plus intenses de VRChat.",
                 statDjs: "DJs résidents", statEvents: "Événements organisés", statCommunity: "Membres actifs",
@@ -300,7 +287,6 @@
                 eventsTitle: "Événements en vedette", eventsKicker: "Highlights",
                 partnersTitle: "Partenaires Officiels", partnersKicker: "Communautés alliées", vrGroup: "Groupe VRChat",
                 footer: "Eclion · Rave Community dans VRChat · Tous droits réservés · 2026",
-                instagramLabel: "Instagram", instagramTitle: "@ecli.on.ofcl",
                 formNombreLabel: "Nom d'utilisateur", formOpcional: "(optionnel)", formNombrePlaceholder: "Ex: RaveMaster22", formEmailLabel: "E-mail", formEmailPlaceholder: "vous@email.com", formDiscordLabel: "Discord", formDiscordPlaceholder: "ID", formDiscordHint: "Exemple: 123456789", formMensajeLabel: "Message", formMensajePlaceholder: "Écrivez...", formSubmitBtn: "Envoyer"
             }
         };
@@ -398,7 +384,7 @@
             `;
         }
 
-        // ========== AUDIO SYNTH (Hard Industrial Techno) ==========
+        // ========== AUDIO SYNTH ==========
         let audioCtx = null, masterGain = null, filterLP = null, filterBP = null, analyser = null;
         let isPlaying = false, sequencerInterval = null;
         let currentStep = 0, nextNoteTime = 0;
@@ -523,7 +509,7 @@
         document.getElementById('playPauseBtn').onclick = () => isPlaying ? stopSynth() : startSynth();
         document.getElementById('volumeSlider').oninput = () => { if (masterGain) updateVolumeAndFilter(); };
 
-        // ========== INTRO OVERLAY (carga y entrada) ==========
+        // ========== INTRO OVERLAY ==========
         document.addEventListener('DOMContentLoaded', () => {
             const progressBar = document.getElementById('introProgressBar');
             const percentSpan = document.getElementById('loadPercent');
