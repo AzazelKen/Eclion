@@ -234,7 +234,24 @@
                 es: "this is what it's always been about. totalmente dedicado a mi chica maravillosa, pat fussy ≺3 las chicas guapas escuchan techno", 
                 en: "this is what it's always been about. fully devoted to my wonderful girl, pat fussy ≺3 hot girls listen to techno", 
                 fr: "this is what it's always been about. entièrement dévoué à ma merveilleuse fille, pat fussy ≺3 les jolies filles écoutent de la techno" 
-            } }
+            } },
+            // NUEVO DJ: usbc (CON TRADUCCIONES COMPLETAS)
+            { 
+                id: "usbc", 
+                name: "usbc", 
+                img: "https://api.vrchat.cloud/api/1/file/file_9c89ec4e-dec2-4825-bf6f-35384dbcf33b/1/",
+                vrcDj: "https://vrc.dj/usbc",
+                genres: { 
+                    es: "Hard Techno, Acid, Bounce, Industrial, Schranz, EBM y Darkwave",
+                    en: "Hard Techno, Acid, Bounce, Industrial, Schranz, EBM and Darkwave",
+                    fr: "Hard Techno, Acid, Bounce, Industrial, Schranz, EBM et Darkwave"
+                },
+                description: {
+                    es: "Comencé a pinchar en vivo en VRC este año. Detrás del velo está la máquina, roba tu alma, devorando todos tus sueños.",
+                    en: "I started live djing in VRC this year. behind the veil is the machine‚ it steals your soul‚ devouring all your dreams",
+                    fr: "J'ai commencé à mixer en direct dans VRC cette année. Derrière le voile se trouve la machine, elle vole votre âme, dévorant tous vos rêves."
+                }
+            }
         ];
 
         // OWNERS: ChiquiBoo como "Fundadora"
@@ -335,6 +352,8 @@
             if (dj.soundcloud) links += `<a href="${dj.soundcloud}" target="_blank" class="bg-white/5 hover:bg-red-600 px-4 py-2 rounded-full text-xs transition">SoundCloud</a>`;
             if (dj.twitch) links += `<a href="${dj.twitch}" target="_blank" class="bg-white/5 hover:bg-red-600 px-4 py-2 rounded-full text-xs transition">Twitch</a>`;
             if (dj.gunsLink) links += `<a href="${dj.gunsLink}" target="_blank" class="bg-white/5 hover:bg-red-600 px-4 py-2 rounded-full text-xs transition">guns.lol</a>`;
+            if (dj.vrcDj) links += `<a href="${dj.vrcDj}" target="_blank" class="bg-white/5 hover:bg-red-600 px-4 py-2 rounded-full text-xs transition">vrc.dj</a>`;
+
             container.innerHTML = `
                 <div class="relative h-60"><img src="${dj.img}" class="absolute inset-0 w-full h-full object-cover blur-3xl opacity-30"><div class="absolute bottom-0 p-6 flex gap-6"><img src="${dj.img}" class="h-28 w-28 rounded-2xl object-cover border-4 border-black"><div><h3 class="text-3xl font-bold">${dj.name}</h3></div></div></div>
                 <div class="p-6 space-y-4"><div class="flex flex-wrap gap-2">${genresHtml}</div><p class="text-gray-300">${dj.description[currentLang]}</p><div class="flex gap-2">${links}</div></div>
