@@ -50,7 +50,7 @@
         <div class="absolute bottom-10 right-1/4 h-[600px] w-[600px] rounded-full bg-red-950/15 blur-[150px]"></div>
     </div>
 
-    <!-- INTRO OVERLAY -->
+    <!-- INTRO OVERLAY (actualizado) -->
     <div id="introOverlay" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-xl">
         <div class="relative w-[90%] max-w-lg p-8 rounded-3xl border border-red-900/40 bg-[#0d0202] text-center shadow-[0_0_100px_rgba(230,0,0,0.2)] overflow-hidden">
             <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-red-600 rounded-tl-xl opacity-70"></div>
@@ -61,12 +61,12 @@
                 <div class="absolute inset-0 bg-red-600 rounded-full blur-xl opacity-40 scale-90 group-hover:scale-110 transition"></div>
                 <img src="https://i.imgur.com/FXBHJYh.png" alt="Eclion" class="relative w-28 h-28 mx-auto rounded-full border border-red-600/30 p-1 bg-black/80">
             </div>
-            <h2 class="font-display text-3xl font-black tracking-tight text-gradient-red uppercase">Eclion Portal</h2>
+            <h2 class="font-display text-3xl font-black tracking-tight text-gradient-red uppercase">ECLION</h2>
             <p class="text-xs text-red-500/60 font-mono mt-1 tracking-widest">Cybernetic Audio Link · Initializing</p>
-            <p class="mt-4 text-sm text-gray-400 leading-relaxed max-w-sm mx-auto">El sonido retumba fuera del almacén. Presiona "JOIN" para abrir las puertas.</p>
+            <p class="mt-4 text-sm text-gray-400 leading-relaxed max-w-sm mx-auto">The sound rumbles outside the warehouse. Press "JOIN" to open the doors.</p>
             <div class="mt-8 mb-6">
                 <div class="flex justify-between text-[10px] font-mono text-red-500/80 mb-1">
-                    <span>Sincronizando beats...</span>
+                    <span>Synchronizing beats...</span>
                     <span id="loadPercent">0%</span>
                 </div>
                 <div class="h-1.5 w-full bg-red-950/50 rounded-full overflow-hidden border border-red-900/20">
@@ -80,11 +80,11 @@
                 <a href="https://www.youtube.com/@EclionVR" target="_blank" class="hover:text-red-500 transition"><i class="fab fa-youtube"></i></a>
                 <a href="https://vrchat.com/home/group/grp_190a9e43-dbf5-49c8-85e7-e9c4599dff37" target="_blank" class="hover:text-red-500 transition"><i class="fas fa-vr-cardboard"></i></a>
             </div>
-            <button id="joinBtn" disabled class="w-full bg-red-950/40 text-red-700 border border-red-900/20 py-4 rounded-full font-display font-bold uppercase tracking-wider transition-all cursor-not-allowed">Cargando Rave...</button>
+            <button id="joinBtn" disabled class="w-full bg-red-950/40 text-red-700 border border-red-900/20 py-4 rounded-full font-display font-bold uppercase tracking-wider transition-all cursor-not-allowed">Loading Rave...</button>
         </div>
     </div>
 
-    <!-- BANNER Y HEADER -->
+    <!-- BANNER Y HEADER (sin cambios) -->
     <div class="relative w-full overflow-hidden border-b border-red-900/20 bg-black">
         <img src="https://i.imgur.com/WjH0v3a.png" alt="Eclion Banner" class="w-full h-auto max-h-[220px] md:max-h-[350px] object-cover opacity-80">
     </div>
@@ -109,7 +109,7 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (sin cambios) -->
     <section class="relative px-4 pt-12 pb-24 md:pt-24 md:pb-32">
         <div class="mx-auto max-w-7xl">
             <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 items-center">
@@ -166,7 +166,7 @@
         </div>
     </section>
 
-    <!-- YOUTUBE CHANNEL (video reemplazado) -->
+    <!-- YOUTUBE CHANNEL -->
     <section id="channel" class="py-24 px-4 border-t border-white/5 bg-[#030000]/50">
         <div class="mx-auto max-w-7xl rounded-3xl border border-white/5 bg-black/80 overflow-hidden">
             <div class="grid lg:grid-cols-[1fr_1.4fr]">
@@ -262,7 +262,7 @@
 
         const events = [{ id: "k7mtdZoONbs", title: "Primer Evento" },{ id: "vLCWa-oKrQU", title: "HARD.EXE" },{ id: "W0JdMFh-K34", title: "REVELION" }];
 
-        // TRADUCCIONES COMPLETAS (sin Instagram)
+        // TRADUCCIONES COMPLETAS
         const translations = {
             es: {
                 navAbout: "Comunidad", navDjs: "DJs", navChannel: "Transmisiones", navEvents: "Eventos", navPartners: "Partners", contact: "Contáctanos",
@@ -543,7 +543,7 @@
                     joinBtn.disabled = false;
                     joinBtn.classList.remove('bg-red-950/40', 'text-red-700', 'cursor-not-allowed');
                     joinBtn.classList.add('bg-red-600', 'text-white', 'hover:bg-red-500', 'cursor-pointer', 'btn-glow');
-                    joinBtn.textContent = 'Enter Rave';
+                    joinBtn.textContent = 'JOIN'; // Cambiado a JOIN
                 }
                 progressBar.style.width = progress + '%';
                 percentSpan.textContent = Math.round(progress) + '%';
