@@ -291,15 +291,18 @@
 
                     <div class="grid grid-cols-3 gap-4 pt-8 border-t border-red-950/80 max-w-lg">
                         <div class="p-4 bg-red-950/5 border border-red-950/30">
-                            <div class="text-3xl font-black text-white font-mono">14+</div>
+                            <!-- 14+ cambiado a 22+ -->
+                            <div class="text-3xl font-black text-white font-mono">22+</div>
                             <div class="text-[10px] text-red-500/80 font-mono tracking-widest uppercase mt-1" data-i18n="statDjs">DJs residentes</div>
                         </div>
                         <div class="p-4 bg-red-950/5 border border-red-950/30">
-                            <div class="text-3xl font-black text-white font-mono">50+</div>
+                            <!-- 50+ cambiado a 56+ -->
+                            <div class="text-3xl font-black text-white font-mono">56+</div>
                             <div class="text-[10px] text-red-500/80 font-mono tracking-widest uppercase mt-1" data-i18n="statEvents">Eventos celebrados</div>
                         </div>
                         <div class="p-4 bg-red-950/5 border border-red-950/30">
-                            <div class="text-3xl font-black text-white font-mono">2100+</div>
+                            <!-- 2100+ cambiado a 2250+ -->
+                            <div class="text-3xl font-black text-white font-mono">2250+</div>
                             <div class="text-[10px] text-red-500/80 font-mono tracking-widest uppercase mt-1" data-i18n="statCommunity">Miembros activos</div>
                         </div>
                     </div>
@@ -308,7 +311,8 @@
                 <div class="relative flex justify-center">
                     <div class="absolute inset-0 bg-red-600/10 rounded-none blur-[90px] -z-10"></div>
                     <div class="relative w-full max-w-sm aspect-[4/5] hud-panel p-2 hud-corner-marker">
-                        <img src="https://i.imgur.com/i7vgWOx.jpeg" alt="Concept Rave Art" class="w-full h-full object-cover filter contrast-[1.1] brightness-[0.85] grayscale-[10%] border border-red-950">
+                        <!-- Imagen del Hero cambiada -->
+                        <img src="https://i.imgur.com/uCTbj9G.png" alt="Concept Rave Art" class="w-full h-full object-cover filter contrast-[1.1] brightness-[0.85] grayscale-[10%] border border-red-950">
                         <div class="absolute bottom-4 left-4 right-4 p-3 bg-black/90 border border-red-900/50 backdrop-blur-md">
                             <div class="flex justify-between items-center text-[10px] font-mono text-red-500">
                                 <span>TERMINAL_ACTIVE: //081</span>
@@ -340,10 +344,33 @@
         <div class="mx-auto max-w-7xl text-center">
             <div class="inline-flex items-center gap-1.5 border border-red-500/30 bg-red-950/20 px-3 py-1 text-xs font-mono text-red-500">
                 <i class="fas fa-users-cog"></i>
-                <span data-i18n="ownersKicker">Quienes están detrás</span>
+                <span data-i18n="ownersKicker">Dueños</span>
             </div>
-            <h2 class="mt-4 text-4xl sm:text-5xl font-black uppercase text-white" data-i18n="ownersTitle">Nuestros Fundadores</h2>
+            <h2 class="mt-4 text-4xl sm:text-5xl font-black uppercase text-white" data-i18n="ownersTitle">Nuestros Dueños</h2>
             <div class="grid sm:grid-cols-2 gap-8 max-w-4xl mx-auto mt-12" id="ownersContainer"></div>
+        </div>
+    </section>
+
+    <!-- CO-OWNER (NUEVA SECCIÓN CON TRADUCCIÓN) -->
+    <section id="co-owner" class="py-16 px-4 border-t border-red-950/60 bg-[#040101]/40">
+        <div class="mx-auto max-w-7xl text-center">
+            <div class="inline-flex items-center gap-1.5 border border-red-500/30 bg-red-950/20 px-3 py-1 text-xs font-mono text-red-500">
+                <i class="fas fa-user-tie"></i>
+                <span data-i18n="coOwnerKicker">Co‑Dueño</span>
+            </div>
+            <h2 class="mt-4 text-4xl sm:text-5xl font-black uppercase text-white" data-i18n="coOwnerTitle">Nuestro Co‑Dueño</h2>
+            <div class="max-w-md mx-auto mt-12">
+                <div class="hud-panel p-6 flex flex-col sm:flex-row items-center gap-6 border-red-950 bg-[#080202]/90 rounded-none text-left">
+                    <img src="https://i.imgur.com/Q0i1anB.png" class="h-20 w-20 rounded-none object-cover border-2 border-red-600 shadow-[0_0_10px_rgba(255,0,0,0.3)]">
+                    <div>
+                        <h3 class="text-2xl font-bold tracking-tight text-white">Raver_Lulamoon</h3>
+                        <p class="text-red-500 font-mono text-xs uppercase tracking-widest mt-1" data-i18n="coOwnerRole">Co‑Dueño</p>
+                        <a href="https://discord.com/users/1266415331769847859" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block border border-red-500 bg-red-950/30 text-red-400 hover:bg-red-600 hover:text-black px-3 py-1 text-[10px] font-mono tracking-wider uppercase transition">
+                            <i class="fa-brands fa-discord mr-1"></i> Discord
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -463,8 +490,8 @@
 
     <script>
         // ============================================================
-        //  ROSTER ACTUALIZADO (17 DJS) – ELIMINADO CHONCHITO, NUEVOS: KARASUTA, asphyx, DarklouXxX, Zhukii..
-        //  TODAS LAS DESCRIPCIONES TRADUCIDAS A ES, EN, FR
+        //  ROSTER ACTUALIZADO (22 DJS) – AÑADIDO RAVER_LULAMOON DEBAJO DE CHIQUIBOO
+        //  GENEROS DE RAVER_LULAMOON CAMBIADOS POR LISTA EXACTA
         // ============================================================
         const djsData = [
             {
@@ -498,6 +525,24 @@
                     es: "28F ｜ Owner of ECLION｜ bb DJ 21＋ Interactions only Always raving‚ I mainly enjoy Harder Genres I play Industrial Techno 〜 ໒ྀི ๑ ˚ ∗˙˖ ·˚ ୨mi querido Demon୧ ˚· ˖ ·˙∗ ˚ ๑ ໒ྀི 〜 Siempre de rave‚ principalmente disfruto de los estilos duros habla conmigo si sabes espanol Estoy empezando tocar Industrial Techno",
                     en: "28F ｜ Owner of ECLION｜ bb DJ 21＋ Interactions only Always raving, I mainly enjoy Harder Genres I play Industrial Techno 〜 ໒ྀི ๑ ˚ ∗˙˖ ·˚ ୨my dear Demon୧ ˚· ˖ ·˙∗ ˚ ๑ ໒ྀི 〜 Always raving, I mainly enjoy hard styles, talk to me if you speak Spanish, I'm starting to play Industrial Techno.",
                     fr: "28F ｜ Propriétaire d'ECLION｜ bb DJ 21＋ Interactions seulement Toujours en rave, j'apprécie surtout les genres plus durs Je joue de l'Industrial Techno 〜 ໒ྀི ๑ ˚ ∗˙˖ ·˚ ୨mon cher Démon୧ ˚· ˖ ·˙∗ ˚ ๑ ໒ྀི 〜 Toujours en rave, j'apprécie surtout les styles durs, parlez-moi si vous parlez espagnol, je commence à jouer de l'Industrial Techno."
+                }
+            },
+            // ======== NUEVO DJ: RAVER_LULAMOON (DEBAJO DE CHIQUIBOO) ========
+            {
+                id: "Raver_Lulamoon",
+                name: "Raver_Lulamoon",
+                img: "https://i.imgur.com/Q0i1anB.png",
+                youtube: "https://www.youtube.com/@RVRDJ",
+                // GENEROS ACTUALIZADOS EXACTAMENTE SEGÚN SOLICITUD
+                genres: {
+                    es: "Uk Hardcore, powerstomp, makina, happy hardcore, gabber, millenium hardcore, uptempo, hardstyle, techno, trance, hands up, house.",
+                    en: "Uk Hardcore, powerstomp, makina, happy hardcore, gabber, millenium hardcore, uptempo, hardstyle, techno, trance, hands up, house.",
+                    fr: "Uk Hardcore, powerstomp, makina, happy hardcore, gabber, millenium hardcore, uptempo, hardstyle, techno, trance, hands up, house."
+                },
+                description: {
+                    es: "¡Hola! Soy Raver Lulamoon, algunas personas me llaman Lula o Luna. Me introduje en la escena DJ a principios de la década de 2010, pero regresé en 2024 después de un largo descanso.",
+                    en: "Hi! I'm Raver Lulamoon, some people call me Lula or Luna. I've been introduced to the DJ scene in the early 2010s but I came back in 2024 after a long hiatus.",
+                    fr: "Salut ! Je suis Raver Lulamoon, certaines personnes m'appellent Lula ou Luna. J'ai été introduit dans la scène DJ au début des années 2010, mais je suis revenu en 2024 après une longue pause."
                 }
             },
             {
@@ -565,7 +610,6 @@
                     fr: "Basses lourdes et breaks agressifs, pur tranchant."
                 }
             },
-            // ======== ELIMINADO CHONCHITO ========
             {
                 id: "Pikyes",
                 name: "¦~ＰＩＫＹＥＳ~¦",
@@ -680,7 +724,6 @@
                     fr: "Mon identité en tant que DJ commence par mon nom ENNI, c'est mon projet où j'aime partager mes sentiments, j'aime trouver des personnes qui se connectent à ce que je fais. Quand je joue, j'aime surprendre avec des drops percutants qui attrapent votre esprit et vous font bouger d'une manière ou d'une autre, c'est là que j'aime être, là où seul le son compte et où nous laissons tout sortir avec des sons qui frappent plus fort. J'ai étudié dans une école reconnue au Mexique, j'aime gérer 4 canaux pour plus de texture dans le son. Si vous m'écoutez en direct, préparez-vous pour chaque drop avec l'intention de vous faire ressentir l'euphorie que je ressens en écoutant tous mes producteurs préférés. Je commence encore mon chemin en tant que DJ, producteur. Avant de me présenter aux gens, j'ai eu un parcours de 2 ans à jouer pour moi-même. C'est un plaisir de faire partie de cette communauté et que cela fasse partie de mon histoire, quand je serai en haut, je ferai de mon mieux."
                 }
             },
-            // ======== NUEVOS DJS CON DESCRIPCIONES TRADUCIDAS ========
             {
                 id: "KARASUTA",
                 name: "KARASUTA",
@@ -719,10 +762,13 @@
                 id: "DarklouXxX",
                 name: "DarklouXxX",
                 img: "https://i.imgur.com/UgnngEI.png",
+                darkvolt: "https://www.darkvolt.fr/",
+                youtube: "https://www.youtube.com/@DarklouXxX",
+                spotify: "https://open.spotify.com/intl-es/artist/3nbe8VMqg62lQzlV9Vb1QJ?si=VsncnEVIRy-Ga5jbD8bcBw&nd=1&dlsi=e3b56a96308244d8",
                 genres: {
-                    es: "Hardcore, Frenchcore, Hardtek, HardTechno, Techno",
-                    en: "Hardcore, Frenchcore, Hardtek, HardTechno, Techno",
-                    fr: "Hardcore, Frenchcore, Hardtek, HardTechno, Techno"
+                    es: "Hardcore, Frenchcore, Hardtek, HardTechno, Techno, Uptempo, Microwave, TerrorCore, Tekno",
+                    en: "Hardcore, Frenchcore, Hardtek, HardTechno, Techno, Uptempo, Microwave, TerrorCore, Tekno",
+                    fr: "Hardcore, Frenchcore, Hardtek, HardTechno, Techno, Uptempo, Microwave, TerrorCore, Tekno"
                 },
                 description: {
                     es: "A lo largo de los años, ha tenido la oportunidad de actuar en grandes escenarios junto a algunos de los nombres más importantes de la escena musical hard, incluyendo Angerfist, Maissouille, Radium y muchos otros. Cada experiencia ha sido abordada con humildad, profesionalismo y un fuerte compromiso con sus valores. Antiguo miembro de Hardcore France Records, conocido por su participación en la primera edición del Eskape Festival, DarklouXxX se enorgullece de haber construido su carrera manteniéndose sobrio. Demuestra que es posible abrazar plenamente la intensidad de los eventos más grandes mientras se mantiene el control y la autenticidad. Hoy, DarklouXxX continúa incendiando las pistas de baile con una misión clara: compartir su energía, su pasión y crear momentos inolvidables detrás de las mesas.",
@@ -744,6 +790,70 @@
                     en: "From Republica Federal Santa Cruz",
                     fr: "De la République Fédérale Santa Cruz"
                 }
+            },
+            // ======== NUEVOS DJS (CON SUS TRADUCCIONES) ========
+            {
+                id: "YGMNAniki",
+                name: "YGMNAniki",
+                img: "https://i.imgur.com/gb7WNBR.png",
+                soundcloud: "https://soundcloud.com/ygmnaniki",
+                genres: {
+                    es: "Psytrance, crossbreed, skullstep, industrial, hardcore",
+                    en: "Psytrance, crossbreed, skullstep, industrial, hardcore",
+                    fr: "Psytrance, crossbreed, skullstep, industrial, hardcore"
+                },
+                description: {
+                    es: "Hola, soy Aniki y soy nuevo en el DJing, ¡pero ha sido muy divertido hasta ahora! Pienso tocar géneros como hard industrial techno, breakcore, speedcore, skullstep, darkstep, gabber y terrorcore, pero me interesa mucho probar cosas nuevas, así que esperen mucha más variedad en los géneros que toco. También disfruto mucho de los BPM altos, así que esperen ritmos muy rápidos.",
+                    en: "Hi im Aniki and im new to djing but its been tons of fun so far! I plan on playing genres like hard industrial techno, breakcore, speedcore, skullstep, darkstep, gabber, and terrorcore but Im really interested in trying new things so expect a lot more variety in the genres i play. Also really enjoy high bpm so expect some really fast beats.",
+                    fr: "Salut, je suis Aniki et je suis nouveau dans le DJing, mais c'est vraiment amusant jusqu'à présent ! Je prévois de jouer des genres comme le hard industrial techno, le breakcore, le speedcore, le skullstep, le darkstep, le gabber et le terrorcore, mais je suis vraiment intéressé par l'essai de nouvelles choses, donc attendez-vous à beaucoup plus de variété dans les genres que je joue. J'apprécie aussi beaucoup les BPM élevés, donc attendez-vous à des rythmes très rapides."
+                }
+            },
+            {
+                id: "DJDolo",
+                name: "DJ Dolo✰",
+                img: "https://i.imgur.com/tRRlVo9.jpeg",
+                soundcloud: "https://soundcloud.com/user-585695727",
+                genres: {
+                    es: "JCore, Happy Hardcore, Rhythm Game, Nightcore, Hands Up, Techno Trance, Breakcore, Speedcore, Terrorcore.",
+                    en: "JCore, Happy Hardcore, Rhythm Game, Nightcore, Hands Up, Techno Trance, Breakcore, Speedcore, Terrorcore.",
+                    fr: "JCore, Happy Hardcore, Rhythm Game, Nightcore, Hands Up, Techno Trance, Breakcore, Speedcore, Terrorcore."
+                },
+                description: {
+                    es: "Soy un DJ de Londres, Reino Unido, y toco principalmente cualquier cosa rápida y otaku. Mi gusto y estilos de mezcla están muy influenciados por juegos de ritmo como SDVX y Beatmania, así como por el viejo Internet.",
+                    en: "I'm a DJ from London UK and I mainly play anything fast and otaku,My taste and styles of mixing are heavily influenced by rhythm games like SDVX and Beatmania as well as old internet.",
+                    fr: "Je suis un DJ de Londres, au Royaume-Uni, et je joue principalement de tout ce qui est rapide et otaku. Mes goûts et styles de mixage sont fortement influencés par des jeux de rythme comme SDVX et Beatmania, ainsi que par le vieil Internet."
+                }
+            },
+            {
+                id: "EternalSeptember",
+                name: "Eternal September",
+                img: "https://i.imgur.com/c5r82J5.jpeg",
+                soundcloud: "https://on.soundcloud.com/H9tOzAyQp4CPSMyBWj",
+                genres: {
+                    es: "UnderGround",
+                    en: "UnderGround",
+                    fr: "UnderGround"
+                },
+                description: {
+                    es: "",
+                    en: "",
+                    fr: ""
+                }
+            },
+            {
+                id: "Nohde",
+                name: "Nohde",
+                img: "https://i.imgur.com/9uws00s.png",
+                genres: {
+                    es: "Breakcore, EDM, Dubstep, Deathstep, Microwave, Uptempo, Krach, Rawstyle, Hardstyle, Gabber",
+                    en: "Breakcore, EDM, Dubstep, Deathstep, Microwave, Uptempo, Krach, Rawstyle, Hardstyle, Gabber",
+                    fr: "Breakcore, EDM, Dubstep, Deathstep, Microwave, Uptempo, Krach, Rawstyle, Hardstyle, Gabber"
+                },
+                description: {
+                    es: "¡Hola! Soy Nohde. DJ en proceso >:) Disfruto de todo tipo de música, como las cosas underground. Pero lo que prefiero tocar es principalmente hardcore: mientras sea duro, lo toco. Suelo cambiar mucho de estilo en mis sets; me gusta mantenerlo fresco. Puede que no hable mientras pincho, pero siéntete libre de venir a hablar conmigo después de mis sets. Ten en cuenta que el inglés no es mi primer idioma, aunque lo hablo lo suficientemente bien para mantener conversaciones, pero tiendo a hablar mucho cuando estoy borracho, al contrario que cuando estoy sobrio. Si quieres seguirme o ver alguno de mis sets, tendrás que encontrarme en el juego y agregarme como amigo.",
+                    en: "Heya, I'm Nohde! Bludgeoning DJ in the making >:) , I enjoy all sorts of music like underground stuff. But what I prefer to play is mostly hardcore stuff:  As long as it goes hard, I play it. I tend to switch styles a lot through sets; I like to keep it fresh. I might not talk while DJing, but feel free to come up to me after my sets! Do be aware, English is not my first language even if I speak it well enough to have conversations, but I tend to talk a lot when drunk, contrary to when I'm sober. If you want to follow me or check out any of my sets, you'll unfortunately have to find me in-game and friend me!",
+                    fr: "Salut ! Je suis Nohde. DJ en devenir >:) J'apprécie toutes sortes de musiques, comme les trucs underground. Mais ce que je préfère jouer, c'est surtout du hardcore : tant que ça envoie, je le joue. J'ai tendance à beaucoup changer de style au cours des sets ; j'aime garder ça frais. Je ne parle peut-être pas pendant que je mixe, mais n'hésitez pas à venir me parler après mes sets ! Sachez que l'anglais n'est pas ma langue maternelle, même si je le parle assez bien pour avoir des conversations, mais j'ai tendance à beaucoup parler quand je suis ivre, contrairement à quand je suis sobre. Si vous voulez me suivre ou écouter mes sets, vous devrez malheureusement me trouver dans le jeu et m'ajouter en ami !"
+                }
             }
         ];
 
@@ -757,7 +867,8 @@
             {
                 name: "ChiquiBoo",
                 img: "https://api.vrchat.cloud/api/1/image/file_88983ad4-8806-418b-8200-0d6cf0ec85e4/1/1024",
-                role: { es: "Fundadora Dueña y DJ", en: "Founder Owner & DJ", fr: "Fondatrice Propriétaire & DJ" }
+                role: { es: "Fundadora Dueña y DJ", en: "Founder Owner & DJ", fr: "Fondatrice Propriétaire & DJ" },
+                discord: "https://discord.com/users/694308630773628960"
             }
         ];
 
@@ -768,13 +879,18 @@
             { id: "u8OZCXAq2E8", title: "CYBER PUNK RAVE" }
         ];
 
+        // ======== TRADUCCIONES ACTUALIZADAS: DUEÑOS Y CO-DUEÑO ========
         const translations = {
             es: {
                 navAbout: "Comunidad", navDjs: "DJs", navChannel: "Transmisiones", navEvents: "Eventos", navPartners: "Partners", contact: "Contáctanos",
                 heroTag: "Comunidad Rave · VRChat", heroTitle: "Donde la noche nunca termina.",
                 heroDesc: "Somos una comunidad dedicada a crear experiencias de música electrónica inmersivas dentro de VRChat. Organizamos raves todos los sábados y eventos temáticos como noches Cyberpunk. Hard.exe y HARDBASS_404 son nuestros eventos estrella. Únete y vive las raves más intensas de VRChat.",
                 statDjs: "DJs residentes", statEvents: "Eventos celebrados", statCommunity: "Miembros activos",
-                ownersTitle: "Nuestros Fundadores", ownersKicker: "Quienes están detrás",
+                ownersKicker: "Dueños",
+                ownersTitle: "Nuestros Dueños",
+                coOwnerKicker: "Co‑Dueño",
+                coOwnerTitle: "Nuestro Co‑Dueño",
+                coOwnerRole: "Co‑Dueño",
                 djsTitle: "Eclion DJs", djsKicker: "Roster oficial", djsSectionSub: "Explora nuestro roster premium de DJs especializados en ritmos de alta intensidad.",
                 genres: "Géneros", about: "Sobre",
                 ytKicker: "En vivo", ytDesc: "Raves, eventos y experiencias únicas en VRChat. Suscríbete a nuestro canal para seguir el pulso de la noche.",
@@ -788,7 +904,11 @@
                 heroTag: "Rave Community · VRChat", heroTitle: "Where the night never ends.",
                 heroDesc: "We are a community dedicated to creating immersive electronic music experiences inside VRChat. We host raves every Saturday and themed events like Cyberpunk nights. Hard.exe and HARDBASS_404 are our flagship events. Join us and live the most intense rave experiences in VRChat.",
                 statDjs: "Resident DJs", statEvents: "Hosted events", statCommunity: "Active members",
-                ownersTitle: "Our Founders", ownersKicker: "Behind the scenes",
+                ownersKicker: "Owners",
+                ownersTitle: "Our Owners",
+                coOwnerKicker: "Co‑Owner",
+                coOwnerTitle: "Our Co‑Owner",
+                coOwnerRole: "Co‑Owner",
                 djsTitle: "Eclion DJs", djsKicker: "Official roster", djsSectionSub: "Explore our premium roster of resident DJs specializing in high-intensity electronic genres.",
                 genres: "Genres", about: "About",
                 ytKicker: "Live Stream", ytDesc: "Raves, live music, and unique virtual experiences in VRChat. Subscribe to our channel.",
@@ -802,7 +922,11 @@
                 heroTag: "Communauté Rave · VRChat", heroTitle: "Là où la nuit ne finit jamais.",
                 heroDesc: "Nous sommes une communauté dédiée à la création d'expériences de musique électronique immersives dans VRChat. Nous organisons des raves tous les samedis et des soirées à thème comme Cyberpunk. Hard.exe et HARDBASS_404 sont nos événements phares. Rejoignez-nous et vivez les raves les plus intenses de VRChat.",
                 statDjs: "DJs résidents", statEvents: "Événements organisés", statCommunity: "Membres actifs",
-                ownersTitle: "Nos Fondateurs", ownersKicker: "Dans les coulisses",
+                ownersKicker: "Propriétaires",
+                ownersTitle: "Nos Propriétaires",
+                coOwnerKicker: "Co‑Propriétaire",
+                coOwnerTitle: "Notre Co‑Propriétaire",
+                coOwnerRole: "Co‑Propriétaire",
                 djsTitle: "Eclion DJs", djsKicker: "Roster officiel", djsSectionSub: "Découvrez notre roster exclusif de DJs résidents spécialisés dans les sous-genres électroniques à haute intensité.",
                 genres: "Genres", about: "À propos",
                 ytKicker: "En direct", ytDesc: "Raves, shows exclusifs et expériences uniques dans VRChat. Abonnez-vous à notre chaîne.",
@@ -820,9 +944,12 @@
             const container = document.getElementById('ownersContainer');
             if (!container) return;
             container.innerHTML = owners.map(o => {
-                let extraBtn = '';
+                let extraBtns = '';
                 if (o.vrchatDJ) {
-                    extraBtn = `<a href="${o.vrchatDJ}" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block border border-red-500 bg-red-950/30 text-red-400 hover:bg-red-600 hover:text-black px-3 py-1 text-[10px] font-mono tracking-wider uppercase transition">vrcDJ</a>`;
+                    extraBtns += `<a href="${o.vrchatDJ}" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block border border-red-500 bg-red-950/30 text-red-400 hover:bg-red-600 hover:text-black px-3 py-1 text-[10px] font-mono tracking-wider uppercase transition">vrcDJ</a>`;
+                }
+                if (o.discord) {
+                    extraBtns += `<a href="${o.discord}" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block border border-red-500 bg-red-950/30 text-red-400 hover:bg-red-600 hover:text-black px-3 py-1 text-[10px] font-mono tracking-wider uppercase transition"><i class="fa-brands fa-discord mr-1"></i>Discord</a>`;
                 }
                 return `
                     <div class="hud-panel p-6 flex flex-col sm:flex-row items-center gap-6 border-red-950 bg-[#080202]/90 rounded-none text-left">
@@ -830,7 +957,7 @@
                         <div>
                             <h3 class="text-2xl font-bold tracking-tight text-white">${o.name}</h3>
                             <p class="text-red-500 font-mono text-xs uppercase tracking-widest mt-1">${o.role[currentLang]}</p>
-                            ${extraBtn}
+                            <div class="flex flex-wrap gap-2 mt-2">${extraBtns}</div>
                         </div>
                     </div>
                 `;
@@ -876,6 +1003,8 @@
             if (dj.vrchatDJ) links += `<a href="${dj.vrchatDJ}" target="_blank" rel="noopener noreferrer" class="border border-red-500 bg-red-950/30 text-red-400 hover:bg-red-600 hover:text-black px-4 py-2 text-xs font-mono tracking-wider uppercase transition">vrcDJ</a>`;
             if (dj.gunsLol) links += `<a href="${dj.gunsLol}" target="_blank" rel="noopener noreferrer" class="border border-red-500 bg-red-950/30 text-red-400 hover:bg-red-600 hover:text-black px-4 py-2 text-xs font-mono tracking-wider uppercase transition">GunsLOL</a>`;
             if (dj.instagram) links += `<a href="${dj.instagram}" target="_blank" rel="noopener noreferrer" class="border border-red-500 bg-red-950/30 text-red-400 hover:bg-red-600 hover:text-black px-4 py-2 text-xs font-mono tracking-wider uppercase transition">Instagram</a>`;
+            if (dj.darkvolt) links += `<a href="${dj.darkvolt}" target="_blank" rel="noopener noreferrer" class="border border-red-500 bg-red-950/30 text-red-400 hover:bg-red-600 hover:text-black px-4 py-2 text-xs font-mono tracking-wider uppercase transition">Darkvolt</a>`;
+            if (dj.spotify) links += `<a href="${dj.spotify}" target="_blank" rel="noopener noreferrer" class="border border-red-500 bg-red-950/30 text-red-400 hover:bg-red-600 hover:text-black px-4 py-2 text-xs font-mono tracking-wider uppercase transition">Spotify</a>`;
 
             container.innerHTML = `
                 <div class="relative h-64 overflow-hidden border-b border-red-950">
@@ -897,7 +1026,7 @@
                     </div>
                     <div>
                         <h4 class="text-[11px] font-mono text-gray-500 tracking-widest uppercase mb-1">BIOGRAPHY_FILE</h4>
-                        <p class="text-gray-300 text-sm font-light leading-relaxed">${dj.description[currentLang]}</p>
+                        <p class="text-gray-300 text-sm font-light leading-relaxed">${dj.description[currentLang] || ''}</p>
                     </div>
                     <div class="pt-4 border-t border-red-950/60 flex flex-wrap gap-2">
                         ${links}
