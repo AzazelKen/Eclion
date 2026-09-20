@@ -750,9 +750,9 @@
       <!-- Window Content -->
       <div class="window-content">
         <section class="hero" id="top">
-          <!-- High-Performance WebP Slideshow (Dual-layer crossfader) -->
+          <!-- High-Performance Slideshow (Dual-layer crossfader) -->
           <div class="hero-slideshow" id="heroSlideshow" aria-hidden="true">
-            <div class="hero-slide active" id="heroSlideA" style="background-image: url('assets/images/1.webp')"></div>
+            <div class="hero-slide active" id="heroSlideA" style="background-image: url('https://i.imgur.com/cGtBO5v.png')"></div>
             <div class="hero-slide" id="heroSlideB"></div>
           </div>
 
@@ -1166,23 +1166,42 @@
   <!-- JAVASCRIPT LOGIC & WINDOW MANAGER                         -->
   <!-- ========================================================= -->
   <script>
-    // --- 1. OPTIMIZED WEBP SLIDESHOW (DUAL-LAYER, PAUSES WHEN WINDOW INACTIVE) ---
+    // --- 1. OPTIMIZED SLIDESHOW (IMGUR ALBUM aUKYtZn, PAUSES WHEN WINDOW INACTIVE) ---
     const slideSources = [
-      'assets/images/1.webp', 'assets/images/2.webp', 'assets/images/3.webp',
-      'assets/images/4.webp', 'assets/images/5.webp', 'assets/images/6.webp',
-      'assets/images/7.webp', 'assets/images/8.webp', 'assets/images/9.webp',
-      'assets/images/10.webp', 'assets/images/11.webp', 'assets/images/12.webp',
-      'assets/images/13.webp', 'assets/images/14.webp', 'assets/images/15.webp',
-      'assets/images/16.webp', 'assets/images/17.webp'
+      'https://i.imgur.com/cGtBO5v.png',
+      'https://i.imgur.com/U3FDij5.png',
+      'https://i.imgur.com/ENCgEU3.png',
+      'https://i.imgur.com/uVvdTnB.png',
+      'https://i.imgur.com/Fk5r4Rg.png',
+      'https://i.imgur.com/VyO6E9J.png',
+      'https://i.imgur.com/VnsoShk.png',
+      'https://i.imgur.com/QStEtW3.png',
+      'https://i.imgur.com/l4Cm117.png',
+      'https://i.imgur.com/yAvbfOn.png',
+      'https://i.imgur.com/198RXCY.png',
+      'https://i.imgur.com/T5QN7EM.png',
+      'https://i.imgur.com/6IDgDot.png',
+      'https://i.imgur.com/JnW86IS.png',
+      'https://i.imgur.com/FPd0XNf.png',
+      'https://i.imgur.com/OWugg3f.png',
+      'https://i.imgur.com/gQUsbiQ.png'
     ];
     let currentSlideIdx = 0;
     const slideA = document.getElementById('heroSlideA');
     const slideB = document.getElementById('heroSlideB');
     let activeLayer = slideA;
 
+    function preloadSlide(idx) {
+      if (idx >= 0 && idx < slideSources.length) {
+        const img = new Image();
+        img.src = slideSources[idx];
+      }
+    }
+    preloadSlide(0);
+    preloadSlide(1);
+
     function cycleHeroSlides() {
       if (!slideA || !slideB) return;
-      // If user is on another window (and not in view-all mode), pause slideshow to save 100% CPU/GPU!
       if (currentWindowId !== 'win-inicio') return;
 
       currentSlideIdx = (currentSlideIdx + 1) % slideSources.length;
@@ -1193,6 +1212,8 @@
       nextLayer.classList.add('active');
       activeLayer.classList.remove('active');
       activeLayer = nextLayer;
+
+      preloadSlide((currentSlideIdx + 1) % slideSources.length);
     }
     setInterval(cycleHeroSlides, 4500);
 
