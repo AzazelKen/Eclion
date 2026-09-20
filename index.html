@@ -7,11 +7,11 @@
   <meta name="description" content="Eclion — El colectivo rave de música electrónica de alta intensidad en VRChat. Escenografía inmersiva, sonido sin límites y cultura underground.">
   <meta property="og:title" content="ECLION — Colectivo Rave & Experiencia Virtual VRChat">
   <meta property="og:description" content="Ritmo sin límites. Presencia real. Bajo la señal de Eclion.">
-  <meta property="og:image" content="logo/IMG_1574.png">
+  <meta property="og:image" content="https://i.imgur.com/uCTbj9G.png">
   <meta property="og:type" content="website">
   <title>ECLION — Colectivo Rave VRChat</title>
-  <link rel="icon" type="image/png" href="logo/IMG_1574.png">
-  <link rel="apple-touch-icon" href="logo/IMG_1574.png">
+  <link rel="icon" type="image/png" href="https://i.imgur.com/uCTbj9G.png">
+  <link rel="apple-touch-icon" href="https://i.imgur.com/uCTbj9G.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Unbounded:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -156,30 +156,7 @@
     .header-btn:hover { border-color: var(--red); color: var(--red-bright); background: var(--red-soft); }
 
     /* Window View Mode Toggle (Single Window vs Grid/All) */
-    .viewmode-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 9px 14px;
-      border: 1px solid rgba(250,53,41,0.4);
-      background: rgba(250,53,41,0.1);
-      color: #fff;
-      font: 600 10px/1 var(--mono);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: all 0.25s var(--ease);
-    }
-    .viewmode-btn:hover {
-      background: var(--red);
-      color: #120405;
-      border-color: var(--red);
-    }
-    .viewmode-btn.is-all-mode {
-      background: #fff;
-      color: var(--ink);
-      border-color: #fff;
-    }
-
+    
     /* ========================================================= */
     /* CYBER COMMAND DOCK (WINDOW TABS / SELECTOR)               */
     /* ========================================================= */
@@ -260,19 +237,12 @@
       gap: 36px;
     }
 
-    /* In single-window mode (default): only the active window is displayed */
-    body.mode-single .eclion-window {
+    .eclion-window {
       display: none;
     }
-    body.mode-single .eclion-window.active-window {
+    .eclion-window.active-window {
       display: block;
-      animation: windowOpen 0.45s var(--ease) forwards;
-    }
-
-    /* In all-windows mode: all windows are stacked cleanly */
-    body.mode-all .eclion-window {
-      display: block;
-      margin-bottom: 24px;
+      animation: windowOpen 0.4s var(--ease) forwards;
     }
 
     @keyframes windowOpen {
@@ -405,14 +375,7 @@
     
     .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
 
-    /* Saturday Countdown */
-    .countdown-bar { display: flex; align-items: center; gap: 16px; margin-top: 30px; padding: 14px 20px; border: 1px solid var(--line); background: rgba(14, 9, 10, 0.7); backdrop-filter: blur(12px); width: fit-content; }
-    .countdown-label { color: var(--muted); font: 500 10px/1.2 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; }
-    .countdown-time { display: flex; align-items: center; gap: 10px; font: 700 18px/1 var(--mono); color: var(--paper); }
-    .countdown-unit { display: flex; flex-direction: column; align-items: center; }
-    .countdown-num { color: var(--red-bright); font-size: 20px; }
-    .countdown-sub { font-size: 8px; color: var(--muted); text-transform: uppercase; margin-top: 2px; }
-
+    
     /* Floating Hero Logo */
     .hero-logo-box {
       text-align: center;
@@ -657,7 +620,7 @@
       .hero-subtitle { margin-inline: auto; }
       .hero-ctas { justify-content: center; }
       .hero-logo-box { max-width: 320px; width: 100%; margin-top: 24px; }
-      .countdown-bar { margin-inline: auto; }
+      
       .hero-bottom { flex-direction: column; align-items: center; text-align: center; }
       .intro-grid, .stream-layout { grid-template-columns: 1fr; }
       .roster-grid { grid-template-columns: repeat(3, 1fr); }
@@ -703,15 +666,11 @@
       <div class="header-primary">
         <!-- Logo -->
         <a class="brand" href="#win-inicio" data-window-jump="win-inicio" aria-label="ECLION, Inicio">
-          <img class="brand-mark-img" src="assets/images/logo.webp" alt="ECLION Logo">
+          <img class="brand-mark-img" src="https://i.imgur.com/uCTbj9G.png" alt="ECLION Logo">
           <span class="brand-word">EC<i>LI</i>ON</span>
         </a>
 
-        <!-- Live Signal Badge -->
-        <div class="system-status">
-          <span class="status-dot"></span>
-          <span data-i18n="signalActive">SEÑAL UNDERGROUND · SÁBADOS 22:00 CET</span>
-        </div>
+
 
         <!-- Global Header Actions -->
         <div class="header-actions">
@@ -729,16 +688,11 @@
             </select>
           </label>
           <button class="header-btn" id="copyGroupBtn" type="button" title="Copiar enlace VRChat">
-            <span>Grupo VRChat</span> 📋
+            <span data-i18n="groupVrc">Grupo VRChat</span> 📋
           </button>
           <a class="header-btn" href="https://discord.com/invite/ZTxBPGDVWq" target="_blank" rel="noopener noreferrer">
             <span>Discord</span> ↗
           </a>
-          <!-- View Mode Toggle -->
-          <button class="viewmode-btn" id="viewModeToggle" type="button" title="Alternar entre modo ventana individual o ver todas">
-            <span id="viewModeIcon">◫</span>
-            <span id="viewModeLabel" data-i18n="viewModeSingle">VER TODAS</span>
-          </button>
         </div>
       </div>
     </div>
@@ -824,21 +778,12 @@
                 </button>
               </div>
 
-              <!-- Saturday Countdown Timer -->
-              <div class="countdown-bar">
-                <div class="countdown-label" data-i18n="nextSaturday">Próximo Pulso Sábado:</div>
-                <div class="countdown-time" id="countdownClock">
-                  <div class="countdown-unit"><span class="countdown-num" id="cdDays">00</span><span class="countdown-sub">Días</span></div>:
-                  <div class="countdown-unit"><span class="countdown-num" id="cdHours">00</span><span class="countdown-sub">Hrs</span></div>:
-                  <div class="countdown-unit"><span class="countdown-num" id="cdMins">00</span><span class="countdown-sub">Min</span></div>:
-                  <div class="countdown-unit"><span class="countdown-num" id="cdSecs">00</span><span class="countdown-sub">Seg</span></div>
-                </div>
-              </div>
+
             </div>
 
             <!-- Floating Official Logo Overlay -->
             <div class="hero-logo-box">
-              <img class="hero-logo-img" src="assets/images/logo.webp" alt="Logo Oficial Eclion">
+              <img class="hero-logo-img" src="https://i.imgur.com/uCTbj9G.png" alt="Logo Oficial Eclion">
               <div class="hero-logo-sub">ECLION</div>
               <div class="hero-logo-tag" data-i18n="officialMark">SEÑAL UNDERGROUND · VRCHAT</div>
             </div>
@@ -1039,14 +984,14 @@
             </div>
             <div class="roster-tools">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="6"></circle><path d="m16 16 4 4"></path></svg>
-              <input class="roster-search" id="rosterSearch" type="search" placeholder="BUSCAR ARTISTA O GÉNERO" autocomplete="off">
+              <input class="roster-search" id="rosterSearch" type="search" placeholder="BUSCAR ARTISTA O GÉNERO" data-i18n-placeholder="searchPlaceholder" autocomplete="off">
             </div>
           </div>
 
           <!-- Integrated Genre Filter Zone directly above DJs -->
           <div class="roster-genre-filter">
             <div class="roster-genre-header">
-              <span class="genre-filter-title">✦ SELECCIONAR GÉNERO MUSICAL:</span>
+              <span class="genre-filter-title" data-i18n="genreFilterPrompt">✦ SELECCIONAR GÉNERO MUSICAL:</span>
               <select class="genre-select" id="genreFilterSelect" aria-label="Seleccionar Género"></select>
             </div>
             <div class="genre-pills" id="genrePills"></div>
@@ -1145,7 +1090,7 @@
     <div class="shell">
       <div class="footer-brand">
         <a class="brand" href="#win-inicio" data-window-jump="win-inicio" aria-label="Volver arriba">
-          <img class="brand-mark-img" src="assets/images/logo.webp" alt="ECLION Logo">
+          <img class="brand-mark-img" src="https://i.imgur.com/uCTbj9G.png" alt="ECLION Logo">
           <span class="brand-word">EC<i>LI</i>ON</span>
         </a>
         <p class="footer-message" data-i18n="footerMessage">
@@ -1238,7 +1183,7 @@
     function cycleHeroSlides() {
       if (!slideA || !slideB) return;
       // If user is on another window (and not in view-all mode), pause slideshow to save 100% CPU/GPU!
-      if (document.body.classList.contains('mode-single') && currentWindowId !== 'win-inicio') return;
+      if (currentWindowId !== 'win-inicio') return;
 
       currentSlideIdx = (currentSlideIdx + 1) % slideSources.length;
       const nextSrc = slideSources[currentSlideIdx];
@@ -1326,32 +1271,7 @@
       });
     });
 
-    // --- 4. SATURDAY COUNTDOWN TIMER ---
-    function updateCountdown() {
-      const now = new Date();
-      let nextSat = new Date();
-      nextSat.setDate(now.getDate() + ((6 - now.getDay() + 7) % 7));
-      nextSat.setHours(22, 0, 0, 0);
-      if (now > nextSat) {
-        nextSat.setDate(nextSat.getDate() + 7);
-      }
-      const diff = nextSat - now;
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const mins = Math.floor((diff / (1000 * 60)) % 60);
-      const secs = Math.floor((diff / 1000) % 60);
 
-      const elDays = document.getElementById('cdDays');
-      const elHours = document.getElementById('cdHours');
-      const elMins = document.getElementById('cdMins');
-      const elSecs = document.getElementById('cdSecs');
-      if (elDays) elDays.textContent = String(days).padStart(2, '0');
-      if (elHours) elHours.textContent = String(hours).padStart(2, '0');
-      if (elMins) elMins.textContent = String(mins).padStart(2, '0');
-      if (elSecs) elSecs.textContent = String(secs).padStart(2, '0');
-    }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
 
     // --- 5. ARTISTS DATA & MODAL SYSTEM (WITH KARASUTA CUSTOM IMAGE) ---
     const artistsData = [
@@ -1399,7 +1319,7 @@
         card.setAttribute('data-artist', artist.name);
         
         card.innerHTML = `
-          <img src="${artist.image}" alt="${artist.name}" loading="lazy" decoding="async" onerror="this.src='assets/images/logo.webp'">
+          <img src="${artist.image}" alt="${artist.name}" loading="lazy" decoding="async" onerror="this.src='https://i.imgur.com/uCTbj9G.png'">
           <div class="dj-card-content">
             <span class="dj-card-tag">${artist.tag || 'RESIDENT'}</span>
             <h3>${artist.name}</h3>
@@ -1509,12 +1429,7 @@
     // --- 7. MULTI-WINDOW MANAGER & DOCK (ECLION WINDOW DECK) ---
     const dockItems = document.querySelectorAll('.dock-item');
     const windows = document.querySelectorAll('.eclion-window');
-    const viewModeToggle = document.getElementById('viewModeToggle');
-    const viewModeLabel = document.getElementById('viewModeLabel');
-    const viewModeIcon = document.getElementById('viewModeIcon');
-
     let currentWindowId = 'win-inicio';
-    let isAllMode = false;
 
     function activateWindow(targetId, updateHash = true) {
       const targetWindow = document.getElementById(targetId);
@@ -1527,23 +1442,17 @@
         const matches = item.dataset.target === targetId;
         item.classList.toggle('active', matches);
         if (matches) {
-          // Scroll the dock item into view on mobile
           item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         }
       });
 
-      // Update window visibility
+      // Update window visibility (Dedicated Window Mode)
       windows.forEach(w => {
         const isActive = w.id === targetId;
         w.classList.toggle('active-window', isActive);
       });
 
-      // If in single window mode, scroll viewport to top of window
-      if (!isAllMode) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        targetWindow.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
 
       // Sync URL hash
       if (updateHash) {
@@ -1567,25 +1476,6 @@
         e.preventDefault();
         const targetId = jumpTarget.dataset.windowJump || jumpTarget.dataset.jump;
         activateWindow(targetId);
-      }
-    });
-
-    // View Mode Toggle (Single Window vs All Windows View)
-    viewModeToggle.addEventListener('click', () => {
-      isAllMode = !isAllMode;
-      document.body.classList.toggle('mode-all', isAllMode);
-      document.body.classList.toggle('mode-single', !isAllMode);
-
-      if (isAllMode) {
-        viewModeLabel.textContent = 'MODO VENTANA';
-        viewModeIcon.textContent = '□';
-        viewModeToggle.classList.add('is-all-mode');
-        showToast('Vista Mosaico activada: Todas las ventanas visibles');
-      } else {
-        viewModeLabel.textContent = 'VER TODAS';
-        viewModeIcon.textContent = '◫';
-        viewModeToggle.classList.remove('is-all-mode');
-        activateWindow(currentWindowId);
       }
     });
 
@@ -1618,55 +1508,565 @@
 
     // --- 9. MULTI-LANGUAGE SYSTEM ---
     const translations = {
-      es: {
-        navHome: 'Inicio', navTeam: 'Equipo & Partners', navCommunity: 'Comunidad', navDjs: 'DJs Residentes', navMedia: 'Media',
-        signalActive: 'SEÑAL UNDERGROUND · SÁBADOS 22:00 CET', viewModeSingle: 'VER TODAS', viewModeAll: 'MODO VENTANA',
-        winTitleHome: 'TERMINAL DE ENTRADA · ECLION VIRTUAL', winTitleTeam: 'EL NÚCLEO & ALIANZAS OFICIALES', winTitleCommunity: 'NUESTRA FRECUENCIA · FILOSOFÍA RAVE', winTitleRoster: 'ROSTER OFICIAL DE DJS · 23 ARTISTAS', winTitleMedia: 'ECLIONVR · BAJO DEMANDA & ARCHIVO',
-        heroKicker: 'Comunidad Rave VRChat · Transmisión Activa', heroTitleOne: 'El ritmo no', heroTitleTwo: 'tiene fronteras.',
-        heroSubtitle: 'El colectivo rave de mayor impacto en VRChat. Música electrónica de alta intensidad, escenografía virtual inmersiva y una comunidad unida por el sonido puro.',
-        joinGroup: 'Unirse al Grupo VRChat', meetRoster: 'Explorar Roster DJs', nextSaturday: 'Próximo Pulso Sábado:', officialMark: 'SEÑAL UNDERGROUND · VRCHAT',
-        residentDjs: 'DJs Residentes', videosLives: 'Sesiones & Directos', activeMembers: 'Miembros Activos',
-        ourFrequency: 'Nuestra Frecuencia', moreThanEvent: 'Más que un evento.',
-        communityCopy: 'Eclion nace para dar a la escena hard un espacio auténtico, vanguardista y sin concesiones en VRChat: sonido atronador, visuales reactivos y una comunidad apasionada.',
-        communityQuote: '“No se trata solo de escuchar una sesión. Se trata de adentrarte en el mundo virtual, conectar con tu gente y dejar que los BPM marquen el latido de la noche.”',
-        communityCite: 'ECLION / Colectivo Rave VRChat', principleOneTitle: 'ATMÓSFERA INMERSIVA', principleTwoTitle: 'SIN LÍMITES DE BPM', principleThreeTitle: 'COMUNIDAD SOBERANA',
-        officialRoster: 'Roster Oficial & Explorador',
-        residents: 'DJs Residentes', ofEclion: 'de Eclion.', onDemand: 'EclionVR / Bajo Demanda', energyStays: 'La energía se queda grabada.',
-        mediaCopy: 'Revive las sesiones más potentes, aftermovies y momentos que hicieron temblar las instancias privadas de VRChat.', visitYouTube: 'Canal de YouTube',
-        streamArchive: 'Archivo de Sesiones', moments: 'Momentos', specialEvent: 'Evento Especial', immersiveExperience: 'Experiencia Inmersiva', themedEvent: 'Evento Temático',
-        theCore: 'El Núcleo', thoseWhoLight: 'Quienes encienden', founderOwnerDj: 'Fundador · Dueño · DJ', founderOwnerDjFemale: 'Fundadora · Dueña · DJ', coOwnerDj: 'Co-Dueño · DJ',
-        alliedCommunities: 'Comunidades Aliadas', officialPartners: 'Partners Oficiales.', footerMessage: 'Colectivo de música electrónica underground y experiencias rave inmersivas en VRChat.'
-      },
-      en: {
-        navHome: 'Home', navTeam: 'Team & Partners', navCommunity: 'Community', navDjs: 'Resident DJs', navMedia: 'Media',
-        signalActive: 'UNDERGROUND SIGNAL · SATURDAYS 22:00 CET', viewModeSingle: 'VIEW ALL', viewModeAll: 'WINDOW MODE',
-        winTitleHome: 'INPUT TERMINAL · ECLION VIRTUAL', winTitleTeam: 'THE CORE & OFFICIAL PARTNERS', winTitleCommunity: 'OUR FREQUENCY · RAVE PHILOSOPHY', winTitleRoster: 'OFFICIAL DJ ROSTER · 23 ARTISTS', winTitleMedia: 'ECLIONVR · ON DEMAND & ARCHIVE',
-        heroKicker: 'VRChat Rave Community · Signal Active', heroTitleOne: 'The rhythm has', heroTitleTwo: 'no borders.',
-        heroSubtitle: 'The highest impact rave collective in VRChat. High-intensity electronic music, immersive virtual staging, and a community united by pure sound.',
-        joinGroup: 'Join VRChat Group', meetRoster: 'Explore DJ Roster', nextSaturday: 'Next Saturday Pulse:', officialMark: 'UNDERGROUND SIGNAL · VRCHAT',
-        residentDjs: 'Resident DJs', videosLives: 'Sessions & Streams', activeMembers: 'Active Members',
-        ourFrequency: 'Our Frequency', moreThanEvent: 'More than an event.',
-        communityCopy: 'Eclion gives the hard scene an authentic, avant-garde, and uncompromising space inside VRChat: thundering sound, reactive visuals, and a passionate community.',
-        communityQuote: '“It is not just about listening to a set. It is about stepping into the virtual world, connecting with your people, and letting BPM set the heartbeat of the night.”',
-        communityCite: 'ECLION / VRChat Rave Collective', principleOneTitle: 'IMMERSIVE ATMOSPHERE', principleTwoTitle: 'NO BPM LIMITS', principleThreeTitle: 'SOVEREIGN COMMUNITY',
-        officialRoster: 'Official Roster & Explorer',
-        residents: 'Resident DJs', ofEclion: 'of Eclion.', onDemand: 'EclionVR / On Demand', energyStays: 'The energy remains recorded.',
-        mediaCopy: 'Relive the most powerful sets, aftermovies, and moments that shook VRChat instances.', visitYouTube: 'YouTube Channel',
-        streamArchive: 'Session Archive', moments: 'Historic', specialEvent: 'Special Event', immersiveExperience: 'Immersive Experience', themedEvent: 'Themed Event',
-        theCore: 'The Core', thoseWhoLight: 'Those who ignite', founderOwnerDj: 'Founder · Owner · DJ', founderOwnerDjFemale: 'Founder · Owner · DJ', coOwnerDj: 'Co-Owner · DJ',
-        alliedCommunities: 'Allied Communities', officialPartners: 'Official Partners.', footerMessage: 'Underground electronic music collective and immersive rave experiences in VRChat.'
-      }
-    };
+    "es": {
+        "navHome": "Inicio",
+        "navTeam": "Equipo & Partners",
+        "navCommunity": "Comunidad",
+        "navDjs": "DJs Residentes",
+        "navMedia": "Media",
+        "groupVrc": "Grupo VRChat",
+        "winTitleHome": "TERMINAL DE ENTRADA · ECLION VIRTUAL",
+        "winTitleTeam": "EL NÚCLEO & ALIANZAS OFICIALES",
+        "winTitleCommunity": "NUESTRA FRECUENCIA · FILOSOFÍA RAVE",
+        "winTitleRoster": "ROSTER OFICIAL DE DJS · 23 ARTISTAS",
+        "winTitleMedia": "ECLIONVR · BAJO DEMANDA & ARCHIVO",
+        "heroKicker": "Comunidad Rave VRChat · Transmisión Activa",
+        "heroTitleOne": "El ritmo no",
+        "heroTitleTwo": "tiene fronteras.",
+        "heroSubtitle": "El colectivo rave de mayor impacto en VRChat. Música electrónica de alta intensidad, escenografía virtual inmersiva y una comunidad unida por el sonido puro.",
+        "joinGroup": "Unirse al Grupo VRChat",
+        "meetRoster": "Explorar Roster DJs",
+        "officialMark": "SEÑAL UNDERGROUND · VRCHAT",
+        "residentDjs": "DJs Residentes",
+        "videosLives": "Sesiones & Directos",
+        "activeMembers": "Miembros Activos",
+        "ourFrequency": "Nuestra Frecuencia",
+        "moreThanEvent": "Más que un evento.",
+        "communityCopy": "Eclion nace para dar a la escena hard un espacio auténtico, vanguardista y sin concesiones en VRChat: sonido atronador, visuales reactivos y una comunidad apasionada.",
+        "communityQuote": "“No se trata solo de escuchar una sesión. Se trata de adentrarte en el mundo virtual, conectar con tu gente y dejar que los BPM marquen el latido de la noche.”",
+        "communityCite": "ECLION / Colectivo Rave VRChat",
+        "principleOneTitle": "ATMÓSFERA INMERSIVA",
+        "principleOneCopy": "Mundos VRChat diseñados a medida con iluminación audioreactiva y sonido espacial que transforman cada set en una vivencia física.",
+        "principleTwoTitle": "SIN LÍMITES DE BPM",
+        "principleTwoCopy": "Desde la contundencia del industrial techno y hardstyle hasta la velocidad pura del frenchcore, uptempo y breakcore.",
+        "principleThreeTitle": "COMUNIDAD SOBERANA",
+        "principleThreeCopy": "Espacio abierto e inclusivo que conecta a ravers e hispanohablantes de todo el mundo bajo una misma señal.",
+        "officialRoster": "Roster Oficial & Explorador",
+        "residents": "DJs Residentes",
+        "ofEclion": "de Eclion.",
+        "genreFilterPrompt": "✦ SELECCIONAR GÉNERO MUSICAL:",
+        "searchPlaceholder": "BUSCAR ARTISTA O GÉNERO",
+        "allText": "TODOS",
+        "onDemand": "EclionVR / Bajo Demanda",
+        "energyStays": "La energía se queda grabada.",
+        "mediaCopy": "Revive las sesiones más potentes, aftermovies y momentos que hicieron temblar las instancias privadas de VRChat.",
+        "visitYouTube": "Canal de YouTube",
+        "streamArchive": "Archivo de Sesiones",
+        "moments": "Momentos",
+        "specialEvent": "Evento Especial",
+        "immersiveExperience": "Experiencia Inmersiva",
+        "themedEvent": "Evento Temático",
+        "theCore": "El Núcleo",
+        "thoseWhoLight": "Quienes encienden",
+        "founderOwnerDj": "Fundador · Dueño · DJ",
+        "founderOwnerDjFemale": "Fundadora · Dueña · DJ",
+        "coOwnerDj": "Co-Dueño · DJ",
+        "alliedCommunities": "Comunidades Aliadas",
+        "officialPartners": "Partners Oficiales.",
+        "footerMessage": "Colectivo de música electrónica underground y experiencias rave inmersivas en VRChat."
+    },
+    "en": {
+        "navHome": "Home",
+        "navTeam": "Team & Partners",
+        "navCommunity": "Community",
+        "navDjs": "Resident DJs",
+        "navMedia": "Media",
+        "groupVrc": "VRChat Group",
+        "winTitleHome": "INPUT TERMINAL · ECLION VIRTUAL",
+        "winTitleTeam": "THE CORE & OFFICIAL PARTNERS",
+        "winTitleCommunity": "OUR FREQUENCY · RAVE PHILOSOPHY",
+        "winTitleRoster": "OFFICIAL DJ ROSTER · 23 ARTISTS",
+        "winTitleMedia": "ECLIONVR · ON DEMAND & ARCHIVE",
+        "heroKicker": "VRChat Rave Community · Signal Active",
+        "heroTitleOne": "The rhythm has",
+        "heroTitleTwo": "no borders.",
+        "heroSubtitle": "The highest impact rave collective in VRChat. High-intensity electronic music, immersive virtual staging, and a community united by pure sound.",
+        "joinGroup": "Join VRChat Group",
+        "meetRoster": "Explore DJ Roster",
+        "officialMark": "UNDERGROUND SIGNAL · VRCHAT",
+        "residentDjs": "Resident DJs",
+        "videosLives": "Sessions & Streams",
+        "activeMembers": "Active Members",
+        "ourFrequency": "Our Frequency",
+        "moreThanEvent": "More than an event.",
+        "communityCopy": "Eclion gives the hard scene an authentic, avant-garde, and uncompromising space inside VRChat: thundering sound, reactive visuals, and a passionate community.",
+        "communityQuote": "“It is not just about listening to a set. It is about stepping into the virtual world, connecting with your people, and letting BPM set the heartbeat of the night.”",
+        "communityCite": "ECLION / VRChat Rave Collective",
+        "principleOneTitle": "IMMERSIVE ATMOSPHERE",
+        "principleOneCopy": "Custom-designed VRChat worlds with audio-reactive lighting and spatial sound that turn every set into a physical journey.",
+        "principleTwoTitle": "NO BPM LIMITS",
+        "principleTwoCopy": "From industrial techno and hardstyle punch to the pure speed of frenchcore, uptempo, and breakcore.",
+        "principleThreeTitle": "SOVEREIGN COMMUNITY",
+        "principleThreeCopy": "An open and inclusive haven connecting ravers worldwide under one common signal.",
+        "officialRoster": "Official Roster & Explorer",
+        "residents": "Resident DJs",
+        "ofEclion": "of Eclion.",
+        "genreFilterPrompt": "✦ SELECT MUSIC GENRE:",
+        "searchPlaceholder": "SEARCH ARTIST OR GENRE",
+        "allText": "ALL",
+        "onDemand": "EclionVR / On Demand",
+        "energyStays": "The energy remains recorded.",
+        "mediaCopy": "Relive the most powerful sets, aftermovies, and moments that shook VRChat instances.",
+        "visitYouTube": "YouTube Channel",
+        "streamArchive": "Session Archive",
+        "moments": "Historic",
+        "specialEvent": "Special Event",
+        "immersiveExperience": "Immersive Experience",
+        "themedEvent": "Themed Event",
+        "theCore": "The Core",
+        "thoseWhoLight": "Those who ignite",
+        "founderOwnerDj": "Founder · Owner · DJ",
+        "founderOwnerDjFemale": "Founder · Owner · DJ",
+        "coOwnerDj": "Co-Owner · DJ",
+        "alliedCommunities": "Allied Communities",
+        "officialPartners": "Official Partners.",
+        "footerMessage": "Underground electronic music collective and immersive rave experiences in VRChat."
+    },
+    "fr": {
+        "navHome": "Accueil",
+        "navTeam": "Équipe & Partenaires",
+        "navCommunity": "Communauté",
+        "navDjs": "DJs Résidents",
+        "navMedia": "Médias",
+        "groupVrc": "Groupe VRChat",
+        "winTitleHome": "TERMINAL D'ENTRÉE · ECLION VIRTUEL",
+        "winTitleTeam": "LE NOYAU & PARTENAIRES OFFICIELS",
+        "winTitleCommunity": "NOTRE FRÉQUENCE · PHILOSOPHIE RAVE",
+        "winTitleRoster": "ROSTER OFFICIEL DE DJS · 23 ARTISTES",
+        "winTitleMedia": "ECLIONVR · À LA DEMANDE & ARCHIVES",
+        "heroKicker": "Communauté Rave VRChat · Signal Actif",
+        "heroTitleOne": "Le rythme n'a",
+        "heroTitleTwo": "pas de frontières.",
+        "heroSubtitle": "Le collectif rave le plus percutant sur VRChat. Musique électronique de haute intensité, scénographie virtuelle immersive et communauté unie par le son pur.",
+        "joinGroup": "Rejoindre le Groupe VRChat",
+        "meetRoster": "Explorer le Roster DJs",
+        "officialMark": "SIGNAL UNDERGROUND · VRCHAT",
+        "residentDjs": "DJs Résidents",
+        "videosLives": "Sessions & Directs",
+        "activeMembers": "Membres Actifs",
+        "ourFrequency": "Notre Fréquence",
+        "moreThanEvent": "Plus qu'un événement.",
+        "communityCopy": "Eclion offre à la scène hard un espace authentique et avant-gardiste sur VRChat : son tonitruant, visuels réactifs et passion brute.",
+        "communityQuote": "« Il ne s'agit pas seulement d'écouter un set. Il s'agit d'entrer dans le monde virtuel, de connecter avec les vôtres et de laisser les BPM dicter le tempo. »",
+        "communityCite": "ECLION / Collectif Rave VRChat",
+        "principleOneTitle": "ATMOSPHÈRE IMMERSIVE",
+        "principleOneCopy": "Des mondes VRChat sur mesure avec éclairage audioréactif et son spatial immersif.",
+        "principleTwoTitle": "SANS LIMITES DE BPM",
+        "principleTwoCopy": "De la puissance de l'industrial techno et du hardstyle à la vélocité pure du frenchcore et de l'uptempo.",
+        "principleThreeTitle": "COMMUNAUTÉ SOUVERAINE",
+        "principleThreeCopy": "Espace ouvert et inclusif reliant les ravers du monde entier sous un même signal.",
+        "officialRoster": "Roster Officiel & Explorateur",
+        "residents": "DJs Résidents",
+        "ofEclion": "d'Eclion.",
+        "genreFilterPrompt": "✦ SÉLECTIONNER LE GENRE :",
+        "searchPlaceholder": "RECHERCHER UN ARTISTE OU GENRE",
+        "allText": "TOUS",
+        "onDemand": "EclionVR / À la Demande",
+        "energyStays": "L'énergie reste gravée.",
+        "mediaCopy": "Revivez les sets les plus puissants, aftermovies et moments mémorables sur VRChat.",
+        "visitYouTube": "Chaîne YouTube",
+        "streamArchive": "Archives des Sessions",
+        "moments": "Moments",
+        "specialEvent": "Événement Spécial",
+        "immersiveExperience": "Expérience Immersive",
+        "themedEvent": "Événement Thématique",
+        "theCore": "Le Noyau",
+        "thoseWhoLight": "Ceux qui allument",
+        "founderOwnerDj": "Fondateur · Propriétaire · DJ",
+        "founderOwnerDjFemale": "Fondatrice · Propriétaire · DJ",
+        "coOwnerDj": "Co-Propriétaire · DJ",
+        "alliedCommunities": "Communautés Alliées",
+        "officialPartners": "Partenaires Officiels.",
+        "footerMessage": "Collectif de musique électronique underground et expériences rave immersives sur VRChat."
+    },
+    "de": {
+        "navHome": "Startseite",
+        "navTeam": "Team & Partner",
+        "navCommunity": "Community",
+        "navDjs": "Resident DJs",
+        "navMedia": "Medien",
+        "groupVrc": "VRChat-Gruppe",
+        "winTitleHome": "EINGANGSTERMINAL · ECLION VIRTUELL",
+        "winTitleTeam": "DER KERN & OFFIZIELLE PARTNER",
+        "winTitleCommunity": "UNSERE FREQUENZ · RAVE-PHILOSOPHIE",
+        "winTitleRoster": "OFFIZIELLES DJ-ROSTER · 23 KÜNSTLER",
+        "winTitleMedia": "ECLIONVR · ON-DEMAND & ARCHIV",
+        "heroKicker": "VRChat Rave-Community · Signal Aktiv",
+        "heroTitleOne": "Der Rhythmus kennt",
+        "heroTitleTwo": "keine Grenzen.",
+        "heroSubtitle": "Das einflussreichste Rave-Kollektiv in VRChat. Hochenergetische elektronische Musik, immersive Welten und eine geeinte Szene.",
+        "joinGroup": "VRChat-Gruppe beitreten",
+        "meetRoster": "DJ-Roster erkunden",
+        "officialMark": "UNDERGROUND-SIGNAL · VRCHAT",
+        "residentDjs": "Resident DJs",
+        "videosLives": "Sets & Streams",
+        "activeMembers": "Aktive Mitglieder",
+        "ourFrequency": "Unsere Frequenz",
+        "moreThanEvent": "Mehr als ein Event.",
+        "communityCopy": "Eclion schafft für die Hard-Szene einen kompromisslosen Raum in VRChat: wummernder Sound, reaktive Visuals und pure Leidenschaft.",
+        "communityQuote": "„Es geht nicht nur darum, Musik zu hören. Es geht darum, gemeinsam in virtuelle Welten abzutauchen und die BPM zu spüren.“",
+        "communityCite": "ECLION / VRChat Rave-Kollektiv",
+        "principleOneTitle": "IMMERSIVE ATMOSPHÄRE",
+        "principleOneCopy": "Maßgeschneiderte VRChat-Welten mit audioreaktivem Licht und räumlichem Klang.",
+        "principleTwoTitle": "KEINE BPM-GRENZEN",
+        "principleTwoCopy": "Von hartem Industrial Techno und Hardstyle bis hin zu rasantem Frenchcore und Uptempo.",
+        "principleThreeTitle": "SOUVERÄNE COMMUNITY",
+        "principleThreeCopy": "Offener Raum, der Raver weltweit unter einem Signal vereint.",
+        "officialRoster": "Offizielles Roster & Explorer",
+        "residents": "Resident DJs",
+        "ofEclion": "von Eclion.",
+        "genreFilterPrompt": "✦ MUSIKGENRE WÄHLEN:",
+        "searchPlaceholder": "KÜNSTLER ODER GENRE SUCHEN",
+        "allText": "ALLE",
+        "onDemand": "EclionVR / Auf Abruf",
+        "energyStays": "Die Energie bleibt lebendig.",
+        "mediaCopy": "Erlebe die intensivsten Sets, Aftermovies und VRChat-Momente noch einmal.",
+        "visitYouTube": "YouTube-Kanal",
+        "streamArchive": "Session-Archiv",
+        "moments": "Historische",
+        "specialEvent": "Sonderevent",
+        "immersiveExperience": "Immersive Erfahrung",
+        "themedEvent": "Themenevent",
+        "theCore": "Der Kern",
+        "thoseWhoLight": "Wer das Signal entzündet",
+        "founderOwnerDj": "Gründer · Inhaber · DJ",
+        "founderOwnerDjFemale": "Gründerin · Inhaberin · DJ",
+        "coOwnerDj": "Co-Inhaber · DJ",
+        "alliedCommunities": "Befreundete Gruppen",
+        "officialPartners": "Offizielle Partner.",
+        "footerMessage": "Underground-Elektronik-Kollektiv und immersive Rave-Erlebnisse in VRChat."
+    },
+    "pt": {
+        "navHome": "Início",
+        "navTeam": "Equipe & Parceiros",
+        "navCommunity": "Comunidade",
+        "navDjs": "DJs Residentes",
+        "navMedia": "Mídia",
+        "groupVrc": "Grupo VRChat",
+        "winTitleHome": "TERMINAL DE ENTRADA · ECLION VIRTUAL",
+        "winTitleTeam": "O NÚCLEO & PARCEIROS OFICIAIS",
+        "winTitleCommunity": "NOSSA FREQUÊNCIA · FILOSOFIA RAVE",
+        "winTitleRoster": "ROSTER OFICIAL DE DJS · 23 ARTISTAS",
+        "winTitleMedia": "ECLIONVR · SOB DEMANDA & ARQUIVO",
+        "heroKicker": "Comunidade Rave VRChat · Sinal Ativo",
+        "heroTitleOne": "O ritmo não",
+        "heroTitleTwo": "tem fronteiras.",
+        "heroSubtitle": "O coletivo rave de maior impacto no VRChat. Música eletrônica de alta intensidade, cenografia virtual imersiva e uma comunidade unida pelo som puro.",
+        "joinGroup": "Entrar no Grupo VRChat",
+        "meetRoster": "Explorar Roster de DJs",
+        "officialMark": "SINAL UNDERGROUND · VRCHAT",
+        "residentDjs": "DJs Residentes",
+        "videosLives": "Sessões & Vivos",
+        "activeMembers": "Membros Ativos",
+        "ourFrequency": "Nossa Frequência",
+        "moreThanEvent": "Mais que um evento.",
+        "communityCopy": "Eclion nasce para dar à cena hard um espaço autêntico e vanguardista no VRChat: som estrondoso, visuais reativos e paixão pura.",
+        "communityQuote": "“Não se trata apenas de ouvir um set. Trata-se de entrar no mundo virtual, conectar-se com sua galera e deixar os BPMs guiarem a noite.”",
+        "communityCite": "ECLION / Coletivo Rave VRChat",
+        "principleOneTitle": "ATMOSFERA IMERSIVA",
+        "principleOneCopy": "Mundos VRChat sob medida com iluminação áudio-reativa e som espacial que transformam cada set.",
+        "principleTwoTitle": "SEM LIMITES DE BPM",
+        "principleTwoCopy": "Da força do techno industrial e hardstyle à velocidade pura do frenchcore e uptempo.",
+        "principleThreeTitle": "COMUNIDADE SOBERANA",
+        "principleThreeCopy": "Espaço aberto e inclusivo que conecta ravers de todo o mundo sob o mesmo sinal.",
+        "officialRoster": "Roster Oficial & Explorador",
+        "residents": "DJs Residentes",
+        "ofEclion": "de Eclion.",
+        "genreFilterPrompt": "✦ SELECIONAR GÊNERO MUSICAL:",
+        "searchPlaceholder": "BUSCAR ARTISTA OU GÊNERO",
+        "allText": "TODOS",
+        "onDemand": "EclionVR / Sob Demanda",
+        "energyStays": "A energia permanece gravada.",
+        "mediaCopy": "Reviva as sessões mais potentes, aftermovies e momentos que agitaram o VRChat.",
+        "visitYouTube": "Canal do YouTube",
+        "streamArchive": "Arquivo de Sessões",
+        "moments": "Momentos",
+        "specialEvent": "Evento Especial",
+        "immersiveExperience": "Experiência Imersiva",
+        "themedEvent": "Evento Temático",
+        "theCore": "O Núcleo",
+        "thoseWhoLight": "Quem acende",
+        "founderOwnerDj": "Fundador · Dono · DJ",
+        "founderOwnerDjFemale": "Fundadora · Dona · DJ",
+        "coOwnerDj": "Co-Dono · DJ",
+        "alliedCommunities": "Comunidades Aliadas",
+        "officialPartners": "Parceiros Oficiais.",
+        "footerMessage": "Coletivo de música eletrônica underground e experiências rave imersivas no VRChat."
+    },
+    "it": {
+        "navHome": "Home",
+        "navTeam": "Team & Partner",
+        "navCommunity": "Community",
+        "navDjs": "DJ Residenti",
+        "navMedia": "Media",
+        "groupVrc": "Gruppo VRChat",
+        "winTitleHome": "TERMINALE D'INGRESSO · ECLION VIRTUALE",
+        "winTitleTeam": "IL NUCLEO & PARTNER UFFICIALI",
+        "winTitleCommunity": "LA NOSTRA FREQUENZA · FILOSOFIA RAVE",
+        "winTitleRoster": "ROSTER UFFICIALE DJ · 23 ARTISTI",
+        "winTitleMedia": "ECLIONVR · ON DEMAND & ARCHIVIO",
+        "heroKicker": "Community Rave VRChat · Segnale Attivo",
+        "heroTitleOne": "Il ritmo non",
+        "heroTitleTwo": "ha confini.",
+        "heroSubtitle": "Il collettivo rave di maggior impatto su VRChat. Musica elettronica ad alta intensità, scenografie virtuali immersive e una community unita dal suono puro.",
+        "joinGroup": "Unisciti al Gruppo VRChat",
+        "meetRoster": "Esplora Roster DJ",
+        "officialMark": "SEGNALE UNDERGROUND · VRCHAT",
+        "residentDjs": "DJ Residenti",
+        "videosLives": "Sessioni & Live",
+        "activeMembers": "Membri Attivi",
+        "ourFrequency": "La Nostra Frequenza",
+        "moreThanEvent": "Più di un evento.",
+        "communityCopy": "Eclion nasce per dare alla scena hard uno spazio autentico e d'avanguardia su VRChat: suono travolgente, visual reattivi e passione pura.",
+        "communityQuote": "“Non si tratta solo di ascoltare un set. Si tratta di entrare nel mondo virtuale, connettersi con le persone e farsi guidare dai BPM.”",
+        "communityCite": "ECLION / Collettivo Rave VRChat",
+        "principleOneTitle": "ATMOSFERA IMMERSIVA",
+        "principleOneCopy": "Mondi VRChat su misura con illuminazione audio-reattiva e audio spaziale.",
+        "principleTwoTitle": "SENZA LIMITI DI BPM",
+        "principleTwoCopy": "Dalla potenza dell'industrial techno e hardstyle alla velocità pura di frenchcore e uptempo.",
+        "principleThreeTitle": "COMMUNITY SOVRANA",
+        "principleThreeCopy": "Uno spazio aperto che unisce i raver di tutto il mondo sotto un unico segnale.",
+        "officialRoster": "Roster Ufficiale & Esplora",
+        "residents": "DJ Residenti",
+        "ofEclion": "di Eclion.",
+        "genreFilterPrompt": "✦ SELEZIONA GENERE MUSICALE:",
+        "searchPlaceholder": "CERCA ARTISTA O GENERE",
+        "allText": "TUTTI",
+        "onDemand": "EclionVR / On Demand",
+        "energyStays": "L'energia resta incisa.",
+        "mediaCopy": "Rivivi i set più potenti, gli aftermovie e i momenti storici nelle istanze di VRChat.",
+        "visitYouTube": "Canale YouTube",
+        "streamArchive": "Archivio Sessioni",
+        "moments": "Momenti",
+        "specialEvent": "Evento Speciale",
+        "immersiveExperience": "Esperienza Immersiva",
+        "themedEvent": "Evento a Tema",
+        "theCore": "Il Nucleo",
+        "thoseWhoLight": "Chi accende il segnale",
+        "founderOwnerDj": "Fondatore · Proprietario · DJ",
+        "founderOwnerDjFemale": "Fondatrice · Proprietaria · DJ",
+        "coOwnerDj": "Co-Proprietario · DJ",
+        "alliedCommunities": "Community Alleate",
+        "officialPartners": "Partner Ufficiali.",
+        "footerMessage": "Collettivo di musica elettronica underground ed esperienze rave immersive su VRChat."
+    },
+    "zh": {
+        "navHome": "首页",
+        "navTeam": "团队与伙伴",
+        "navCommunity": "社群",
+        "navDjs": "驻场DJ",
+        "navMedia": "媒体",
+        "groupVrc": "VRChat 群组",
+        "winTitleHome": "入口终端 · ECLION 虚拟空间",
+        "winTitleTeam": "核心团队与官方伙伴",
+        "winTitleCommunity": "我们的频率 · 锐舞哲学",
+        "winTitleRoster": "官方DJ名单 · 23位艺术家",
+        "winTitleMedia": "ECLIONVR · 点播与归档",
+        "heroKicker": "VRChat 锐舞社群 · 信号在线",
+        "heroTitleOne": "节奏无",
+        "heroTitleTwo": "国界与限制。",
+        "heroSubtitle": "VRChat 最具影响力的地下锐舞团体。高强度电子音乐、沉浸式虚拟舞美，以及因纯粹声音相聚的全球社群。",
+        "joinGroup": "加入 VRChat 群组",
+        "meetRoster": "浏览驻场DJ阵容",
+        "officialMark": "地下信号 · VRCHAT",
+        "residentDjs": "驻场DJ",
+        "videosLives": "专场与直播",
+        "activeMembers": "活跃成员",
+        "ourFrequency": "我们的频率",
+        "moreThanEvent": "不仅是一场活动，更是一种文化。",
+        "communityCopy": "Eclion 在 VRChat 中为 Hard 电子音乐打造前卫纯粹的地下乌托邦：轰鸣声浪、音画联动与炽热灵魂。",
+        "communityQuote": "“这不仅是听一场电音现场，更是置身虚拟世界，与同频伙伴以高能 BPM 共振心跳。”",
+        "communityCite": "ECLION / VRChat 锐舞团体",
+        "principleOneTitle": "沉浸式现场空间",
+        "principleOneCopy": "专属定制的 VRChat 场景，配合声效联动灯光与空间音频，还原真实物理级震撼。",
+        "principleTwoTitle": "BPM 无上限",
+        "principleTwoCopy": "涵盖 Industrial Techno、Hardstyle，直至 Frenchcore、Uptempo 与 Breakcore 的极速轰炸。",
+        "principleThreeTitle": "独立包容社群",
+        "principleThreeCopy": "面向全球 raver 与电音爱好者的开放天地，在统一的信号下尽情狂欢。",
+        "officialRoster": "官方阵容与流派探索",
+        "residents": "驻场DJ",
+        "ofEclion": "Eclion 旗下",
+        "genreFilterPrompt": "✦ 选择音乐流派：",
+        "searchPlaceholder": "搜索艺术家或流派",
+        "allText": "全部",
+        "onDemand": "EclionVR / 视频点播",
+        "energyStays": "炽热能量，永久封存。",
+        "mediaCopy": "重温撼动 VRChat 私人房间的最燃演出、赛后特辑与历史高光瞬间。",
+        "visitYouTube": "YouTube 官方频道",
+        "streamArchive": "专场录音室归档",
+        "moments": "历史",
+        "specialEvent": "特别活动",
+        "immersiveExperience": "沉浸式体验",
+        "themedEvent": "主题锐舞",
+        "theCore": "核心团队",
+        "thoseWhoLight": "点亮信号的先驱者",
+        "founderOwnerDj": "创始人 · 主理人 · DJ",
+        "founderOwnerDjFemale": "联合创始人 · 主理人 · DJ",
+        "coOwnerDj": "联合主理人 · DJ",
+        "alliedCommunities": "结盟社群",
+        "officialPartners": "官方合作伙伴。",
+        "footerMessage": "VRChat 地下电子音乐团体与沉浸式虚拟锐舞体验。"
+    },
+    "ja": {
+        "navHome": "ホーム",
+        "navTeam": "チーム＆パートナー",
+        "navCommunity": "コミュニティ",
+        "navDjs": "所属DJ",
+        "navMedia": "メディア",
+        "groupVrc": "VRChat グループ",
+        "winTitleHome": "入力ターミナル · ECLION 仮想空間",
+        "winTitleTeam": "コアメンバー＆公式パートナー",
+        "winTitleCommunity": "我々の周波数 · レイヴ哲学",
+        "winTitleRoster": "公式DJロスター · 23名",
+        "winTitleMedia": "ECLIONVR · オンデマンド＆アーカイブ",
+        "heroKicker": "VRChat レイヴコミュニティ · 信号アクティブ",
+        "heroTitleOne": "リズムに",
+        "heroTitleTwo": "国境はない。",
+        "heroSubtitle": "VRChat で最大のインパクトを誇るハード系レイヴコレクティブ。超高強度エレクトロニックミュージック、没入型バーチャル空間、そして純粋な音で繋がるコミュニティ。",
+        "joinGroup": "VRChat グループに参加",
+        "meetRoster": "DJ ロスターを見る",
+        "officialMark": "アンダーグラウンド信号 · VRCHAT",
+        "residentDjs": "所属DJ",
+        "videosLives": "配信＆ライブ",
+        "activeMembers": "アクティブメンバー",
+        "ourFrequency": "我々の周波数",
+        "moreThanEvent": "単なるイベントを超えた、文化。",
+        "communityCopy": "Eclion は VRChat に本物のハードサウンド体験をもたらします。轟く重低音、リアクティブなライティング、そして情熱溢れるコミュニティ。",
+        "communityQuote": "「ただDJセットを聴くだけではない。仮想世界に飛び込み、仲間と繋がり、BPMに夜の鼓動を委ねるのだ。」",
+        "communityCite": "ECLION / VRChat レイヴコレクティブ",
+        "principleOneTitle": "没入型アトモスフィア",
+        "principleOneCopy": "オーディオリニアに反応するライティングと立体音響を備えた特注の VRChat ワールド。",
+        "principleTwoTitle": "BPM の限界なし",
+        "principleTwoCopy": "Industrial Techno や Hardstyle の重低音から、Frenchcore、Uptempo、Breakcore の超高速ビートまで。",
+        "principleThreeTitle": "主権的コミュニティ",
+        "principleThreeCopy": "世界中のレイヴァーがひとつの信号のもとに集う、オープンで情熱的な空間。",
+        "officialRoster": "公式ロスター＆ジャンル検索",
+        "residents": "所属DJ",
+        "ofEclion": "Eclion 所属",
+        "genreFilterPrompt": "✦ 音楽ジャンルを選択：",
+        "searchPlaceholder": "アーティストまたはジャンルを検索",
+        "allText": "すべて",
+        "onDemand": "EclionVR / オンデマンド",
+        "energyStays": "熱狂は色褪せない。",
+        "mediaCopy": "VRChat のプライベートインスタンスを揺るがした伝説のセッションやアフタームービーを体験。",
+        "visitYouTube": "YouTube チャンネル",
+        "streamArchive": "セッションアーカイブ",
+        "moments": "歴史的",
+        "specialEvent": "スペシャルイベント",
+        "immersiveExperience": "没入型体験",
+        "themedEvent": "テーマ別イベント",
+        "theCore": "ザ・コア",
+        "thoseWhoLight": "信号を灯す者たち",
+        "founderOwnerDj": "創設者 · オーナー · DJ",
+        "founderOwnerDjFemale": "創設者 · オーナー · DJ",
+        "coOwnerDj": "共同オーナー · DJ",
+        "alliedCommunities": "同盟コミュニティ",
+        "officialPartners": "公式パートナー。",
+        "footerMessage": "VRChat アンダーグラウンドエレクトロニックミュージック＆没入型レイヴコレクティブ。"
+    },
+    "ko": {
+        "navHome": "홈",
+        "navTeam": "팀 & 파트너",
+        "navCommunity": "커뮤니티",
+        "navDjs": "소속 DJ",
+        "navMedia": "미디어",
+        "groupVrc": "VRChat 그룹",
+        "winTitleHome": "입력 터미널 · ECLION 가상 공간",
+        "winTitleTeam": "핵심 팀 및 공식 파트너",
+        "winTitleCommunity": "우리의 주파수 · 레이브 철학",
+        "winTitleRoster": "공식 DJ 로스터 · 23인",
+        "winTitleMedia": "ECLIONVR · VOD & 아카이브",
+        "heroKicker": "VRChat 레이브 커뮤니티 · 신호 활성",
+        "heroTitleOne": "리듬에는",
+        "heroTitleTwo": "경계가 없다.",
+        "heroSubtitle": "VRChat 최고의 하드 일렉트로닉 레이브 크루. 초고강도 일렉트로닉 사운드, 몰입형 가상 무대 연출, 순수한 비트로 결속된 커뮤니티.",
+        "joinGroup": "VRChat 그룹 가입",
+        "meetRoster": "DJ 라인업 탐색",
+        "officialMark": "언더그라운드 신호 · VRCHAT",
+        "residentDjs": "레지던트 DJ",
+        "videosLives": "세션 & 라이브",
+        "activeMembers": "활성 멤버",
+        "ourFrequency": "우리의 주파수",
+        "moreThanEvent": "단순한 이벤트를 넘어선 문화.",
+        "communityCopy": "Eclion은 VRChat 하드 씬에 타협 없는 순수한 공간을 제공합니다. 가슴을 울리는 사운드, 반응형 비주얼, 열정 가득한 언더그라운드.",
+        "communityQuote": "“단순히 세트를 감상하는 것이 아닙니다. 가상 세계에 접속하여 동료들과 소통하고, BPM에 심장을 맡기는 것입니다.”",
+        "communityCite": "ECLION / VRChat 레이브 크루",
+        "principleOneTitle": "몰입형 연출 공간",
+        "principleOneCopy": "사운드 반응형 조명과 공간 입체 음향을 탑재한 전용 VRChat 월드.",
+        "principleTwoTitle": "BPM 제한 없는 사운드",
+        "principleTwoCopy": "인더스트리얼 테크노와 하드스타일부터 프렌치코어, 업템포, 브레이크코어의 폭발적 속도까지.",
+        "principleThreeTitle": "열린 커뮤니티",
+        "principleThreeCopy": "하나의 신호 아래 전 세계 레이버들이 어우러지는 자유롭고 포용적인 공간.",
+        "officialRoster": "공식 로스터 & 장르 검색",
+        "residents": "소속 DJ",
+        "ofEclion": "Eclion 소속",
+        "genreFilterPrompt": "✦ 음악 장르 선택:",
+        "searchPlaceholder": "아티스트 또는 장르 검색",
+        "allText": "전체",
+        "onDemand": "EclionVR / VOD 스트리밍",
+        "energyStays": "그날의 열기는 영원히 기록된다.",
+        "mediaCopy": "VRChat 인스턴스를 뒤흔들었던 전설적인 세션과 애프터무비를 다시 감상하세요.",
+        "visitYouTube": "YouTube 공식 채널",
+        "streamArchive": "세션 아카이브",
+        "moments": "역사적",
+        "specialEvent": "스페셜 이벤트",
+        "immersiveExperience": "몰입형 체험",
+        "themedEvent": "테마 레이브",
+        "theCore": "핵심 운영진",
+        "thoseWhoLight": "신호를 켜는 사람들",
+        "founderOwnerDj": "설립자 · 오너 · DJ",
+        "founderOwnerDjFemale": "설립자 · 오너 · DJ",
+        "coOwnerDj": "공동 오너 · DJ",
+        "alliedCommunities": "제휴 커뮤니티",
+        "officialPartners": "공식 파트너.",
+        "footerMessage": "VRChat 언더그라운드 일렉트로닉 뮤직 및 몰입형 가상 레이브 크루."
+    }
+};
 
     const languageSelect = document.getElementById('languageSelect');
-    languageSelect.addEventListener('change', (e) => {
-      const lang = e.target.value;
+
+    function applyLanguage(lang) {
       const dict = translations[lang] || translations.es;
+      languageSelect.value = lang;
+
+      // Update text contents
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.dataset.i18n;
-        if (dict[key]) el.textContent = dict[key];
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
       });
+
+      // Update placeholders
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.dataset.i18nPlaceholder;
+        if (dict[key]) {
+          el.placeholder = dict[key];
+        }
+      });
+
+      // Update the 'TODOS' pill and select option text
+      const firstGenrePill = document.querySelector('.genre-pill');
+      if (firstGenrePill && dict.allText) {
+        firstGenrePill.textContent = dict.allText;
+      }
+      const firstGenreOpt = genreFilterSelect && genreFilterSelect.options[0];
+      if (firstGenreOpt && dict.allText) {
+        firstGenreOpt.textContent = dict.allText;
+      }
+
+      localStorage.setItem('eclion_lang', lang);
+    }
+
+    languageSelect.addEventListener('change', (e) => {
+      applyLanguage(e.target.value);
     });
+
+    // Check saved language or browser preference
+    const savedLang = localStorage.getItem('eclion_lang') || 'es';
+    if (translations[savedLang]) {
+      applyLanguage(savedLang);
+    }
   </script>
 </body>
 </html>
