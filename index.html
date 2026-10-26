@@ -522,7 +522,7 @@
 
 
     /* ========================================================= */
-    /* MEDIA (WINDOW 05)                                         */
+    /* MEDIA (WINDOW 06)                                         */
     /* ========================================================= */
     .stream-layout { display: grid; grid-template-columns: 0.75fr 1.25fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
     .screen { position: relative; border: 1px solid var(--line); padding: 10px; background: #120a0c; box-shadow: 18px 18px 0 rgba(250,53,41,0.12); }
@@ -675,7 +675,7 @@
     <div class="shell">
       <div class="header-primary">
         <!-- Logo -->
-        <a class="brand" href="#win-inicio" data-window-jump="win-inicio" aria-label="ECLION, Inicio">
+        <a class="brand" href="#win-inicio" data-window-jump="win-inicio" aria-label="ECLION, Inicio" data-i18n-aria="brandHomeAria">
           <img class="brand-mark-img" src="https://i.imgur.com/uCTbj9G.png" alt="ECLION Logo">
           <span class="brand-word">EC<i>LI</i>ON</span>
         </a>
@@ -685,7 +685,7 @@
         <!-- Global Header Actions -->
         <div class="header-actions">
           <label class="language-picker">
-            <select id="languageSelect" aria-label="Seleccionar idioma">
+            <select id="languageSelect" aria-label="Seleccionar idioma" data-i18n-aria="selectLang">
               <option value="es">ES</option>
               <option value="en">EN</option>
               <option value="fr">FR</option>
@@ -697,7 +697,7 @@
               <option value="ko">한국어</option>
             </select>
           </label>
-          <button class="header-btn" id="copyGroupBtn" type="button" title="Copiar enlace VRChat">
+          <button class="header-btn" id="copyGroupBtn" type="button" title="Copiar enlace VRChat" data-i18n-title="copyLink">
             <span data-i18n="groupVrc">Grupo VRChat</span> 📋
           </button>
           <a class="header-btn" href="https://discord.com/invite/ZTxBPGDVWq" target="_blank" rel="noopener noreferrer">
@@ -710,7 +710,7 @@
     <!-- Window Navigation Dock (Tactile, No Dropdown!) -->
     <div class="window-dock-bar">
       <div class="shell">
-        <nav class="window-dock" id="windowDock" aria-label="Selector de Ventanas">
+        <nav class="window-dock" id="windowDock" aria-label="Selector de Ventanas" data-i18n-aria="windowSelector">
           <button class="dock-item active" data-target="win-inicio" type="button">
             <span class="dock-item-num">01</span>
             <span data-i18n="navHome">Inicio</span>
@@ -727,13 +727,13 @@
             <span class="dock-item-num">04</span>
             <span data-i18n="navDjs">DJs Residentes</span>
           </button>
-          <button class="dock-item" data-target="win-media" type="button">
-            <span class="dock-item-num">05</span>
-            <span data-i18n="navMedia">Media</span>
-          </button>
           <button class="dock-item" data-target="win-creadores" type="button">
-            <span class="dock-item-num">06</span>
+            <span class="dock-item-num">05</span>
             <span data-i18n="navCreators">Creadores</span>
+          </button>
+          <button class="dock-item" data-target="win-media" type="button">
+            <span class="dock-item-num">06</span>
+            <span data-i18n="navMedia">Media</span>
           </button>
         </nav>
       </div>
@@ -754,10 +754,10 @@
         <div class="window-meta">
           <span class="window-badge">WIN // 01</span>
           <span class="window-title-text" data-i18n="winTitleHome">TERMINAL DE ENTRADA · ECLION VIRTUAL</span>
-          <span class="window-status-pill">[PULSO PRINCIPAL ONLINE]</span>
+          <span class="window-status-pill" data-i18n="pillHome">[PULSO PRINCIPAL ONLINE]</span>
         </div>
         <div class="window-controls">
-          <button class="win-btn next-win-btn" type="button" title="Siguiente ventana" data-jump="win-equipo">▶</button>
+          <button class="win-btn next-win-btn" type="button" title="Siguiente ventana" data-i18n-title="nextWin" data-jump="win-equipo">▶</button>
         </div>
       </div>
 
@@ -797,33 +797,16 @@
 
             <!-- Floating Official Logo Overlay -->
             <div class="hero-logo-box">
-              <img class="hero-logo-img" src="https://i.imgur.com/uCTbj9G.png" alt="Logo Oficial Eclion">
+              <img class="hero-logo-img" src="https://i.imgur.com/uCTbj9G.png" alt="Logo Oficial Eclion" data-i18n-alt="logoAlt">
               <div class="hero-logo-sub">ECLION</div>
               <div class="hero-logo-tag" data-i18n="officialMark">SEÑAL UNDERGROUND · VRCHAT</div>
             </div>
           </div>
 
-          <!-- Hero Bottom Stats -->
-          <div class="shell hero-bottom">
-            <div class="stat-grid">
-              <div class="stat">
-                <strong>26</strong>
-                <span data-i18n="residentDjs">DJs Residentes</span>
-              </div>
-              <div class="stat">
-                <strong>63+</strong>
-                <span data-i18n="videosLives">Sesiones & Directos</span>
-              </div>
-              <div class="stat">
-                <strong>2.450+</strong>
-                <span data-i18n="activeMembers">Miembros Activos</span>
-              </div>
-            </div>
-          </div>
         </section>
 
         <!-- Genre Ticker Bar -->
-        <div class="ticker" aria-label="Géneros musicales">
+        <div class="ticker" aria-label="Géneros musicales" data-i18n-aria="tickerAria">
           <div class="ticker-track">
             <div class="ticker-item">
               <b>✦</b> HARD TECHNO <b>✦</b> FRENCHCORE <b>✦</b> GABBER <b>✦</b> BREAKCORE <b>✦</b> DRUM & BASS <b>✦</b> INDUSTRIAL <b>✦</b> SCHRANZ <b>✦</b> UPTEMPO <b>✦</b> HARDSTYLE <b>✦</b> TEKNO <b>✦</b> HARD TECHNO <b>✦</b> FRENCHCORE <b>✦</b> GABBER <b>✦</b> BREAKCORE <b>✦</b> DRUM & BASS <b>✦</b> INDUSTRIAL
@@ -841,11 +824,11 @@
         <div class="window-meta">
           <span class="window-badge">WIN // 02</span>
           <span class="window-title-text" data-i18n="winTitleTeam">EL NÚCLEO & ALIANZAS OFICIALES</span>
-          <span class="window-status-pill">[STAFF & COMUNIDADES ALIADAS]</span>
+          <span class="window-status-pill" data-i18n="pillTeam">[STAFF & COMUNIDADES ALIADAS]</span>
         </div>
         <div class="window-controls">
-          <button class="win-btn prev-win-btn" type="button" title="Ventana anterior" data-jump="win-inicio">◀</button>
-          <button class="win-btn next-win-btn" type="button" title="Siguiente ventana" data-jump="win-comunidad">▶</button>
+          <button class="win-btn prev-win-btn" type="button" title="Ventana anterior" data-i18n-title="prevWin" data-jump="win-inicio">◀</button>
+          <button class="win-btn next-win-btn" type="button" title="Siguiente ventana" data-i18n-title="nextWin" data-jump="win-comunidad">▶</button>
         </div>
       </div>
 
@@ -853,7 +836,7 @@
         <div class="shell">
           <div class="reveal in-view">
             <p class="eyebrow" data-i18n="theCore">El Núcleo</p>
-            <h2 class="section-heading"><span data-i18n="thoseWhoLight">Quienes encienden</span><br><span>la señal.</span></h2>
+            <h2 class="section-heading"><span data-i18n="thoseWhoLight">Quienes encienden</span><br><span data-i18n="theSignal">la señal.</span></h2>
           </div>
           <div class="people-grid">
             <article class="person reveal in-view">
@@ -925,11 +908,11 @@
         <div class="window-meta">
           <span class="window-badge">WIN // 03</span>
           <span class="window-title-text" data-i18n="winTitleCommunity">NUESTRA FRECUENCIA · FILOSOFÍA RAVE</span>
-          <span class="window-status-pill">[CULTURA UNDERGROUND VRC]</span>
+          <span class="window-status-pill" data-i18n="pillCommunity">[CULTURA UNDERGROUND VRC]</span>
         </div>
         <div class="window-controls">
-          <button class="win-btn prev-win-btn" type="button" title="Ventana anterior" data-jump="win-equipo">◀</button>
-          <button class="win-btn next-win-btn" type="button" title="Siguiente ventana" data-jump="win-roster">▶</button>
+          <button class="win-btn prev-win-btn" type="button" title="Ventana anterior" data-i18n-title="prevWin" data-jump="win-equipo">◀</button>
+          <button class="win-btn next-win-btn" type="button" title="Siguiente ventana" data-i18n-title="nextWin" data-jump="win-roster">▶</button>
         </div>
       </div>
 
@@ -938,7 +921,7 @@
           <div class="intro-grid">
             <div class="reveal in-view">
               <p class="eyebrow" data-i18n="ourFrequency">Nuestra Frecuencia</p>
-              <h2 class="section-heading" data-i18n="moreThanEvent">Más que un evento. <em>Una cultura.</em></h2>
+              <h2 class="section-heading"><strong style="font:inherit;letter-spacing:inherit" data-i18n="moreThanEvent">Más que un evento.</strong> <em data-i18n="aCulture">Una cultura.</em></h2>
               <p class="section-copy" data-i18n="communityCopy">
                 Eclion nace para dar a la escena hard un espacio auténtico, vanguardista y sin concesiones en VRChat: sonido atronador, visuales reactivos y una comunidad apasionada.
               </p>
@@ -951,17 +934,17 @@
 
           <div class="principles reveal in-view">
             <article class="principle">
-              <span class="principle-number">01 / ESCENOGRAFÍA</span>
+              <span class="principle-number" data-i18n="principleOneLabel">01 / ESCENOGRAFÍA</span>
               <h3 data-i18n="principleOneTitle">ATMÓSFERA INMERSIVA</h3>
               <p data-i18n="principleOneCopy">Mundos VRChat diseñados a medida con iluminación audioreactiva y sonido espacial que transforman cada set en una vivencia física.</p>
             </article>
             <article class="principle">
-              <span class="principle-number">02 / SONIDO</span>
+              <span class="principle-number" data-i18n="principleTwoLabel">02 / SONIDO</span>
               <h3 data-i18n="principleTwoTitle">SIN LÍMITES DE BPM</h3>
               <p data-i18n="principleTwoCopy">Desde la contundencia del industrial techno y hardstyle hasta la velocidad pura del frenchcore, uptempo y breakcore.</p>
             </article>
             <article class="principle">
-              <span class="principle-number">03 / UNIÓN</span>
+              <span class="principle-number" data-i18n="principleThreeLabel">03 / UNIÓN</span>
               <h3 data-i18n="principleThreeTitle">COMUNIDAD SOBERANA</h3>
               <p data-i18n="principleThreeCopy">Espacio abierto e inclusivo que conecta a ravers e hispanohablantes de todo el mundo bajo una misma señal.</p>
             </article>
@@ -978,11 +961,11 @@
         <div class="window-meta">
           <span class="window-badge">WIN // 04</span>
           <span class="window-title-text" data-i18n="winTitleRoster">ROSTER OFICIAL DE DJS · 26 ARTISTAS</span>
-          <span class="window-status-pill">[VRC.DJ DIRECTORY ACTIVE]</span>
+          <span class="window-status-pill" data-i18n="pillRoster">[VRC.DJ DIRECTORY ACTIVE]</span>
         </div>
         <div class="window-controls">
-          <button class="win-btn prev-win-btn" type="button" title="Ventana anterior" data-jump="win-comunidad">◀</button>
-          <button class="win-btn next-win-btn" type="button" title="Siguiente ventana" data-jump="win-media">▶</button>
+          <button class="win-btn prev-win-btn" type="button" title="Ventana anterior" data-i18n-title="prevWin" data-jump="win-comunidad">◀</button>
+          <button class="win-btn next-win-btn" type="button" title="Siguiente ventana" data-i18n-title="nextWin" data-jump="win-creadores">▶</button>
         </div>
       </div>
 
@@ -1004,7 +987,7 @@
           <div class="roster-genre-filter">
             <div class="roster-genre-header">
               <span class="genre-filter-title" data-i18n="genreFilterPrompt">✦ SELECCIONAR GÉNERO MUSICAL:</span>
-              <select class="genre-select" id="genreFilterSelect" aria-label="Seleccionar Género"></select>
+              <select class="genre-select" id="genreFilterSelect" aria-label="Seleccionar Género" data-i18n-aria="selectGenre"></select>
             </div>
             <div class="genre-pills" id="genrePills"></div>
           </div>
@@ -1016,20 +999,46 @@
       </div>
     </article>
 
+    <!-- WINDOW 05: CREADORES DE CONTENIDO -->
+    <article class="eclion-window" id="win-creadores" data-window-id="win-creadores">
+      <div class="window-header">
+        <div class="window-meta">
+          <span class="window-badge">WIN // 05</span>
+          <span class="window-title-text" data-i18n="winTitleCreators">CREADORES DE CONTENIDO · MUNDOS VRCHAT</span>
+          <span class="window-status-pill" data-i18n="pillCreators">[VRCHAT WORLDS]</span>
+        </div>
+        <div class="window-controls">
+          <button class="win-btn prev-win-btn" type="button" title="Ventana anterior" data-i18n-title="prevWin" data-jump="win-roster">◀</button>
+          <button class="win-btn next-win-btn" type="button" title="Siguiente ventana" data-i18n-title="nextWin" data-jump="win-media">▶</button>
+        </div>
+      </div>
+      <div class="window-content">
+        <div class="shell">
+          <div class="reveal in-view">
+            <p class="eyebrow" data-i18n="creatorsEyebrow">Creadores de Contenido</p>
+            <h2 class="section-heading"><span data-i18n="creatorsTitle">Creadores de mundos.</span></h2>
+          </div>
+          <div class="roster-grid" id="creatorsGrid">
+            <div class="dj-card" data-creator="AzazelKen"><img alt="AzazelKen" loading="lazy"><div class="dj-card-content"><span class="dj-card-tag" data-i18n="worldCreatorRole">CREADOR DE MUNDOS</span><h3>AzazelKen</h3><p></p></div></div>
+            <div class="dj-card" data-creator="pat fenis_"><img alt="pat fenis_" loading="lazy"><div class="dj-card-content"><span class="dj-card-tag" data-i18n="worldCreatorRole">CREADOR DE MUNDOS</span><h3>pat fenis_</h3><p></p></div></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
     <!-- ========================================================= -->
-    <!-- WINDOW 05: MEDIA & ARCHIVO DE SESIONES                    -->
+    <!-- WINDOW 06: MEDIA & ARCHIVO DE SESIONES                    -->
     <!-- ========================================================= -->
     <article class="eclion-window" id="win-media" data-window-id="win-media">
       <div class="window-header">
         <div class="window-meta">
-          <span class="window-badge">WIN // 05</span>
+          <span class="window-badge">WIN // 06</span>
           <span class="window-title-text" data-i18n="winTitleMedia">ECLIONVR · BAJO DEMANDA & ARCHIVO</span>
-          <span class="window-status-pill">[CANAL OFICIAL YOUTUBE]</span>
+          <span class="window-status-pill" data-i18n="pillMedia">[CANAL OFICIAL YOUTUBE]</span>
         </div>
         <div class="window-controls">
-          <button class="win-btn prev-win-btn" type="button" title="Ventana anterior" data-jump="win-roster">◀</button>
-          <button class="win-btn next-win-btn" type="button" title="Siguiente ventana" data-jump="win-creadores">▶</button>
-          <button class="win-btn close-btn" type="button" title="Volver a Inicio" data-jump="win-inicio">✕</button>
+          <button class="win-btn prev-win-btn" type="button" title="Ventana anterior" data-i18n-title="prevWin" data-jump="win-creadores">◀</button>
+          <button class="win-btn close-btn" type="button" title="Volver a Inicio" data-i18n-title="backHome" data-jump="win-inicio">✕</button>
         </div>
       </div>
 
@@ -1048,8 +1057,8 @@
               </a>
             </div>
             <div class="screen reveal in-view">
-              <a href="https://www.youtube.com/watch?v=nTT09btaSEY" target="_blank" rel="noopener noreferrer" aria-label="Reproducir TECHNO ALLEY en YouTube">
-                <img src="https://i.ytimg.com/vi/nTT09btaSEY/maxresdefault.jpg" alt="Vídeo destacado TECHNO ALLEY">
+              <a href="https://www.youtube.com/watch?v=nTT09btaSEY" target="_blank" rel="noopener noreferrer" aria-label="Reproducir TECHNO ALLEY en YouTube" data-i18n-aria="playTechnoAria">
+                <img src="https://i.ytimg.com/vi/nTT09btaSEY/maxresdefault.jpg" alt="Vídeo destacado TECHNO ALLEY" data-i18n-alt="featuredVideoAlt">
                 <span class="play-icon" aria-hidden="true">▶</span>
               </a>
             </div>
@@ -1059,7 +1068,7 @@
           <div style="margin-top: 60px;">
             <div class="reveal in-view">
               <p class="eyebrow" data-i18n="streamArchive">Archivo de Sesiones</p>
-              <h2 class="section-heading"><span data-i18n="moments">Momentos</span> <span>históricos.</span></h2>
+              <h2 class="section-heading"><span data-i18n="moments">Momentos</span> <span data-i18n="historic">históricos.</span></h2>
             </div>
             <div class="archive-grid">
               <a class="archive-card reveal in-view" href="https://www.youtube.com/watch?v=EPXziJnEttE" target="_blank" rel="noopener noreferrer">
@@ -1095,32 +1104,6 @@
       </div>
     </article>
 
-    <!-- WINDOW 06: CREADORES DE CONTENIDO -->
-    <article class="eclion-window" id="win-creadores" data-window-id="win-creadores">
-      <div class="window-header">
-        <div class="window-meta">
-          <span class="window-badge">WIN // 06</span>
-          <span class="window-title-text" data-i18n="winTitleCreators">CREADORES DE CONTENIDO · MUNDOS VRCHAT</span>
-          <span class="window-status-pill">[VRCHAT WORLDS]</span>
-        </div>
-        <div class="window-controls">
-          <button class="win-btn prev-win-btn" type="button" title="Ventana anterior" data-jump="win-media">◀</button>
-        </div>
-      </div>
-      <div class="window-content">
-        <div class="shell">
-          <div class="reveal in-view">
-            <p class="eyebrow" data-i18n="creatorsEyebrow">Creadores de Contenido</p>
-            <h2 class="section-heading"><span data-i18n="creatorsTitle">Creadores de mundos.</span></h2>
-          </div>
-          <div class="roster-grid" id="creatorsGrid">
-            <div class="dj-card" data-creator="AzazelKen"><img alt="AzazelKen" loading="lazy"><div class="dj-card-content"><span class="dj-card-tag" data-i18n="worldCreatorRole">CREADOR DE MUNDOS</span><h3>AzazelKen</h3><p></p></div></div>
-            <div class="dj-card" data-creator="pat fenis_"><img alt="pat fenis_" loading="lazy"><div class="dj-card-content"><span class="dj-card-tag" data-i18n="worldCreatorRole">CREADOR DE MUNDOS</span><h3>pat fenis_</h3><p></p></div></div>
-          </div>
-        </div>
-      </div>
-    </article>
-
   </main>
 
   <!-- ========================================================= -->
@@ -1129,7 +1112,7 @@
   <footer class="site-footer">
     <div class="shell">
       <div class="footer-brand">
-        <a class="brand" href="#win-inicio" data-window-jump="win-inicio" aria-label="Volver arriba">
+        <a class="brand" href="#win-inicio" data-window-jump="win-inicio" aria-label="Volver arriba" data-i18n-aria="backTop">
           <img class="brand-mark-img" src="https://i.imgur.com/uCTbj9G.png" alt="ECLION Logo">
           <span class="brand-word">EC<i>LI</i>ON</span>
         </a>
@@ -1155,7 +1138,7 @@
   <!-- ========================================================= -->
   <audio id="backgroundAudio" src="fondo.mp3" preload="none" loop></audio>
   <div class="audio-widget" id="audioWidget">
-    <button class="audio-play-btn" id="audioPlayBtn" type="button" title="Reproducir / Pausar Música de Fondo">
+    <button class="audio-play-btn" id="audioPlayBtn" type="button" title="Reproducir / Pausar Música de Fondo" data-i18n-title="audioToggle">
       <span id="audioPlayIcon">▶</span>
     </button>
     <div class="audio-info">
@@ -1172,7 +1155,7 @@
     </div>
     <div class="audio-slider-wrap">
       <span>🔊</span>
-      <input type="range" id="audioVolume" min="0" max="1" step="0.05" value="0.35" aria-label="Volumen de Música">
+      <input type="range" id="audioVolume" min="0" max="1" step="0.05" value="0.35" aria-label="Volumen de Música" data-i18n-aria="audioVolumeAria">
     </div>
   </div>
 
@@ -1208,7 +1191,7 @@
         <img id="profileImage" src="" alt="DJ Profile Image">
       </div>
       <div class="profile-copy">
-        <button class="dialog-close" id="closeDialogBtn" type="button" aria-label="Cerrar perfil">×</button>
+        <button class="dialog-close" id="closeDialogBtn" type="button" aria-label="Cerrar perfil" data-i18n-aria="closeProfile">×</button>
         <span class="profile-role" data-i18n="profileRole">DJ Resident / ECLION</span>
         <h2 id="profileName">Artist Name</h2>
         <div class="profile-genre">
@@ -1345,9 +1328,9 @@
     const copyGroupBtn = document.getElementById('copyGroupBtn');
     copyGroupBtn.addEventListener('click', () => {
       navigator.clipboard.writeText('https://vrc.group/ECL.4481').then(() => {
-        showToast('Enlace del Grupo VRChat copiado al portapapeles 📋');
+        showToast(tr('toastCopied', 'Enlace del Grupo VRChat copiado al portapapeles 📋'));
       }).catch(() => {
-        showToast('Enlace VRChat: https://vrc.group/ECL.4481');
+        showToast(tr('toastLink', 'Enlace VRChat: ') + 'https://vrc.group/ECL.4481');
       });
     });
 
@@ -1382,6 +1365,22 @@
       { name: 'Sperto', image: 'https://i.imgur.com/pCkk090.png', genre: 'Dubstep · psytrance · hi-tech · progressive psy · full on · tech house', tag: 'RESIDENT DJ', links: [['X', 'https://x.com/djsperto'], ['Mixcloud', 'https://www.mixcloud.com/djsperto/'], ['Instagram', 'https://www.instagram.com/djsperto/']], bio: 'Energía y ritmos contundentes y atmósferas envolventes. Su estilo combina grooves hipnóticos, sonidos psicodélicos y bajos potentes, llevándote por un viaje que conecta con la intensidad.' }
     ];
 
+    // --- I18N HELPERS FOR PROFILES (bios & tags per language) ---
+    const BIO_T = {"AzazelKen": ["DJ, producer and founder of ECLION. Creator of the community's immersive visual experience, design and sonic aesthetic.", "DJ, producteur et fondateur d’ECLION. Créateur de l’expérience visuelle immersive, du design et de l’esthétique sonore de la communauté.", "DJ, Produzent und Gründer von ECLION. Schöpfer des immersiven visuellen Erlebnisses, des Designs und der Klangästhetik der Community.", "DJ, produtor e fundador da ECLION. Criador da experiência visual imersiva, do design e da estética sonora da comunidade.", "DJ, producer e fondatore di ECLION. Ideatore dell’esperienza visiva immersiva, del design e dell’estetica sonora della community.", "DJ、制作人及 ECLION 创始人。社区沉浸式视觉体验、设计与音效美学的缔造者。", "DJ、プロデューサー、ECLIONの創設者。コミュニティの没入型ビジュアル体験、デザイン、サウンド美学を生み出した人物。", "DJ, 프로듀서이자 ECLION의 창립자. 커뮤니티의 몰입형 비주얼 경험과 디자인, 사운드 미학을 만들어낸 인물."], "Chiquiboo": ["Co-owner of ECLION and resident DJ focused on hard, hypnotic Industrial Techno.", "Co-propriétaire d’ECLION et DJ résidente axée sur l’Industrial Techno dur et hypnotique.", "Mitinhaberin von ECLION und Resident-DJ mit Fokus auf harten, hypnotischen Industrial Techno.", "Co-proprietária da ECLION e DJ residente focada no Industrial Techno duro e hipnótico.", "Co-proprietaria di ECLION e DJ residente specializzata in Industrial Techno duro e ipnotico.", "ECLION 联合所有人兼驻场 DJ，专注于硬核而催眠的工业 Techno。", "ECLIONの共同オーナー兼レジデントDJ。ハードで催眠的なインダストリアル・テクノを軸にプレイする。", "ECLION의 공동 운영자이자 레지던트 DJ로, 강렬하고 최면적인 인더스트리얼 테크노에 집중한다."], "Raver_Lulamoon": ["Pioneer of UK Hardcore, Makina and Powerstomp, bringing pure energy to the dance floor.", "Pionnière du UK Hardcore, de la Makina et du Powerstomp, avec une énergie pure pour le dancefloor.", "Pionierin von UK Hardcore, Makina und Powerstomp – pure Energie für die Tanzfläche.", "Pioneira do UK Hardcore, Makina e Powerstomp, com energia pura para a pista de dança.", "Pioniera di UK Hardcore, Makina e Powerstomp, con energia pura per la pista da ballo.", "英式 Hardcore、Makina 与 Powerstomp 的先驱，为舞池带来纯粹的能量。", "UKハードコア、マキナ、パワースタンプのパイオニア。フロアに純粋なエネルギーを届ける。", "UK 하드코어, 마키나, 파워스톰프의 선구자로, 댄스 플로어에 순수한 에너지를 선사한다."], "Anal_Rampage": ["Specialist in Hard Techno, Riddim and aggressive Tearout.", "Spécialiste du Hard Techno, du Riddim et du Tearout agressif.", "Spezialist für Hard Techno, Riddim und aggressiven Tearout.", "Especialista em Hard Techno, Riddim e Tearout agressivo.", "Specialista in Hard Techno, Riddim e Tearout aggressivo.", "专注于 Hard Techno、Riddim 与激进 Tearout 的专家。", "ハードテクノ、リディム、アグレッシブなティアアウトのスペシャリスト。", "하드 테크노, 리딤, 공격적인 티어아웃 전문가."], "Mellana": ["Melody and power in a unique fusion of hard and rawstyle.", "Mélodie et puissance dans une fusion unique de styles hard et rawstyle.", "Melodie und Wucht in einer einzigartigen Fusion aus Hard- und Rawstyle-Stilen.", "Melodia e contundência numa fusão única de estilos hard e rawstyle.", "Melodia e potenza in una fusione unica di stili hard e rawstyle.", "旋律与力量交织，独特融合 Hard 与 Rawstyle 风格。", "メロディと迫力が融合した、ハードとロースタイルのユニークなミックス。", "멜로디와 강렬함이 어우러진 하드와 로우스타일의 독특한 융합."], "ElPutoPuto": ["Lover of free party culture and underground tekno/acid sounds.", "Passionné de culture free party et de sons underground tekno/acid.", "Liebhaber der Free-Party-Kultur und underground Tekno-/Acid-Sounds.", "Apaixonado pela cultura free party e por sons underground de tekno/acid.", "Amante della cultura free party e dei suoni underground tekno/acid.", "热爱 Free Party 文化与地下 Tekno/Acid 音乐。", "フリーパーティー文化とアンダーグラウンドなテクノ/アシッドサウンドを愛する。", "프리 파티 문화와 언더그라운드 테크노/애시드 사운드를 사랑한다."], "SynHaptX Fire": ["Heavy bass, destructive dubstep and aggressive breaks.", "Basses lourdes, dubstep destructeur et breaks agressifs.", "Schwere Bässe, zerstörerischer Dubstep und aggressive Breaks.", "Graves pesados, dubstep destrutivo e breaks agressivos.", "Bassi pesanti, dubstep distruttivo e break aggressivi.", "沉重低音、毁灭性的 Dubstep 与激进的 Breaks。", "重低音、破壊的なダブステップ、アグレッシブなブレイクス。", "묵직한 베이스, 파괴적인 덥스텝, 공격적인 브레이크."], "¦~ＰＩＫＹＥＳ~¦": ["Oldschool rave, classic Gabber and uncompromising hardcore culture.", "Rave oldschool, Gabber classique et culture hardcore sans concession.", "Oldschool-Rave, klassischer Gabber und kompromisslose Hardcore-Kultur.", "Rave oldschool, Gabber clássico e cultura hardcore sem concessões.", "Rave oldschool, Gabber classico e cultura hardcore senza compromessi.", "老派 Rave、经典 Gabber，以及毫不妥协的 Hardcore 文化。", "オールドスクール・レイヴ、クラシックなガバ、妥協なきハードコアカルチャー。", "올드스쿨 레이브, 클래식 가버, 타협 없는 하드코어 문화."], "Rylinso": ["A dark, poetic and crushing Bruit proposal.", "Une proposition Bruit sombre, poétique et dévastatrice.", "Ein düsterer, poetischer und vernichtender Bruit-Ansatz.", "Proposta Bruit sombria, poética e devastadora.", "Una proposta Bruit oscura, poetica e devastante.", "黑暗、诗意而极具破坏力的 Bruit 风格。", "暗く、詩的で、圧倒的なブリュイ・スタイル。", "어둡고 시적이며 압도적인 브뤼 스타일."], "VictoriaŅice": ["A DJ with cosmic energy and eclectic, high-power sets.", "DJ à l’énergie cosmique, aux sets éclectiques et très puissants.", "DJ mit kosmischer Energie und eklektischen, kraftvollen Sets.", "DJ de energia cósmica e sets ecléticos de alta potência.", "DJ dall’energia cosmica, con set eclettici ad alta potenza.", "充满宇宙能量的 DJ，打碟风格多元且极具爆发力。", "宇宙的なエネルギーを放つDJ。折衷的でパワフルなセットが持ち味。", "우주적인 에너지를 지닌 DJ로, 다채롭고 강력한 셋을 선보인다."], "DJ Luna K": ["VTuber and seasoned DJ with a preference for Bass House and Trance.", "VTubeuse et DJ expérimentée, avec une prédilection pour la Bass House et la Trance.", "VTuberin und erfahrene DJ mit Vorliebe für Bass House und Trance.", "VTuber e DJ experiente, com predileção por Bass House e Trance.", "VTuber e DJ con molta esperienza, con una predilezione per Bass House e Trance.", "VTuber 兼经验丰富的 DJ，偏爱 Bass House 与 Trance。", "VTuber兼ベテランDJ。ベースハウスとトランスを得意とする。", "VTuber이자 경험 많은 DJ로, 베이스 하우스와 트랜스를 즐겨 선보인다."], "pat fenis_": ["Aggressive electronic grooves and total devotion to the rhythm.", "Des grooves électroniques agressifs et un don de soi total au rythme.", "Aggressive elektronische Grooves und volle Hingabe an den Rhythmus.", "Grooves eletrônicos agressivos e entrega total ao ritmo.", "Groove elettronici aggressivi e dedizione totale al ritmo.", "凌厉的电子律动，全身心投入节奏。", "攻撃的なエレクトロニック・グルーヴと、リズムへの全身全霊の没入。", "공격적인 일렉트로닉 그루브와 리듬에 대한 온전한 몰입."], "usbc": ["Beneath the cybernetic veil hides a dancefloor-devouring machine.", "Sous le voile cybernétique se cache la machine qui dévore les dancefloors.", "Unter dem kybernetischen Schleier verbirgt sich eine Maschine, die Tanzflächen verschlingt.", "Sob o véu cibernético esconde-se a máquina devoradora de pistas.", "Sotto il velo cibernetico si nasconde la macchina divora-piste.", "赛博面纱之下，隐藏着吞噬舞池的机器。", "サイバネティックなヴェールの下に、フロアを喰らい尽くすマシンが潜んでいる。", "사이버네틱한 베일 아래, 댄스 플로어를 집어삼키는 기계가 숨어 있다."], "companda": ["Impactful drops, four-channel technique and pure euphoria.", "Des drops percutants, une technique à quatre canaux et une pure euphorie.", "Wuchtige Drops, Vier-Kanal-Technik und pure Euphorie.", "Drops impactantes, técnica de quatro canais e pura euforia.", "Drop d’impatto, tecnica a quattro canali e pura euforia.", "震撼的 Drop、四通道技术与纯粹的狂喜。", "インパクト抜群のドロップ、4チャンネルのテクニック、純粋な高揚感。", "강렬한 드롭, 4채널 테크닉, 순수한 희열."], "KARASUTA": ["A DJ from the Purple Galaxy specializing in Dubstep, Industrial and aggressive rhythms.", "DJ de la Galaxie Pourpre spécialisé en Dubstep, Industrial et rythmes agressifs.", "DJ aus der Purpur-Galaxie, spezialisiert auf Dubstep, Industrial und aggressive Rhythmen.", "DJ da Galáxia Púrpura especializado em Dubstep, Industrial e ritmos agressivos.", "DJ della Galassia Viola specializzato in Dubstep, Industrial e ritmi aggressivi.", "来自紫色星系的 DJ，专攻 Dubstep、Industrial 与激进节奏。", "パープル・ギャラクシー出身のDJ。ダブステップ、インダストリアル、攻撃的なリズムを専門とする。", "퍼플 은하에서 온 DJ로, 덥스텝과 인더스트리얼, 공격적인 리듬을 전문으로 한다."], "asphyx": ["A fusion of emotional Schranz, Tekk and hard-hitting Frenchcore.", "Fusion de Schranz émotionnel, de Tekk et de Frenchcore percutant.", "Fusion aus emotionalem Schranz, Tekk und wuchtigem Frenchcore.", "Fusão de Schranz emocional, Tekk e Frenchcore contundente.", "Fusione di Schranz emozionale, Tekk e Frenchcore potente.", "融合感性 Schranz、Tekk 与强劲 Frenchcore。", "エモーショナルなシュランツ、テック、強烈なフレンチコアの融合。", "감성적인 슈란츠, 텍, 강렬한 프렌치코어의 융합."], "DarklouXxX": ["A career alongside legends of the international Hardcore scene.", "Un parcours aux côtés des légendes de la scène Hardcore internationale.", "Ein Werdegang an der Seite von Legenden der internationalen Hardcore-Szene.", "Trajetória ao lado de lendas da cena Hardcore internacional.", "Un percorso al fianco di leggende della scena Hardcore internazionale.", "与国际 Hardcore 界传奇人物并肩同行的从业经历。", "国際的なハードコアシーンの伝説たちと共に歩んできた経歴。", "국제 하드코어 씬의 전설들과 함께해 온 경력."], "Zhukii..": ["Raw power and industrial rhythms from Santa Cruz.", "Puissance brute et rythmes industriels de Santa Cruz.", "Rohe Kraft und industrielle Rhythmen aus Santa Cruz.", "Força bruta e ritmos industriais de Santa Cruz.", "Forza bruta e ritmi industriali da Santa Cruz.", "来自圣克鲁斯的原始力量与工业节奏。", "サンタクルーズ発、荒々しいパワーとインダストリアルなリズム。", "산타크루즈에서 온 거친 힘과 인더스트리얼 리듬."], "YGMNAniki": ["Exploring extreme BPMs, Crossbreed and Skullstep.", "Exploration de BPM extrêmes, de Crossbreed et de Skullstep.", "Erkundung extremer BPMs, Crossbreed und Skullstep.", "Exploração de BPMs extremos, Crossbreed e Skullstep.", "Esplorazione di BPM estremi, Crossbreed e Skullstep.", "探索极限 BPM、Crossbreed 与 Skullstep。", "極限のBPM、クロスブリード、スカルステップを探求する。", "극단적인 BPM, 크로스브리드, 스컬스텝을 탐구한다."], "DJ Dolo✰": ["Fast sounds influenced by Rhythm Games and J-Core culture.\n\n☆Hi I'm Dolo a.k.a DJ Dolo! I am a DJ from London UK and I love Hands Up, Nightcore, Happy Hardcore, J Core and Rhythm game music!\n\n☆This is all my passion and I love to share it with people!", "Des sons rapides influencés par les jeux de rythme et la culture J-Core.\n\n☆Salut, moi c’est Dolo alias DJ Dolo ! Je suis DJ à Londres (Royaume-Uni) et j’adore le Hands Up, le Nightcore, le Happy Hardcore, le J-Core et la musique de jeux de rythme !\n\n☆C’est toute ma passion et j’adore la partager avec les gens !", "Schnelle Sounds, beeinflusst von Rhythmusspielen und der J-Core-Kultur.\n\n☆Hi, ich bin Dolo alias DJ Dolo! Ich bin DJ aus London (UK) und liebe Hands Up, Nightcore, Happy Hardcore, J-Core und Musik aus Rhythmusspielen!\n\n☆Das ist meine ganze Leidenschaft und ich teile sie unglaublich gern mit anderen!", "Sons rápidos influenciados por jogos de ritmo e pela cultura J-Core.\n\n☆Oi! Eu sou Dolo, também conhecido como DJ Dolo! Sou DJ de Londres, Reino Unido, e adoro Hands Up, Nightcore, Happy Hardcore, J-Core e música de jogos de ritmo!\n\n☆Esta é toda a minha paixão e adoro compartilhá-la com as pessoas!", "Suoni veloci influenzati dai giochi ritmici e dalla cultura J-Core.\n\n☆Ciao, sono Dolo, alias DJ Dolo! Sono un DJ di Londra (UK) e adoro Hands Up, Nightcore, Happy Hardcore, J-Core e la musica dei giochi ritmici!\n\n☆Questa è tutta la mia passione e adoro condividerla con la gente!", "受节奏游戏与 J-Core 文化影响的高速音乐。\n\n☆大家好，我是 Dolo，也就是 DJ Dolo！我是来自英国伦敦的 DJ，热爱 Hands Up、Nightcore、Happy Hardcore、J-Core 和节奏游戏音乐！\n\n☆这是我全部的热情，我乐于与大家分享！", "リズムゲームとJ-Coreカルチャーに影響を受けた高速サウンド。\n\n☆こんにちは、Dolo、またの名をDJ Doloです！イギリス・ロンドン出身のDJで、Hands Up、Nightcore、Happy Hardcore、J-Core、リズムゲーム音楽が大好きです！\n\n☆これは私のすべての情熱で、みんなと共有するのが大好きです！", "리듬 게임과 J-Core 문화에서 영감을 받은 빠른 사운드.\n\n☆안녕하세요, Dolo, 일명 DJ Dolo입니다! 저는 영국 런던 출신 DJ이고 Hands Up, Nightcore, Happy Hardcore, J-Core, 리듬 게임 음악을 정말 좋아해요!\n\n☆이게 제 모든 열정이고, 사람들과 나누는 것을 사랑해요!"], "Eternal September": ["Dark, unexplored sounds from the underground scene.", "Des sons sombres et inexplorés de la scène underground.", "Dunkle, unerforschte Klänge der Underground-Szene.", "Sons sombrios e inexplorados da cena underground.", "Suoni oscuri e inesplorati della scena underground.", "来自地下音乐圈的黑暗而未知的声音。", "アンダーグラウンドシーンの暗く未踏のサウンド。", "언더그라운드 씬의 어둡고 미지의 사운드."], "Nohde": ["Unpredictable, fresh, ultra-fast sets.", "Des sets imprévisibles, frais et ultra-rapides.", "Unberechenbare, frische und extrem schnelle Sets.", "Sets imprevisíveis, frescos e de altíssima velocidade.", "Set imprevedibili, freschi e velocissimi.", "难以预测、清新且速度极快的打碟。", "予測不能で新鮮、超高速のセット。", "예측할 수 없고 신선하며 초고속인 셋."], "YumaSilver": ["I'm a humble being who loves music, especially being a DJ. I've been doing this as a non-professional hobby for a few years.\n\nI love musical challenges, learning new genres and creating new sessions.\n\nI usually play house, bounce, EDM, eurobeat, memes, hardstyle, hardtechno, techno, drum and bass and other subgenres.", "Je suis un humble être qui adore la musique, surtout être DJ. Cela fait quelques années que je pratique ce hobby de façon non professionnelle.\n\nJ’adore les défis musicaux, apprendre de nouveaux genres et créer de nouvelles sessions.\n\nJe mixe généralement de la house, du bounce, de l’EDM, de l’eurobeat, des memes, du hardstyle, du hardtechno, de la techno, de la drum and bass et d’autres sous-genres.", "Ich bin ein bescheidenes Wesen, das Musik liebt, vor allem als DJ aufzulegen. Seit ein paar Jahren betreibe ich dieses Hobby nicht professionell.\n\nIch liebe musikalische Herausforderungen, neue Genres zu lernen und neue Sessions zu erstellen.\n\nIch lege meist House, Bounce, EDM, Eurobeat, Memes, Hardstyle, Hardtechno, Techno, Drum and Bass und andere Subgenres auf.", "Sou um ser humilde que adora música, principalmente atuar como DJ. Há alguns anos me dedico a este hobby de forma não profissional.\n\nAdoro desafios musicais, aprender novos gêneros e criar novas sessões.\n\nCostumo tocar house, bounce, EDM, eurobeat, memes, hardstyle, hardtechno, techno, drum and bass e outros subgêneros.", "Sono un essere umile che ama la musica, soprattutto fare il DJ. Da qualche anno mi dedico a questo hobby in modo non professionale.\n\nAdoro le sfide musicali, imparare nuovi generi e creare nuove sessioni.\n\nDi solito suono house, bounce, EDM, eurobeat, meme, hardstyle, hardtechno, techno, drum and bass e altri sottogeneri.", "我是一个热爱音乐的普通人，尤其喜欢当 DJ。这几年我一直把它当作非职业的爱好。\n\n我喜欢音乐上的挑战，学习新的风格，并创作新的 Session。\n\n我通常打 House、Bounce、EDM、Eurobeat、梗曲、Hardstyle、Hardtechno、Techno、Drum and Bass 以及其他子流派。", "音楽、特にDJをすることが大好きな、ごく普通の人間です。ここ数年、プロではなく趣味として続けています。\n\n音楽的なチャレンジや新しいジャンルを学ぶこと、新しいセッションを作ることが大好きです。\n\nハウス、バウンス、EDM、ユーロビート、ネタ曲、ハードスタイル、ハードテクノ、テクノ、ドラムンベース、その他のサブジャンルをよくプレイします。", "저는 음악, 특히 DJ를 하는 것을 아주 좋아하는 평범한 사람입니다. 몇 년째 비전문적인 취미로 이어 오고 있어요.\n\n음악적인 도전과 새로운 장르를 배우는 것, 새로운 세션을 만드는 것을 좋아합니다.\n\n주로 하우스, 바운스, EDM, 유로비트, 밈 음악, 하드스타일, 하드테크노, 테크노, 드럼 앤 베이스 및 기타 하위 장르를 틀어요."], "Sperto": ["Powerful energy and rhythms with enveloping atmospheres. His style combines hypnotic grooves, psychedelic sounds and heavy bass, taking you on a journey that connects with intensity.", "Énergie et rythmes puissants, avec des atmosphères enveloppantes. Son style associe grooves hypnotiques, sons psychédéliques et basses puissantes, pour un voyage qui vous connecte à l’intensité.", "Kraftvolle Energie und wuchtige Rhythmen mit umhüllenden Atmosphären. Sein Stil verbindet hypnotische Grooves, psychedelische Klänge und mächtige Bässe und nimmt dich mit auf eine Reise voller Intensität.", "Energia e ritmos contundentes com atmosferas envolventes. O seu estilo combina grooves hipnóticos, sons psicadélicos e graves potentes, levando você numa viagem que se conecta com a intensidade.", "Energia e ritmi potenti con atmosfere avvolgenti. Il suo stile unisce groove ipnotici, suoni psichedelici e bassi potenti, portandoti in un viaggio che si connette con l’intensità.", "充满力量的能量与节奏，搭配包裹感十足的氛围。他的风格融合催眠般的律动、迷幻音色与强劲低音，带你踏上一段与强烈情绪相连的旅程。", "力強いエネルギーとリズム、そして包み込むような空気感。催眠的なグルーヴ、サイケデリックなサウンド、パワフルなベースを組み合わせたスタイルで、強烈な体験へと誘う。", "힘 있는 에너지와 리듬, 그리고 감싸 안는 분위기. 최면적인 그루브와 사이키델릭한 사운드, 강력한 베이스가 어우러진 스타일로 강렬함과 연결되는 여행으로 이끈다."]};
+    const BIO_LANG_IDX = { en: 0, fr: 1, de: 2, pt: 3, it: 4, zh: 5, ja: 6, ko: 7 };
+    function tr(key, fallback) { return (window.currentDict && window.currentDict[key]) || fallback; }
+    function artistBio(a) {
+      const l = window.currentLang || 'es';
+      const tb = BIO_T[a.name];
+      if (l !== 'es' && tb && tb[BIO_LANG_IDX[l]]) return tb[BIO_LANG_IDX[l]];
+      return a.bio || tr('defaultBio', 'DJ Residente de ECLION.');
+    }
+    function artistTag(a) {
+      const map = { 'FOUNDER / DJ': 'tagFounder', 'CO-OWNER / DJ': 'tagCoOwner', 'RESIDENT DJ': 'tagResident' };
+      const k = map[a.tag];
+      return k ? tr(k, a.tag) : (a.tag || tr('tagResident', 'RESIDENT DJ'));
+    }
+
     const rosterGrid = document.getElementById('rosterGrid');
     const rosterSearch = document.getElementById('rosterSearch');
     const profileDialog = document.getElementById('profileDialog');
@@ -1404,7 +1403,7 @@
         card.innerHTML = `
           <img src="${artist.image}" alt="${artist.name}" loading="lazy" decoding="async" onerror="this.src='https://i.imgur.com/uCTbj9G.png'">
           <div class="dj-card-content">
-            <span class="dj-card-tag">${artist.tag || 'RESIDENT'}</span>
+            <span class="dj-card-tag">${artistTag(artist)}</span>
             <h3>${artist.name}</h3>
             <p>${artist.genre}</p>
           </div>
@@ -1422,7 +1421,8 @@
       profileImageWrapper.style.background = '#160c0d';
       document.getElementById('profileName').textContent = artist.name;
       document.getElementById('profileGenre').textContent = artist.genre;
-      document.getElementById('profileDescription').textContent = artist.bio || 'DJ Residente de ECLION.';
+      window.currentArtist = artist;
+      document.getElementById('profileDescription').textContent = artistBio(artist);
       
       const linksContainer = document.getElementById('profileLinks');
       linksContainer.innerHTML = '';
@@ -1471,6 +1471,7 @@
       btn.className = `genre-pill ${g === 'TODOS' ? 'active' : ''}`;
       btn.textContent = g;
       btn.type = 'button';
+      btn.dataset.genre = g;
       btn.addEventListener('click', () => filterByGenre(g));
       genrePillsContainer.appendChild(btn);
     });
@@ -1494,7 +1495,7 @@
     function filterByGenre(genre) {
       currentSelectedGenre = genre;
       document.querySelectorAll('.genre-pill').forEach(b => {
-        b.classList.toggle('active', b.textContent === genre);
+        b.classList.toggle('active', b.dataset.genre === genre);
       });
       genreFilterSelect.value = genre;
       applyCombinedFilter();
@@ -1530,7 +1531,8 @@
       document.getElementById('crImage').src = dj.image;
       document.getElementById('crName').textContent = dj.name;
       document.getElementById('crGenre').textContent = dj.genre;
-      document.getElementById('crBio').textContent = crTr('creatorBio', 'Creador de mundos de VRChat.') + '\n\n' + (dj.bio || '');
+      window.currentCreatorName = name;
+      document.getElementById('crBio').textContent = crTr('creatorBio', 'Creador de mundos de VRChat.') + (dj.bio ? '\n\n' + artistBio(dj) : '');
       const links = document.getElementById('crLinks');
       links.innerHTML = '';
       (dj.links || []).forEach(([label, url]) => {
@@ -2197,10 +2199,14 @@
 
     const EXTRA_T = {"navCreators": ["Creadores", "Creators", "Créateurs", "Creators", "Criadores", "Creatori", "创作者", "クリエイター", "크리에이터"], "winTitleCreators": ["CREADORES DE CONTENIDO · MUNDOS VRCHAT", "CONTENT CREATORS · VRCHAT WORLDS", "CRÉATEURS DE CONTENU · MONDES VRCHAT", "CONTENT CREATOR · VRCHAT-WELTEN", "CRIADORES DE CONTEÚDO · MUNDOS VRCHAT", "CREATORI DI CONTENUTI · MONDI VRCHAT", "内容创作者 · VRCHAT 世界", "コンテンツクリエイター · VRCHATワールド", "콘텐츠 크리에이터 · VRCHAT 월드"], "worldCreatorRole": ["CREADOR DE MUNDOS", "WORLD CREATOR", "CRÉATEUR DE MONDES", "WELTEN-CREATOR", "CRIADOR DE MUNDOS", "CREATORE DI MONDI", "世界创作者", "ワールドクリエイター", "월드 크리에이터"], "creatorBio": ["Creador de mundos de VRChat.", "VRChat world creator.", "Créateur de mondes VRChat.", "VRChat-Welten-Creator.", "Criador de mundos do VRChat.", "Creatore di mondi VRChat.", "VRChat 世界创作者。", "VRChatワールドクリエイター。", "VRChat 월드 크리에이터."], "worldsTitle": ["Mundos", "Worlds", "Mondes", "Welten", "Mundos", "Mondi", "世界", "ワールド", "월드"], "openWorld": ["Abrir en VRChat", "Open in VRChat", "Ouvrir dans VRChat", "In VRChat öffnen", "Abrir no VRChat", "Apri in VRChat", "在 VRChat 中打开", "VRChatで開く", "VRChat에서 열기"], "genresLabel": ["Géneros", "Genres", "Genres", "Genres", "Gêneros", "Generi", "流派", "ジャンル", "장르"], "profileRole": ["DJ Residente / ECLION", "Resident DJ / ECLION", "DJ Résident / ECLION", "Resident-DJ / ECLION", "DJ Residente / ECLION", "DJ Residente / ECLION", "ECLION 驻场DJ", "ECLION レジデントDJ", "ECLION 레지던트 DJ"], "noResults": ["NO SE ENCONTRARON ARTISTAS CON ESA BÚSQUEDA", "NO ARTISTS FOUND FOR THAT SEARCH", "AUCUN ARTISTE TROUVÉ POUR CETTE RECHERCHE", "KEINE KÜNSTLER FÜR DIESE SUCHE GEFUNDEN", "NENHUM ARTISTA ENCONTRADO NESSA BUSCA", "NESSUN ARTISTA TROVATO PER QUESTA RICERCA", "未找到相关艺术家", "該当するアーティストが見つかりません", "검색 결과가 없습니다"], "filterCopy": ["Filtra los artistas por tus sonidos o estilos favoritos, o busca directamente por nombre:", "Filter artists by your favorite sounds or styles, or search directly by name:", "Filtrez les artistes par vos sons ou styles préférés, ou cherchez directement par nom :", "Filtere Künstler nach deinen Lieblingssounds oder -stilen oder suche direkt nach dem Namen:", "Filtre os artistas pelos seus sons ou estilos favoritos, ou busque diretamente pelo nome:", "Filtra gli artisti per suoni o stili preferiti, oppure cerca direttamente per nome:", "按你喜欢的声音或风格筛选艺术家，或直接按名称搜索：", "好きなサウンドやスタイルでアーティストを絞り込むか、名前で直接検索：", "좋아하는 사운드나 스타일로 아티스트를 필터링하거나 이름으로 직접 검색하세요:"], "contact": ["Contacto", "Contact", "Contact", "Kontakt", "Contato", "Contatti", "联系", "お問い合わせ", "문의"], "rights": ["© 2026 ECLION / Todos los derechos reservados", "© 2026 ECLION / All rights reserved", "© 2026 ECLION / Tous droits réservés", "© 2026 ECLION / Alle Rechte vorbehalten", "© 2026 ECLION / Todos os direitos reservados", "© 2026 ECLION / Tutti i diritti riservati", "© 2026 ECLION / 保留所有权利", "© 2026 ECLION / 全著作権所有", "© 2026 ECLION / 모든 권리 보유"], "audioHint": ["🔊 Pulsa aquí para activar la experiencia sonora", "🔊 Tap here to enable the sound experience", "🔊 Appuyez ici pour activer l’expérience sonore", "🔊 Hier tippen, um das Klangerlebnis zu aktivieren", "🔊 Toque aqui para ativar a experiência sonora", "🔊 Tocca qui per attivare l’esperienza sonora", "🔊 点击此处开启声音体验", "🔊 ここをタップしてサウンド体験をオン", "🔊 여기를 눌러 사운드 경험 켜기"], "audioBtn": ["ACTIVAR SONIDO", "ENABLE SOUND", "ACTIVER LE SON", "SOUND AKTIVIEREN", "ATIVAR SOM", "ATTIVA AUDIO", "开启声音", "サウンドON", "소리 켜기"], "vrcdjProfile": ["Perfil VRC.DJ", "VRC.DJ Profile", "Profil VRC.DJ", "VRC.DJ-Profil", "Perfil VRC.DJ", "Profilo VRC.DJ", "VRC.DJ 主页", "VRC.DJプロフィール", "VRC.DJ 프로필"], "vrcGroup": ["Grupo VRChat", "VRChat Group", "Groupe VRChat", "VRChat-Gruppe", "Grupo VRChat", "Gruppo VRChat", "VRChat 群组", "VRChatグループ", "VRChat 그룹"]};
     ['es','en','fr','de','pt','it','zh','ja','ko'].forEach((l, i) => { Object.keys(EXTRA_T).forEach(k => { if (translations[l]) translations[l][k] = EXTRA_T[k][i]; }); });
+    const EXTRA_T2 = {"moreThanEvent": ["Más que un evento.", "More than an event.", "Plus qu’un événement.", "Mehr als ein Event.", "Mais que um evento.", "Più di un evento.", "不只是一场活动，", "イベント以上の存在、", "단순한 이벤트가 아닌"], "aCulture": ["Una cultura.", "A culture.", "Une culture.", "Eine Kultur.", "Uma cultura.", "Una cultura.", "而是一种文化。", "それは文化。", "하나의 문화."], "thoseWhoLight": ["Quienes encienden", "Those who ignite", "Ceux qui allument", "Wer das Signal", "Quem acende", "Chi accende", "点亮", "信号を灯す", "신호를 켜는"], "theSignal": ["la señal.", "the signal.", "le signal.", "entzündet.", "o sinal.", "il segnale.", "信号的人。", "者たち。", "사람들."], "moments": ["Momentos", "Historic", "Moments", "Historische", "Momentos", "Momenti", "历史", "歴史的", "역사적인"], "historic": ["históricos.", "moments.", "historiques.", "Momente.", "históricos.", "storici.", "时刻。", "瞬間。", "순간들."], "principleOneLabel": ["01 / ESCENOGRAFÍA", "01 / SET DESIGN", "01 / SCÉNOGRAPHIE", "01 / BÜHNENBILD", "01 / CENOGRAFIA", "01 / SCENOGRAFIA", "01 / 舞台美术", "01 / 舞台演出", "01 / 무대 연출"], "principleTwoLabel": ["02 / SONIDO", "02 / SOUND", "02 / SON", "02 / SOUND", "02 / SOM", "02 / SUONO", "02 / 音效", "02 / サウンド", "02 / 사운드"], "principleThreeLabel": ["03 / UNIÓN", "03 / UNITY", "03 / UNION", "03 / ZUSAMMENHALT", "03 / UNIÃO", "03 / UNIONE", "03 / 团结", "03 / 結束", "03 / 연대"], "pillHome": ["[PULSO PRINCIPAL ONLINE]", "[MAIN PULSE ONLINE]", "[PULSE PRINCIPAL EN LIGNE]", "[HAUPTPULS ONLINE]", "[PULSO PRINCIPAL ONLINE]", "[POLSO PRINCIPALE ONLINE]", "[主脉冲在线]", "[メインパルス オンライン]", "[메인 펄스 온라인]"], "pillTeam": ["[STAFF & COMUNIDADES ALIADAS]", "[STAFF & ALLIED COMMUNITIES]", "[STAFF & COMMUNAUTÉS ALLIÉES]", "[STAFF & PARTNER-COMMUNITYS]", "[STAFF & COMUNIDADES ALIADAS]", "[STAFF & COMMUNITY ALLEATE]", "[团队与合作社区]", "[スタッフ＆提携コミュニティ]", "[스태프 & 제휴 커뮤니티]"], "pillCommunity": ["[CULTURA UNDERGROUND VRC]", "[VRC UNDERGROUND CULTURE]", "[CULTURE UNDERGROUND VRC]", "[VRC-UNDERGROUND-KULTUR]", "[CULTURA UNDERGROUND VRC]", "[CULTURA UNDERGROUND VRC]", "[VRC 地下文化]", "[VRCアンダーグラウンド文化]", "[VRC 언더그라운드 문화]"], "pillRoster": ["[DIRECTORIO VRC.DJ ACTIVO]", "[VRC.DJ DIRECTORY ACTIVE]", "[ANNUAIRE VRC.DJ ACTIF]", "[VRC.DJ-VERZEICHNIS AKTIV]", "[DIRETÓRIO VRC.DJ ATIVO]", "[DIRECTORY VRC.DJ ATTIVA]", "[VRC.DJ 目录已启用]", "[VRC.DJ ディレクトリ稼働中]", "[VRC.DJ 디렉터리 활성]"], "pillCreators": ["[MUNDOS VRCHAT]", "[VRCHAT WORLDS]", "[MONDES VRCHAT]", "[VRCHAT-WELTEN]", "[MUNDOS VRCHAT]", "[MONDI VRCHAT]", "[VRCHAT 世界]", "[VRCHATワールド]", "[VRCHAT 월드]"], "pillMedia": ["[CANAL OFICIAL DE YOUTUBE]", "[OFFICIAL YOUTUBE CHANNEL]", "[CHAÎNE YOUTUBE OFFICIELLE]", "[OFFIZIELLER YOUTUBE-KANAL]", "[CANAL OFICIAL DO YOUTUBE]", "[CANALE YOUTUBE UFFICIALE]", "[YOUTUBE 官方频道]", "[YouTube公式チャンネル]", "[공식 YOUTUBE 채널]"], "tagFounder": ["FUNDADOR / DJ", "FOUNDER / DJ", "FONDATEUR / DJ", "GRÜNDER / DJ", "FUNDADOR / DJ", "FONDATORE / DJ", "创始人 / DJ", "創設者 / DJ", "창립자 / DJ"], "tagCoOwner": ["CO-DUEÑO / DJ", "CO-OWNER / DJ", "CO-PROPRIÉTAIRE / DJ", "MIT-INHABER / DJ", "CO-DONO / DJ", "CO-PROPRIETARIO / DJ", "联合所有人 / DJ", "共同オーナー / DJ", "공동 운영자 / DJ"], "tagResident": ["DJ RESIDENTE", "RESIDENT DJ", "DJ RÉSIDENT", "RESIDENT-DJ", "DJ RESIDENTE", "DJ RESIDENTE", "驻场DJ", "レジデントDJ", "레지던트 DJ"], "defaultBio": ["DJ Residente de ECLION.", "Resident DJ of ECLION.", "DJ résident d’ECLION.", "Resident-DJ von ECLION.", "DJ residente da ECLION.", "DJ residente di ECLION.", "ECLION 驻场DJ。", "ECLIONのレジデントDJ。", "ECLION 레지던트 DJ."], "toastCopied": ["Enlace del Grupo VRChat copiado al portapapeles 📋", "VRChat group link copied to clipboard 📋", "Lien du groupe VRChat copié dans le presse-papiers 📋", "VRChat-Gruppenlink in die Zwischenablage kopiert 📋", "Link do grupo VRChat copiado para a área de transferência 📋", "Link del gruppo VRChat copiato negli appunti 📋", "VRChat 群组链接已复制到剪贴板 📋", "VRChatグループのリンクをコピーしました 📋", "VRChat 그룹 링크가 클립보드에 복사되었습니다 📋"], "toastLink": ["Enlace VRChat: ", "VRChat link: ", "Lien VRChat : ", "VRChat-Link: ", "Link do VRChat: ", "Link VRChat: ", "VRChat 链接：", "VRChatリンク：", "VRChat 링크: "], "prevWin": ["Ventana anterior", "Previous window", "Fenêtre précédente", "Vorheriges Fenster", "Janela anterior", "Finestra precedente", "上一个窗口", "前のウィンドウ", "이전 창"], "nextWin": ["Siguiente ventana", "Next window", "Fenêtre suivante", "Nächstes Fenster", "Próxima janela", "Finestra successiva", "下一个窗口", "次のウィンドウ", "다음 창"], "backHome": ["Volver a Inicio", "Back to Home", "Retour à l’accueil", "Zurück zur Startseite", "Voltar ao Início", "Torna alla Home", "返回首页", "ホームに戻る", "홈으로 돌아가기"], "copyLink": ["Copiar enlace VRChat", "Copy VRChat link", "Copier le lien VRChat", "VRChat-Link kopieren", "Copiar link do VRChat", "Copia link VRChat", "复制 VRChat 链接", "VRChatリンクをコピー", "VRChat 링크 복사"], "selectLang": ["Seleccionar idioma", "Select language", "Choisir la langue", "Sprache wählen", "Selecionar idioma", "Seleziona lingua", "选择语言", "言語を選択", "언어 선택"], "windowSelector": ["Selector de Ventanas", "Window selector", "Sélecteur de fenêtres", "Fensterauswahl", "Seletor de janelas", "Selettore finestre", "窗口选择", "ウィンドウ選択", "창 선택"], "brandHomeAria": ["ECLION, Inicio", "ECLION, Home", "ECLION, Accueil", "ECLION, Startseite", "ECLION, Início", "ECLION, Home", "ECLION，首页", "ECLION、ホーム", "ECLION, 홈"], "backTop": ["Volver arriba", "Back to top", "Retour en haut", "Nach oben", "Voltar ao topo", "Torna su", "返回顶部", "トップへ戻る", "맨 위로"], "tickerAria": ["Géneros musicales", "Music genres", "Genres musicaux", "Musikgenres", "Gêneros musicais", "Generi musicali", "音乐流派", "音楽ジャンル", "음악 장르"], "selectGenre": ["Seleccionar Género", "Select genre", "Choisir un genre", "Genre wählen", "Selecionar gênero", "Seleziona genere", "选择流派", "ジャンルを選択", "장르 선택"], "closeProfile": ["Cerrar perfil", "Close profile", "Fermer le profil", "Profil schließen", "Fechar perfil", "Chiudi profilo", "关闭资料", "プロフィールを閉じる", "프로필 닫기"], "audioToggle": ["Reproducir / Pausar Música de Fondo", "Play / Pause background music", "Lire / Mettre en pause la musique de fond", "Hintergrundmusik abspielen / pausieren", "Reproduzir / Pausar música de fundo", "Riproduci / Metti in pausa la musica di sottofondo", "播放 / 暂停背景音乐", "BGMの再生 / 一時停止", "배경 음악 재생 / 일시정지"], "audioVolumeAria": ["Volumen de Música", "Music volume", "Volume de la musique", "Musiklautstärke", "Volume da música", "Volume della musica", "音乐音量", "音楽の音量", "음악 볼륨"], "logoAlt": ["Logo Oficial Eclion", "Official Eclion logo", "Logo officiel d’Eclion", "Offizielles Eclion-Logo", "Logotipo oficial da Eclion", "Logo ufficiale di Eclion", "Eclion 官方标志", "Eclion公式ロゴ", "Eclion 공식 로고"], "playTechnoAria": ["Reproducir TECHNO ALLEY en YouTube", "Play TECHNO ALLEY on YouTube", "Lire TECHNO ALLEY sur YouTube", "TECHNO ALLEY auf YouTube abspielen", "Reproduzir TECHNO ALLEY no YouTube", "Riproduci TECHNO ALLEY su YouTube", "在 YouTube 播放 TECHNO ALLEY", "YouTubeでTECHNO ALLEYを再生", "YouTube에서 TECHNO ALLEY 재생"], "featuredVideoAlt": ["Vídeo destacado TECHNO ALLEY", "Featured video TECHNO ALLEY", "Vidéo à la une TECHNO ALLEY", "Hervorgehobenes Video TECHNO ALLEY", "Vídeo em destaque TECHNO ALLEY", "Video in evidenza TECHNO ALLEY", "精选视频 TECHNO ALLEY", "注目動画 TECHNO ALLEY", "추천 영상 TECHNO ALLEY"], "pageTitle": ["ECLION — Colectivo Rave VRChat", "ECLION — VRChat Rave Collective", "ECLION — Collectif Rave VRChat", "ECLION — VRChat-Rave-Kollektiv", "ECLION — Coletivo Rave VRChat", "ECLION — Collettivo Rave VRChat", "ECLION — VRChat 锐舞团体", "ECLION — VRChat レイヴコレクティブ", "ECLION — VRChat 레이브 콜렉티브"], "metaDesc": ["Eclion — El colectivo rave de música electrónica de alta intensidad en VRChat. Escenografía inmersiva, sonido sin límites y cultura underground.", "Eclion — The high-intensity electronic music rave collective in VRChat. Immersive stagecraft, limitless sound and underground culture.", "Eclion — Le collectif rave de musique électronique à haute intensité sur VRChat. Scénographie immersive, son sans limites et culture underground.", "Eclion — Das Rave-Kollektiv für hochintensive elektronische Musik in VRChat. Immersives Bühnenbild, grenzenloser Sound und Underground-Kultur.", "Eclion — O coletivo rave de música eletrônica de alta intensidade no VRChat. Cenografia imersiva, som sem limites e cultura underground.", "Eclion — Il collettivo rave di musica elettronica ad alta intensità su VRChat. Scenografia immersiva, suono senza limiti e cultura underground.", "Eclion — VRChat 中的高强度电子音乐锐舞团体。沉浸式舞台、无限音效与地下文化。", "Eclion — VRChatの高強度エレクトロニックミュージック・レイヴコレクティブ。没入型の舞台演出、限界のないサウンド、アンダーグラウンドカルチャー。", "Eclion — VRChat의 고강도 일렉트로닉 음악 레이브 콜렉티브. 몰입형 무대 연출, 한계 없는 사운드, 언더그라운드 문화."]};
+    ['es','en','fr','de','pt','it','zh','ja','ko'].forEach((l, i) => { Object.keys(EXTRA_T2).forEach(k => { if (translations[l]) translations[l][k] = EXTRA_T2[k][i]; }); });
 
     function applyLanguage(lang) {
       const dict = translations[lang] || translations.es;
       window.currentDict = dict;
+      window.currentLang = translations[lang] ? lang : 'es';
+      document.documentElement.lang = window.currentLang;
       languageSelect.value = lang;
 
       // Update text contents
@@ -2218,6 +2224,29 @@
           el.placeholder = dict[key];
         }
       });
+
+      // Attributes: tooltips, aria-labels and image alt texts
+      document.querySelectorAll('[data-i18n-title]').forEach(el => { if (dict[el.dataset.i18nTitle]) el.title = dict[el.dataset.i18nTitle]; });
+      document.querySelectorAll('[data-i18n-aria]').forEach(el => { if (dict[el.dataset.i18nAria]) el.setAttribute('aria-label', dict[el.dataset.i18nAria]); });
+      document.querySelectorAll('[data-i18n-alt]').forEach(el => { if (dict[el.dataset.i18nAlt]) el.alt = dict[el.dataset.i18nAlt]; });
+
+      // Page title & meta description
+      if (dict.pageTitle) document.title = dict.pageTitle;
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc && dict.metaDesc) metaDesc.setAttribute('content', dict.metaDesc);
+
+      // Re-render dynamic content (DJ cards: tags / empty state) in the new language
+      if (typeof applyCombinedFilter === 'function') applyCombinedFilter();
+
+      // Refresh any profile dialog that is currently open
+      if (typeof profileDialog !== 'undefined' && profileDialog.open && window.currentArtist) {
+        document.getElementById('profileDescription').textContent = artistBio(window.currentArtist);
+      }
+      if (typeof creatorDialog !== 'undefined' && creatorDialog.open && window.currentCreatorName) {
+        const cdj = artistsData.find(a => a.name === window.currentCreatorName);
+        if (cdj) document.getElementById('crBio').textContent = tr('creatorBio', 'Creador de mundos de VRChat.') + (cdj.bio ? '\n\n' + artistBio(cdj) : '');
+        document.querySelectorAll('#crWorlds .profile-link-btn').forEach(a => { a.textContent = tr('openWorld', 'Abrir en VRChat') + ' ↗'; });
+      }
 
       // Update the 'TODOS' pill and select option text
       const firstGenrePill = document.querySelector('.genre-pill');
