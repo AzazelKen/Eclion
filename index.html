@@ -601,7 +601,17 @@
     .profile h2 { margin: 12px 0 0; font: 700 clamp(26px, 3.2vw, 44px)/1.05 var(--display); letter-spacing: -0.06em; }
     .profile-genre { margin: 22px 0 0; padding-top: 14px; border-top: 1px solid var(--line); color: #ded4d1; font-size: 14px; line-height: 1.6; }
     .profile-genre b { display: block; margin-bottom: 6px; color: var(--muted); font: 500 9px var(--mono); letter-spacing: 0.12em; text-transform: uppercase; }
-    .profile-description { margin: 16px 0 0; color: #c2b5b3; font-size: 14px; line-height: 1.65; }
+    #creatorDialog { max-height: 92vh; overflow-y: auto; }
+    .worlds-section { padding: 0 clamp(28px, 4vw, 54px) clamp(28px, 4vw, 54px); }
+    .worlds-title { margin: 0 0 16px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--red-bright); font: 600 11px var(--mono); letter-spacing: 0.14em; text-transform: uppercase; }
+    .worlds-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+    .world-card { border: 1px solid var(--line); background: var(--surface-card); transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease); }
+    .world-card:hover { border-color: var(--red); box-shadow: 0 10px 30px rgba(250,53,41,0.22); }
+    .world-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; background: #160c0d; }
+    .world-card div { padding: 12px; }
+    .world-card h4 { margin: 0 0 10px; font: 700 14px/1.2 var(--display); color: #fff; }
+    #creatorAudio { position: fixed; left: -9999px; width: 220px; height: 220px; }
+    .profile-description { white-space: pre-line; margin: 16px 0 0; color: #c2b5b3; font-size: 14px; line-height: 1.65; }
     .profile-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 26px; }
     .profile-link-btn { padding: 9px 15px; border: 1px solid var(--red); background: var(--red-soft); color: #fff; font: 600 10px var(--mono); letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.25s var(--ease); }
     .profile-link-btn:hover { background: var(--red); color: #120405; }
@@ -721,6 +731,10 @@
             <span class="dock-item-num">05</span>
             <span data-i18n="navMedia">Media</span>
           </button>
+          <button class="dock-item" data-target="win-creadores" type="button">
+            <span class="dock-item-num">06</span>
+            <span data-i18n="navCreators">Creadores</span>
+          </button>
         </nav>
       </div>
     </div>
@@ -793,7 +807,7 @@
           <div class="shell hero-bottom">
             <div class="stat-grid">
               <div class="stat">
-                <strong>23</strong>
+                <strong>26</strong>
                 <span data-i18n="residentDjs">DJs Residentes</span>
               </div>
               <div class="stat">
@@ -848,7 +862,7 @@
                 <span class="person-role" data-i18n="founderOwnerDj">Fundador · Dueño · DJ</span>
                 <h3>AzazelKen</h3>
                 <a href="https://vrc.dj/azazelken" target="_blank" rel="noopener noreferrer">
-                  <span>Perfil VRC.DJ</span> ↗
+                  <span data-i18n="vrcdjProfile">Perfil VRC.DJ</span> ↗
                 </a>
               </div>
             </article>
@@ -887,14 +901,14 @@
                 <img src="https://i.imgur.com/2vRFIzz.png" alt="Raver!e">
                 <div>
                   <b>Raver!e</b>
-                  <span>Grupo VRChat ↗</span>
+                  <span><span data-i18n="vrcGroup">Grupo VRChat</span> ↗</span>
                 </div>
               </a>
               <a class="partner" href="https://vrc.group/KLTX.3860" target="_blank" rel="noopener noreferrer">
                 <img src="https://api.vrchat.cloud/api/1/file/file_ad4c2e77-6280-4a98-a3d1-c93b7f570ae3/1/file" alt="Kaultek">
                 <div>
                   <b>KAULTEK</b>
-                  <span>Grupo VRChat ↗</span>
+                  <span><span data-i18n="vrcGroup">Grupo VRChat</span> ↗</span>
                 </div>
               </a>
             </div>
@@ -963,7 +977,7 @@
       <div class="window-header">
         <div class="window-meta">
           <span class="window-badge">WIN // 04</span>
-          <span class="window-title-text" data-i18n="winTitleRoster">ROSTER OFICIAL DE DJS · 23 ARTISTAS</span>
+          <span class="window-title-text" data-i18n="winTitleRoster">ROSTER OFICIAL DE DJS · 26 ARTISTAS</span>
           <span class="window-status-pill">[VRC.DJ DIRECTORY ACTIVE]</span>
         </div>
         <div class="window-controls">
@@ -978,9 +992,7 @@
             <div>
               <p class="eyebrow" data-i18n="officialRoster">Roster Oficial & Explorador</p>
               <h2 class="section-heading"><span data-i18n="residents">DJs Residentes</span><br><span data-i18n="ofEclion">de Eclion.</span></h2>
-              <p class="section-copy">
-                Filtra los artistas por tus sonidos o estilos favoritos, o busca directamente por nombre:
-              </p>
+              <p class="section-copy" data-i18n="filterCopy">Filtra los artistas por tus sonidos o estilos favoritos, o busca directamente por nombre:</p>
             </div>
             <div class="roster-tools">
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="6"></circle><path d="m16 16 4 4"></path></svg>
@@ -997,8 +1009,9 @@
             <div class="genre-pills" id="genrePills"></div>
           </div>
 
-          <!-- 23 Resident DJs Grid (Including KARASUTA custom image) -->
+          <!-- 26 Resident DJs Grid (Including KARASUTA custom image) -->
           <div class="roster-grid" id="rosterGrid"></div>
+
         </div>
       </div>
     </article>
@@ -1015,6 +1028,7 @@
         </div>
         <div class="window-controls">
           <button class="win-btn prev-win-btn" type="button" title="Ventana anterior" data-jump="win-roster">◀</button>
+          <button class="win-btn next-win-btn" type="button" title="Siguiente ventana" data-jump="win-creadores">▶</button>
           <button class="win-btn close-btn" type="button" title="Volver a Inicio" data-jump="win-inicio">✕</button>
         </div>
       </div>
@@ -1081,6 +1095,32 @@
       </div>
     </article>
 
+    <!-- WINDOW 06: CREADORES DE CONTENIDO -->
+    <article class="eclion-window" id="win-creadores" data-window-id="win-creadores">
+      <div class="window-header">
+        <div class="window-meta">
+          <span class="window-badge">WIN // 06</span>
+          <span class="window-title-text" data-i18n="winTitleCreators">CREADORES DE CONTENIDO · MUNDOS VRCHAT</span>
+          <span class="window-status-pill">[VRCHAT WORLDS]</span>
+        </div>
+        <div class="window-controls">
+          <button class="win-btn prev-win-btn" type="button" title="Ventana anterior" data-jump="win-media">◀</button>
+        </div>
+      </div>
+      <div class="window-content">
+        <div class="shell">
+          <div class="reveal in-view">
+            <p class="eyebrow" data-i18n="creatorsEyebrow">Creadores de Contenido</p>
+            <h2 class="section-heading"><span data-i18n="creatorsTitle">Creadores de mundos.</span></h2>
+          </div>
+          <div class="roster-grid" id="creatorsGrid">
+            <div class="dj-card" data-creator="AzazelKen"><img alt="AzazelKen" loading="lazy"><div class="dj-card-content"><span class="dj-card-tag" data-i18n="worldCreatorRole">CREADOR DE MUNDOS</span><h3>AzazelKen</h3><p></p></div></div>
+            <div class="dj-card" data-creator="pat fenis_"><img alt="pat fenis_" loading="lazy"><div class="dj-card-content"><span class="dj-card-tag" data-i18n="worldCreatorRole">CREADOR DE MUNDOS</span><h3>pat fenis_</h3><p></p></div></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
   </main>
 
   <!-- ========================================================= -->
@@ -1098,9 +1138,9 @@
         </p>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 ECLION / Todos los derechos reservados</span>
+        <span data-i18n="rights">© 2026 ECLION / Todos los derechos reservados</span>
         <div class="footer-social">
-          <a href="mailto:hispaeclion@gmail.com">Contacto</a>
+          <a href="mailto:hispaeclion@gmail.com" data-i18n="contact">Contacto</a>
           <a href="https://discord.com/invite/ZTxBPGDVWq" target="_blank" rel="noopener noreferrer">Discord</a>
           <a href="https://www.instagram.com/ecli.on.ofcl/" target="_blank" rel="noopener noreferrer">Instagram</a>
           <a href="https://www.tiktok.com/@eclionvr?lang=es" target="_blank" rel="noopener noreferrer">TikTok</a>
@@ -1138,11 +1178,30 @@
 
   <!-- Autoplay Unlock Modal / Toast -->
   <div class="audio-toast" id="audioToast" style="display:none">
-    <span>🔊 Pulsa aquí para activar la experiencia sonora</span>
-    <button type="button" id="enableAudioBtn">ACTIVAR SONIDO</button>
+    <span data-i18n="audioHint">🔊 Pulsa aquí para activar la experiencia sonora</span>
+    <button type="button" id="enableAudioBtn" data-i18n="audioBtn">ACTIVAR SONIDO</button>
   </div>
 
   <!-- DJ Detail Modal Dialog -->
+  <dialog id="creatorDialog">
+    <div class="profile">
+      <div class="profile-image"><img id="crImage" src="" alt=""></div>
+      <div class="profile-copy">
+        <button class="dialog-close" id="crClose" type="button" aria-label="×">×</button>
+        <span class="profile-role" data-i18n="worldCreatorRole">CREADOR DE MUNDOS</span>
+        <h2 id="crName"></h2>
+        <div class="profile-genre"><b data-i18n="genresLabel">Géneros</b><span id="crGenre"></span></div>
+        <p class="profile-description" id="crBio"></p>
+        <div class="profile-links" id="crLinks"></div>
+      </div>
+    </div>
+    <div class="worlds-section">
+      <h3 class="worlds-title" data-i18n="worldsTitle">Mundos</h3>
+      <div class="worlds-grid" id="crWorlds"></div>
+    </div>
+  </dialog>
+  <div id="creatorAudio" aria-hidden="true"></div>
+
   <dialog id="profileDialog">
     <div class="profile">
       <div class="profile-image" id="profileImageWrapper">
@@ -1150,10 +1209,10 @@
       </div>
       <div class="profile-copy">
         <button class="dialog-close" id="closeDialogBtn" type="button" aria-label="Cerrar perfil">×</button>
-        <span class="profile-role">DJ Resident / ECLION</span>
+        <span class="profile-role" data-i18n="profileRole">DJ Resident / ECLION</span>
         <h2 id="profileName">Artist Name</h2>
         <div class="profile-genre">
-          <b>Géneros</b>
+          <b data-i18n="genresLabel">Géneros</b>
           <span id="profileGenre">Genre details</span>
         </div>
         <p class="profile-description" id="profileDescription">Biography & Info</p>
@@ -1296,28 +1355,31 @@
 
     // --- 5. ARTISTS DATA & MODAL SYSTEM (WITH KARASUTA CUSTOM IMAGE) ---
     const artistsData = [
-      { name: 'AzazelKen', image: 'https://api.vrchat.cloud/api/1/file/file_98da1e47-010c-47ce-82ff-4ed7fb65af15/1/', genre: 'Hard techno · hardstyle · uptempo · frenchcore · dubstep · gabber', tag: 'FOUNDER / DJ', links: [['YouTube', 'https://www.youtube.com/@AzazelKenDJ'], ['VRC.DJ', 'https://vrc.dj/azazelken']], bio: 'DJ, productor y fundador de ECLION. Creador de la experiencia inmersiva visual, de diseño y estética sonora de la comunidad.' },
+      { name: 'AzazelKen', image: 'https://i.imgur.com/qtsR1NW.png', genre: 'Industrial techno · industrial terror · hard techno · hardstyle · hard dance · extra raw · extratone · uptempo · slowtempo · frenchcore · gabber · terrorcore · speedcore · mentalcore · doomcore · tekno · bochka · hardbass · riddim · tearout · dubstep · cyberpunk · underground', tag: 'FOUNDER / DJ', links: [['YouTube', 'https://www.youtube.com/@AzazelKenDJ'], ['VRC.DJ', 'https://vrc.dj/azazelken']], bio: 'DJ, productor y fundador de ECLION. Creador de la experiencia inmersiva visual, de diseño y estética sonora de la comunidad.' },
       { name: 'Chiquiboo', image: 'https://i.imgur.com/9362Ygo.png', genre: 'Hard industrial techno · hard techno', tag: 'CO-OWNER / DJ', links: [['Twitch', 'https://www.twitch.tv/cakedfaceboo']], bio: 'Co-propietaria de ECLION y DJ residente enfocada en el Industrial Techno duro e hipnótico.' },
       { name: 'Raver_Lulamoon', image: 'https://i.imgur.com/Q0i1anB.png', genre: 'UK hardcore · powerstomp · makina · happy hardcore · trance', tag: 'CO-OWNER / DJ', links: [['YouTube', 'https://www.youtube.com/@RVRDJ']], bio: 'Pionera del UK Hardcore, Makina y Powerstomp con energía pura para la pista de baile.' },
       { name: 'Anal_Rampage', image: 'https://api.vrchat.cloud/api/1/image/file_963999e1-abe3-4a68-a1b5-1e68ec11be62/2/1024', genre: 'Hard techno · riddim · tearout · metalstep · deathstep', tag: 'RESIDENT DJ', links: [['YouTube', 'https://www.youtube.com/@Anal_Rampage696']], bio: 'Especialista en Hard Techno, Riddim y Tearout agresivo.' },
-      { name: 'Mellana', image: 'https://api.vrchat.cloud/api/1/image/file_43052fbc-12df-4c54-85fa-e1370ca5ebbb/1/1024', genre: 'Hard dance · rawstyle · hard techno · microwave', tag: 'RESIDENT DJ', links: [['YouTube', 'https://www.youtube.com/@oracion621']], bio: 'Melodía y contundencia en una fusión única de estilos hard y rawstyle.' },
+      { name: 'Mellana', image: 'https://api.vrchat.cloud/api/1/image/file_43052fbc-12df-4c54-85fa-e1370ca5ebbb/1/1024', genre: 'Rawstyle · Deutscher Krach', tag: 'RESIDENT DJ', links: [['YouTube', 'https://www.youtube.com/@oracion621']], bio: 'Melodía y contundencia en una fusión única de estilos hard y rawstyle.' },
       { name: 'ElPutoPuto', image: 'https://yt3.googleusercontent.com/GuvXjqwP0c-MRSdQt7mzddU5Lb1DEurvvUpqAJfsN3xrrfXhTC8_5qhQnidbzwgCRLvsWjsS=s160-c-k-c0x00ffffff-no-rj', genre: 'Techno · tekno · acid core · mental core · hardcore · DnB', tag: 'RESIDENT DJ', links: [['YouTube', 'https://www.youtube.com/@ElPutoPutodj']], bio: 'Amante de la cultura free party y sonidos underground tekno/acid.' },
       { name: 'SynHaptX Fire', image: 'https://api.vrchat.cloud/api/1/image/file_49e37070-b4ef-4749-ac48-0707db2982e2/1/1024', genre: 'Dubstep · metalstep · tearout', tag: 'RESIDENT DJ', links: [['YouTube', 'https://www.youtube.com/@synhaptxfire']], bio: 'Bajos pesados, dubstep destructivo y breaks agresivos.' },
       { name: '¦~ＰＩＫＹＥＳ~¦', image: 'https://api.vrchat.cloud/api/1/file/file_601dcfc1-bbc1-417a-b2f7-80b47a127c05/1', genre: 'Oldschool rave · hardcore · gabber · terrorcore · breakbeat · DnB', tag: 'RESIDENT DJ', links: [['YouTube', 'https://www.youtube.com/@Pikyes']], bio: 'Rave oldschool, Gabber clásico y cultura hardcore sin concesiones.' },
       { name: 'Rylinso', image: 'https://api.vrchat.cloud/api/1/image/file_03fdcd95-4f2b-4838-bbd2-28d1372c2df1/1/256', genre: 'Bruit · breakcore · hardcore · frenchcore · hardtechno', tag: 'RESIDENT DJ', links: [['SoundCloud', 'https://soundcloud.com/rylinso']], bio: 'Propuesta Bruit oscura, poética y demoledora.' },
       { name: 'VictoriaŅice', image: 'https://api.vrchat.cloud/api/1/image/file_ee99725e-12fa-4e34-9e66-86f0fec0201f/1/256', genre: 'House · techno · breakbeat · hardstyle · dubstep · DnB · J-core', tag: 'RESIDENT DJ', links: [['YouTube', 'https://www.youtube.com/@victorianicee']], bio: 'DJ de energía cósmica y sets de alta potencia ecléctica.' },
       { name: 'DJ Luna K', image: 'https://i.imgur.com/JNOfdmG.png', genre: 'Funky house · bass house · trance · techno · hardstyle · DnB', tag: 'RESIDENT DJ', links: [['SoundCloud', 'https://soundcloud.com/dj-luna-k']], bio: 'VTuber y DJ experimentada con predilección por el Bass House y Trance.' },
-      { name: 'pat fenis_', image: 'https://api.vrchat.cloud/api/1/file/file_8c9f791b-9874-4cb2-87a8-120805661f32/1/', genre: 'Hard dance · hardstyle · hard techno', tag: 'RESIDENT DJ', links: [], bio: 'Grooves electrónicos agresivos y entrega total al ritmo.' },
+      { name: 'pat fenis_', image: 'https://i.imgur.com/qCU64px.png', genre: 'Hard dance · hardstyle · hard techno', tag: 'RESIDENT DJ', links: [], bio: 'Grooves electrónicos agresivos y entrega total al ritmo.' },
       { name: 'usbc', image: 'https://api.vrchat.cloud/api/1/file/file_9c89ec4e-dec2-4825-bf6f-35384dbcf33b/1/', genre: 'Hardcore · techno · drum & bass', tag: 'RESIDENT DJ', links: [], bio: 'Bajo el velo cibernético se oculta la máquina devoradora de pistas.' },
       { name: 'companda', image: 'https://i.imgur.com/E6rQFEj.png', genre: 'Hard techno · hardstyle · uptempo', tag: 'RESIDENT DJ', links: [], bio: 'Drops impactantes, técnica de cuatro canales y pura euforia.' },
       { name: 'KARASUTA', image: 'https://i.imgur.com/RkuO11T.png', genre: 'Industrial · hard techno · hardcore', tag: 'RESIDENT DJ', links: [], bio: 'DJ de la Galaxia Púrpura especializado en Dubstep, Industrial y ritmos agresivos.' },
-      { name: 'asphyx', image: 'https://i.imgur.com/IAV8RTL.jpeg', genre: 'Schranz · hard techno · tekk · hardbounce · frenchcore · uptempo', tag: 'RESIDENT DJ', links: [], bio: 'Fusión de Schranz emocional, Tekk y Frenchcore contundente.' },
+      { name: 'asphyx', image: 'https://i.imgur.com/AI9B2Nv.png', genre: 'Krach · hardtrance · krachtekk', tag: 'RESIDENT DJ', links: [], bio: 'Fusión de Schranz emocional, Tekk y Frenchcore contundente.' },
       { name: 'DarklouXxX', image: 'https://i.imgur.com/UgnngEI.png', genre: 'Hardcore · frenchcore · hardtek · hard techno · terrorcore', tag: 'RESIDENT DJ', links: [['Website', 'https://www.darkvolt.fr/']], bio: 'Trayectoria junto a leyendas de la escena Hardcore internacional.' },
       { name: 'Zhukii..', image: 'https://i.imgur.com/e9C9y0o.png', genre: 'Hardstyle · hard techno · industrial techno · uptempo · riddim', tag: 'RESIDENT DJ', links: [], bio: 'Fuerza bruta y ritmos industriales de Santa Cruz.' },
       { name: 'YGMNAniki', image: 'https://i.imgur.com/gb7WNBR.png', genre: 'Psytrance · crossbreed · skullstep · industrial · hardcore', tag: 'RESIDENT DJ', links: [['SoundCloud', 'https://soundcloud.com/ygmnaniki']], bio: 'Exploración de BPMs extremos, Crossbreed y Skullstep.' },
-      { name: 'DJ Dolo✰', image: 'https://i.imgur.com/tRRlVo9.jpeg', genre: 'J-core · happy hardcore · nightcore · breakcore · speedcore', tag: 'RESIDENT DJ', links: [['SoundCloud', 'https://soundcloud.com/user-585695727']], bio: 'Sonidos veloces influenciados por Rhythm Games y la cultura J-Core.' },
+      { name: 'DJ Dolo✰', image: 'https://i.imgur.com/PoDcGIP.png', genre: 'J-core · happy hardcore · nightcore · breakcore · speedcore · hands up · rhythm', tag: 'RESIDENT DJ', links: [['SoundCloud', 'https://soundcloud.com/user-585695727']], bio: 'Sonidos veloces influenciados por Rhythm Games y la cultura J-Core.\n\n☆Hi I\'m Dolo a.k.a DJ Dolo! I am a DJ from London UK and I love Hands Up, Nightcore, Happy Hardcore, J Core and Rhythm game music!\n\n☆This is all my passion and I love to share it with people!' },
       { name: 'Eternal September', image: 'https://i.imgur.com/c5r82J5.jpeg', genre: 'Underground', tag: 'RESIDENT DJ', links: [], bio: 'Sonidos oscuros e inexplorados de la escena underground.' },
-      { name: 'Nohde', image: 'https://i.imgur.com/9uws00s.png', genre: 'Breakcore · EDM · dubstep · deathstep · uptempo · hardstyle · gabber', tag: 'RESIDENT DJ', links: [], bio: 'Sets impredecibles, frescos y de altísima velocidad.' }
+      { name: 'Nohde', image: 'https://i.imgur.com/9uws00s.png', genre: 'Breakcore · EDM · dubstep · deathstep · uptempo · hardstyle · gabber', tag: 'RESIDENT DJ', links: [], bio: 'Sets impredecibles, frescos y de altísima velocidad.' },
+      { name: 'YumaSilver', image: 'https://i.imgur.com/bY3aJe0.png', genre: 'Death metal · hardstyle · hardtech · happy hardcore · lofi chill · techno · drum and bass · house · bounce · EDM · eurobeat', tag: 'RESIDENT DJ', links: [['Sesiones', 'https://nx80503.your-storageshare.de/s/LdcsyTncmCNPNfy'], ['Website', 'https://yumasliver.eu/']], bio: 'Soy un humilde ser al que le encanta la música, sobre todo ejercer de DJ. Llevo unos pocos años dedicándome a este hobby de manera no profesional.\n\nAdoro los retos musicales, aprender nuevos géneros y crear nuevas sesiones.\n\nSuelo pinchar house, bounce, EDM, eurobeat, memes, hardstyle, hardtechno, techno, drum and bass y otros subgéneros.' },
+      { name: 'Dwhale', image: 'https://i.imgur.com/NF09sxw.png', genre: 'Drum and bass · frenchcore · gabber · hard industrial · hard techno · hardstyle · microwave · rawstyle · uptempo', tag: 'RESIDENT DJ', links: [['SoundCloud', 'https://soundcloud.com/dwhale1']] },
+      { name: 'Sperto', image: 'https://i.imgur.com/pCkk090.png', genre: 'Dubstep · psytrance · hi-tech · progressive psy · full on · tech house', tag: 'RESIDENT DJ', links: [['X', 'https://x.com/djsperto'], ['Mixcloud', 'https://www.mixcloud.com/djsperto/'], ['Instagram', 'https://www.instagram.com/djsperto/']], bio: 'Energía y ritmos contundentes y atmósferas envolventes. Su estilo combina grooves hipnóticos, sonidos psicodélicos y bajos potentes, llevándote por un viaje que conecta con la intensidad.' }
     ];
 
     const rosterGrid = document.getElementById('rosterGrid');
@@ -1330,7 +1392,7 @@
     function renderRoster(items) {
       rosterGrid.innerHTML = '';
       if (items.length === 0) {
-        rosterGrid.innerHTML = '<div style="grid-column:1/-1;padding:40px;text-align:center;color:var(--muted);font:500 12px var(--mono)">NO SE ENCONTRARON ARTISTAS CON ESA BÚSQUEDA</div>';
+        rosterGrid.innerHTML = '<div style="grid-column:1/-1;padding:40px;text-align:center;color:var(--muted);font:500 12px var(--mono)">' + ((window.currentDict && window.currentDict.noResults) || 'NO SE ENCONTRARON ARTISTAS CON ESA BÚSQUEDA') + '</div>';
         return;
       }
 
@@ -1447,6 +1509,75 @@
 
     renderRoster(artistsData);
 
+    // --- 5b. CREADORES (pestaña + popup) ---
+    const creatorWorlds = {"AzazelKen": [{"name": "Rave Container", "image": "https://files.vrchat.cloud/World-Container-Image-2022322f1_.file_3a0afd85-b48c-4832-9b1e-97eca72b288b.3.png?Expires=1795046400&Key-Pair-Id=K3JAQ0Y971TV2Z&Signature=G5HIJOJ1-lZObaV0uwxzOmkcOilpcjHZQeyim5Av5lpljo8qCeu5yHGTgrSdWGV5abPiypUh-UKSs0p7~hq6UJcmsywsLz~oMnHxn~vbHz1NY9mr~RuZ1gZNoS3LBhniazHqXIc6SIdA~~Zo1SGyZHTJZTPP2S2jTr9aG59BEPb~TOlVIe9M4sK-EA5s6c6EHM0g99T72LO6f4u1ImA47FYqYCbIrfUfrzPoMyqyd6bCp~00OvP5u8dnICi4kUuFfN3qE9HTR-NLktacYiOUdWv6vTO-cx0Xq1skO1qo7ZAL4hMQXoWrvEROwUa-rskN6mVYUfdeif3xSuuNI58Rkw__", "url": "https://vrchat.com/home/world/wrld_f8f1bf51-abb4-44c6-ad65-27412a88c2af/info"}, {"name": "Train Lulamoon 2․0", "image": "https://files.vrchat.cloud/World-Train-Lulamoon-Image-20223.file_04545bd5-1a08-48d8-b544-14b51826e542.1.png?Expires=1795046400&Key-Pair-Id=K3JAQ0Y971TV2Z&Signature=AxVX-NZ95e9oYrczC1DO68hqYClB0keS6GJyfNlXltnRwp3FMXJKew7XQE0choHRAim0LbIGurFZ-V7iLS~fii3ZYCBZ8ZjBCVmz3xvX7nIX9Cm1RbbzLKu5JTcRj-zkR4GDYlW6ZZyYjf4ssrALXhoUukLrjZmd8Dn04zGA5K~q5vOx3YHn3wA3iadNBmTu9xlbEcSTOQceOazXsPsnwAqEGh06wYLwZ7f0tkSruXn~tZNqLrGrhkbOyY8tk7SH85eKqUYaLbxYyGZkCE~DaUKI~GmKB6dtY71J4Zz5io74YGTr5jBvH6XZwVwrysdYco-NGO6c~2OI2G1yckHmyQ__", "url": "https://vrchat.com/home/world/wrld_b6389dd1-aba8-4276-8fbb-4782e6c93859/info"}, {"name": "Bunker - Eclion", "image": "https://files.vrchat.cloud/World-Bunker-Alpha-Image-2022322.file_df63c156-68e0-42d8-bdda-882bc3a6adad.3.png?Expires=1795046400&Key-Pair-Id=K3JAQ0Y971TV2Z&Signature=BQfHqWIxshwnJRVt2jreu-TGLc3vJiDFQj7J-d7i~aKaNB1eZHGBA6fz3icFoD7dx5RrLkB90MYASGUznexKc-jn5iPPgCQOuFLMPpG1DUsX389K5SVW0TPLehZ-B6VWp3Ms4lFp~AjRGvK5i6mZkOgn9Mh6FaKmKgaK-0AcngeWTCPOvxkNxi7VjvGQxs-Baf02uIbLXNU2aL5Tj9jvVxpgYSqQves15IKvXj75v9jIwVn3r28fC4GAyyDntqbreZUUfTv1dkT~d1zYNDJXKVrceq0P7ch~SJ0e0BfBxEhzLuhbz7U6gTvplsJk2U3IrEjHa9HtrX9IfusX3s3ONA__", "url": "https://vrchat.com/home/world/wrld_dde04db7-6ab6-4582-92c9-543b685c5df4/info"}, {"name": "RITUAL⁄⁄VØID", "image": "https://files.vrchat.cloud/World-RITUALVOID-Image-2022322f1.file_18318671-09bb-46bc-9901-10bdeb09f11c.1.png?Expires=1795046400&Key-Pair-Id=K3JAQ0Y971TV2Z&Signature=g4yqpshA5VqAz3uW5jkRx9YpYxQNcnmCFvElzEH842GN2flMWczmd-o1OOHcPs5plqvRBAghibDg6Ve6cQEeT87~W415ckDAv~cW7Yf9PV1Zzxr9OUEQXZqHp2R29sCjMstWMX4TKt9JhfB9Zx9UyJllaoznT3H5YatvTufZyyscBPoGwWqaKRCK-yYWhPIZViDITZU5CYWYtI-a~cq8X~VXFk3~NZGAzq7ph4I28RoS0vbMORoAyAeQ-hIGLoUQmwlCGTB~sWwLu-0uIXUVSAqDHmeMFtlFiv84H9FZYSFKDmyVFyHUEQCHrl1yvMyFeau3~~w44Z5zdcqaMttPNw__", "url": "https://vrchat.com/home/world/wrld_ec96c053-6175-400f-8511-545082edfc57/info"}, {"name": "Eclion Club", "image": "https://files.vrchat.cloud/World-Eclion-Club-Image-2022322f.file_a1cab241-205f-4bd1-b12b-cf55d3a403da.3.png?Expires=1795046400&Key-Pair-Id=K3JAQ0Y971TV2Z&Signature=cenOdSGQEGqtCsXFEhSJ1VU9mwVNHRTUdGkW1etRV~Gvw~oWCP6cEUM4s04yMljskZPtwGbfNktk4aD3H9HGmhgzz0K5I4RY9CX-02ja1QRbdEGky9ufJcgDw4RB5aa0mCnn9-SGE25568lJTgIvQJeL1Vm2UE3uRg0Ti~9VK3RfC8YZ7gXHfdrggEz6XvSWPfQjV2kGqlkaKTRX7kuurIDQcOjmBMslBIkj5L6MYVF7AnYNShlinOxhVI3lMVknsKBmc0DrL9WwzYb6FJWeP2AIhMo-3EcNDD40xqY0M~MgwbyvbVwPWH51nkuwWmKO1B0vVxYVMiM~q69Gh5bkMg__", "url": "https://vrchat.com/home/world/wrld_94bbac41-3898-42e8-9e5d-0cb2c7845e88/info"}], "pat fenis_": [{"name": "Rave Asylum", "image": "https://files.vrchat.cloud/World-Rave-Asylum-Image-2022322f.file_64e32e99-f6bf-4fa1-94ba-b7fbd5d03df9.1.png?Expires=1795046400&Key-Pair-Id=K3JAQ0Y971TV2Z&Signature=SRZ~YRG3MJSD7-gZLULPhK24lywc~oJrPlwgOFQ37YMdG34KoyJt6xMxQ8Hd112GzeBL3looqL3cQnGPBNHxSqQJ4eTER5D5GGKYI-70IzXdUCL10SYijW8psM74fOcqa6WkjIiJEG7A7Xu5cr0OLFz9nFHNUOyB745POG8IOGPDuQd9cMoTI4TEeOKnz-MVHrzfQ7GpG0ixo8d-mruknlskZtGVu7TSX7WzfY~DlBxees6DYM4fKwoM01SNVu5wc2hvW1kO4B2TwIXraqNyr2cl5PE~NY9TnTD2boM3~My~oC8o-lvlLMEkNPSVLPhx9UGqWzQxWT1n96YbmcYUHg__", "url": "https://vrchat.com/home/world/wrld_6a0d188b-4280-42c3-be6e-27efc9bcb73b/info"}, {"name": "Nostalgia", "image": "https://files.vrchat.cloud/World-Nostalgia-Image-2022322f1_.file_f2421fee-8e57-47e2-9f2c-9556ceaeda64.3.png?Expires=1795046400&Key-Pair-Id=K3JAQ0Y971TV2Z&Signature=Fgsv~pDIWMwpc9JEBc~mLWmqQuS89uN6djjJ6Yfd~x~Ej~dWqAXicjR6SczFInFig-yl0CFd0nHrhQ1xGUyefY4uV~0BqdtjbL05hUfttBASN9bqniiKXJN-xafYW~6KjrMFTQO~LY7btgnQpjgKoCz4CjheZ84Cm81JCLExMrRv9jwSLQwmczRN-ELZ~PuFWCghGXPi1oWT6JdBAgSI35gbpcea4wUdyGYbtqggC4v9ieqe6XAze~kuJI7F9rPQNanZ5Nw~b5NCJhyP3S8JJVaK0Fxjjv-vMKm5lL94sDhTCsnd4iEQUumI76rZ8d-knk6-TB2dgWFsm5b26bMSdw__", "url": "https://vrchat.com/home/world/wrld_b9608e95-3756-4b5a-8005-dc71067b9483/info"}, {"name": "Frankenstein's Laboratory", "image": "https://files.vrchat.cloud/World-Frankenstein's-Laboratory-.file_68b7c9f8-f059-4b78-a063-e5a65ec73d4b.2.png?Expires=1795046400&Key-Pair-Id=K3JAQ0Y971TV2Z&Signature=JQuFD8k46zXfBnyalTTMWP4qfFOydIURZLDGL3Z8HxTwsrt8HfUO~kBtk1d-idxzYFYRKpJHe7seDaKAf6-W0mgA8GkjwFtSYqPzAD53h0LRi~Q9RA3bf0DPL0V8WnI6X1HTQZzG9HadCOT7tS~xZ9FMkX~ZMl0HfAzMubBXY0J6542EEXspir-pKSBatxx0JnVfNdjmNKe0DWzmJfQpBP2~QNuLqrtsn7TG3es0SfYofDcRhZP5BAUsOgejz4zQ5sUT-tpF8cUYRo8JKsx4CaKaunKLsmiDZ4F9M5kuALn8m1PjdEr-GHYt9vVHO0yyIOC1ftO3Zurp9iCAu7Z9Ww__", "url": "https://vrchat.com/home/world/wrld_535c5ec5-832e-40e3-8470-45465482e65c/info"}, {"name": "Jakyll ＆ Vybe Labs", "image": "https://files.vrchat.cloud/World-jnv-Image-2022322f1_4_stan.file_fc12005c-589b-4426-8aa8-387300a2f455.3.png?Expires=1795046400&Key-Pair-Id=K3JAQ0Y971TV2Z&Signature=V-I5hhYKClvdqW-J93u5FRG-jB-MSWn~JOU89dIQBkEAKY0b8YKXj8JzVU0df7GeeNZZK-rvgFdqbd-FVZBirbiOb32eP3N5bAp5YTVoGxufNOllYpO0Eif8zhON-O2ltvqsm5iDxxknNT50c4rVY9D~uFzBtnFNnm3AN4ceLSVRsOAgGjpHb8UEFChGRwdOYm7oxYFGjj7Alu5q2NYT7OwaCtPfhMPuLHW5nD9mylGwKYUZtmUuXtT3nzYMg0dKm39YlP1As4aQYBsEbit8SfNrZVwIo4Z3mAcKW4Pl-drEfxz6lAYc2sU1xrMpMQlP5K3a2IyyDAqMFu91dhqQ1g__", "url": "https://vrchat.com/home/world/wrld_8d1c7c08-1bbd-4d03-9c11-232cb1bafceb/info"}]};
+    const creatorAudio = { 'pat fenis_': { id: 'WaaXMwvfB6w', start: 1 } };
+    const creatorDialog = document.getElementById('creatorDialog');
+    const crTr = (k, fb) => (window.currentDict && window.currentDict[k]) || fb;
+    let bgWasPlaying = false;
+
+    function stopCreatorAudio() {
+      document.getElementById('creatorAudio').innerHTML = '';
+      const bg = document.getElementById('backgroundAudio');
+      if (bgWasPlaying && bg) { bg.play().catch(() => {}); }
+      bgWasPlaying = false;
+      document.body.classList.remove('modal-open');
+    }
+
+    function openCreator(name) {
+      const dj = artistsData.find(a => a.name === name);
+      if (!dj) return;
+      document.getElementById('crImage').src = dj.image;
+      document.getElementById('crName').textContent = dj.name;
+      document.getElementById('crGenre').textContent = dj.genre;
+      document.getElementById('crBio').textContent = crTr('creatorBio', 'Creador de mundos de VRChat.') + '\n\n' + (dj.bio || '');
+      const links = document.getElementById('crLinks');
+      links.innerHTML = '';
+      (dj.links || []).forEach(([label, url]) => {
+        const a = document.createElement('a');
+        a.className = 'profile-link-btn'; a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+        a.textContent = label + ' ↗';
+        links.appendChild(a);
+      });
+      const grid = document.getElementById('crWorlds');
+      grid.innerHTML = '';
+      (creatorWorlds[name] || []).forEach(w => {
+        const card = document.createElement('article');
+        card.className = 'world-card';
+        const img = document.createElement('img');
+        img.src = w.image; img.alt = w.name; img.loading = 'lazy';
+        img.onerror = () => { img.src = 'https://i.imgur.com/uCTbj9G.png'; };
+        const box = document.createElement('div');
+        const h = document.createElement('h4'); h.textContent = w.name;
+        const a = document.createElement('a');
+        a.className = 'profile-link-btn'; a.href = w.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+        a.textContent = crTr('openWorld', 'Abrir en VRChat') + ' ↗';
+        box.append(h, a); card.append(img, box); grid.appendChild(card);
+      });
+      const au = creatorAudio[name];
+      if (au) {
+        const bg = document.getElementById('backgroundAudio');
+        if (bg && !bg.paused) { bgWasPlaying = true; bg.pause(); }
+        document.getElementById('creatorAudio').innerHTML = '<iframe width="220" height="220" src="https://www.youtube.com/embed/' + au.id + '?autoplay=1&start=' + au.start + '&playsinline=1&rel=0" allow="autoplay; encrypted-media" title="audio"></iframe>';
+      }
+      creatorDialog.showModal();
+      creatorDialog.scrollTop = 0;
+      document.body.classList.add('modal-open');
+    }
+
+    document.querySelectorAll('[data-creator]').forEach(card => {
+      const dj = artistsData.find(a => a.name === card.dataset.creator);
+      if (dj) { card.querySelector('img').src = dj.image; card.querySelector('p').textContent = 'DJ · ' + dj.genre; }
+      card.addEventListener('click', () => openCreator(card.dataset.creator));
+    });
+    document.getElementById('crClose').addEventListener('click', () => creatorDialog.close());
+    creatorDialog.addEventListener('close', stopCreatorAudio);
+    creatorDialog.addEventListener('click', (e) => {
+      const r = creatorDialog.getBoundingClientRect();
+      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) creatorDialog.close();
+    });
+
+
     // --- 7. MULTI-WINDOW MANAGER & DOCK (ECLION WINDOW DECK) ---
     const dockItems = document.querySelectorAll('.dock-item');
     const windows = document.querySelectorAll('.eclion-window');
@@ -1539,7 +1670,9 @@
         "winTitleHome": "TERMINAL DE ENTRADA · ECLION VIRTUAL",
         "winTitleTeam": "EL NÚCLEO & ALIANZAS OFICIALES",
         "winTitleCommunity": "NUESTRA FRECUENCIA · FILOSOFÍA RAVE",
-        "winTitleRoster": "ROSTER OFICIAL DE DJS · 23 ARTISTAS",
+        "winTitleRoster": "ROSTER OFICIAL DE DJS · 26 ARTISTAS",
+        "creatorsEyebrow": "Creadores de Contenido",
+        "creatorsTitle": "Creadores de mundos.",
         "winTitleMedia": "ECLIONVR · BAJO DEMANDA & ARCHIVO",
         "heroKicker": "Comunidad Rave VRChat · Transmisión Activa",
         "heroTitleOne": "El ritmo no",
@@ -1596,7 +1729,9 @@
         "winTitleHome": "INPUT TERMINAL · ECLION VIRTUAL",
         "winTitleTeam": "THE CORE & OFFICIAL PARTNERS",
         "winTitleCommunity": "OUR FREQUENCY · RAVE PHILOSOPHY",
-        "winTitleRoster": "OFFICIAL DJ ROSTER · 23 ARTISTS",
+        "winTitleRoster": "OFFICIAL DJ ROSTER · 26 ARTISTS",
+        "creatorsEyebrow": "Content Creators",
+        "creatorsTitle": "World creators.",
         "winTitleMedia": "ECLIONVR · ON DEMAND & ARCHIVE",
         "heroKicker": "VRChat Rave Community · Signal Active",
         "heroTitleOne": "The rhythm has",
@@ -1653,7 +1788,9 @@
         "winTitleHome": "TERMINAL D'ENTRÉE · ECLION VIRTUEL",
         "winTitleTeam": "LE NOYAU & PARTENAIRES OFFICIELS",
         "winTitleCommunity": "NOTRE FRÉQUENCE · PHILOSOPHIE RAVE",
-        "winTitleRoster": "ROSTER OFFICIEL DE DJS · 23 ARTISTES",
+        "winTitleRoster": "ROSTER OFFICIEL DE DJS · 26 ARTISTES",
+        "creatorsEyebrow": "Créateurs de Contenu",
+        "creatorsTitle": "Créateurs de mondes.",
         "winTitleMedia": "ECLIONVR · À LA DEMANDE & ARCHIVES",
         "heroKicker": "Communauté Rave VRChat · Signal Actif",
         "heroTitleOne": "Le rythme n'a",
@@ -1710,7 +1847,9 @@
         "winTitleHome": "EINGANGSTERMINAL · ECLION VIRTUELL",
         "winTitleTeam": "DER KERN & OFFIZIELLE PARTNER",
         "winTitleCommunity": "UNSERE FREQUENZ · RAVE-PHILOSOPHIE",
-        "winTitleRoster": "OFFIZIELLES DJ-ROSTER · 23 KÜNSTLER",
+        "winTitleRoster": "OFFIZIELLES DJ-ROSTER · 26 KÜNSTLER",
+        "creatorsEyebrow": "Content Creator",
+        "creatorsTitle": "Welten-Creator.",
         "winTitleMedia": "ECLIONVR · ON-DEMAND & ARCHIV",
         "heroKicker": "VRChat Rave-Community · Signal Aktiv",
         "heroTitleOne": "Der Rhythmus kennt",
@@ -1767,7 +1906,9 @@
         "winTitleHome": "TERMINAL DE ENTRADA · ECLION VIRTUAL",
         "winTitleTeam": "O NÚCLEO & PARCEIROS OFICIAIS",
         "winTitleCommunity": "NOSSA FREQUÊNCIA · FILOSOFIA RAVE",
-        "winTitleRoster": "ROSTER OFICIAL DE DJS · 23 ARTISTAS",
+        "winTitleRoster": "ROSTER OFICIAL DE DJS · 26 ARTISTAS",
+        "creatorsEyebrow": "Criadores de Conteúdo",
+        "creatorsTitle": "Criadores de mundos.",
         "winTitleMedia": "ECLIONVR · SOB DEMANDA & ARQUIVO",
         "heroKicker": "Comunidade Rave VRChat · Sinal Ativo",
         "heroTitleOne": "O ritmo não",
@@ -1824,7 +1965,9 @@
         "winTitleHome": "TERMINALE D'INGRESSO · ECLION VIRTUALE",
         "winTitleTeam": "IL NUCLEO & PARTNER UFFICIALI",
         "winTitleCommunity": "LA NOSTRA FREQUENZA · FILOSOFIA RAVE",
-        "winTitleRoster": "ROSTER UFFICIALE DJ · 23 ARTISTI",
+        "winTitleRoster": "ROSTER UFFICIALE DJ · 26 ARTISTI",
+        "creatorsEyebrow": "Creatori di Contenuti",
+        "creatorsTitle": "Creatori di mondi.",
         "winTitleMedia": "ECLIONVR · ON DEMAND & ARCHIVIO",
         "heroKicker": "Community Rave VRChat · Segnale Attivo",
         "heroTitleOne": "Il ritmo non",
@@ -1881,7 +2024,9 @@
         "winTitleHome": "入口终端 · ECLION 虚拟空间",
         "winTitleTeam": "核心团队与官方伙伴",
         "winTitleCommunity": "我们的频率 · 锐舞哲学",
-        "winTitleRoster": "官方DJ名单 · 23位艺术家",
+        "winTitleRoster": "官方DJ名单 · 26位艺术家",
+        "creatorsEyebrow": "内容创作者",
+        "creatorsTitle": "世界创作者。",
         "winTitleMedia": "ECLIONVR · 点播与归档",
         "heroKicker": "VRChat 锐舞社群 · 信号在线",
         "heroTitleOne": "节奏无",
@@ -1938,7 +2083,9 @@
         "winTitleHome": "入力ターミナル · ECLION 仮想空間",
         "winTitleTeam": "コアメンバー＆公式パートナー",
         "winTitleCommunity": "我々の周波数 · レイヴ哲学",
-        "winTitleRoster": "公式DJロスター · 23名",
+        "winTitleRoster": "公式DJロスター · 26名",
+        "creatorsEyebrow": "コンテンツクリエイター",
+        "creatorsTitle": "ワールドクリエイター。",
         "winTitleMedia": "ECLIONVR · オンデマンド＆アーカイブ",
         "heroKicker": "VRChat レイヴコミュニティ · 信号アクティブ",
         "heroTitleOne": "リズムに",
@@ -1995,7 +2142,9 @@
         "winTitleHome": "입력 터미널 · ECLION 가상 공간",
         "winTitleTeam": "핵심 팀 및 공식 파트너",
         "winTitleCommunity": "우리의 주파수 · 레이브 철학",
-        "winTitleRoster": "공식 DJ 로스터 · 23인",
+        "winTitleRoster": "공식 DJ 로스터 · 26인",
+        "creatorsEyebrow": "콘텐츠 크리에이터",
+        "creatorsTitle": "월드 크리에이터.",
         "winTitleMedia": "ECLIONVR · VOD & 아카이브",
         "heroKicker": "VRChat 레이브 커뮤니티 · 신호 활성",
         "heroTitleOne": "리듬에는",
@@ -2046,8 +2195,12 @@
 
     const languageSelect = document.getElementById('languageSelect');
 
+    const EXTRA_T = {"navCreators": ["Creadores", "Creators", "Créateurs", "Creators", "Criadores", "Creatori", "创作者", "クリエイター", "크리에이터"], "winTitleCreators": ["CREADORES DE CONTENIDO · MUNDOS VRCHAT", "CONTENT CREATORS · VRCHAT WORLDS", "CRÉATEURS DE CONTENU · MONDES VRCHAT", "CONTENT CREATOR · VRCHAT-WELTEN", "CRIADORES DE CONTEÚDO · MUNDOS VRCHAT", "CREATORI DI CONTENUTI · MONDI VRCHAT", "内容创作者 · VRCHAT 世界", "コンテンツクリエイター · VRCHATワールド", "콘텐츠 크리에이터 · VRCHAT 월드"], "worldCreatorRole": ["CREADOR DE MUNDOS", "WORLD CREATOR", "CRÉATEUR DE MONDES", "WELTEN-CREATOR", "CRIADOR DE MUNDOS", "CREATORE DI MONDI", "世界创作者", "ワールドクリエイター", "월드 크리에이터"], "creatorBio": ["Creador de mundos de VRChat.", "VRChat world creator.", "Créateur de mondes VRChat.", "VRChat-Welten-Creator.", "Criador de mundos do VRChat.", "Creatore di mondi VRChat.", "VRChat 世界创作者。", "VRChatワールドクリエイター。", "VRChat 월드 크리에이터."], "worldsTitle": ["Mundos", "Worlds", "Mondes", "Welten", "Mundos", "Mondi", "世界", "ワールド", "월드"], "openWorld": ["Abrir en VRChat", "Open in VRChat", "Ouvrir dans VRChat", "In VRChat öffnen", "Abrir no VRChat", "Apri in VRChat", "在 VRChat 中打开", "VRChatで開く", "VRChat에서 열기"], "genresLabel": ["Géneros", "Genres", "Genres", "Genres", "Gêneros", "Generi", "流派", "ジャンル", "장르"], "profileRole": ["DJ Residente / ECLION", "Resident DJ / ECLION", "DJ Résident / ECLION", "Resident-DJ / ECLION", "DJ Residente / ECLION", "DJ Residente / ECLION", "ECLION 驻场DJ", "ECLION レジデントDJ", "ECLION 레지던트 DJ"], "noResults": ["NO SE ENCONTRARON ARTISTAS CON ESA BÚSQUEDA", "NO ARTISTS FOUND FOR THAT SEARCH", "AUCUN ARTISTE TROUVÉ POUR CETTE RECHERCHE", "KEINE KÜNSTLER FÜR DIESE SUCHE GEFUNDEN", "NENHUM ARTISTA ENCONTRADO NESSA BUSCA", "NESSUN ARTISTA TROVATO PER QUESTA RICERCA", "未找到相关艺术家", "該当するアーティストが見つかりません", "검색 결과가 없습니다"], "filterCopy": ["Filtra los artistas por tus sonidos o estilos favoritos, o busca directamente por nombre:", "Filter artists by your favorite sounds or styles, or search directly by name:", "Filtrez les artistes par vos sons ou styles préférés, ou cherchez directement par nom :", "Filtere Künstler nach deinen Lieblingssounds oder -stilen oder suche direkt nach dem Namen:", "Filtre os artistas pelos seus sons ou estilos favoritos, ou busque diretamente pelo nome:", "Filtra gli artisti per suoni o stili preferiti, oppure cerca direttamente per nome:", "按你喜欢的声音或风格筛选艺术家，或直接按名称搜索：", "好きなサウンドやスタイルでアーティストを絞り込むか、名前で直接検索：", "좋아하는 사운드나 스타일로 아티스트를 필터링하거나 이름으로 직접 검색하세요:"], "contact": ["Contacto", "Contact", "Contact", "Kontakt", "Contato", "Contatti", "联系", "お問い合わせ", "문의"], "rights": ["© 2026 ECLION / Todos los derechos reservados", "© 2026 ECLION / All rights reserved", "© 2026 ECLION / Tous droits réservés", "© 2026 ECLION / Alle Rechte vorbehalten", "© 2026 ECLION / Todos os direitos reservados", "© 2026 ECLION / Tutti i diritti riservati", "© 2026 ECLION / 保留所有权利", "© 2026 ECLION / 全著作権所有", "© 2026 ECLION / 모든 권리 보유"], "audioHint": ["🔊 Pulsa aquí para activar la experiencia sonora", "🔊 Tap here to enable the sound experience", "🔊 Appuyez ici pour activer l’expérience sonore", "🔊 Hier tippen, um das Klangerlebnis zu aktivieren", "🔊 Toque aqui para ativar a experiência sonora", "🔊 Tocca qui per attivare l’esperienza sonora", "🔊 点击此处开启声音体验", "🔊 ここをタップしてサウンド体験をオン", "🔊 여기를 눌러 사운드 경험 켜기"], "audioBtn": ["ACTIVAR SONIDO", "ENABLE SOUND", "ACTIVER LE SON", "SOUND AKTIVIEREN", "ATIVAR SOM", "ATTIVA AUDIO", "开启声音", "サウンドON", "소리 켜기"], "vrcdjProfile": ["Perfil VRC.DJ", "VRC.DJ Profile", "Profil VRC.DJ", "VRC.DJ-Profil", "Perfil VRC.DJ", "Profilo VRC.DJ", "VRC.DJ 主页", "VRC.DJプロフィール", "VRC.DJ 프로필"], "vrcGroup": ["Grupo VRChat", "VRChat Group", "Groupe VRChat", "VRChat-Gruppe", "Grupo VRChat", "Gruppo VRChat", "VRChat 群组", "VRChatグループ", "VRChat 그룹"]};
+    ['es','en','fr','de','pt','it','zh','ja','ko'].forEach((l, i) => { Object.keys(EXTRA_T).forEach(k => { if (translations[l]) translations[l][k] = EXTRA_T[k][i]; }); });
+
     function applyLanguage(lang) {
       const dict = translations[lang] || translations.es;
+      window.currentDict = dict;
       languageSelect.value = lang;
 
       // Update text contents
