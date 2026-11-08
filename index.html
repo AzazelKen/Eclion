@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://i.imgur.com" crossorigin>
   <link rel="dns-prefetch" href="https://i.ytimg.com">
   <link rel="dns-prefetch" href="https://api.vrchat.cloud">
-  <link rel="preload" as="image" href="assets/images/1.webp">
+  <link rel="preload" as="image" href="https://i.imgur.com/cGtBO5v_d.webp?maxwidth=1600&fidelity=grand">
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
@@ -829,7 +829,7 @@
       <div class="window-content">
         <section class="hero" id="top">
           <div class="hero-slideshow" id="heroSlideshow" aria-hidden="true">
-            <div class="hero-slide active" id="heroSlideA" style="background-image: url('assets/images/1.webp')"></div>
+            <div class="hero-slide active" id="heroSlideA" style="background-image: url('https://i.imgur.com/cGtBO5v_d.webp?maxwidth=1600&fidelity=grand')"></div>
             <div class="hero-slide" id="heroSlideB"></div>
           </div>
           <div class="hero-grid-lines" aria-hidden="true"></div>
@@ -913,19 +913,19 @@
             </div>
             <div class="home-tiles">
               <button class="home-tile reveal" type="button" data-window-jump="win-roster" style="--d:0s">
-                <img src="assets/images/3.webp" alt="" loading="lazy">
+                <img src="https://i.imgur.com/ENCgEU3_d.webp?maxwidth=800&fidelity=grand" alt="" loading="lazy">
                 <span class="tile-arrow" aria-hidden="true">→</span>
                 <small>04 / Roster</small>
                 <strong data-i18n="navDjs">DJs Residentes</strong>
               </button>
               <button class="home-tile reveal" type="button" data-window-jump="win-creadores" style="--d:.1s">
-                <img src="assets/images/7.webp" alt="" loading="lazy">
+                <img src="https://i.imgur.com/VnsoShk_d.webp?maxwidth=800&fidelity=grand" alt="" loading="lazy">
                 <span class="tile-arrow" aria-hidden="true">→</span>
                 <small>05 / VRChat Worlds</small>
                 <strong data-i18n="navCreators">Creadores</strong>
               </button>
               <button class="home-tile reveal" type="button" data-window-jump="win-media" style="--d:.2s">
-                <img src="assets/images/12.webp" alt="" loading="lazy">
+                <img src="https://i.imgur.com/T5QN7EM_d.webp?maxwidth=800&fidelity=grand" alt="" loading="lazy">
                 <span class="tile-arrow" aria-hidden="true">→</span>
                 <small>06 / YouTube</small>
                 <strong data-i18n="navMedia">Media</strong>
@@ -1420,8 +1420,10 @@
 
   <script>
     // --- 1. OPTIMIZED SLIDESHOW (IMGUR ALBUM aUKYtZn, PAUSES WHEN WINDOW INACTIVE) ---
-    // Local optimized WebP versions of the community photos (assets/images)
-    const slideSources = Array.from({ length: 17 }, (_, i) => `assets/images/${i + 1}.webp`);
+    // Community photos (imgur album), served by imgur as resized WebP
+    const ECLION_PHOTOS = ['cGtBO5v', 'U3FDij5', 'ENCgEU3', 'uVvdTnB', 'Fk5r4Rg', 'VyO6E9J', 'VnsoShk', 'QStEtW3', 'l4Cm117', 'yAvbfOn', '198RXCY', 'T5QN7EM', '6IDgDot', 'JnW86IS', 'FPd0XNf', 'OWugg3f', 'gQUsbiQ'];
+    const photoUrl = (id, w) => `https://i.imgur.com/${id}_d.webp?maxwidth=${w}&fidelity=grand`;
+    const slideSources = ECLION_PHOTOS.map(id => photoUrl(id, 1600));
     let currentSlideIdx = 0;
     const slideA = document.getElementById('heroSlideA');
     const slideB = document.getElementById('heroSlideB');
@@ -2540,7 +2542,7 @@
     let progress = 0, loaded = false, finished = false;
     // Ready when fonts + first hero image are in (never wait for every image on the page)
     const firstSlide = new Image();
-    const slideReady = new Promise(res => { firstSlide.onload = firstSlide.onerror = res; firstSlide.src = 'assets/images/1.webp'; });
+    const slideReady = new Promise(res => { firstSlide.onload = firstSlide.onerror = res; firstSlide.src = (typeof slideSources !== 'undefined' && slideSources[0]) || ''; });
     const fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
     Promise.all([slideReady, fontsReady]).then(() => { loaded = true; });
     setTimeout(() => { loaded = true; }, 1800);
@@ -2834,7 +2836,9 @@
 
     /* ---------- 13. GALLERY + LIGHTBOX ---------- */
     const galleryGrid = $('#galleryGrid');
-    const galleryImgs = Array.from({ length: 17 }, (_, i) => `assets/images/${i + 1}.webp`);
+    const hasPhotos = typeof ECLION_PHOTOS !== 'undefined';
+    const galleryImgs = hasPhotos ? ECLION_PHOTOS.map(id => photoUrl(id, 1800)) : [];
+    const galleryThumbs = hasPhotos ? ECLION_PHOTOS.map(id => photoUrl(id, 900)) : [];
     const lb = $('#lightbox'), lbImg = $('#lbImg'), lbNow = $('#lbNow'), lbTotal = $('#lbTotal');
     let lbIndex = 0;
     if (galleryGrid) {
@@ -2845,7 +2849,7 @@
         b.style.setProperty('--d', ((i % 6) * 0.06).toFixed(2) + 's');
         b.setAttribute('aria-label', 'ECLION ' + (i + 1));
         const img = document.createElement('img');
-        img.src = src; img.alt = 'ECLION · VRChat ' + (i + 1); img.loading = 'lazy'; img.decoding = 'async';
+        img.src = galleryThumbs[i]; img.alt = 'ECLION · VRChat ' + (i + 1); img.loading = 'lazy'; img.decoding = 'async';
         b.appendChild(img);
         b.addEventListener('click', () => openLightbox(i));
         galleryGrid.appendChild(b);
